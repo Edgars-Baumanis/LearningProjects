@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
 		49809C442223E61500295608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C432223E61500295608 /* AppDelegate.swift */; };
 		49809C462223E61500295608 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C452223E61500295608 /* ViewController.swift */; };
 		49809C492223E61500295608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Main.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
+		49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49809C552223EE9900295608 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C432223E61500295608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49809C452223E61500295608 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49809C4D2223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49809C4F2223E61500295608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49809C552223EE9900295608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				49809C422223E61500295608 /* Event_Planner */,
 				49809C412223E61500295608 /* Products */,
+				516D2C238066C79A0A352E80 /* Pods */,
+				844FF1EAD43285001C873596 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				49809C4A2223E61500295608 /* Assets.xcassets */,
 				49809C4C2223E61500295608 /* LaunchScreen.storyboard */,
 				49809C4F2223E61500295608 /* Info.plist */,
+				49809C552223EE9900295608 /* GoogleService-Info.plist */,
 			);
 			path = Event_Planner;
+			sourceTree = "<group>";
+		};
+		516D2C238066C79A0A352E80 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */,
+				41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		844FF1EAD43285001C873596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49809C522223E61500295608 /* Build configuration list for PBXNativeTarget "Event_Planner" */;
 			buildPhases = (
+				486127D6470E87E220903F85 /* [CP] Check Pods Manifest.lock */,
 				49809C3C2223E61500295608 /* Sources */,
 				49809C3D2223E61500295608 /* Frameworks */,
 				49809C3E2223E61500295608 /* Resources */,
+				FA6940C4519F21F08D0BDFB5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +152,64 @@
 			buildActionMask = 2147483647;
 			files = (
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
+				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
 				49809C492223E61500295608 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		486127D6470E87E220903F85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Event_Planner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA6940C4519F21F08D0BDFB5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Event_Planner/Pods-Event_Planner-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Event_Planner/Pods-Event_Planner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49809C3C2223E61500295608 /* Sources */ = {
@@ -280,6 +361,7 @@
 		};
 		49809C532223E61500295608 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +379,7 @@
 		};
 		49809C542223E61500295608 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
