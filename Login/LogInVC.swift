@@ -13,6 +13,7 @@ class LoginVC: UIViewController {
     let viewModel = LoginModel()
     
     override func viewDidLoad() {
+        view.setGradientBackground()
         super.viewDidLoad()
         
     }

@@ -9,9 +9,11 @@
 import UIKit
 
 class GreetingVC: UIViewController {
-
+    @IBOutlet var Background: UIView!
+    
     let viewModel = GreetingModel()
     override func viewDidLoad() {
+        Background.setGradientBackground()
         super.viewDidLoad()
     }
     
