@@ -8,16 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
+		49114E60222418DF00924DA9 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E5F222418DF00924DA9 /* LoginFlow.swift */; };
+		49114E6222241D4500924DA9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E6122241D4500924DA9 /* LoginVC.swift */; };
+		49114E6422241F0500924DA9 /* RegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E6322241F0500924DA9 /* RegistrationFlow.swift */; };
 		49809C442223E61500295608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C432223E61500295608 /* AppDelegate.swift */; };
 		49809C462223E61500295608 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C452223E61500295608 /* ViewController.swift */; };
 		49809C492223E61500295608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Main.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
 		49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49809C552223EE9900295608 /* GoogleService-Info.plist */; };
+		49809C6122240A2800295608 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C6022240A2800295608 /* AppFlow.swift */; };
+		49809C6422240B7F00295608 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C6322240B7F00295608 /* SignUpVC.swift */; };
+		49809C6622240B9B00295608 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C6522240B9B00295608 /* SignUpModel.swift */; };
+		49809EEE22240C1B00295608 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809EED22240C1B00295608 /* LoginModel.swift */; };
+		49809EF322240E6600295608 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809EF222240E6600295608 /* GreetingVC.swift */; };
+		49809EF522240E7100295608 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809EF422240E7100295608 /* GreetingModel.swift */; };
+		49809EF72224127300295608 /* GreetingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809EF62224127300295608 /* GreetingFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
+		49114E5F222418DF00924DA9 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
+		49114E6122241D4500924DA9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		49114E6322241F0500924DA9 /* RegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlow.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C432223E61500295608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49809C452223E61500295608 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +39,13 @@
 		49809C4D2223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49809C4F2223E61500295608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49809C552223EE9900295608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49809C6022240A2800295608 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		49809C6322240B7F00295608 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		49809C6522240B9B00295608 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		49809EED22240C1B00295608 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		49809EF222240E6600295608 /* GreetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
+		49809EF422240E7100295608 /* GreetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
+		49809EF62224127300295608 /* GreetingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingFlow.swift; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +65,9 @@
 		49809C372223E61500295608 = {
 			isa = PBXGroup;
 			children = (
+				49809EF122240E5700295608 /* Greeting */,
+				49809C6222240B5D00295608 /* Register */,
+				49809EEA22240BEE00295608 /* Login */,
 				49809C5D222407D300295608 /* Flows */,
 				49809C422223E61500295608 /* Event_Planner */,
 				49809C412223E61500295608 /* Products */,
@@ -78,8 +101,39 @@
 		49809C5D222407D300295608 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				49809C6022240A2800295608 /* AppFlow.swift */,
+				49114E5F222418DF00924DA9 /* LoginFlow.swift */,
+				49809EF62224127300295608 /* GreetingFlow.swift */,
+				49114E6322241F0500924DA9 /* RegistrationFlow.swift */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		49809C6222240B5D00295608 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				49809C6322240B7F00295608 /* SignUpVC.swift */,
+				49809C6522240B9B00295608 /* SignUpModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		49809EEA22240BEE00295608 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				49114E6122241D4500924DA9 /* LoginVC.swift */,
+				49809EED22240C1B00295608 /* LoginModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		49809EF122240E5700295608 /* Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				49809EF222240E6600295608 /* GreetingVC.swift */,
+				49809EF422240E7100295608 /* GreetingModel.swift */,
+			);
+			path = Greeting;
 			sourceTree = "<group>";
 		};
 		516D2C238066C79A0A352E80 /* Pods */ = {
@@ -224,7 +278,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49114E6422241F0500924DA9 /* RegistrationFlow.swift in Sources */,
+				49114E6222241D4500924DA9 /* LoginVC.swift in Sources */,
+				49809C6422240B7F00295608 /* SignUpVC.swift in Sources */,
+				49809EEE22240C1B00295608 /* LoginModel.swift in Sources */,
+				49809EF72224127300295608 /* GreetingFlow.swift in Sources */,
 				49809C462223E61500295608 /* ViewController.swift in Sources */,
+				49809EF322240E6600295608 /* GreetingVC.swift in Sources */,
+				49114E60222418DF00924DA9 /* LoginFlow.swift in Sources */,
+				49809C6622240B9B00295608 /* SignUpModel.swift in Sources */,
+				49809C6122240A2800295608 /* AppFlow.swift in Sources */,
+				49809EF522240E7100295608 /* GreetingModel.swift in Sources */,
 				49809C442223E61500295608 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +437,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleAppMeasurement/Frameworks",
+				);
 				INFOPLIST_FILE = Event_Planner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,6 +461,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleAppMeasurement/Frameworks",
+				);
 				INFOPLIST_FILE = Event_Planner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
