@@ -56,6 +56,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="Background" destination="8bC-Xf-vdC" id="aLQ-1A-I1E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,7 +183,7 @@
         <!--My Spaces View Controller-->
         <scene sceneID="sEJ-fX-JfL">
             <objects>
-                <viewController storyboardIdentifier="MainVC" id="KG3-hK-vqL" customClass="MySpacesViewController" customModule="KvalDarbs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="KG3-hK-vqL" customClass="MySpacesViewController" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b85-W3-goq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

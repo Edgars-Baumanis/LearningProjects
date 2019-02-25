@@ -11,6 +11,7 @@
 		49114E60222418DF00924DA9 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E5F222418DF00924DA9 /* LoginFlow.swift */; };
 		49114E6222241D4500924DA9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E6122241D4500924DA9 /* LoginVC.swift */; };
 		49114E6422241F0500924DA9 /* RegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E6322241F0500924DA9 /* RegistrationFlow.swift */; };
+		49114E69222423B800924DA9 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49114E68222423B800924DA9 /* Background.swift */; };
 		49809C442223E61500295608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C432223E61500295608 /* AppDelegate.swift */; };
 		49809C462223E61500295608 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49809C452223E61500295608 /* ViewController.swift */; };
 		49809C492223E61500295608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		49114E5F222418DF00924DA9 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		49114E6122241D4500924DA9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		49114E6322241F0500924DA9 /* RegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlow.swift; sourceTree = "<group>"; };
+		49114E68222423B800924DA9 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C432223E61500295608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49809C452223E61500295608 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49114E652224237C00924DA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49114E68222423B800924DA9 /* Background.swift */,
+			);
+			path = View;
+			sourceTree = SOURCE_ROOT;
+		};
 		49809C372223E61500295608 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 				49809EEA22240BEE00295608 /* Login */,
 				49809C5D222407D300295608 /* Flows */,
 				49809C422223E61500295608 /* Event_Planner */,
+				49114E652224237C00924DA9 /* View */,
 				49809C412223E61500295608 /* Products */,
 				516D2C238066C79A0A352E80 /* Pods */,
 				844FF1EAD43285001C873596 /* Frameworks */,
@@ -289,6 +300,7 @@
 				49809C6622240B9B00295608 /* SignUpModel.swift in Sources */,
 				49809C6122240A2800295608 /* AppFlow.swift in Sources */,
 				49809EF522240E7100295608 /* GreetingModel.swift in Sources */,
+				49114E69222423B800924DA9 /* Background.swift in Sources */,
 				49809C442223E61500295608 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

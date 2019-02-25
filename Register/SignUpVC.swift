@@ -12,6 +12,7 @@ class SignUpVC: UIViewController {
 
     let viewModel = SignUpModel()
     override func viewDidLoad() {
+        view.setGradientBackground()
         super.viewDidLoad()
 
     }
