@@ -80,10 +80,10 @@
 				49451A292224426100AC8350 /* AppDelegate.swift */,
 				49451A202224426100AC8350 /* Greeting */,
 				49451A232224426100AC8350 /* Register */,
-				49451A262224426100AC8350 /* View */,
 				49451A2A2224426100AC8350 /* Main */,
 				49451A2F2224426100AC8350 /* Flows */,
 				49451A362224426100AC8350 /* Login */,
+				49451A262224426100AC8350 /* View */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -100,8 +100,8 @@
 		49451A232224426100AC8350 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				49451A242224426100AC8350 /* SignUpModel.swift */,
 				49451A252224426100AC8350 /* SignUpVC.swift */,
+				49451A242224426100AC8350 /* SignUpModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 		49451A362224426100AC8350 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				49451A372224426100AC8350 /* LoginModel.swift */,
 				49451A382224426100AC8350 /* LogInVC.swift */,
+				49451A372224426100AC8350 /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
