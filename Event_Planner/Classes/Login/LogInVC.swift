@@ -9,12 +9,14 @@
 import UIKit
 
 class LoginVC: UIViewController {
-    
-    let viewModel = LoginModel()
-    
+
     override func viewDidLoad() {
-        view.setGradientBackground()
         super.viewDidLoad()
-        
+        view.setGradientBackground()
     }
+    
+    @IBAction func LoggedIn(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("LoggedIn"), object: nil)
+    }
+    
 }

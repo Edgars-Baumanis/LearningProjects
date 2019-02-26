@@ -16,7 +16,6 @@ extension UIView {
             UIColor(red:0.00, green:0.16, blue:0.14, alpha:0.9).cgColor,
             UIColor(red:0.38, green:0.60, blue:0.40, alpha:0.72).cgColor,
             UIColor(red:0.98, green:0.99, blue:0.60, alpha:0.5).cgColor
-            
         ]
         gradientLayer.locations = [0.0, 0.6, 1.0]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)

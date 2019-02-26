@@ -25,6 +25,7 @@ class AppFlow: FlowController {
     init() {
         SignInPressed()
         SignUpPressed()
+        LoggedIn()
     }
     
     private func SignInPressed() {
@@ -33,6 +34,10 @@ class AppFlow: FlowController {
     
     private func SignUpPressed() {
         NotificationCenter.default.addObserver(self, selector: #selector(toReg), name: Notification.Name("SignUpPressed"), object: nil)
+    }
+    
+    private func LoggedIn() {
+        NotificationCenter.default.addObserver(self, selector: #selector(toSpaces), name: Notification.Name("LoggedIn"), object: nil)
     }
     
     @objc func toLogin() {
@@ -44,6 +49,13 @@ class AppFlow: FlowController {
     
     @objc func toMain() {
         
+    }
+    
+    @objc func toSpaces() {
+        let spacesFlow = SpacesFlow()
+        window??.rootViewController = spacesFlow.rootController
+        spacesFlow.start()
+        childFlow = spacesFlow
     }
     
     @objc func toReg() {
