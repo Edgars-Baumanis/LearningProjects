@@ -119,6 +119,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AaA-H2-FpJ"/>
                     </view>
+                    <connections>
+                        <outlet property="loginEmail" destination="iR0-W2-SLh" id="RIc-cu-B5L"/>
+                        <outlet property="loginPassword" destination="ye3-b7-qXM" id="tDK-zA-DQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3G-Tl-acM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,6 +164,9 @@
                                 <state key="normal" title="SignUp">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signedUp:" destination="KfM-lC-3dX" eventType="touchUpInside" id="Pxf-7R-6Y4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,6 +189,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I56-Uc-hck"/>
                     </view>
+                    <connections>
+                        <outlet property="regEmail" destination="RYX-tc-ySx" id="eGM-XA-jth"/>
+                        <outlet property="regPassword" destination="ujT-by-kyx" id="XYS-S6-6eW"/>
+                        <outlet property="regScreenName" destination="yTI-gN-S26" id="DDr-Mt-7Pf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuZ-BV-1wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
