@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 class AppFlow: FlowController {
     
-    private var window: UIWindow
+    fileprivate var window: UIWindow
 
     fileprivate var childFlow: FlowController?
     
@@ -22,6 +22,9 @@ class AppFlow: FlowController {
         let spacesFlow = SpacesFlow(with: window)
         spacesFlow.start()
         childFlow = spacesFlow
+        spacesFlow.backToStart = { [weak self] in
+            self?.navigateToGreetingFlow()
+        }
     }
     
     private func navigateToGreetingFlow() {

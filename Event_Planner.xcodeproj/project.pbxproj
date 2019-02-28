@@ -32,6 +32,7 @@
 		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
+		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
+		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,13 +123,10 @@
 		49451A2A2224426100AC8350 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				49451A2B2224426100AC8350 /* MySpacesVC.swift */,
-				49451A2D2224426100AC8350 /* MySpacesModel.swift */,
-				499D7EB222257BD500694DD6 /* Cells */,
 				499D7EAC222571ED00694DD6 /* MainTabbarController.swift */,
-				499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */,
-				49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */,
-				499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */,
+				49CBE2ED22281BBA00DFE240 /* MySpaces */,
+				49CBE2EC22281B9C00DFE240 /* CreateASpace */,
+				49CBE2EE22281BD000DFE240 /* JoinASpace */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -190,6 +189,34 @@
 				499D7EB322257BF900694DD6 /* TableViewCells.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		49CBE2EC22281B9C00DFE240 /* CreateASpace */ = {
+			isa = PBXGroup;
+			children = (
+				499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */,
+				49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */,
+			);
+			path = CreateASpace;
+			sourceTree = "<group>";
+		};
+		49CBE2ED22281BBA00DFE240 /* MySpaces */ = {
+			isa = PBXGroup;
+			children = (
+				49451A2B2224426100AC8350 /* MySpacesVC.swift */,
+				49451A2D2224426100AC8350 /* MySpacesModel.swift */,
+				499D7EB222257BD500694DD6 /* Cells */,
+			);
+			path = MySpaces;
+			sourceTree = "<group>";
+		};
+		49CBE2EE22281BD000DFE240 /* JoinASpace */ = {
+			isa = PBXGroup;
+			children = (
+				499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */,
+				49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */,
+			);
+			path = JoinASpace;
 			sourceTree = "<group>";
 		};
 		516D2C238066C79A0A352E80 /* Pods */ = {
@@ -343,6 +370,7 @@
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,

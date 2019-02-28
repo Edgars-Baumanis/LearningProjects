@@ -6,4 +6,8 @@
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class JoinASpaceModel {
+    
+}

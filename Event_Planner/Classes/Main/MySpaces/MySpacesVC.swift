@@ -9,7 +9,7 @@
 import UIKit
 
 class MySpacesVC: UIViewController {
-    let viewModel = MySpacesModel()
+    var viewModel: MySpacesModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -23,9 +23,9 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: (viewModel?.cellIdentifier)!, for: indexPath)
         if let myCell = cell as? MySpacesCell {
-            myCell.displayContent(spaceName: viewModel.cellIdentifier)
+            myCell.displayContent(spaceName: (viewModel?.cellIdentifier)!)
         }
         return cell
     }

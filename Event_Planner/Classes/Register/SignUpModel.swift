@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class SignUpModel {
-    var signInPressed: (()-> Void)?
+    var signUpPressed: (()-> Void)?
     
     func signUpUser(email: String?, password: String?) {
         guard email?.isEmpty != true, password?.isEmpty != true else {
@@ -22,7 +22,7 @@ class SignUpModel {
                 print(error)
                 return
             }
-            self.signInPressed?()
+            self.signUpPressed?()
         }
     }
 }

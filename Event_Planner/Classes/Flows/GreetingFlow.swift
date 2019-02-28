@@ -69,7 +69,7 @@ class GreetingFlow: FlowController {
         guard let vc = registerVC else { return }
         rootController?.pushViewController(vc, animated: true)
         vc.viewModel = SignUpModel()
-        vc.viewModel?.signInPressed = { [weak self] in
+        vc.viewModel?.signUpPressed = { [weak self] in
             self?.navigateToLogin()
         }
     }
