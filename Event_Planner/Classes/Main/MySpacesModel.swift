@@ -9,5 +9,5 @@
 import UIKit
 
 class MySpacesModel {
-
+    let cellIdentifier = "MySpacesCell"
 }
