@@ -9,19 +9,8 @@
 import UIKit
 
 class MainTabbarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-}
-
-extension MainTabbarController: ClassName {
-    static var className: String {
-        return String(describing: self)
-    }
-}
-
-protocol ClassName {
-    static var className: String {get}
 }
