@@ -29,12 +29,13 @@ struct Space {
 
 
 class CreateASpaceController: UIViewController {
-    
-    
     @IBOutlet weak var spaceName: UITextField!
     @IBOutlet weak var spacePassword: UITextField!
     @IBOutlet weak var spaceDescription: UITextField!
+    
+    var viewModel: CreateASpaceModel?
     var ref: DatabaseReference?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -42,6 +43,16 @@ class CreateASpaceController: UIViewController {
         ref = Database.database().reference()
     }
     
+    @IBAction func signOutPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            viewModel?.signingOut?()
+        } catch let signOutError as NSError {
+            print(signOutError)
+        }
+        
+    }
     @IBAction func createSpace(_ sender: Any) {
 //        let space = space {
         guard
@@ -51,15 +62,4 @@ class CreateASpaceController: UIViewController {
         let newSpace = Space(spaceName: name, spacePassword: password)
         ref?.child("Spaces").child(name).setValue(newSpace)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
