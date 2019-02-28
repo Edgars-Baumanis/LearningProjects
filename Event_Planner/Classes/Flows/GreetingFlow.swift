@@ -19,12 +19,12 @@ class GreetingFlow: FlowController {
         appWindow = window
     }
     
-    private lazy var mainSB: UIStoryboard = {
+    private lazy var greetingSB: UIStoryboard = {
         return UIStoryboard(name: "Greeting", bundle: Bundle.main)
     }()
     
     private var greetingViewController: GreetingVC? {
-        return mainSB.instantiateViewController(withIdentifier: "GreetingVC") as? GreetingVC
+        return greetingSB.instantiateViewController(withIdentifier: "GreetingVC") as? GreetingVC
     }
     
     // no empty functions in classses please
@@ -49,7 +49,7 @@ class GreetingFlow: FlowController {
     }
     
     private var loginVC: LoginVC? {
-        return mainSB.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+        return greetingSB.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
     }
     
     func navigateToLogin() {
@@ -62,7 +62,7 @@ class GreetingFlow: FlowController {
     }
     
     private var registerVC: SignUpVC? {
-        return mainSB.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC
+        return greetingSB.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC
     }
     
     func navigateToRegister() {
