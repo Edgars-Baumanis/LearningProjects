@@ -34,32 +34,17 @@ class CreateASpaceController: UIViewController {
     @IBOutlet weak var spaceDescription: UITextField!
     
     var viewModel: CreateASpaceModel?
-    var ref: DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
         
-        ref = Database.database().reference()
     }
     
-    @IBAction func signOutPressed(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            viewModel?.signingOut?()
-        } catch let signOutError as NSError {
-            print(signOutError)
-        }
-        
-    }
     @IBAction func createSpace(_ sender: Any) {
-//        let space = space {
-        guard
-            let name = spaceName.text,
-            let password = spacePassword.text
-        else { return }
-        let newSpace = Space(spaceName: name, spacePassword: password)
-        ref?.child("Spaces").child(name).setValue(newSpace)
+        viewModel?.createASpace(name: spaceName.text, password: spacePassword.text, description: spaceDescription.text)
+    }
+    @IBAction func closePressed(_ sender: Any) {
+        viewModel?.backPressed?()
     }
 }

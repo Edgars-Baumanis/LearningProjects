@@ -7,7 +7,23 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CreateASpaceModel {
-    var signingOut: (()->Void)?
+    var ref: DatabaseReference?
+    var backPressed: (()->Void)?
+    
+    init () {
+        ref = Database.database().reference()
+    }
+    
+    func createASpace(name: String?, password: String?, description: String?) {
+        guard name?.isEmpty != true, password?.isEmpty != true else {
+            print("Please enter Space name and password")
+            return
+        }
+        let newSpace = Space(spaceName: name!, spacePassword: password!)
+        ref?.child("Spaces").child(name!).setValue(newSpace)
+        
+    }
 }
