@@ -6,8 +6,24 @@
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Firebase
 
 class LoginModel {
+    var loggedIn: (()-> Void)?
     
+    func loginUser(email: String?, password: String?) {
+        guard email?.isEmpty != true, password?.isEmpty != true else {
+            print("Please enter valid username and/or password")
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+            guard error == nil else {
+                print(error)
+                return
+            }
+            self.loggedIn?()
+        }
+    }
 }

@@ -7,68 +7,39 @@
 //
 
 import UIKit
-
-protocol FlowController {
-    var window: UIWindow?? {get}
-    func start()
-}
-
-extension FlowController {
-    var window: UIWindow?? {
-        return UIApplication.shared.delegate!.window
-    }
-}
-
+import Firebase
 class AppFlow: FlowController {
+    
+    fileprivate var window: UIWindow
+
     fileprivate var childFlow: FlowController?
     
-    init() {
-        SignInPressed()
-        SignUpPressed()
-        LoggedIn()
+    init(with window: UIWindow) {
+        self.window = window
     }
     
-    private func SignInPressed() {
-        NotificationCenter.default.addObserver(self, selector: #selector(toLogin), name: Notification.Name("SigninPressed"), object: nil)
-    }
-    
-    private func SignUpPressed() {
-        NotificationCenter.default.addObserver(self, selector: #selector(toReg), name: Notification.Name("SignUpPressed"), object: nil)
-    }
-    
-    private func LoggedIn() {
-        NotificationCenter.default.addObserver(self, selector: #selector(toSpaces), name: Notification.Name("LoggedIn"), object: nil)
-    }
-    
-    @objc func toLogin() {
-        let loginFlow = LoginFlow()
-        window??.rootViewController = loginFlow.rootController
-        loginFlow.start()
-        childFlow = loginFlow
-    }
-    
-    @objc func toMain() {
-        
-    }
-    
-    @objc func toSpaces() {
-        let spacesFlow = SpacesFlow()
-        window??.rootViewController = spacesFlow.rootController
+    private func navigateToMainFlow() {
+        let spacesFlow = SpacesFlow(with: window)
         spacesFlow.start()
         childFlow = spacesFlow
+        spacesFlow.backToStart = { [weak self] in
+            self?.navigateToGreetingFlow()
+        }
     }
     
-    @objc func toReg() {
-        let regFlow = RegistrationFlow()
-        window??.rootViewController = regFlow.rootController
-        regFlow.start()
-        childFlow = regFlow
+    private func navigateToGreetingFlow() {
+        let greetingFlow = GreetingFlow(with: window)
+        greetingFlow.start(with: {
+            self.navigateToMainFlow()
+        })
+        childFlow = greetingFlow
     }
     
     func start() {
-        let greetingFlow = GreetingFlow()
-        window??.rootViewController = greetingFlow.rootController
-        greetingFlow.start()
-        childFlow = greetingFlow
+        if Auth.auth().currentUser != nil {
+            self.navigateToMainFlow()
+        } else {
+            self.navigateToGreetingFlow()
+        }
     }
 }
