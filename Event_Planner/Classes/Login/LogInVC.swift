@@ -18,6 +18,8 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginEmail.text = "123@123.com"
+        loginPassword.text = "123123"
         view.setGradientBackground()
     }
     

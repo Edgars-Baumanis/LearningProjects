@@ -10,4 +10,6 @@ import UIKit
 
 class MySpacesModel {
     let cellIdentifier = "MySpacesCell"
+    var signingOut: (()-> Void)?
+    var navigateToCreate: (()-> Void)?
 }

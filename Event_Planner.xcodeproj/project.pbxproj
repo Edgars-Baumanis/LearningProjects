@@ -33,6 +33,7 @@
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
+		49CBE2F22228302700DFE240 /* MySpacesNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2F12228302700DFE240 /* MySpacesNC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
+		49CBE2F12228302700DFE240 /* MySpacesNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacesNC.swift; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,8 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				49451A292224426100AC8350 /* AppDelegate.swift */,
-				49451A362224426100AC8350 /* Login */,
 				49451A202224426100AC8350 /* Greeting */,
+				49451A362224426100AC8350 /* Login */,
 				49451A232224426100AC8350 /* Register */,
 				49451A2A2224426100AC8350 /* Main */,
 				49451A2F2224426100AC8350 /* Flows */,
@@ -205,6 +207,7 @@
 			children = (
 				49451A2B2224426100AC8350 /* MySpacesVC.swift */,
 				49451A2D2224426100AC8350 /* MySpacesModel.swift */,
+				49CBE2F12228302700DFE240 /* MySpacesNC.swift */,
 				499D7EB222257BD500694DD6 /* Cells */,
 			);
 			path = MySpaces;
@@ -369,6 +372,7 @@
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
+				49CBE2F22228302700DFE240 /* MySpacesNC.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,

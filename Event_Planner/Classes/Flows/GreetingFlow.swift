@@ -13,7 +13,7 @@ class GreetingFlow: FlowController {
     private var rootController: UINavigationController?
     private let appWindow: UIWindow
     
-    private var onCompletion: (()->Void)?
+    var signInPressed: (()->Void)?
 
     init(with window: UIWindow) {
         appWindow = window
@@ -29,9 +29,6 @@ class GreetingFlow: FlowController {
     
     // no empty functions in classses please
     func start() {
-    }
-    
-    func start(with completionHandler: @escaping (()->Void)) {
         guard let vc = greetingViewController else { return }
         rootController = UINavigationController(rootViewController: vc)
         appWindow.rootViewController = rootController
@@ -44,8 +41,10 @@ class GreetingFlow: FlowController {
             self?.navigateToRegister()
         }
         vc.viewModel = viewModel
+    }
+    
+    func start(with completionHandler: @escaping (()->Void)) {
         
-        onCompletion = completionHandler
     }
     
     private var loginVC: LoginVC? {
@@ -57,7 +56,7 @@ class GreetingFlow: FlowController {
         rootController?.pushViewController(vc, animated: true)
         vc.viewModel = LoginModel()
         vc.viewModel?.loggedIn = { [weak self] in
-            self?.onCompletion?()
+            self?.signInPressed?()
         }
     }
     

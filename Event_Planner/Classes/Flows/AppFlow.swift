@@ -11,33 +11,34 @@ import Firebase
 class AppFlow: FlowController {
     
     fileprivate var window: UIWindow
-
+    
     fileprivate var childFlow: FlowController?
     
     init(with window: UIWindow) {
         self.window = window
     }
     
-    private func navigateToMainFlow() {
+    private func navigateToSpacesFlow() {
         let spacesFlow = SpacesFlow(with: window)
         spacesFlow.start()
         childFlow = spacesFlow
-        spacesFlow.backToStart = { [weak self] in
+        spacesFlow.logoutPressed = { [weak self] in
             self?.navigateToGreetingFlow()
         }
     }
     
     private func navigateToGreetingFlow() {
         let greetingFlow = GreetingFlow(with: window)
-        greetingFlow.start(with: {
-            self.navigateToMainFlow()
-        })
+        greetingFlow.start()
+        greetingFlow.signInPressed = { [weak self] in
+            self?.navigateToSpacesFlow()
+        }
         childFlow = greetingFlow
     }
     
     func start() {
         if Auth.auth().currentUser != nil {
-            self.navigateToMainFlow()
+            self.navigateToSpacesFlow()
         } else {
             self.navigateToGreetingFlow()
         }
