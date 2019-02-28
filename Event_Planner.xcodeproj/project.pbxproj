@@ -18,11 +18,8 @@
 		49451A412224426100AC8350 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A2C2224426100AC8350 /* MainModel.swift */; };
 		49451A422224426100AC8350 /* MySpacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A2D2224426100AC8350 /* MySpacesModel.swift */; };
 		49451A432224426100AC8350 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A2E2224426100AC8350 /* MainVC.swift */; };
-		49451A442224426100AC8350 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A302224426100AC8350 /* LoginFlow.swift */; };
-		49451A452224426100AC8350 /* RegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A312224426100AC8350 /* RegistrationFlow.swift */; };
 		49451A462224426100AC8350 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A322224426100AC8350 /* AppFlow.swift */; };
 		49451A472224426100AC8350 /* SpacesFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A332224426100AC8350 /* SpacesFlow.swift */; };
-		49451A482224426100AC8350 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A342224426100AC8350 /* MainFlow.swift */; };
 		49451A492224426100AC8350 /* GreetingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A352224426100AC8350 /* GreetingFlow.swift */; };
 		49451A4A2224426100AC8350 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A372224426100AC8350 /* LoginModel.swift */; };
 		49451A4B2224426100AC8350 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A382224426100AC8350 /* LogInVC.swift */; };
@@ -30,6 +27,12 @@
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
 		49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49809C552223EE9900295608 /* GoogleService-Info.plist */; };
+		499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAC222571ED00694DD6 /* MainTabbarController.swift */; };
+		499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */; };
+		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
+		499D7EB422257BF900694DD6 /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* TableViewCells.swift */; };
+		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
+		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,11 +47,8 @@
 		49451A2C2224426100AC8350 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		49451A2D2224426100AC8350 /* MySpacesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpacesModel.swift; sourceTree = "<group>"; };
 		49451A2E2224426100AC8350 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		49451A302224426100AC8350 /* LoginFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
-		49451A312224426100AC8350 /* RegistrationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFlow.swift; sourceTree = "<group>"; };
 		49451A322224426100AC8350 /* AppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		49451A332224426100AC8350 /* SpacesFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacesFlow.swift; sourceTree = "<group>"; };
-		49451A342224426100AC8350 /* MainFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		49451A352224426100AC8350 /* GreetingFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingFlow.swift; sourceTree = "<group>"; };
 		49451A372224426100AC8350 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49451A382224426100AC8350 /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
@@ -58,6 +58,12 @@
 		49809C4D2223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49809C4F2223E61500295608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49809C552223EE9900295608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		499D7EAC222571ED00694DD6 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceController.swift; sourceTree = "<group>"; };
+		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
+		499D7EB322257BF900694DD6 /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
+		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,11 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				49451A292224426100AC8350 /* AppDelegate.swift */,
+				49451A362224426100AC8350 /* Login */,
 				49451A202224426100AC8350 /* Greeting */,
 				49451A232224426100AC8350 /* Register */,
 				49451A2A2224426100AC8350 /* Main */,
 				49451A2F2224426100AC8350 /* Flows */,
-				49451A362224426100AC8350 /* Login */,
 				49451A262224426100AC8350 /* View */,
 			);
 			path = Classes;
@@ -118,9 +124,13 @@
 			isa = PBXGroup;
 			children = (
 				49451A2B2224426100AC8350 /* MySpacesVC.swift */,
-				49451A2C2224426100AC8350 /* MainModel.swift */,
 				49451A2D2224426100AC8350 /* MySpacesModel.swift */,
+				499D7EB222257BD500694DD6 /* Cells */,
+				499D7EAC222571ED00694DD6 /* MainTabbarController.swift */,
+				49451A2C2224426100AC8350 /* MainModel.swift */,
 				49451A2E2224426100AC8350 /* MainVC.swift */,
+				499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */,
+				499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -128,12 +138,10 @@
 		49451A2F2224426100AC8350 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				49451A302224426100AC8350 /* LoginFlow.swift */,
-				49451A312224426100AC8350 /* RegistrationFlow.swift */,
 				49451A322224426100AC8350 /* AppFlow.swift */,
 				49451A332224426100AC8350 /* SpacesFlow.swift */,
-				49451A342224426100AC8350 /* MainFlow.swift */,
 				49451A352224426100AC8350 /* GreetingFlow.swift */,
+				49CBE2E62227CEEA00DFE240 /* FlowController.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -170,12 +178,21 @@
 			children = (
 				49451A1F2224426100AC8350 /* Classes */,
 				49809C472223E61500295608 /* Main.storyboard */,
+				49CBE2E82227E56600DFE240 /* Greeting.storyboard */,
 				49809C4A2223E61500295608 /* Assets.xcassets */,
 				49809C4C2223E61500295608 /* LaunchScreen.storyboard */,
 				49809C4F2223E61500295608 /* Info.plist */,
 				49809C552223EE9900295608 /* GoogleService-Info.plist */,
 			);
 			path = Event_Planner;
+			sourceTree = "<group>";
+		};
+		499D7EB222257BD500694DD6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				499D7EB322257BF900694DD6 /* TableViewCells.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		516D2C238066C79A0A352E80 /* Pods */ = {
@@ -255,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */,
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
@@ -298,6 +316,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Event_Planner/Pods-Event_Planner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -306,6 +325,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,17 +340,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49451A452224426100AC8350 /* RegistrationFlow.swift in Sources */,
+				499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */,
+				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
+				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
-				49451A482224426100AC8350 /* MainFlow.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
-				49451A442224426100AC8350 /* LoginFlow.swift in Sources */,
+				499D7EB422257BF900694DD6 /* TableViewCells.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
+				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				49451A432224426100AC8350 /* MainVC.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				49451A412224426100AC8350 /* MainModel.swift in Sources */,
