@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class AppFlow: FlowController {
     
     private var window: UIWindow
@@ -24,11 +24,19 @@ class AppFlow: FlowController {
         childFlow = spacesFlow
     }
     
-    func start() {
+    private func navigateToGreetingFlow() {
         let greetingFlow = GreetingFlow(with: window)
         greetingFlow.start(with: {
             self.navigateToMainFlow()
         })
         childFlow = greetingFlow
+    }
+    
+    func start() {
+        if Auth.auth().currentUser != nil {
+            self.navigateToMainFlow()
+        } else {
+            self.navigateToGreetingFlow()
+        }
     }
 }
