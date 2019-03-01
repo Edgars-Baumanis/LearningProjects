@@ -27,7 +27,6 @@ class GreetingFlow: FlowController {
         return greetingSB.instantiateViewController(withIdentifier: "GreetingVC") as? GreetingVC
     }
     
-    // no empty functions in classses please
     func start() {
         guard let vc = greetingViewController else { return }
         rootController = UINavigationController(rootViewController: vc)
@@ -43,9 +42,6 @@ class GreetingFlow: FlowController {
         vc.viewModel = viewModel
     }
     
-    func start(with completionHandler: @escaping (()->Void)) {
-        
-    }
     
     private var loginVC: LoginVC? {
         return greetingSB.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
