@@ -16,7 +16,6 @@ class SpacesFlow: FlowController {
         appWindow = window
     }
     
-    // Create constant, better if enum "Main"
     private lazy var mainSB: UIStoryboard = {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }()
