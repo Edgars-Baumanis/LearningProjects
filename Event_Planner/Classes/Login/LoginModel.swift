@@ -16,7 +16,7 @@ class LoginModel {
     
     func loginUser(email: String?, password: String?) {
         guard email?.isEmpty != true, password?.isEmpty != true else { return }
-        Dependencies.instance.userService.emailAndPassword(email: email!, password: password!, completionHandler: { user, error  in
+        Dependencies.instance.userService.login(email: email!, password: password!, completionHandler: { user, error  in
             guard error == nil else {
                 self.wrongSignIn?()
                 return

@@ -14,17 +14,17 @@ struct User {
     var email: String?
 }
 
-protocol UserService {
+protocol PUserService {
     var user: User? { get }
     
-    func emailAndPassword(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
+    func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
     
 }
 
-class MyUserServices: UserService {
+class UserService: PUserService {
     var user: User?
     
-    func emailAndPassword(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
+    func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             guard error == nil else {
                 completionHandler(nil, "Wrong credentionals!")
