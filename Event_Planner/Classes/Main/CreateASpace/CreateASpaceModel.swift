@@ -10,11 +10,14 @@ import UIKit
 import FirebaseDatabase
 
 class CreateASpaceModel {
-    var ref: DatabaseReference?
+    private var ref: DatabaseReference?
+    private var userService: MyUserServices?
+
     var backPressed: (()->Void)?
     
-    init () {
+    init (userService: MyUserServices?) {
         ref = Database.database().reference()
+        self.userService = userService
     }
     
     func createASpace(name: String?, password: String?, description: String?) {
@@ -25,5 +28,9 @@ class CreateASpaceModel {
         let newSpace = Space(spaceName: name!, spacePassword: password!)
         ref?.child("Spaces").child(name!).setValue(newSpace)
         
+    }
+    
+    func printEmail() {
+        userService?.printEmail()
     }
 }

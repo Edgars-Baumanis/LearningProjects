@@ -10,20 +10,23 @@ import UIKit
 import Firebase
 
 class LoginModel {
+    
     var loggedIn: (()-> Void)?
+    var wrongSignIn: (()-> Void)?
+
+    private var userService: MyUserServices?
+    init(userService: MyUserServices?) {
+        self.userService = userService
+    }
     
     func loginUser(email: String?, password: String?) {
-        guard email?.isEmpty != true, password?.isEmpty != true else {
-            print("Please enter valid username and/or password")
-            return
-        }
-        
-        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+        guard email?.isEmpty != true, password?.isEmpty != true else { return }
+        userService?.emailAndPassword(email: email!, password: password!, completionHandler: { user, error  in
             guard error == nil else {
-                print(error)
+                self.wrongSignIn?()
                 return
             }
             self.loggedIn?()
-        }
+        })
     }
 }

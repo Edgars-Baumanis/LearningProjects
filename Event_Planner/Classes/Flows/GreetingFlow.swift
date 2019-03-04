@@ -10,13 +10,11 @@ import UIKit
 
 class GreetingFlow: FlowController {
     
-    private var rootController: UINavigationController?
-    private let appWindow: UIWindow
-    
-    var signInPressed: (()->Void)?
+    private var rootController: UITabBarController?
+    var navigateToSpaces: (()->Void)?
 
-    init(with window: UIWindow) {
-        appWindow = window
+    init(with rootController: UITabBarController) {
+        self.rootController = rootController
     }
     
     private lazy var greetingSB: UIStoryboard = {
@@ -29,44 +27,49 @@ class GreetingFlow: FlowController {
     
     func start() {
         guard let vc = greetingViewController else { return }
-        rootController = UINavigationController(rootViewController: vc)
-        appWindow.rootViewController = rootController
-        appWindow.makeKeyAndVisible()
+        rootController?.present(vc, animated: false, completion: nil)
         let viewModel = GreetingModel()
         viewModel.signInPressed = { [weak self] in
+            self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToLogin()
         }
         viewModel.signUpPressed = { [weak self] in
+            self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToRegister()
         }
         vc.viewModel = viewModel
     }
     
-    
     private var loginVC: LoginVC? {
         return greetingSB.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
     }
     
-    func navigateToLogin() {
+    private func navigateToLogin() {
         guard let vc = loginVC else { return }
-        rootController?.pushViewController(vc, animated: true)
-        vc.viewModel = LoginModel()
-        vc.viewModel?.loggedIn = { [weak self] in
-            self?.signInPressed?()
+        rootController?.present(vc, animated: false, completion: nil)
+        let viewModel = LoginModel(userService: Dependencies.instance.userService)
+       
+        viewModel.loggedIn = { [weak self] in
+            guard let `self` = self else { return }
+            self.rootController?.dismiss(animated: true, completion: nil)
+            self.navigateToSpaces?()
         }
+        vc.viewModel = viewModel
     }
     
     private var registerVC: SignUpVC? {
         return greetingSB.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC
     }
     
-    func navigateToRegister() {
+    private func navigateToRegister() {
         guard let vc = registerVC else { return }
-        rootController?.pushViewController(vc, animated: true)
-        vc.viewModel = SignUpModel()
-        vc.viewModel?.signUpPressed = { [weak self] in
+        rootController?.present(vc, animated: false, completion: nil)
+        let viewModel = SignUpModel()
+        viewModel.signUpPressed = { [weak self] in
+            self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToLogin()
         }
+        vc.viewModel = viewModel
     }
 }
 
