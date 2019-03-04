@@ -38,9 +38,9 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: (viewModel?.cellIdentifier)!, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.mySpacesCell.rawValue, for: indexPath)
         if let myCell = cell as? MySpacesCell {
-            myCell.displayContent(spaceName: (viewModel?.cellIdentifier)!)
+            myCell.displayContent(spaceName: Strings.main.rawValue)
         }
         return cell
     }

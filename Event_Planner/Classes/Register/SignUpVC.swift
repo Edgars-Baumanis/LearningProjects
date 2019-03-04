@@ -23,5 +23,10 @@ class SignUpVC: UIViewController {
     
     @IBAction func signedUpPressed(_ sender: Any) {
         viewModel?.signUpUser(email: regEmail.text, password: regPassword.text)
+        viewModel?.existingEmail = { [weak self] in
+            let alert = UIAlertController(title: "Existing/Incorrect", message: "Please enter correct ones", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
 }

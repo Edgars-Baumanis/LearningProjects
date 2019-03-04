@@ -9,10 +9,10 @@
 import UIKit
 
 protocol PDependencies {
-    var userService: MyUserServices { get }
+    var userService: UserService { get }
 }
 
 class Dependencies: PDependencies {
     static var instance = Dependencies()
-    var userService = MyUserServices()
+    var userService = UserService()
 }

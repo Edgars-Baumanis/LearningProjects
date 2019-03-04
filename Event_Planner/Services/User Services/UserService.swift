@@ -38,6 +38,20 @@ class UserService: PUserService {
         }
     }
     
+    func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            guard error == nil else {
+                completionHandler(nil, "Email already exists")
+                return
+            }
+            var myUser = User()
+            myUser.email = Auth.auth().currentUser?.email
+            self.user = myUser
+            
+            completionHandler(myUser, nil)
+        }
+    }
+    
     func printEmail() {
         print(user?.email)
     }
