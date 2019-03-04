@@ -6,4 +6,13 @@
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol PDependencies {
+    var userService: MyUserServices { get }
+}
+
+class Dependencies: PDependencies {
+    static var instance = Dependencies()
+    var userService = MyUserServices()
+}
