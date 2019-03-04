@@ -9,6 +9,8 @@
 import Foundation
 
 enum Strings: String {
+    case hardCodedEmail = "123@123.com"
+    case hardCodedPassword = "123123"
     case greeting = "Greeting"
     case greetingVC = "GreetingVC"
     case loginVC = "LoginVC"
