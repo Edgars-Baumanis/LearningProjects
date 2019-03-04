@@ -9,7 +9,6 @@
 import UIKit
 
 class GreetingVC: UIViewController {
-    
     var viewModel: GreetingModel?
     
     override func viewDidLoad() {
