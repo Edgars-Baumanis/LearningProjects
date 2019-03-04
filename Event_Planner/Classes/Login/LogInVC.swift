@@ -25,5 +25,10 @@ class LoginVC: UIViewController {
     
     @IBAction func loggedIn(_ sender: Any) {
         viewModel?.loginUser(email: loginEmail.text, password: loginPassword.text)
+        viewModel?.wrongSignIn = { [weak self] in
+            let alert = UIAlertController(title: "Wrong Credentials", message: "Please enter correct ones", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
 }
