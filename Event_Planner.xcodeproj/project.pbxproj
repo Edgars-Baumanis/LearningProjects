@@ -35,6 +35,7 @@
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
+		49FE6E06222D4109004FAD45 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE6E05222D4109004FAD45 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
+		49FE6E05222D4109004FAD45 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 		4902A1A02229212100580D44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				49FE6E04222D40F3004FAD45 /* Constants */,
 				4902A1A422297D6400580D44 /* PDependencies */,
 				4902A1A12229212C00580D44 /* User Services */,
 			);
@@ -249,6 +252,14 @@
 			path = JoinASpace;
 			sourceTree = "<group>";
 		};
+		49FE6E04222D40F3004FAD45 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				49FE6E05222D4109004FAD45 /* Strings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		516D2C238066C79A0A352E80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +411,7 @@
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
+				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,

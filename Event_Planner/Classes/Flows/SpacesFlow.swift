@@ -18,19 +18,19 @@ class SpacesFlow: FlowController {
     }
     
     private lazy var mainSB: UIStoryboard = {
-        return UIStoryboard(name: "Main", bundle: Bundle.main)
+        return UIStoryboard(name: Strings.main.rawValue, bundle: Bundle.main)
     }()
     
     private lazy var joinVC: JoinASpaceController? = {
-        return mainSB.instantiateViewController(withIdentifier: "JoinASpaceController") as? JoinASpaceController
+        return mainSB.instantiateViewController(withIdentifier: Strings.joinASpaceController.rawValue) as? JoinASpaceController
     }()
     
     private lazy var spacesVC: MySpacesVC? = {
-        return mainSB.instantiateViewController(withIdentifier: "MySpacesVC") as? MySpacesVC
+        return mainSB.instantiateViewController(withIdentifier: Strings.mySpaceVC.rawValue) as? MySpacesVC
     }()
     
     private lazy var createVC: CreateASpaceController? = {
-        return mainSB.instantiateViewController(withIdentifier: "CreateASpaceController") as? CreateASpaceController
+        return mainSB.instantiateViewController(withIdentifier: Strings.createASpaceController.rawValue) as? CreateASpaceController
     }()
     
     

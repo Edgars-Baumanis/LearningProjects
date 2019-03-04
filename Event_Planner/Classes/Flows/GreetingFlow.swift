@@ -18,11 +18,11 @@ class GreetingFlow: FlowController {
     }
     
     private lazy var greetingSB: UIStoryboard = {
-        return UIStoryboard(name: "Greeting", bundle: Bundle.main)
+        return UIStoryboard(name: Strings.greeting.rawValue, bundle: Bundle.main)
     }()
     
     private var greetingViewController: GreetingVC? {
-        return greetingSB.instantiateViewController(withIdentifier: "GreetingVC") as? GreetingVC
+        return greetingSB.instantiateViewController(withIdentifier: Strings.greetingVC.rawValue) as? GreetingVC
     }
     
     func start() {
@@ -41,7 +41,7 @@ class GreetingFlow: FlowController {
     }
     
     private var loginVC: LoginVC? {
-        return greetingSB.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+        return greetingSB.instantiateViewController(withIdentifier: Strings.loginVC.rawValue) as? LoginVC
     }
     
     private func navigateToLogin() {
@@ -58,7 +58,7 @@ class GreetingFlow: FlowController {
     }
     
     private var registerVC: SignUpVC? {
-        return greetingSB.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC
+        return greetingSB.instantiateViewController(withIdentifier: Strings.signUpVC.rawValue) as? SignUpVC
     }
     
     private func navigateToRegister() {
@@ -67,7 +67,7 @@ class GreetingFlow: FlowController {
         let viewModel = SignUpModel()
         viewModel.signUpPressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
-            self?.navigateToLogin()
+            self?.navigateToSpaces?()
         }
         vc.viewModel = viewModel
     }
