@@ -38,12 +38,13 @@ class CreateASpaceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        
+        viewModel?.printEmail()
     }
     
     @IBAction func createSpace(_ sender: Any) {
         viewModel?.createASpace(name: spaceName.text, password: spacePassword.text, description: spaceDescription.text)
     }
+    
     @IBAction func closePressed(_ sender: Any) {
         viewModel?.backPressed?()
     }

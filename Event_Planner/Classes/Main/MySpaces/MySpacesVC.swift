@@ -44,6 +44,4 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
-    
 }

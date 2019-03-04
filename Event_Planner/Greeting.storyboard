@@ -162,7 +162,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="signedUp:" destination="rax-Pg-yOM" eventType="touchUpInside" id="wPS-yS-Ofm"/>
                                     <action selector="signedUpPressed:" destination="rax-Pg-yOM" eventType="touchUpInside" id="m7f-f3-nee"/>
                                 </connections>
                             </button>

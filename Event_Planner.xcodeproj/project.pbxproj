@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
+		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
+		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -33,11 +35,12 @@
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
-		49CBE2F22228302700DFE240 /* MySpacesNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2F12228302700DFE240 /* MySpacesNC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
+		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
-		49CBE2F12228302700DFE240 /* MySpacesNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacesNC.swift; sourceTree = "<group>"; };
 		A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B62B1916119573263F5681 /* Pods-Event_Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.debug.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4902A1A02229212100580D44 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4902A1A422297D6400580D44 /* PDependencies */,
+				4902A1A12229212C00580D44 /* User Services */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4902A1A12229212C00580D44 /* User Services */ = {
+			isa = PBXGroup;
+			children = (
+				4902A1A22229214900580D44 /* UserService.swift */,
+			);
+			path = "User Services";
+			sourceTree = "<group>";
+		};
+		4902A1A422297D6400580D44 /* PDependencies */ = {
+			isa = PBXGroup;
+			children = (
+				4902A1A522297D7300580D44 /* PDependencies.swift */,
+			);
+			path = PDependencies;
+			sourceTree = "<group>";
+		};
 		49451A1F2224426100AC8350 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +201,7 @@
 		49809C422223E61500295608 /* Event_Planner */ = {
 			isa = PBXGroup;
 			children = (
+				4902A1A02229212100580D44 /* Services */,
 				49451A1F2224426100AC8350 /* Classes */,
 				49809C472223E61500295608 /* Main.storyboard */,
 				49CBE2E82227E56600DFE240 /* Greeting.storyboard */,
@@ -207,7 +235,6 @@
 			children = (
 				49451A2B2224426100AC8350 /* MySpacesVC.swift */,
 				49451A2D2224426100AC8350 /* MySpacesModel.swift */,
-				49CBE2F12228302700DFE240 /* MySpacesNC.swift */,
 				499D7EB222257BD500694DD6 /* Cells */,
 			);
 			path = MySpaces;
@@ -368,11 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */,
+				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
-				49CBE2F22228302700DFE240 /* MySpacesNC.swift in Sources */,
+				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
