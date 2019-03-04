@@ -62,7 +62,7 @@ class SpacesFlow: FlowController {
     
     private func navigateToCreate() {
         guard let vc = createVC else {return}
-        vc.viewModel = CreateASpaceModel(userService: Dependencies.instance.userService)
+        vc.viewModel = CreateASpaceModel()
         vc.viewModel?.backPressed = { [weak self] in
             self?.rootController?.dismiss(animated: true, completion: nil)
         }

@@ -47,7 +47,7 @@ class GreetingFlow: FlowController {
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
         rootController?.present(vc, animated: false, completion: nil)
-        let viewModel = LoginModel(userService: Dependencies.instance.userService)
+        let viewModel = LoginModel()
        
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }

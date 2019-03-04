@@ -11,13 +11,11 @@ import FirebaseDatabase
 
 class CreateASpaceModel {
     private var ref: DatabaseReference?
-    private var userService: MyUserServices?
 
     var backPressed: (()->Void)?
     
-    init (userService: MyUserServices?) {
+    init () {
         ref = Database.database().reference()
-        self.userService = userService
     }
     
     func createASpace(name: String?, password: String?, description: String?) {
@@ -31,6 +29,6 @@ class CreateASpaceModel {
     }
     
     func printEmail() {
-        userService?.printEmail()
+        Dependencies.instance.userService.printEmail()
     }
 }
