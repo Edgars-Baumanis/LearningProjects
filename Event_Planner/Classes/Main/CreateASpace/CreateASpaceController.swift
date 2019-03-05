@@ -13,16 +13,19 @@ import Firebase
 struct Space {
     let spaceName: String?
     let spacePassword: String?
+    let spaceDescription: String?
     
-    init (spaceName: String, spacePassword: String) {
+    init (spaceName: String, spacePassword: String, spaceDescription: String) {
         self.spaceName = spaceName
         self.spacePassword = spacePassword
+        self.spaceDescription = spaceDescription
     }
     
     func sendData() -> Any {
         return [
             "name": spaceName,
-            "password": spacePassword
+            "password": spacePassword,
+            "description": spaceDescription
         ]
     }
 }
@@ -31,7 +34,7 @@ struct Space {
 class CreateASpaceController: UIViewController {
     @IBOutlet weak var spaceName: UITextField!
     @IBOutlet weak var spacePassword: UITextField!
-    @IBOutlet weak var spaceDescription: UITextField!
+    @IBOutlet weak var spaceDescription: TextViewSubclass!
     
     var viewModel: CreateASpaceModel?
     
