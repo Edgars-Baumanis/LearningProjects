@@ -47,7 +47,7 @@ class GreetingFlow: FlowController {
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
         rootController?.present(vc, animated: false, completion: nil)
-        let viewModel = LoginModel()
+        let viewModel = LoginModel(userService: Dependencies.instance.userService)
        
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }
@@ -64,7 +64,7 @@ class GreetingFlow: FlowController {
     private func navigateToRegister() {
         guard let vc = registerVC else { return }
         rootController?.present(vc, animated: false, completion: nil)
-        let viewModel = SignUpModel()
+        let viewModel = SignUpModel(userService: Dependencies.instance.userService)
         viewModel.signUpPressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToSpaces?()

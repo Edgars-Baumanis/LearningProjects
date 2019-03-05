@@ -19,6 +19,7 @@ protocol PUserService {
     
     func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
     
+    func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
 }
 
 class UserService: PUserService {

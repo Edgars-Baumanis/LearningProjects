@@ -14,13 +14,19 @@ class LoginModel {
     var loggedIn: (()-> Void)?
     var wrongSignIn: (()-> Void)?
     var emptyFields: (()-> Void)?
+    private var userService: UserService?
+    
+    
+    init(userService: UserService) {
+        self.userService = userService
+    }
     
     func loginUser(email: String?, password: String?) {
         guard email?.isEmpty != true, password?.isEmpty != true else {
             emptyFields?()
             return
         }
-        Dependencies.instance.userService.login(email: email!, password: password!, completionHandler: { user, error  in
+        userService?.login(email: email!, password: password!, completionHandler: { (user, error)  in
             guard error == nil else {
                 self.wrongSignIn?()
                 return

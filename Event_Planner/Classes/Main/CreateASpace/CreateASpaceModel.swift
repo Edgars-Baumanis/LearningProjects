@@ -19,12 +19,12 @@ class CreateASpaceModel {
     }
     
     func createASpace(name: String?, password: String?, description: String?) {
-        guard name?.isEmpty != true, password?.isEmpty != true else {
-            print("Please enter Space name and password")
+        guard name?.isEmpty != true, password?.isEmpty != true, description?.isEmpty != true else {
+            print("Please enter Space name and/or password and/or description")
             return
         }
-        let newSpace = Space(spaceName: name!, spacePassword: password!)
-        ref?.child("Spaces").child(name!).setValue(newSpace)
+        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!)
+        ref?.child("Spaces").child(name!).setValue(newSpace.sendData())
         
     }
     
