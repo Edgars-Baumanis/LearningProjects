@@ -12,9 +12,11 @@ class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
     private var rootController: UITabBarController?
+    private var userService: UserService?
     
-    init (with rootController: UITabBarController) {
+    init (with rootController: UITabBarController, userService: UserService?) {
         self.rootController = rootController
+        self.userService = userService
     }
     
     private lazy var mainSB: UIStoryboard = {
@@ -62,7 +64,7 @@ class SpacesFlow: FlowController {
     
     private func navigateToCreate() {
         guard let vc = createVC else {return}
-        vc.viewModel = CreateASpaceModel()
+        vc.viewModel = CreateASpaceModel(userService: userService)
         vc.viewModel?.backPressed = { [weak self] in
             self?.rootController?.dismiss(animated: true, completion: nil)
         }

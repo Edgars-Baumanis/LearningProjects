@@ -17,7 +17,7 @@ class LoginModel {
     private var userService: UserService?
     
     
-    init(userService: UserService) {
+    init(userService: UserService?) {
         self.userService = userService
     }
     

@@ -11,10 +11,13 @@ import UIKit
 class GreetingFlow: FlowController {
     
     private var rootController: UITabBarController?
+    private var userService: UserService?
     var navigateToSpaces: (()->Void)?
+    
 
-    init(with rootController: UITabBarController) {
+    init(with rootController: UITabBarController, userService: UserService?) {
         self.rootController = rootController
+        self.userService = userService
     }
     
     private lazy var greetingSB: UIStoryboard = {
@@ -47,7 +50,7 @@ class GreetingFlow: FlowController {
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
         rootController?.present(vc, animated: false, completion: nil)
-        let viewModel = LoginModel(userService: Dependencies.instance.userService)
+        let viewModel = LoginModel(userService: userService)
        
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }
@@ -64,7 +67,7 @@ class GreetingFlow: FlowController {
     private func navigateToRegister() {
         guard let vc = registerVC else { return }
         rootController?.present(vc, animated: false, completion: nil)
-        let viewModel = SignUpModel(userService: Dependencies.instance.userService)
+        let viewModel = SignUpModel(userService: userService)
         viewModel.signUpPressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToSpaces?()

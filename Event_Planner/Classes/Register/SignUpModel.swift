@@ -14,7 +14,7 @@ class SignUpModel {
     var existingEmail: (()-> Void)?
     var userService: UserService?
     
-    init(userService: UserService) {
+    init(userService: UserService?) {
         self.userService = userService
     }
     

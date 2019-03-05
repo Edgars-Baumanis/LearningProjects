@@ -13,6 +13,7 @@ class AppFlow: FlowController {
     fileprivate var window: UIWindow
     fileprivate var rootController: UITabBarController?
     fileprivate var childFlow: FlowController?
+    fileprivate var userService: UserService?
     
     
     private var tabbar: MainTabbarController? = {
@@ -25,11 +26,12 @@ class AppFlow: FlowController {
         rootController = tabbar
         window.rootViewController = rootController
         window.makeKeyAndVisible()
+        userService = UserService()
     }
     
     private func navigateToSpacesFlow() {
         guard let tabbar = rootController else {return}
-        let spacesFlow = SpacesFlow(with: tabbar)
+        let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
         spacesFlow.start()
         childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
@@ -39,7 +41,7 @@ class AppFlow: FlowController {
     
     private func navigateToGreetingFlow() {
         guard let tabbar = rootController else {return}
-        let greetingFlow = GreetingFlow(with: tabbar)
+        let greetingFlow = GreetingFlow(with: tabbar, userService: userService)
         greetingFlow.start()
         greetingFlow.navigateToSpaces = { [weak self] in
             self?.navigateToSpacesFlow()
