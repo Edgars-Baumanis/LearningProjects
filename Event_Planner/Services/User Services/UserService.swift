@@ -12,6 +12,7 @@ import Firebase
 struct User {
     
     var email: String?
+    var userID: String?
 }
 
 protocol PUserService {
@@ -33,6 +34,7 @@ class UserService: PUserService {
             }
             var myUser = User()
             myUser.email = Auth.auth().currentUser?.email
+            myUser.userID = Auth.auth().currentUser?.uid
             self.user = myUser
             
             completionHandler(myUser,nil)
@@ -47,6 +49,7 @@ class UserService: PUserService {
             }
             var myUser = User()
             myUser.email = Auth.auth().currentUser?.email
+            myUser.userID = Auth.auth().currentUser?.uid
             self.user = myUser
             
             completionHandler(myUser, nil)

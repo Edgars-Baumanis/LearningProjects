@@ -8,6 +8,30 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
+
+struct Space {
+    let spaceName: String?
+    let spacePassword: String?
+    let spaceDescription: String?
+    let uID: String?
+
+    init (spaceName: String, spacePassword: String, spaceDescription: String, uID: String) {
+        self.spaceName = spaceName
+        self.spacePassword = spacePassword
+        self.spaceDescription = spaceDescription
+        self.uID = uID
+    }
+
+    func sendData() -> Any {
+        return [
+            "name": spaceName,
+            "password": spacePassword,
+            "description": spaceDescription,
+            "uID": uID
+        ]
+    }
+}
 
 class CreateASpaceModel {
     private var ref: DatabaseReference?
@@ -25,7 +49,8 @@ class CreateASpaceModel {
             print("Please enter Space name and/or password and/or description")
             return
         }
-        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!)
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, uID: userID)
         ref?.child("Spaces").child(name!).setValue(newSpace.sendData())
         
     }

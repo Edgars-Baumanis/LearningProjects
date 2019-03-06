@@ -11,9 +11,26 @@ import Firebase
 
 class MySpacesVC: UIViewController {
     var viewModel: MySpacesModel?
+    
+    @IBOutlet weak var otherSpaces: UITableView!
+    @IBOutlet weak var mySpaces: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        otherSpaces.delegate = self
+        otherSpaces.dataSource = self
+        mySpaces.delegate = self
+        mySpaces.dataSource = self
+        
+        
+        viewModel?.getData()
+        viewModel?.dataSourceChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mySpaces.reloadData()
+                self?.otherSpaces.reloadData()
+            }
+        }
     }
     
     @IBAction func plusPressed(_ sender: Any) {
@@ -34,14 +51,23 @@ class MySpacesVC: UIViewController {
 extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
+        if cellIdentifier == String(describing: MySpacesCell.self) {
+            return viewModel?.mySpacesDataSource.count ?? 0
+        } else {
+            return viewModel?.otherSpacesDataSource.count ?? 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.mySpacesCell.rawValue, for: indexPath)
-        if let myCell = cell as? MySpacesCell {
-            myCell.displayContent(spaceName: Strings.main.rawValue)
-        }
+        let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
+        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource[indexPath.row] ?? "Nothing to show")
+        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource[indexPath.row] ?? "Nothing to show")
+
         return cell
     }
 }
+
+
