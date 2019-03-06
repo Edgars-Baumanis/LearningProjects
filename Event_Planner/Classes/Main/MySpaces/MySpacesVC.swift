@@ -53,9 +53,9 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
         if cellIdentifier == String(describing: MySpacesCell.self) {
-            return viewModel?.mySpacesDataSource.count ?? 0
+            return viewModel?.mySpacesDataSource?.count ?? 0
         } else {
-            return viewModel?.otherSpacesDataSource.count ?? 0
+            return viewModel?.otherSpacesDataSource?.count ?? 0
         }
     }
 
@@ -63,8 +63,8 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
         let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource[indexPath.row] ?? "Nothing to show")
-        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource[indexPath.row] ?? "Nothing to show")
+        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource?[indexPath.row] ?? "Nothing to show")
+        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource?[indexPath.row] ?? "Nothing to show")
 
         return cell
     }

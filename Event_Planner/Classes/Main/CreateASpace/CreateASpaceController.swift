@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class CreateASpaceController: UIViewController {
     @IBOutlet weak var spaceName: UITextField!
     @IBOutlet weak var spacePassword: UITextField!

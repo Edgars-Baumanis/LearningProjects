@@ -11,16 +11,20 @@ import Firebase
 import FirebaseDatabase
 
 class MySpacesModel {
-    var signingOut: (()-> Void)?
-    var navigateToCreate: (()-> Void)?
-    var databaseHandle: DatabaseHandle?
-    var ref: DatabaseReference?
-    var mySpacesDataSource: [String] = []
-    var otherSpacesDataSource: [String] = []
-    var dataSourceChanged: (()-> Void)?
+
+    private var databaseHandle: DatabaseHandle?
+    private var ref: DatabaseReference?
     private var userService: UserService?
 
+    var signingOut: (()-> Void)?
+    var navigateToCreate: (()-> Void)?
+    var mySpacesDataSource: [String]?
+    var otherSpacesDataSource: [String]?
+    var dataSourceChanged: (()-> Void)?
+
     init(userService: UserService?) {
+        mySpacesDataSource = []
+        otherSpacesDataSource = []
         ref = Database.database().reference()
         self.userService = userService
     }
@@ -32,10 +36,10 @@ class MySpacesModel {
                 let spaceName = post?["name"] as? String,
                 let uID = post?["uID"] as? String else {return}
             if uID == self.userService?.user?.userID {
-                self.mySpacesDataSource.append(spaceName)
+                self.mySpacesDataSource?.append(spaceName)
                 self.dataSourceChanged?()
             } else {
-                self.otherSpacesDataSource.append(spaceName)
+                self.otherSpacesDataSource?.append(spaceName)
                 self.dataSourceChanged?()
             }
         })
