@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MySpacesCell: UITableViewCell {
-    @IBOutlet weak var MySpacesContent: UILabel!
+
+
+class OtherSpacesCell: UITableViewCell {
+    @IBOutlet weak var OtherSpacesContent: UILabel!
     
     func displayContent(spaceName: String) {
-        MySpacesContent.text = spaceName
+        OtherSpacesContent.text = spaceName
     }
-    
 }

@@ -10,6 +10,7 @@
 		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
+		4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -31,7 +32,7 @@
 		499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAC222571ED00694DD6 /* MainTabbarController.swift */; };
 		499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */; };
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
-		499D7EB422257BF900694DD6 /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* TableViewCells.swift */; };
+		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
 		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
@@ -43,6 +44,7 @@
 		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
+		4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacesCell.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -66,7 +68,7 @@
 		499D7EAC222571ED00694DD6 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
-		499D7EB322257BF900694DD6 /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
+		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
 		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
@@ -222,7 +224,8 @@
 		499D7EB222257BD500694DD6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				499D7EB322257BF900694DD6 /* TableViewCells.swift */,
+				4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */,
+				499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
+				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
@@ -422,7 +426,7 @@
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
-				499D7EB422257BF900694DD6 /* TableViewCells.swift in Sources */,
+				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,

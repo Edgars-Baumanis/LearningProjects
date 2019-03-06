@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="273.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eU4-SQ-GzN" customClass="MySpacesCell" customModule="Event_Planner" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MySpacesCell" id="eU4-SQ-GzN" customClass="MySpacesCell" customModule="Event_Planner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eU4-SQ-GzN" id="7wb-VW-QWD">
@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="393.5" width="375" height="273.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Xcq-bP-pxW" customClass="OthersSpacesCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherSpacesCell" id="Xcq-bP-pxW" customClass="OtherSpacesCell" customModule="Event_Planner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xcq-bP-pxW" id="h8S-em-JYD">
@@ -75,7 +75,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="MySpacesContent" destination="tOs-pA-uDP" id="PvS-NF-bj4"/>
+                                            <outlet property="OtherSpacesContent" destination="tOs-pA-uDP" id="lot-dt-bKe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -153,6 +153,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="b9m-UP-Uwo"/>
                     <navigationItem key="navigationItem" id="LrK-OY-hFw"/>
+                    <connections>
+                        <outlet property="mySpaces" destination="B1V-SS-z3t" id="eDK-a4-uxv"/>
+                        <outlet property="otherSpaces" destination="qX5-ud-Ccb" id="HFr-zc-ggJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6o9-aR-huv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -237,7 +241,7 @@
                                     <action selector="closePressed:" destination="ttb-Gs-J61" eventType="touchUpInside" id="qqD-PL-chr"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="dfghjk" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-Zc-UaQ" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-Zc-UaQ" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
                                 <rect key="frame" x="20" y="290" width="335" height="187"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
