@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B1V-SS-z3t">
-                                <rect key="frame" x="0.0" y="70" width="375" height="273.5"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="263.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MySpacesCell" id="eU4-SQ-GzN" customClass="MySpacesCell" customModule="Event_Planner" customModuleProvider="target">
@@ -74,7 +74,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-ud-Ccb">
-                                <rect key="frame" x="0.0" y="393.5" width="375" height="273.5"/>
+                                <rect key="frame" x="0.0" y="403.5" width="375" height="263.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherSpacesCell" id="Xcq-bP-pxW" customClass="OtherSpacesCell" customModule="Event_Planner" customModuleProvider="target">
@@ -138,6 +138,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Spaces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhX-0n-o6g">
                                 <rect key="frame" x="70" y="20" width="235" height="50"/>
@@ -147,6 +156,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phm-OZ-sD2">
                                 <rect key="frame" x="305" y="20" width="50" height="50"/>
@@ -191,13 +209,13 @@
                             <constraint firstItem="hwt-mj-Hib" firstAttribute="leading" secondItem="qeM-QN-sfF" secondAttribute="leading" constant="20" id="hpp-OX-B3E"/>
                             <constraint firstItem="qeM-QN-sfF" firstAttribute="trailing" secondItem="hwt-mj-Hib" secondAttribute="trailing" constant="20" id="ifh-pb-WWW"/>
                             <constraint firstItem="qX5-ud-Ccb" firstAttribute="trailing" secondItem="qeM-QN-sfF" secondAttribute="trailing" id="nxs-DU-QPW"/>
-                            <constraint firstItem="hwt-mj-Hib" firstAttribute="top" secondItem="B1V-SS-z3t" secondAttribute="bottom" id="oeO-Ik-QZz"/>
+                            <constraint firstItem="hwt-mj-Hib" firstAttribute="top" secondItem="B1V-SS-z3t" secondAttribute="bottom" constant="10" id="oeO-Ik-QZz"/>
                             <constraint firstItem="B1V-SS-z3t" firstAttribute="top" secondItem="Phm-OZ-sD2" secondAttribute="bottom" id="qWo-S4-Btf"/>
                             <constraint firstItem="Phm-OZ-sD2" firstAttribute="top" secondItem="qeM-QN-sfF" secondAttribute="top" id="vz8-LF-Vw3"/>
                             <constraint firstItem="B1V-SS-z3t" firstAttribute="trailing" secondItem="qeM-QN-sfF" secondAttribute="trailing" id="wsC-HB-TRM"/>
                             <constraint firstItem="qX5-ud-Ccb" firstAttribute="leading" secondItem="qeM-QN-sfF" secondAttribute="leading" id="x1p-M1-Baa"/>
                             <constraint firstItem="qX5-ud-Ccb" firstAttribute="bottom" secondItem="qeM-QN-sfF" secondAttribute="bottom" id="xc3-1p-1Bb"/>
-                            <constraint firstItem="qX5-ud-Ccb" firstAttribute="top" secondItem="hwt-mj-Hib" secondAttribute="bottom" id="yDz-8c-FqQ"/>
+                            <constraint firstItem="qX5-ud-Ccb" firstAttribute="top" secondItem="hwt-mj-Hib" secondAttribute="bottom" constant="10" id="yDz-8c-FqQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qeM-QN-sfF"/>
                     </view>
