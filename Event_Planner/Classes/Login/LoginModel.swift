@@ -14,14 +14,15 @@ class LoginModel {
     var loggedIn: (()-> Void)?
     var wrongSignIn: (()-> Void)?
     var emptyFields: (()-> Void)?
-    private var userService: UserService?
+    private var userService: PUserService?
     
     
-    init(userService: UserService?) {
+    init(userService: PUserService?) {
         self.userService = userService
     }
     
     func loginUser(email: String?, password: String?) {
+        print(userService?.user)
         guard email?.isEmpty != true, password?.isEmpty != true else {
             emptyFields?()
             return

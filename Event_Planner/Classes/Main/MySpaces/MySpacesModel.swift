@@ -14,7 +14,7 @@ class MySpacesModel {
 
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
-    private var userService: UserService?
+    private var userService: PUserService?
 
     var signingOut: (()-> Void)?
     var navigateToCreate: (()-> Void)?
@@ -22,7 +22,7 @@ class MySpacesModel {
     var otherSpacesDataSource: [String]?
     var dataSourceChanged: (()-> Void)?
 
-    init(userService: UserService?) {
+    init(userService: PUserService?) {
         mySpacesDataSource = []
         otherSpacesDataSource = []
         ref = Database.database().reference()

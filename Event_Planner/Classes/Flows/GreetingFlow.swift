@@ -11,11 +11,11 @@ import UIKit
 class GreetingFlow: FlowController {
     
     private var rootController: UITabBarController?
-    private var userService: UserService?
+    private var userService: PUserService?
     var navigateToSpaces: (()->Void)?
     
 
-    init(with rootController: UITabBarController, userService: UserService?) {
+    init(with rootController: UITabBarController, userService: PUserService?) {
         self.rootController = rootController
         self.userService = userService
     }

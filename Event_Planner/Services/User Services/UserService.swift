@@ -11,8 +11,8 @@ import Firebase
 
 struct User {
     
-    var email: String?
-    var userID: String?
+    let email: String
+    let userID: String
 }
 
 protocol PUserService {
@@ -28,13 +28,17 @@ class UserService: PUserService {
     
     func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            guard error == nil else {
+            guard
+                error == nil,
+                let email = Auth.auth().currentUser?.email,
+                let uid = Auth.auth().currentUser?.uid
+                else {
                 completionHandler(nil, "Wrong credentionals!")
                 return
             }
-            var myUser = User()
-            myUser.email = Auth.auth().currentUser?.email
-            myUser.userID = Auth.auth().currentUser?.uid
+            let myUser = User(
+                email: email,
+                userID: uid)
             self.user = myUser
             
             completionHandler(myUser,nil)
@@ -43,13 +47,17 @@ class UserService: PUserService {
     
     func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            guard error == nil else {
+            guard
+                error == nil,
+                let email = Auth.auth().currentUser?.email,
+                let uid = Auth.auth().currentUser?.uid
+                else {
                 completionHandler(nil, "Email already exists")
                 return
             }
-            var myUser = User()
-            myUser.email = Auth.auth().currentUser?.email
-            myUser.userID = Auth.auth().currentUser?.uid
+            let myUser = User(
+                email: email,
+                userID: uid)
             self.user = myUser
             
             completionHandler(myUser, nil)

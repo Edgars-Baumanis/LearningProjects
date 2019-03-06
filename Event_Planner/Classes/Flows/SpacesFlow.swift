@@ -12,15 +12,15 @@ class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
     private var rootController: UITabBarController?
-    private var userService: UserService?
+    private var userService: PUserService?
     
-    init (with rootController: UITabBarController, userService: UserService?) {
+    init (with rootController: UITabBarController, userService: PUserService?) {
         self.rootController = rootController
         self.userService = userService
     }
     
     private lazy var mainSB: UIStoryboard = {
-        return UIStoryboard(name: Strings.mainSB.rawValue, bundle: Bundle.main)
+        return UIStoryboard(name: Strings.SpacesSB.rawValue, bundle: Bundle.main)
     }()
     
     private lazy var joinVC: JoinASpaceController? = {
@@ -52,7 +52,7 @@ class SpacesFlow: FlowController {
     private func initiateFirstVC() {
         guard let vc = spacesVC else {return}
         vc.viewModel = MySpacesModel(userService: userService)
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), selectedImage: UIImage(named: "mail_icon"))
     }
     
     

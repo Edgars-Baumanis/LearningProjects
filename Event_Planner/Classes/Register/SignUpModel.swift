@@ -12,9 +12,9 @@ import Firebase
 class SignUpModel {
     var signUpPressed: (()-> Void)?
     var existingEmail: (()-> Void)?
-    var userService: UserService?
+    var userService: PUserService?
     
-    init(userService: UserService?) {
+    init(userService: PUserService?) {
         self.userService = userService
     }
     
