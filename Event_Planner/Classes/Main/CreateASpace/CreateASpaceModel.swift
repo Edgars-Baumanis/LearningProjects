@@ -52,7 +52,7 @@ class CreateASpaceModel {
         guard let userID = Auth.auth().currentUser?.uid else {return}
         let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, uID: userID)
         ref?.child("Spaces").child(name!).setValue(newSpace.sendData())
-        
+        backPressed?()
     }
     
     func printEmail() {
