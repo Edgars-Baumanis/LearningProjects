@@ -11,14 +11,6 @@ import Foundation
 enum Strings: String {
     case hardCodedEmail = "123@123.com"
     case hardCodedPassword = "123123"
-    case greeting = "Greeting"
-    case greetingVC = "GreetingVC"
-    case loginVC = "LoginVC"
-    case signUpVC = "SignUpVC"
-    case main = "Main"
-    case joinASpaceController = "JoinASpaceController"
-    case mySpaceVC = "MySpacesVC"
-    case createASpaceController = "CreateASpaceController"
-    case mySpacesCell = "MySpacesCell"
-    case othersSpacesCell = "OthersSpacesCell"
+    case greetingSB = "Greeting"
+    case mainSB = "Main"
 }

@@ -20,19 +20,19 @@ class SpacesFlow: FlowController {
     }
     
     private lazy var mainSB: UIStoryboard = {
-        return UIStoryboard(name: Strings.main.rawValue, bundle: Bundle.main)
+        return UIStoryboard(name: Strings.mainSB.rawValue, bundle: Bundle.main)
     }()
     
     private lazy var joinVC: JoinASpaceController? = {
-        return mainSB.instantiateViewController(withIdentifier: Strings.joinASpaceController.rawValue) as? JoinASpaceController
+        return mainSB.instantiateViewController(withIdentifier: String(describing: JoinASpaceController.self)) as? JoinASpaceController
     }()
     
     private lazy var spacesVC: MySpacesVC? = {
-        return mainSB.instantiateViewController(withIdentifier: Strings.mySpaceVC.rawValue) as? MySpacesVC
+        return mainSB.instantiateViewController(withIdentifier: String(describing: MySpacesVC.self)) as? MySpacesVC
     }()
     
     private lazy var createVC: CreateASpaceController? = {
-        return mainSB.instantiateViewController(withIdentifier: Strings.createASpaceController.rawValue) as? CreateASpaceController
+        return mainSB.instantiateViewController(withIdentifier: String(describing: CreateASpaceController.self)) as? CreateASpaceController
     }()
     
     
@@ -51,7 +51,7 @@ class SpacesFlow: FlowController {
     
     private func initiateFirstVC() {
         guard let vc = spacesVC else {return}
-        vc.viewModel = MySpacesModel()
+        vc.viewModel = MySpacesModel(userService: userService)
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
     }
     

@@ -21,11 +21,11 @@ class GreetingFlow: FlowController {
     }
     
     private lazy var greetingSB: UIStoryboard = {
-        return UIStoryboard(name: Strings.greeting.rawValue, bundle: Bundle.main)
+        return UIStoryboard(name: Strings.greetingSB.rawValue, bundle: Bundle.main)
     }()
     
     private var greetingViewController: GreetingVC? {
-        return greetingSB.instantiateViewController(withIdentifier: Strings.greetingVC.rawValue) as? GreetingVC
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: GreetingVC.self)) as? GreetingVC
     }
     
     func start() {
@@ -44,7 +44,7 @@ class GreetingFlow: FlowController {
     }
     
     private var loginVC: LoginVC? {
-        return greetingSB.instantiateViewController(withIdentifier: Strings.loginVC.rawValue) as? LoginVC
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: LoginVC.self)) as? LoginVC
     }
     
     private func navigateToLogin() {
@@ -61,7 +61,7 @@ class GreetingFlow: FlowController {
     }
     
     private var registerVC: SignUpVC? {
-        return greetingSB.instantiateViewController(withIdentifier: Strings.signUpVC.rawValue) as? SignUpVC
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: SignUpVC.self)) as? SignUpVC
     }
     
     private func navigateToRegister() {
