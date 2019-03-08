@@ -14,4 +14,8 @@ enum Strings: String {
     case greetingSB = "Greeting"
     case SpacesSB = "Spaces"
     case MainSB = "Main"
+    case IdeasSB = "Ideas"
+    case BudgetSB = "Budget"
+    case ChatsSB = "Chat"
+    case TasksSB = "Tasks"
 }

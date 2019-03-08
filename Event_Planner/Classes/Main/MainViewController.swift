@@ -10,8 +10,22 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    var viewModel: MainModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+    }
+    @IBAction func chatPressed(_ sender: Any) {
+        viewModel?.chatPressed?()
+    }
+    @IBAction func budgetPressed(_ sender: Any) {
+        viewModel?.budgetPressed?()
+    }
+    @IBAction func tasksPressed(_ sender: Any) {
+        viewModel?.tasksPressed?()
+    }
+    @IBAction func ideasPressed(_ sender: Any) {
+        viewModel?.ideasPressed?()
     }
 }

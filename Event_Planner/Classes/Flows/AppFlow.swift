@@ -68,9 +68,10 @@ class AppFlow: FlowController {
     private func navigateToMainFlow() {
         mainRootController = navController
         window.rootViewController = mainRootController
-        guard let mainRC = mainRootController else {return}
+        guard let mainRC = mainRootController else { return }
         let mainFlow = MainFlow(with: mainRC)
         mainFlow.start()
+        childFlow = mainFlow
     }
 
 }
