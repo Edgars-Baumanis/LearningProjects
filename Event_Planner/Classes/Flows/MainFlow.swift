@@ -16,17 +16,90 @@ class MainFlow: FlowController {
         self.rootController = rootController
     }
 
-    private lazy var mainSB: UIStoryboard? = {
+    private lazy var mainSB: UIStoryboard = {
         return UIStoryboard.init(name: Strings.MainSB.rawValue, bundle: Bundle.main)
     }()
 
-    private lazy var mainViewController: MainViewController? = {
-        return self.mainSB?.instantiateViewController(withIdentifier: String(describing: MainViewController.self)) as? MainViewController
+    private lazy var budgetSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.BudgetSB.rawValue, bundle: Bundle.main)
     }()
+
+    private lazy var ideasSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.IdeasSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private lazy var chatsSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.ChatsSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private lazy var tasksSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.TasksSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private var mainViewController: MainViewController? {
+        return mainSB.instantiateViewController(withIdentifier: String(describing: MainViewController.self)) as? MainViewController
+    }
+
+    private var ideasViewController: IdeasController? {
+        return ideasSB.instantiateViewController(withIdentifier: String(describing: IdeasController.self)) as? IdeasController
+    }
+
+    private var budgetViewController: BudgetController? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: BudgetController.self)) as? BudgetController
+    }
+
+    private var chatsViewController: ChatsController? {
+        return chatsSB.instantiateViewController(withIdentifier: String(describing: ChatsController.self)) as? ChatsController
+    }
+
+    private var tasksViewController: TasksController? {
+        return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
+
+        let viewModel = MainModel()
+
+        viewModel.budgetPressed = { [weak self] in
+            self?.navigateToBudget()
+        }
+
+        viewModel.chatPressed = { [weak self] in
+            self?.navigateToChats()
+        }
+
+        viewModel.ideasPressed = { [weak self] in
+            self?.navigateToIdeas()
+        }
+
+        viewModel.tasksPressed = { [weak self] in
+            self?.navigateToTasks()
+        }
+
+        vc.viewModel = viewModel
+
         rootController?.pushViewController(vc, animated: true)
-        
+    }
+
+    private func navigateToBudget() {
+        guard let vc = budgetViewController else {return}
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToChats() {
+        guard let vc = chatsViewController else {return}
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToIdeas() {
+        guard let vc = ideasViewController else {return}
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToTasks() {
+        guard let vc = tasksViewController else {return}
+        rootController?.pushViewController(vc, animated: true)
     }
 
     

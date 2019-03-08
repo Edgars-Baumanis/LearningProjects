@@ -16,6 +16,15 @@
 		4911E17A223022DE00EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E17B223144F100EB8474 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A372224426100AC8350 /* LoginModel.swift */; };
 		4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */; };
+		4935AB152232869F0061AE47 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB142232869F0061AE47 /* MainModel.swift */; };
+		4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4935AB162232873D0061AE47 /* Ideas.storyboard */; };
+		4935AB19223287440061AE47 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4935AB18223287440061AE47 /* Chat.storyboard */; };
+		4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4935AB1A2232874C0061AE47 /* Budget.storyboard */; };
+		4935AB1D223287730061AE47 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4935AB1C223287730061AE47 /* Tasks.storyboard */; };
+		4935AB232232884A0061AE47 /* IdeasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB222232884A0061AE47 /* IdeasController.swift */; };
+		4935AB292232888C0061AE47 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB282232888C0061AE47 /* ChatsController.swift */; };
+		4935AB2B223288950061AE47 /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2A223288950061AE47 /* TasksController.swift */; };
+		4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2C223288A00061AE47 /* BudgetController.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -77,6 +86,15 @@
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
 		4911E173223022D300EB8474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacesCell.swift; sourceTree = "<group>"; };
+		4935AB142232869F0061AE47 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		4935AB162232873D0061AE47 /* Ideas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ideas.storyboard; sourceTree = "<group>"; };
+		4935AB18223287440061AE47 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		4935AB1A2232874C0061AE47 /* Budget.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = "<group>"; };
+		4935AB1C223287730061AE47 /* Tasks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
+		4935AB222232884A0061AE47 /* IdeasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasController.swift; sourceTree = "<group>"; };
+		4935AB282232888C0061AE47 /* ChatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
+		4935AB2A223288950061AE47 /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
+		4935AB2C223288A00061AE47 /* BudgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetController.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -179,6 +197,42 @@
 				4911E173223022D300EB8474 /* Info.plist */,
 			);
 			path = "UserService Test";
+			sourceTree = "<group>";
+		};
+		4935AB1E2232878B0061AE47 /* Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				4935AB162232873D0061AE47 /* Ideas.storyboard */,
+				4935AB222232884A0061AE47 /* IdeasController.swift */,
+			);
+			path = Ideas;
+			sourceTree = "<group>";
+		};
+		4935AB1F223287920061AE47 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				4935AB18223287440061AE47 /* Chat.storyboard */,
+				4935AB282232888C0061AE47 /* ChatsController.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		4935AB20223287970061AE47 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				4935AB1C223287730061AE47 /* Tasks.storyboard */,
+				4935AB2A223288950061AE47 /* TasksController.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		4935AB212232879D0061AE47 /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
+				4935AB2C223288A00061AE47 /* BudgetController.swift */,
+			);
+			path = Budget;
 			sourceTree = "<group>";
 		};
 		49451A1F2224426100AC8350 /* Classes */ = {
@@ -284,7 +338,6 @@
 				49451A1F2224426100AC8350 /* Classes */,
 				49CBE2E82227E56600DFE240 /* Greeting.storyboard */,
 				49809C472223E61500295608 /* Spaces.storyboard */,
-				49E50E9C222FC44500FFD8B7 /* Main.storyboard */,
 				49809C4A2223E61500295608 /* Assets.xcassets */,
 				49809C4C2223E61500295608 /* LaunchScreen.storyboard */,
 				49809C4F2223E61500295608 /* Info.plist */,
@@ -333,8 +386,14 @@
 		49E0413922326B1000BCF2CA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				49E0413A22326B4800BCF2CA /* MainViewController.swift */,
 				49E0413E22327A1000BCF2CA /* NavController.swift */,
+				49E0413A22326B4800BCF2CA /* MainViewController.swift */,
+				4935AB142232869F0061AE47 /* MainModel.swift */,
+				49E50E9C222FC44500FFD8B7 /* Main.storyboard */,
+				4935AB212232879D0061AE47 /* Budget */,
+				4935AB20223287970061AE47 /* Tasks */,
+				4935AB1F223287920061AE47 /* Chats */,
+				4935AB1E2232878B0061AE47 /* Ideas */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -486,10 +545,14 @@
 			files = (
 				49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */,
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
+				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
+				4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
+				4935AB19223287440061AE47 /* Chat.storyboard in Resources */,
 				49809C492223E61500295608 /* Spaces.storyboard in Resources */,
+				4935AB1D223287730061AE47 /* Tasks.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,17 +648,22 @@
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
+				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
+				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
 				4911E168223021A700EB8474 /* PUserService.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
+				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
+				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
