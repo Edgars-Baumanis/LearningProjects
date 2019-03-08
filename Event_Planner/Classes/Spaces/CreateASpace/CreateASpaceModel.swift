@@ -35,11 +35,11 @@ struct Space {
 
 class CreateASpaceModel {
     private var ref: DatabaseReference?
-    private var userService: UserService?
+    private var userService: PUserService?
 
     var backPressed: (()->Void)?
     
-    init (userService: UserService?) {
+    init (userService: PUserService?) {
         self.userService = userService
         ref = Database.database().reference()
     }
@@ -56,6 +56,6 @@ class CreateASpaceModel {
     }
     
     func printEmail() {
-        userService?.printEmail()
+        print("User with id: \(userService?.user?.userID)  has reached this far")
     }
 }

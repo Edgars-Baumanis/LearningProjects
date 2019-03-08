@@ -23,7 +23,6 @@ class MySpacesVC: UIViewController {
         mySpaces.delegate = self
         mySpaces.dataSource = self
         
-        
         viewModel?.getData()
         viewModel?.dataSourceChanged = { [weak self] in
             DispatchQueue.main.async {
@@ -67,6 +66,10 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
         (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource?[indexPath.row] ?? "Nothing to show")
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.cellPressed?()
     }
 }
 

@@ -9,32 +9,22 @@
 import UIKit
 import Firebase
 
-struct User {
-    
-    var email: String?
-    var userID: String?
-}
-
-protocol PUserService {
-    var user: User? { get }
-    
-    func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
-    
-    func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void))
-}
-
 class UserService: PUserService {
     var user: User?
     
     func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            guard error == nil else {
-                completionHandler(nil, "Wrong credentionals!")
-                return
+            guard
+                error == nil,
+                let email = Auth.auth().currentUser?.email,
+                let uid = Auth.auth().currentUser?.uid
+                else {
+                    completionHandler(nil, "Wrong credentionals!")
+                    return
             }
-            var myUser = User()
-            myUser.email = Auth.auth().currentUser?.email
-            myUser.userID = Auth.auth().currentUser?.uid
+            let myUser = User(
+                email: email,
+                userID: uid)
             self.user = myUser
             
             completionHandler(myUser,nil)
@@ -42,23 +32,29 @@ class UserService: PUserService {
     }
     
     func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            guard error == nil else {
-                completionHandler(nil, "Email already exists")
-                return
+        if self.isValid(email: email) {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                guard
+                    error == nil,
+                    let email = Auth.auth().currentUser?.email,
+                    let uid = Auth.auth().currentUser?.uid
+                    else {
+                        completionHandler(nil, "Email already exists")
+                        return
+                }
+                let myUser = User(
+                    email: email,
+                    userID: uid)
+                self.user = myUser
+
+                completionHandler(myUser, nil)
             }
-            var myUser = User()
-            myUser.email = Auth.auth().currentUser?.email
-            myUser.userID = Auth.auth().currentUser?.uid
-            self.user = myUser
-            
-            completionHandler(myUser, nil)
         }
     }
-    
-    func printEmail() {
-        print(user?.email)
+
+    private func isValid(email: String) -> Bool {
+        let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let pred = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return pred.evaluate(with: email)
     }
-    
-    
 }

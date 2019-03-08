@@ -11,11 +11,11 @@ import UIKit
 class GreetingFlow: FlowController {
     
     private var rootController: UITabBarController?
-    private var userService: UserService?
+    private var userService: PUserService?
     var navigateToSpaces: (()->Void)?
     
 
-    init(with rootController: UITabBarController, userService: UserService?) {
+    init(with rootController: UITabBarController, userService: PUserService?) {
         self.rootController = rootController
         self.userService = userService
     }
@@ -57,6 +57,10 @@ class GreetingFlow: FlowController {
             self.rootController?.dismiss(animated: true, completion: nil)
             self.navigateToSpaces?()
         }
+        viewModel.backPressed = {
+            self.rootController?.dismiss(animated: false, completion: nil)
+            self.start()
+        }
         vc.viewModel = viewModel
     }
     
@@ -71,6 +75,10 @@ class GreetingFlow: FlowController {
         viewModel.signUpPressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToSpaces?()
+        }
+        viewModel.backPressed = {
+            self.rootController?.dismiss(animated: false, completion: nil)
+            self.start()
         }
         vc.viewModel = viewModel
     }

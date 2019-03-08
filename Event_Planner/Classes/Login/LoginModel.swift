@@ -7,21 +7,23 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginModel {
     
     var loggedIn: (()-> Void)?
     var wrongSignIn: (()-> Void)?
     var emptyFields: (()-> Void)?
-    private var userService: UserService?
-    
-    
-    init(userService: UserService?) {
+    var backPressed: (()->Void)?
+    var error: String?
+    private var userService: PUserService?
+
+    init(userService: PUserService?) {
         self.userService = userService
     }
-    
+
     func loginUser(email: String?, password: String?) {
+        print(userService?.user)
+        error = "This is an error"
         guard email?.isEmpty != true, password?.isEmpty != true else {
             emptyFields?()
             return
@@ -32,6 +34,10 @@ class LoginModel {
                 return
             }
             self.loggedIn?()
+            self.error = "There is no error"
         })
     }
+
+
+    
 }

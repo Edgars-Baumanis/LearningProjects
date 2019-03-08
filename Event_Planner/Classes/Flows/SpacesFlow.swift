@@ -11,16 +11,17 @@ import UIKit
 class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
+    var cellPressed: (()-> Void)?
     private var rootController: UITabBarController?
-    private var userService: UserService?
+    private var userService: PUserService?
     
-    init (with rootController: UITabBarController, userService: UserService?) {
+    init (with rootController: UITabBarController, userService: PUserService?) {
         self.rootController = rootController
         self.userService = userService
     }
     
     private lazy var mainSB: UIStoryboard = {
-        return UIStoryboard(name: Strings.mainSB.rawValue, bundle: Bundle.main)
+        return UIStoryboard(name: Strings.SpacesSB.rawValue, bundle: Bundle.main)
     }()
     
     private lazy var joinVC: JoinASpaceController? = {
@@ -47,19 +48,22 @@ class SpacesFlow: FlowController {
         mySpacesVC.viewModel?.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
+        mySpacesVC.viewModel?.cellPressed = { [weak self] in
+            self?.cellPressed?()
+        }
     }
     
     private func initiateFirstVC() {
         guard let vc = spacesVC else {return}
         vc.viewModel = MySpacesModel(userService: userService)
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
     }
     
     
     private func initiateSecondVC() {
         guard let vc = joinVC else {return}
         vc.viewModel = JoinASpaceModel()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 2)
+        vc.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
     }
     
     private func navigateToCreate() {

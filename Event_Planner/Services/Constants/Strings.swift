@@ -12,5 +12,6 @@ enum Strings: String {
     case hardCodedEmail = "123@123.com"
     case hardCodedPassword = "123123"
     case greetingSB = "Greeting"
-    case mainSB = "Main"
+    case SpacesSB = "Spaces"
+    case MainSB = "Main"
 }

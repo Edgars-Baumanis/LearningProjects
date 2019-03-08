@@ -15,10 +15,10 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var regPassword: UITextField!
     
     var viewModel: SignUpModel?
-    override func viewDidLoad() {
-        view.setGradientBackground()
-        super.viewDidLoad()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.setGradientBackground()
     }
     
     @IBAction func signedUpPressed(_ sender: Any) {
@@ -28,5 +28,8 @@ class SignUpVC: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+    }
+    @IBAction func backPressed(_ sender: Any) {
+        viewModel?.backPressed?()
     }
 }
