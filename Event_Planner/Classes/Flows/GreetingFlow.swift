@@ -57,6 +57,10 @@ class GreetingFlow: FlowController {
             self.rootController?.dismiss(animated: true, completion: nil)
             self.navigateToSpaces?()
         }
+        viewModel.backPressed = {
+            self.rootController?.dismiss(animated: false, completion: nil)
+            self.start()
+        }
         vc.viewModel = viewModel
     }
     
@@ -71,6 +75,10 @@ class GreetingFlow: FlowController {
         viewModel.signUpPressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToSpaces?()
+        }
+        viewModel.backPressed = {
+            self.rootController?.dismiss(animated: false, completion: nil)
+            self.start()
         }
         vc.viewModel = viewModel
     }
