@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="jbh-Gg-hOR">
             <objects>
-                <viewController id="Yje-wx-Ahj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="Yje-wx-Ahj" customClass="MainViewController" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q8S-aX-db2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

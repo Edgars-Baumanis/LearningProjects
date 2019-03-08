@@ -13,11 +13,17 @@ class AppFlow: FlowController {
     fileprivate var window: UIWindow
     fileprivate var rootController: UITabBarController?
     fileprivate var childFlow: FlowController?
-    fileprivate var userService: UserService?
+    fileprivate var userService: PUserService?
+    fileprivate var mainRootController: UINavigationController?
     
     private var tabbar: MainTabbarController? = {
         let tabbar = MainTabbarController()
         return tabbar
+    }()
+
+    private var navController: NavController? = {
+        let navController = NavController()
+        return navController
     }()
     
     init(with window: UIWindow) {
@@ -25,19 +31,17 @@ class AppFlow: FlowController {
         rootController = tabbar
         window.rootViewController = rootController
         window.makeKeyAndVisible()
-        userService = UserService()
+        userService = DumbUserService()
     }
-    
-    private func navigateToSpacesFlow() {
-        guard let tabbar = rootController else {return}
-        let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
-        spacesFlow.start()
-        childFlow = spacesFlow
-        spacesFlow.logoutPressed = { [weak self] in
-            self?.navigateToGreetingFlow()
+
+    func start() {
+        if Auth.auth().currentUser != nil {
+            self.navigateToSpacesFlow()
+        } else {
+            self.navigateToGreetingFlow()
         }
     }
-    
+
     private func navigateToGreetingFlow() {
         guard let tabbar = rootController else {return}
         let greetingFlow = GreetingFlow(with: tabbar, userService: userService)
@@ -47,12 +51,26 @@ class AppFlow: FlowController {
         }
         childFlow = greetingFlow
     }
-    
-    func start() {
-        if Auth.auth().currentUser != nil {
-            self.navigateToSpacesFlow()
-        } else {
-            self.navigateToGreetingFlow()
+
+    private func navigateToSpacesFlow() {
+        guard let tabbar = rootController else {return}
+        let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
+        spacesFlow.start()
+        childFlow = spacesFlow
+        spacesFlow.logoutPressed = { [weak self] in
+            self?.navigateToGreetingFlow()
+        }
+        spacesFlow.cellPressed = { [weak self] in
+            self?.navigateToMainFlow()
         }
     }
+
+    private func navigateToMainFlow() {
+        mainRootController = navController
+        window.rootViewController = mainRootController
+        guard let mainRC = mainRootController else {return}
+        let mainFlow = MainFlow(with: mainRC)
+        mainFlow.start()
+    }
+
 }
