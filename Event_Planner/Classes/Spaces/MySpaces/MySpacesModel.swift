@@ -21,6 +21,7 @@ class MySpacesModel {
     var mySpacesDataSource: [String]?
     var otherSpacesDataSource: [String]?
     var dataSourceChanged: (()-> Void)?
+    var cellPressed: (()-> Void)?
 
     init(userService: PUserService?) {
         mySpacesDataSource = []

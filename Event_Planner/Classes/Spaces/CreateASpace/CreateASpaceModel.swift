@@ -56,6 +56,6 @@ class CreateASpaceModel {
     }
     
     func printEmail() {
-        print(userService?.user)
+        print("User with id: \(userService?.user?.userID)  has reached this far")
     }
 }
