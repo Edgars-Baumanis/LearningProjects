@@ -1,17 +1,6 @@
 {
   "images" : [
     {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 106
-        },
-        "cap-insets" : {
-          "right" : 233,
-          "left" : 173
-        }
-      },
       "idiom" : "universal",
       "filename" : "homeIcon.png",
       "scale" : "1x"
