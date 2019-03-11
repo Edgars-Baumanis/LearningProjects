@@ -35,30 +35,26 @@ class SpacesFlow: FlowController {
     private lazy var createVC: CreateASpaceController? = {
         return mainSB.instantiateViewController(withIdentifier: String(describing: CreateASpaceController.self)) as? CreateASpaceController
     }()
-    
-    
+
     func start() {
-        guard let mySpacesVC = spacesVC else {return}
-        initiateFirstVC()
+        guard let vc = spacesVC else {return}
+
+        vc.viewModel = MySpacesModel(userService: userService)
+        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
+
         initiateSecondVC()
-        rootController?.viewControllers = [mySpacesVC, joinVC] as? [UIViewController]
-        mySpacesVC.viewModel?.signingOut = { [weak self] in
+
+        rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
+        vc.viewModel?.signingOut = { [weak self] in
             self?.logoutPressed?()
         }
-        mySpacesVC.viewModel?.navigateToCreate = { [weak self] in
+        vc.viewModel?.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
-        mySpacesVC.viewModel?.cellPressed = { [weak self] in
+        vc.viewModel?.cellPressed = { [weak self] in
             self?.cellPressed?()
         }
     }
-    
-    private func initiateFirstVC() {
-        guard let vc = spacesVC else {return}
-        vc.viewModel = MySpacesModel(userService: userService)
-        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-    }
-    
     
     private func initiateSecondVC() {
         guard let vc = joinVC else {return}

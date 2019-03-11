@@ -28,4 +28,7 @@ class MainViewController: UIViewController {
     @IBAction func ideasPressed(_ sender: Any) {
         viewModel?.ideasPressed?()
     }
+    @IBAction func backPressed(_ sender: Any) {
+        viewModel?.backPressed?()
+    }
 }
