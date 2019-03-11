@@ -14,18 +14,14 @@ class AppFlow: FlowController {
     fileprivate var rootController: UITabBarController?
     fileprivate var childFlow: FlowController?
     fileprivate var userService: PUserService?
-    fileprivate var mainRootController: UINavigationController?
-    
+
     private var tabbar: MainTabbarController? = {
         let tabbar = MainTabbarController()
         return tabbar
     }()
 
-    private var navController: NavController? = {
-        let navController = NavController()
-        return navController
-    }()
     
+
     init(with window: UIWindow) {
         self.window = window
         rootController = tabbar
@@ -66,12 +62,12 @@ class AppFlow: FlowController {
     }
 
     private func navigateToMainFlow() {
-        mainRootController = navController
-        window.rootViewController = mainRootController
-        guard let mainRC = mainRootController else { return }
-        let mainFlow = MainFlow(with: mainRC)
+        guard let tabbar = rootController else { return }
+        let mainFlow = MainFlow(with: tabbar)
         mainFlow.start()
+        mainFlow.backPressed = { [weak self] in
+            self?.start()
+        }
         childFlow = mainFlow
     }
-
 }

@@ -13,4 +13,5 @@ class MainModel {
     var budgetPressed: (()-> Void)?
     var ideasPressed: (()-> Void)?
     var tasksPressed: (()-> Void)?
+    var backPressed: (()-> Void)?
 }

@@ -10,10 +10,13 @@ import UIKit
 
 class MainFlow: FlowController {
 
-    private var rootController: UINavigationController?
+    var backPressed: (()-> Void)?
 
-    init(with rootController: UINavigationController) {
-        self.rootController = rootController
+    private var rootController: UINavigationController?
+    private var tabbar: UITabBarController?
+
+    init(with tabbar: UITabBarController) {
+        self.tabbar = tabbar
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -58,6 +61,7 @@ class MainFlow: FlowController {
 
     func start() {
         guard let vc = mainViewController else {return}
+        
 
         let viewModel = MainModel()
 
@@ -77,9 +81,16 @@ class MainFlow: FlowController {
             self?.navigateToTasks()
         }
 
+        viewModel.backPressed = { [weak self] in
+            self?.tabbar?.dismiss(animated: true, completion: nil)
+            self?.backPressed?()
+        }
+
         vc.viewModel = viewModel
 
-        rootController?.pushViewController(vc, animated: true)
+        rootController = UINavigationController(rootViewController: vc)
+        guard let navController = rootController else { return }
+        tabbar?.present(navController, animated: true, completion: nil)
     }
 
     private func navigateToBudget() {
