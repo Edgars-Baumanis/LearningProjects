@@ -13,18 +13,22 @@ class TasksController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        // Do any additional setup after loading the view.
     }
+}
+
+
+extension TasksController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCells.self), for: indexPath)
+        if let myCell = cell as? TaskCells {
+            myCell.displayContent(taskName: "kakakaka")
+        }
+        return cell
+    }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
