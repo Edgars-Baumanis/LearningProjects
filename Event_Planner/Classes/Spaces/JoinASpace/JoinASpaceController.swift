@@ -21,7 +21,7 @@ class JoinASpaceController: UIViewController {
     
     @IBAction func joinSpacePressed(_ sender: Any) {
         
-        viewModel?.joinASpace(name: spaceName.text, password: spacePassword.text)
+        viewModel?.joinASpace(spaceName: spaceName.text, spacePassword: spacePassword.text)
         viewModel?.emptyFields = { [weak self] in
             let alert = UIAlertController(title: "Empty!", message: "Please enter data in fields!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
