@@ -30,6 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2s-hM-S5I">
+
                                                     <rect key="frame" x="15" y="11" width="345" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -45,6 +46,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="task" destination="l2s-hM-S5I" id="4ab-dj-Epj"/>
+
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -63,6 +65,7 @@
                             <constraint firstItem="uRi-eG-HYe" firstAttribute="top" secondItem="1M1-xm-Tyd" secondAttribute="top" id="ueu-md-yp9"/>
                             <constraint firstItem="1M1-xm-Tyd" firstAttribute="bottom" secondItem="gyp-Gz-OlO" secondAttribute="bottom" id="xN5-if-eWC"/>
                             <constraint firstItem="uRi-eG-HYe" firstAttribute="leading" secondItem="1M1-xm-Tyd" secondAttribute="leading" id="zmm-qv-ll9"/>
+
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1M1-xm-Tyd"/>
                     </view>
@@ -74,6 +77,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2E-oM-wlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="100.29985007496252"/>
+
         </scene>
     </scenes>
 </document>

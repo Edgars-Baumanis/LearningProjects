@@ -33,8 +33,3 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-
-extension TasksController: UISearchBarDelegate {
-
-}
