@@ -10,21 +10,31 @@ import UIKit
 
 class TasksController: UIViewController {
 
+    @IBOutlet weak var taskSearch: UISearchBar!
+    @IBOutlet weak var allTasks: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+extension TasksController: UITableViewDelegate, UITableViewDataSource {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.TasksSB.rawValue , for: indexPath)
+        if let myCell = cell as? TasksCell {
+            myCell.displayContent(taskName: String(describing: TasksCell.self))
+        }
+        return cell
+    }
+}
+
+
+extension TasksController: UISearchBarDelegate {
 
 }
