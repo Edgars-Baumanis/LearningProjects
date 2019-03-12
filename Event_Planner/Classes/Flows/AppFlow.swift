@@ -11,7 +11,7 @@ import Firebase
 class AppFlow: FlowController {
     
     fileprivate var window: UIWindow
-    fileprivate var spacesRootController: UITabBarController?
+    fileprivate var rootController: UITabBarController?
     fileprivate var childFlow: FlowController?
     fileprivate var userService: PUserService?
 
@@ -30,8 +30,8 @@ class AppFlow: FlowController {
     }
 
     func start() {
-        spacesRootController = tabbar
-        window.rootViewController = spacesRootController
+        rootController = tabbar
+        window.rootViewController = rootController
         if Auth.auth().currentUser != nil {
             self.navigateToSpacesFlow()
         } else {
@@ -40,7 +40,7 @@ class AppFlow: FlowController {
     }
 
     private func navigateToGreetingFlow() {
-        guard let tabbar = spacesRootController else {return}
+        guard let tabbar = rootController else {return}
         let greetingFlow = GreetingFlow(with: tabbar, userService: userService)
         greetingFlow.start()
         greetingFlow.navigateToSpaces = { [weak self] in
@@ -50,7 +50,7 @@ class AppFlow: FlowController {
     }
 
     private func navigateToSpacesFlow() {
-        guard let tabbar = spacesRootController else {return}
+        guard let tabbar = rootController else {return}
         let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
         spacesFlow.start()
         childFlow = spacesFlow

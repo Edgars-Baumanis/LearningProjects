@@ -25,8 +25,7 @@ class JoinASpaceModel {
     var rightEntry: (()-> Void)?
 
     func joinASpace(spaceName: String?, spacePassword: String?) {
-        spaceName = nil
-        guard thisName?.isEmpty != true, password?.isEmpty != true else {
+        guard spaceName?.isEmpty != true, spacePassword?.isEmpty != true else {
             emptyFields?()
             return
         }
@@ -37,7 +36,7 @@ class JoinASpaceModel {
                 let name = post?["name"] as? String?,
                 let password = post?["password"] as? String else { return }
 
-            if name == thisName && password == spacePassword {
+            if name == spaceName && password == spacePassword {
                 self.rightEntry?()
             } else {
                 self.wrongEntry?()
