@@ -35,7 +35,7 @@ class MySpacesModel {
             let post = snapshot.value as? [String : Any]
             guard
                 let spaceName = post?["name"] as? String,
-                let uID = post?["uID"] as? String else {return}
+                let uID = post?["uID"] as? String else { return }
             if uID == self.userService?.user?.userID {
                 self.mySpacesDataSource?.append(spaceName)
                 self.dataSourceChanged?()
