@@ -27,7 +27,7 @@ class AppFlow: FlowController {
         rootController = tabbar
         window.rootViewController = rootController
         window.makeKeyAndVisible()
-        userService = DumbUserService()
+        userService = UserService()
     }
 
     func start() {
