@@ -10,6 +10,7 @@
 		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
+		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E172223022D300EB8474 /* LoginFunc_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E171223022D300EB8474 /* LoginFunc_Test.swift */; };
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
@@ -81,6 +82,7 @@
 		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
+		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
@@ -190,6 +192,14 @@
 			path = PDependencies;
 			sourceTree = "<group>";
 		};
+		4904C86422369A7D00A31D98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4904C86522369ADE00A31D98 /* TasksCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4911E170223022D300EB8474 /* UserService Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +232,7 @@
 			children = (
 				4935AB1C223287730061AE47 /* Tasks.storyboard */,
 				4935AB2A223288950061AE47 /* TasksController.swift */,
+				4904C86422369A7D00A31D98 /* Cell */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -642,6 +653,7 @@
 				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
+				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,

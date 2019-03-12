@@ -22,8 +22,11 @@ class MySpacesVC: UIViewController {
         otherSpaces.dataSource = self
         mySpaces.delegate = self
         mySpaces.dataSource = self
-        
         viewModel?.getData()
+        
+
+
+
         viewModel?.dataSourceChanged = { [weak self] in
             DispatchQueue.main.async {
                 self?.mySpaces.reloadData()

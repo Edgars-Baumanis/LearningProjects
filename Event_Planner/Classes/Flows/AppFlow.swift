@@ -26,7 +26,7 @@ class AppFlow: FlowController {
         self.window = window
 
         window.makeKeyAndVisible()
-        userService = DumbUserService()
+        userService = UserService()
     }
 
     func start() {

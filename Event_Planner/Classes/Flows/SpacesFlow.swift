@@ -38,28 +38,31 @@ class SpacesFlow: FlowController {
 
     func start() {
         guard let vc = spacesVC else {return}
-
-        vc.viewModel = MySpacesModel(userService: userService)
         vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-
         initiateSecondVC()
-
-        rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
-        vc.viewModel?.signingOut = { [weak self] in
+        let viewModel = MySpacesModel(userService: userService)
+        viewModel.signingOut = { [weak self] in
             self?.logoutPressed?()
         }
-        vc.viewModel?.navigateToCreate = { [weak self] in
+        viewModel.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
-        vc.viewModel?.cellPressed = { [weak self] in
+        viewModel.cellPressed = { [weak self] in
             self?.cellPressed?()
         }
+        vc.viewModel = viewModel
+        rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
+
     }
     
     private func initiateSecondVC() {
         guard let vc = joinVC else {return}
-        vc.viewModel = JoinASpaceModel()
+        let viewModel = JoinASpaceModel()
+        viewModel.rightEntry = { [weak self] in
+            self?.cellPressed?()
+        }
         vc.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
+        vc.viewModel = viewModel
     }
     
     private func navigateToCreate() {
