@@ -10,25 +10,27 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
+
+
 struct Space {
     let spaceName: String?
     let spacePassword: String?
     let spaceDescription: String?
-    let uID: String?
+    let mainUser: String?
 
-    init (spaceName: String, spacePassword: String, spaceDescription: String, uID: String) {
+    init (spaceName: String, spacePassword: String, spaceDescription: String, mainUser: String) {
         self.spaceName = spaceName
         self.spacePassword = spacePassword
         self.spaceDescription = spaceDescription
-        self.uID = uID
+        self.mainUser = mainUser
     }
 
     func sendData() -> Any {
         return [
-            "name": spaceName,
-            "password": spacePassword,
-            "description": spaceDescription,
-            "uID": uID
+            "Name": spaceName,
+            "Password": spacePassword,
+            "Description": spaceDescription,
+            "Main User": mainUser
         ]
     }
 }
@@ -50,7 +52,7 @@ class CreateASpaceModel {
             return
         }
         guard let userID = Auth.auth().currentUser?.uid else {return}
-        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, uID: userID)
+        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, mainUser: userID)
         ref?.child("Spaces").child(name!).setValue(newSpace.sendData())
         backPressed?()
     }

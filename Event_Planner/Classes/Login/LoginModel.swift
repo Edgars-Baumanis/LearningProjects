@@ -22,7 +22,6 @@ class LoginModel {
     }
 
     func loginUser(email: String?, password: String?) {
-        print(userService?.user)
         error = "This is an error"
         guard email?.isEmpty != true, password?.isEmpty != true else {
             emptyFields?()
