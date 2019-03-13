@@ -48,6 +48,7 @@
 		499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */; };
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
 		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
+		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
 		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
@@ -121,6 +122,7 @@
 		499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
+		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
 		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
@@ -221,8 +223,9 @@
 		4935AB1F223287920061AE47 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				4935AB18223287440061AE47 /* Chat.storyboard */,
 				4935AB282232888C0061AE47 /* ChatsController.swift */,
+				4935AB18223287440061AE47 /* Chat.storyboard */,
+				49B7A6312238F79800D4A8EC /* Cell */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -230,8 +233,8 @@
 		4935AB20223287970061AE47 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				4935AB1C223287730061AE47 /* Tasks.storyboard */,
 				4935AB2A223288950061AE47 /* TasksController.swift */,
+				4935AB1C223287730061AE47 /* Tasks.storyboard */,
 				4904C86422369A7D00A31D98 /* Cell */,
 			);
 			path = Tasks;
@@ -364,6 +367,14 @@
 				499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		49B7A6312238F79800D4A8EC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		49CBE2EC22281B9C00DFE240 /* CreateASpace */ = {
@@ -660,6 +671,7 @@
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
