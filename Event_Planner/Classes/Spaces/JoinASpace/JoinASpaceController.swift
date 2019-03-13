@@ -27,5 +27,10 @@ class JoinASpaceController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+        viewModel?.wrongEntry = { [weak self] in
+            let alert = UIAlertController(title: "Wrong!", message: "Space name or space password is wrong", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
 }

@@ -57,7 +57,7 @@ class SpacesFlow: FlowController {
     
     private func initiateSecondVC() {
         guard let vc = joinVC else {return}
-        let viewModel = JoinASpaceModel()
+        let viewModel = JoinASpaceModel(userService: userService)
         viewModel.rightEntry = { [weak self] in
             self?.cellPressed?()
         }

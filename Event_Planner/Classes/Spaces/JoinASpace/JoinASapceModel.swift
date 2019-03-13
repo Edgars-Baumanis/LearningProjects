@@ -9,14 +9,29 @@
 import UIKit
 import FirebaseDatabase
 
-class JoinASpaceModel {
+struct AddUser {
+    let uID: String?
 
+    init (uID: String) {
+        self.uID = uID
+    }
+
+    func sendData() -> Any {
+        return [
+            "uID": uID
+        ]
+    }
+}
+
+class JoinASpaceModel {
 
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
     private var spaceName: String?
+    private var userService: PUserService?
 
-    init() {
+    init(userService: PUserService?) {
+        self.userService = userService
         ref = Database.database().reference()
     }
 
@@ -34,9 +49,14 @@ class JoinASpaceModel {
 
             guard
                 let name = post?["name"] as? String?,
-                let password = post?["password"] as? String else { return }
-
+                let password = post?["password"] as? String,
+                let uID = post?["uID"] as? String else { return }
             if name == spaceName && password == spacePassword {
+                if uID != self.userService?.user?.userID {
+                    guard let uID = self.userService?.user?.userID else {return}
+                    let user = AddUser(uID: uID)
+                    self.ref?.child("Spaces").child(name!).child("Allowed Users").setValue(user.sendData())
+                }
                 self.rightEntry?()
             } else {
                 self.wrongEntry?()
