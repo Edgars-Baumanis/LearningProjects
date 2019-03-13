@@ -257,8 +257,6 @@
 			children = (
 				49451A292224426100AC8350 /* AppDelegate.swift */,
 				49451A202224426100AC8350 /* Greeting */,
-				49451A362224426100AC8350 /* Login */,
-				49451A232224426100AC8350 /* Register */,
 				49451A2A2224426100AC8350 /* Spaces */,
 				49E0413922326B1000BCF2CA /* Main */,
 				49451A262224426100AC8350 /* View */,
@@ -271,6 +269,9 @@
 			children = (
 				49451A212224426100AC8350 /* GreetingVC.swift */,
 				49451A222224426100AC8350 /* GreetingModel.swift */,
+				49CBE2E82227E56600DFE240 /* Greeting.storyboard */,
+				49451A362224426100AC8350 /* Login */,
+				49451A232224426100AC8350 /* Register */,
 			);
 			path = Greeting;
 			sourceTree = "<group>";
@@ -297,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				499D7EAC222571ED00694DD6 /* MainTabbarController.swift */,
+				49809C472223E61500295608 /* Spaces.storyboard */,
 				49CBE2ED22281BBA00DFE240 /* MySpaces */,
 				49CBE2EC22281B9C00DFE240 /* CreateASpace */,
 				49CBE2EE22281BD000DFE240 /* JoinASpace */,
@@ -352,8 +354,6 @@
 			children = (
 				4902A1A02229212100580D44 /* Services */,
 				49451A1F2224426100AC8350 /* Classes */,
-				49CBE2E82227E56600DFE240 /* Greeting.storyboard */,
-				49809C472223E61500295608 /* Spaces.storyboard */,
 				49809C4A2223E61500295608 /* Assets.xcassets */,
 				49809C4C2223E61500295608 /* LaunchScreen.storyboard */,
 				49809C4F2223E61500295608 /* Info.plist */,
