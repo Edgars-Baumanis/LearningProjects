@@ -49,6 +49,7 @@
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
 		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
 		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
+		49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A635223907A300D4A8EC /* IdeasCell.swift */; };
 		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
@@ -123,6 +124,7 @@
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
 		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
+		49B7A635223907A300D4A8EC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
@@ -214,8 +216,9 @@
 		4935AB1E2232878B0061AE47 /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
-				4935AB162232873D0061AE47 /* Ideas.storyboard */,
 				4935AB222232884A0061AE47 /* IdeasController.swift */,
+				4935AB162232873D0061AE47 /* Ideas.storyboard */,
+				49B7A6342239078F00D4A8EC /* Cell */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
@@ -258,7 +261,6 @@
 				49451A232224426100AC8350 /* Register */,
 				49451A2A2224426100AC8350 /* Spaces */,
 				49E0413922326B1000BCF2CA /* Main */,
-				49451A2F2224426100AC8350 /* Flows */,
 				49451A262224426100AC8350 /* View */,
 			);
 			path = Classes;
@@ -377,6 +379,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		49B7A6342239078F00D4A8EC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49B7A635223907A300D4A8EC /* IdeasCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		49CBE2EC22281B9C00DFE240 /* CreateASpace */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +426,7 @@
 				4935AB20223287970061AE47 /* Tasks */,
 				4935AB1F223287920061AE47 /* Chats */,
 				4935AB1E2232878B0061AE47 /* Ideas */,
+				49451A2F2224426100AC8350 /* Flows */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -664,6 +675,7 @@
 				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
+				49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
