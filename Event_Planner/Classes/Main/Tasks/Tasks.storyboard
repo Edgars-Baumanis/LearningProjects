@@ -20,7 +20,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gyp-Gz-OlO">
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TasksCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ump-qD-s6C" customClass="TasksCell" customModule="Event_Planner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -30,13 +30,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2s-hM-S5I">
-
                                                     <rect key="frame" x="15" y="11" width="345" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="l2s-hM-S5I" secondAttribute="trailing" id="Lf3-Fm-SiI"/>
                                                 <constraint firstItem="l2s-hM-S5I" firstAttribute="bottom" secondItem="tD1-C6-cQh" secondAttribute="bottomMargin" id="NZ4-hL-6QI"/>
@@ -44,9 +44,9 @@
                                                 <constraint firstItem="l2s-hM-S5I" firstAttribute="leading" secondItem="tD1-C6-cQh" secondAttribute="leadingMargin" id="aIR-Ul-sxO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="task" destination="l2s-hM-S5I" id="4ab-dj-Epj"/>
-
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -65,7 +65,6 @@
                             <constraint firstItem="uRi-eG-HYe" firstAttribute="top" secondItem="1M1-xm-Tyd" secondAttribute="top" id="ueu-md-yp9"/>
                             <constraint firstItem="1M1-xm-Tyd" firstAttribute="bottom" secondItem="gyp-Gz-OlO" secondAttribute="bottom" id="xN5-if-eWC"/>
                             <constraint firstItem="uRi-eG-HYe" firstAttribute="leading" secondItem="1M1-xm-Tyd" secondAttribute="leading" id="zmm-qv-ll9"/>
-
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1M1-xm-Tyd"/>
                     </view>
@@ -77,7 +76,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2E-oM-wlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="100.29985007496252"/>
-
+        </scene>
+        <!--Add Task-->
+        <scene sceneID="NZw-mN-QAC">
+            <objects>
+                <viewController storyboardIdentifier="AddTask" id="2kt-u9-2bU" customClass="AddTask" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u0K-le-vSz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esF-us-akR" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="104" width="335" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="wT1-lo-dLl"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zbh-Et-0ab" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="335" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="W44-yz-PQz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5u-K5-VYS">
+                                <rect key="frame" x="20" y="464" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vZD-aD-8mW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W5u-K5-VYS" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="0A0-kt-Qzl"/>
+                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="Zbh-Et-0ab" secondAttribute="trailing" constant="20" id="3xc-kB-1Tg"/>
+                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="W5u-K5-VYS" secondAttribute="trailing" constant="20" id="4hM-ly-NTM"/>
+                            <constraint firstItem="esF-us-akR" firstAttribute="top" secondItem="hcj-pk-gIV" secondAttribute="top" constant="84" id="RE6-an-Mal"/>
+                            <constraint firstItem="Zbh-Et-0ab" firstAttribute="top" secondItem="esF-us-akR" secondAttribute="bottom" constant="40" id="l3k-Vp-RNb"/>
+                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="esF-us-akR" secondAttribute="trailing" constant="20" id="pi7-b7-leI"/>
+                            <constraint firstItem="Zbh-Et-0ab" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="uzV-np-p5G"/>
+                            <constraint firstItem="esF-us-akR" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="vte-6B-1Ml"/>
+                            <constraint firstItem="W5u-K5-VYS" firstAttribute="top" secondItem="Zbh-Et-0ab" secondAttribute="bottom" constant="60" id="xJx-e9-pLk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hcj-pk-gIV"/>
+                    </view>
+                    <connections>
+                        <outlet property="taskDescription" destination="Zbh-Et-0ab" id="VfS-zH-71R"/>
+                        <outlet property="taskName" destination="esF-us-akR" id="uLX-mK-GCc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OvS-FN-p7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="100"/>
         </scene>
     </scenes>
 </document>

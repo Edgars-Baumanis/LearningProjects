@@ -61,6 +61,10 @@ class MainFlow: FlowController {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
     }
 
+    private var addTaskController: AddTask? {
+        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -97,22 +101,35 @@ class MainFlow: FlowController {
     }
 
     private func navigateToBudget() {
-        guard let vc = budgetViewController else {return}
+        guard let vc = budgetViewController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToChats() {
-        guard let vc = chatsViewController else {return}
+        guard let vc = chatsViewController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToIdeas() {
-        guard let vc = ideasViewController else {return}
+        guard let vc = ideasViewController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToTasks() {
-        guard let vc = tasksViewController else {return}
+        guard let vc = tasksViewController else { return }
+        let viewModel = TasksModel()
+        
+        viewModel.addTaskPressed = { [weak self] in
+            self?.navigateToAddTask()
+        }
+
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddTask() {
+        guard let vc = addTaskController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 }
+

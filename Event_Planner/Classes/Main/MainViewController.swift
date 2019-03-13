@@ -39,5 +39,4 @@ class MainViewController: UIViewController {
     @objc func backPressed(sender: UIBarButtonItem) {
         viewModel?.backPressed?()
     }
-
 }

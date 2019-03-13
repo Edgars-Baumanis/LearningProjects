@@ -10,12 +10,19 @@ import UIKit
 
 class TasksController: UIViewController {
 
+    var viewModel: TasksModel?
     @IBOutlet weak var taskSearch: UISearchBar!
     @IBOutlet weak var allTasks: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        let addTask = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addTaskPressed))
+        self.navigationItem.rightBarButtonItem = addTask
+    }
+
+    @objc func addTaskPressed(sender: UIBarButtonItem) {
+        viewModel?.addTaskPressed?()
     }
 }
 
@@ -26,7 +33,7 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.TasksSB.rawValue , for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.TasksSB.rawValue, for: indexPath)
         if let myCell = cell as? TasksCell {
             myCell.displayContent(taskName: String(describing: TasksCell.self))
         }
