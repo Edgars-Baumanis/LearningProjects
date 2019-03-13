@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        self.title = viewModel?.spaceName
     }
     @IBAction func chatPressed(_ sender: Any) {
         viewModel?.chatPressed?()

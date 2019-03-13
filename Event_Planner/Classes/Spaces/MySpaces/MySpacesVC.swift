@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class MySpacesVC: UIViewController {
+
     var viewModel: MySpacesModel?
     
     @IBOutlet weak var otherSpaces: UITableView!
@@ -23,9 +24,6 @@ class MySpacesVC: UIViewController {
         mySpaces.delegate = self
         mySpaces.dataSource = self
         viewModel?.getData()
-        
-
-
 
         viewModel?.dataSourceChanged = { [weak self] in
             DispatchQueue.main.async {
@@ -72,7 +70,7 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?()
+        viewModel?.cellPressed?(viewModel?.spaceName ?? "Some Space")
     }
 }
 

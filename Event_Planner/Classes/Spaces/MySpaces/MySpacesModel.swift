@@ -15,13 +15,14 @@ class MySpacesModel {
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
     private var userService: PUserService?
+    var spaceName: String?
 
     var signingOut: (()-> Void)?
     var navigateToCreate: (()-> Void)?
     var mySpacesDataSource: [String]?
     var otherSpacesDataSource: [String]?
     var dataSourceChanged: (()-> Void)?
-    var cellPressed: (()-> Void)?
+    var cellPressed: ((String)-> Void)?
 
     init(userService: PUserService?) {
         mySpacesDataSource = []
@@ -36,6 +37,7 @@ class MySpacesModel {
             guard
                 let spaceName = post?["Name"] as? String,
                 let uID = post?["Main User"] as? String else { return }
+            self.spaceName = spaceName
             if uID == self.userService?.user?.userID {
                 self.mySpacesDataSource?.append(spaceName)
                 self.dataSourceChanged?()

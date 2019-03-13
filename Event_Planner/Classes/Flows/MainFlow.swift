@@ -14,9 +14,11 @@ class MainFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var tabbar: UITabBarController?
+    private var spaceName: String?
 
-    init(with tabbar: UITabBarController) {
+    init(with tabbar: UITabBarController, with spaceName: String?) {
         self.tabbar = tabbar
+        self.spaceName = spaceName
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -85,6 +87,7 @@ class MainFlow: FlowController {
             self?.tabbar?.dismiss(animated: true, completion: nil)
             self?.backPressed?()
         }
+        viewModel.spaceName = self.spaceName
 
         vc.viewModel = viewModel
 

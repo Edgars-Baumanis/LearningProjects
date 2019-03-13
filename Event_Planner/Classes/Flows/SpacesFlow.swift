@@ -11,7 +11,7 @@ import UIKit
 class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
-    var cellPressed: (()-> Void)?
+    var cellPressed: ((String)-> Void)?
     private var rootController: UITabBarController?
     private var userService: PUserService?
     
@@ -47,8 +47,8 @@ class SpacesFlow: FlowController {
         viewModel.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
-        viewModel.cellPressed = { [weak self] in
-            self?.cellPressed?()
+        viewModel.cellPressed = { [weak self] spaceName in
+            self?.cellPressed?(spaceName)
         }
         vc.viewModel = viewModel
         rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
@@ -58,8 +58,8 @@ class SpacesFlow: FlowController {
     private func initiateSecondVC() {
         guard let vc = joinVC else {return}
         let viewModel = JoinASpaceModel(userService: userService)
-        viewModel.rightEntry = { [weak self] in
-            self?.cellPressed?()
+        viewModel.rightEntry = { [weak self] spaceName in
+            self?.cellPressed?(spaceName)
         }
         vc.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
         vc.viewModel = viewModel
