@@ -10,8 +10,6 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-
-
 struct Space {
     let spaceName: String?
     let spacePassword: String?
