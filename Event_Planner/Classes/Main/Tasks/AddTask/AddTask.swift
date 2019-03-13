@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AddTask: UIViewController, UITextViewDelegate {
+class AddTask: UIViewController {
     @IBOutlet weak var taskDescription: TextViewSubclass!
     @IBOutlet weak var taskName: TextFieldSubclass!
-    
+    var viewModel: AddTaskModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -20,6 +21,12 @@ class AddTask: UIViewController, UITextViewDelegate {
         taskDescription.text = "Enter task description"
         taskDescription.textColor = UIColor.placholderGrey
     }
+
+    @IBAction func addTaskClicked(_ sender: Any) {
+        viewModel?.addTask(taskName: taskName.text, taskDescription: taskDescription.text)
+    }
+}
+extension AddTask: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if taskDescription.textColor == UIColor.placholderGrey {
