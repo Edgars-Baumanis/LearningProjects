@@ -12,7 +12,8 @@ class AddTaskModel {
     var emptyFields: (()->Void)?
 
     func addTask(taskName: String?, taskDescription: String?) {
-        guard taskName?.isEmpty != true, taskDescription?.isEmpty != true else {
+        guard taskName?.isEmpty == true, taskDescription?.isEmpty == true else {
+            emptyFields?()
             return
         }
     }

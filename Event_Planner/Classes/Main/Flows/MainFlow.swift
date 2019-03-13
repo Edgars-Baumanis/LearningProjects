@@ -129,6 +129,8 @@ class MainFlow: FlowController {
 
     private func navigateToAddTask() {
         guard let vc = addTaskController else { return }
+        let viewModel = AddTaskModel()
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 }

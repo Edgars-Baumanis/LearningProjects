@@ -19,15 +19,23 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-    }
-    
-    @IBAction func signedUpPressed(_ sender: Any) {
-        viewModel?.signUpUser(email: regEmail.text, password: regPassword.text)
+
+        viewModel?.emptyFields = { [weak self] in
+            let alert = UIAlertController(title: "Empty!", message: "Please enter username email and/or password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
+
         viewModel?.existingEmail = { [weak self] in
             let alert = UIAlertController(title: "Existing/Incorrect", message: "Please enter correct ones", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+    }
+    
+    @IBAction func signedUpPressed(_ sender: Any) {
+        viewModel?.signUpUser(email: regEmail.text, password: regPassword.text)
+
     }
     @IBAction func backPressed(_ sender: Any) {
         viewModel?.backPressed?()

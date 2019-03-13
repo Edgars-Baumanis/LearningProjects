@@ -24,6 +24,11 @@ class CreateASpaceController: UIViewController {
         spaceDescription.text = "Enter a description for your Space"
         spaceDescription.textColor = UIColor.placholderGrey
         viewModel?.printEmail()
+        viewModel?.emptyFields = { [weak self] in
+            let alert = UIAlertController(title: "Empty!", message: "Please enter Space name and/or Space password and/or Space description", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
     
     @IBAction func createSpace(_ sender: Any) {
@@ -42,7 +47,7 @@ extension CreateASpaceController: UITextViewDelegate {
             spaceDescription.textColor = UIColor.black
         }
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if spaceDescription.text.isEmpty {
             spaceDescription.text = "Enter a description for your Space"

@@ -20,12 +20,20 @@ class AddTask: UIViewController {
 
         taskDescription.text = "Enter task description"
         taskDescription.textColor = UIColor.placholderGrey
+
+            viewModel?.emptyFields = { [weak self] in
+                let alert = UIAlertController(title: "Empty!", message: "Please enter a name and a description for the task", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+                self?.present(alert, animated: true)
+            }
     }
 
     @IBAction func addTaskClicked(_ sender: Any) {
         viewModel?.addTask(taskName: taskName.text, taskDescription: taskDescription.text)
     }
 }
+
+
 extension AddTask: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
