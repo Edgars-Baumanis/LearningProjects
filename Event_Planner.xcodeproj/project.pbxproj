@@ -50,6 +50,9 @@
 		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
 		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
 		49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A635223907A300D4A8EC /* IdeasCell.swift */; };
+		49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6372239237B00D4A8EC /* TasksModel.swift */; };
+		49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63A223926B800D4A8EC /* AddTask.swift */; };
+		49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63C22392BE200D4A8EC /* UIColor.swift */; };
 		49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2E62227CEEA00DFE240 /* FlowController.swift */; };
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
@@ -125,6 +128,9 @@
 		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
 		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
 		49B7A635223907A300D4A8EC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
+		49B7A6372239237B00D4A8EC /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
+		49B7A63A223926B800D4A8EC /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
+		49B7A63C22392BE200D4A8EC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		49CBE2E62227CEEA00DFE240 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
@@ -237,7 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				4935AB2A223288950061AE47 /* TasksController.swift */,
+				49B7A6372239237B00D4A8EC /* TasksModel.swift */,
 				4935AB1C223287730061AE47 /* Tasks.storyboard */,
+				49B7A6392239269C00D4A8EC /* AddTask */,
 				4904C86422369A7D00A31D98 /* Cell */,
 			);
 			path = Tasks;
@@ -290,6 +298,7 @@
 			children = (
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
+				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +394,14 @@
 				49B7A635223907A300D4A8EC /* IdeasCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		49B7A6392239269C00D4A8EC /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				49B7A63A223926B800D4A8EC /* AddTask.swift */,
+			);
+			path = AddTask;
 			sourceTree = "<group>";
 		};
 		49CBE2EC22281B9C00DFE240 /* CreateASpace */ = {
@@ -675,6 +692,7 @@
 				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
+				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
 				49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
@@ -695,6 +713,7 @@
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
 				4911E168223021A700EB8474 /* PUserService.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
+				49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */,
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
@@ -702,6 +721,7 @@
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
+				49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,

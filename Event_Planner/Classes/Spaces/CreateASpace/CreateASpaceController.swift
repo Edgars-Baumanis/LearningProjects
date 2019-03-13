@@ -20,6 +20,9 @@ class CreateASpaceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        spaceDescription.delegate = self
+        spaceDescription.text = "Enter a description for your Space"
+        spaceDescription.textColor = UIColor.placholderGrey
         viewModel?.printEmail()
     }
     
@@ -29,5 +32,21 @@ class CreateASpaceController: UIViewController {
     
     @IBAction func closePressed(_ sender: Any) {
         viewModel?.backPressed?()
+    }
+}
+
+extension CreateASpaceController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if spaceDescription.textColor == UIColor.placholderGrey {
+            spaceDescription.text = nil
+            spaceDescription.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if spaceDescription.text.isEmpty {
+            spaceDescription.text = "Enter a description for your Space"
+            spaceDescription.textColor = UIColor.placholderGrey
+        }
     }
 }
