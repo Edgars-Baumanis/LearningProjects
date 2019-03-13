@@ -155,7 +155,7 @@
                         <viewLayoutGuide key="safeArea" id="hcj-pk-gIV"/>
                     </view>
                     <connections>
-                        <outlet property="taskDescription" destination="Zbh-Et-0ab" id="VfS-zH-71R"/>
+                        <outlet property="taskDescription" destination="Zbh-Et-0ab" id="fRS-70-wue"/>
                         <outlet property="taskName" destination="esF-us-akR" id="uLX-mK-GCc"/>
                     </connections>
                 </viewController>
