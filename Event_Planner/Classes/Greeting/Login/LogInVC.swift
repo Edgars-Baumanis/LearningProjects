@@ -21,21 +21,24 @@ class LoginVC: UIViewController {
         loginEmail.text = Strings.hardCodedEmail.rawValue
         loginPassword.text = Strings.hardCodedPassword.rawValue
         view.setGradientBackground()
-    }
-
-    @IBAction func loggedIn(_ sender: Any) {
-        viewModel?.loginUser(email: loginEmail.text, password: loginPassword.text)
+        
         viewModel?.wrongSignIn = { [weak self] in
             let alert = UIAlertController(title: "Wrong Credentials", message: "Please enter correct ones", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+        
         viewModel?.emptyFields = { [weak self] in
             let alert = UIAlertController(title: "Empty!", message: "Please enter data in fields!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
     }
+
+    @IBAction func loggedIn(_ sender: Any) {
+        viewModel?.loginUser(email: loginEmail.text, password: loginPassword.text)
+    }
+
     @IBAction func backPressed(_ sender: Any) {
         viewModel?.backPressed?()
     }

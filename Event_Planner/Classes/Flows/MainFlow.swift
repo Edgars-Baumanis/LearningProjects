@@ -14,9 +14,11 @@ class MainFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var tabbar: UITabBarController?
+    private var spaceName: String?
 
-    init(with tabbar: UITabBarController) {
+    init(with tabbar: UITabBarController, with spaceName: String?) {
         self.tabbar = tabbar
+        self.spaceName = spaceName
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -59,6 +61,14 @@ class MainFlow: FlowController {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
     }
 
+    private var addTaskController: AddTask? {
+        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
+    }
+
+    private var addChatController: CreateChat? {
+        return chatsSB.instantiateViewController(withIdentifier: String(describing: CreateChat.self)) as? CreateChat
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -85,6 +95,7 @@ class MainFlow: FlowController {
             self?.tabbar?.dismiss(animated: true, completion: nil)
             self?.backPressed?()
         }
+        viewModel.spaceName = self.spaceName
 
         vc.viewModel = viewModel
 
@@ -94,22 +105,47 @@ class MainFlow: FlowController {
     }
 
     private func navigateToBudget() {
-        guard let vc = budgetViewController else {return}
+        guard let vc = budgetViewController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToChats() {
-        guard let vc = chatsViewController else {return}
+        guard let vc = chatsViewController else { return }
+        let viewModel = ChatsModel()
+        viewModel.addChatPressed = { [weak self] in
+            self?.navigateToAddChat()
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToIdeas() {
-        guard let vc = ideasViewController else {return}
+        guard let vc = ideasViewController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToTasks() {
-        guard let vc = tasksViewController else {return}
+        guard let vc = tasksViewController else { return }
+        let viewModel = TasksModel()
+        
+        viewModel.addTaskPressed = { [weak self] in
+            self?.navigateToAddTask()
+        }
+
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddTask() {
+        guard let vc = addTaskController else { return }
+        let viewModel = AddTaskModel()
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddChat() {
+        guard let vc = addChatController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 }
+

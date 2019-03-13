@@ -268,6 +268,11 @@
                                 <state key="normal" title="Create space">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createSpace:" destination="ttb-Gs-J61" eventType="touchUpInside" id="OAb-iZ-oHZ"/>
                                 </connections>
@@ -415,6 +420,11 @@
                                 <state key="normal" title="Join space">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="joinSpacePressed:" destination="ZHc-Sj-KTm" eventType="touchUpInside" id="9Ex-ey-qzj"/>
                                 </connections>

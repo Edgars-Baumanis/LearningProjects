@@ -13,6 +13,7 @@ class SignUpModel {
     var signUpPressed: (()-> Void)?
     var existingEmail: (()-> Void)?
     var backPressed: (()->Void)?
+    var emptyFields: (()-> Void)?
     var userService: PUserService?
     
     init(userService: PUserService?) {
@@ -21,7 +22,7 @@ class SignUpModel {
     
     func signUpUser(email: String?, password: String?) {
         guard email?.isEmpty != true, password?.isEmpty != true else {
-            print("Please enter valid username and/or password")
+            emptyFields?()
             return
         }
         userService?.register(email: email!

@@ -36,7 +36,4 @@ class LoginModel {
             self.error = "There is no error"
         })
     }
-
-
-    
 }

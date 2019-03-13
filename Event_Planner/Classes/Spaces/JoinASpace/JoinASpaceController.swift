@@ -17,20 +17,21 @@ class JoinASpaceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-    }
-    
-    @IBAction func joinSpacePressed(_ sender: Any) {
-        
-        viewModel?.joinASpace(spaceName: spaceName.text, spacePassword: spacePassword.text)
+
         viewModel?.emptyFields = { [weak self] in
             let alert = UIAlertController(title: "Empty!", message: "Please enter data in fields!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+
         viewModel?.wrongEntry = { [weak self] in
             let alert = UIAlertController(title: "Wrong!", message: "Space name or space password is wrong", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
+    }
+    
+    @IBAction func joinSpacePressed(_ sender: Any) {
+        viewModel?.joinASpace(spaceName: spaceName.text, spacePassword: spacePassword.text)
     }
 }

@@ -20,7 +20,15 @@ class CreateASpaceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        spaceDescription.delegate = self
+        spaceDescription.text = "Enter a description for your Space"
+        spaceDescription.textColor = UIColor.placholderGrey
         viewModel?.printEmail()
+        viewModel?.emptyFields = { [weak self] in
+            let alert = UIAlertController(title: "Empty!", message: "Please enter Space name and/or Space password and/or Space description", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
     
     @IBAction func createSpace(_ sender: Any) {
@@ -29,5 +37,21 @@ class CreateASpaceController: UIViewController {
     
     @IBAction func closePressed(_ sender: Any) {
         viewModel?.backPressed?()
+    }
+}
+
+extension CreateASpaceController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if spaceDescription.textColor == UIColor.placholderGrey {
+            spaceDescription.text = nil
+            spaceDescription.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if spaceDescription.text.isEmpty {
+            spaceDescription.text = "Enter a description for your Space"
+            spaceDescription.textColor = UIColor.placholderGrey
+        }
     }
 }

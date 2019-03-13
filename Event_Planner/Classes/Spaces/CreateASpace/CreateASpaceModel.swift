@@ -10,8 +10,6 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-
-
 struct Space {
     let spaceName: String?
     let spacePassword: String?
@@ -40,6 +38,7 @@ class CreateASpaceModel {
     private var userService: PUserService?
 
     var backPressed: (()->Void)?
+    var emptyFields: (()->Void)?
     
     init (userService: PUserService?) {
         self.userService = userService
@@ -48,7 +47,7 @@ class CreateASpaceModel {
     
     func createASpace(name: String?, password: String?, description: String?) {
         guard name?.isEmpty != true, password?.isEmpty != true, description?.isEmpty != true else {
-            print("Please enter Space name and/or password and/or description")
+            emptyFields?()
             return
         }
         guard let userID = Auth.auth().currentUser?.uid else {return}

@@ -18,45 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j03-kJ-ivZ">
-                                <rect key="frame" x="188" y="118" width="165" height="225"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="5pt-4L-jC0"/>
-                                    <constraint firstAttribute="width" constant="165" id="eNe-rX-Mzq"/>
-                                </constraints>
-                                <state key="normal" title="Chat">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="chatPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="cSE-jc-SV2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyu-a9-4wE">
-                                <rect key="frame" x="22" y="118" width="165" height="225"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="Ba2-cs-mV0"/>
-                                    <constraint firstAttribute="width" constant="165" id="m2Z-UQ-bao"/>
-                                </constraints>
-                                <state key="normal" title="Ideas">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="ideasPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="QrM-Dc-gsh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5w-4A-YVD">
-                                <rect key="frame" x="188" y="344" width="165" height="225"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="4vV-UC-SBx"/>
-                                    <constraint firstAttribute="width" constant="165" id="eod-g9-qsr"/>
-                                </constraints>
-                                <state key="normal" title="Budget">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="budgetPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="Jtz-Z4-NzP"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4G-Fl-X2b">
                                 <rect key="frame" x="16" y="343" width="155" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,48 +50,86 @@
                                     <constraint firstAttribute="height" constant="190" id="fIN-lI-T7n"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIR-x1-Hf1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="kIR-x1-Hf1">
                                 <rect key="frame" x="17" y="344" width="170" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="xLj-CR-h4l"/>
                                     <constraint firstAttribute="width" constant="170" id="yj2-l2-wMT"/>
                                 </constraints>
-                                <state key="normal" title="Tasks">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="-110" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-35" maxY="50"/>
+                                <state key="normal" title="Tasks" image="TasksIcon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tasksPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="bKo-oa-6R4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoW-rn-RFb">
-                                <rect key="frame" x="22" y="80" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-E4-5pe">
+                                <rect key="frame" x="17" y="118" width="170" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="XP4-sA-H4T"/>
+                                    <constraint firstAttribute="height" constant="225" id="kaB-Bm-hHq"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="-110" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="33" minY="0.0" maxX="0.0" maxY="50"/>
+                                <state key="normal" title="Ideas" image="IdeaIcon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="backPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="c66-Fm-dWw"/>
+                                    <action selector="ideasPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="2ZW-KH-YjG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2i-s9-zcN">
+                                <rect key="frame" x="188" y="118" width="170" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="2Z4-6B-VDw"/>
+                                    <constraint firstAttribute="height" constant="225" id="SzG-6h-Efq"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="-92" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="50"/>
+                                <state key="normal" title="Chats" image="ChatIcon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="chatPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="Aph-ZG-17L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti5-Nh-hbX">
+                                <rect key="frame" x="188" y="344" width="170" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="7rB-MT-ENd"/>
+                                    <constraint firstAttribute="width" constant="170" id="QSd-wg-2od"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="-95" minY="100" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="50"/>
+                                <state key="normal" title="Budget" image="BudgetIcon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="budgetPressed:" destination="Yje-wx-Ahj" eventType="touchUpInside" id="Ahe-ep-n4i"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DXU-iR-yOg" firstAttribute="top" secondItem="q8S-aX-db2" secondAttribute="topMargin" constant="95" id="4on-AK-BaA"/>
+                            <constraint firstItem="e4G-Fl-X2b" firstAttribute="top" secondItem="g6g-E4-5pe" secondAttribute="bottom" id="6tA-rD-F5i"/>
                             <constraint firstItem="DXU-iR-yOg" firstAttribute="centerX" secondItem="uuu-9a-tua" secondAttribute="centerX" id="7Ad-Xg-k6z"/>
-                            <constraint firstItem="DXU-iR-yOg" firstAttribute="leading" secondItem="wyu-a9-4wE" secondAttribute="trailing" id="BiC-MD-z0W"/>
-                            <constraint firstItem="LRj-nz-2v1" firstAttribute="top" secondItem="j03-kJ-ivZ" secondAttribute="bottom" id="Deb-H3-xFz"/>
-                            <constraint firstItem="e4G-Fl-X2b" firstAttribute="top" secondItem="wyu-a9-4wE" secondAttribute="bottom" id="HN9-BA-HyK"/>
                             <constraint firstItem="LRj-nz-2v1" firstAttribute="centerY" secondItem="uuu-9a-tua" secondAttribute="centerY" id="Hus-m8-P7h"/>
+                            <constraint firstItem="DXU-iR-yOg" firstAttribute="leading" secondItem="g6g-E4-5pe" secondAttribute="trailing" id="KzP-QC-aqW"/>
                             <constraint firstItem="6qR-Xz-noj" firstAttribute="leading" secondItem="kIR-x1-Hf1" secondAttribute="trailing" id="VyC-py-DU7"/>
-                            <constraint firstItem="x5w-4A-YVD" firstAttribute="leading" secondItem="6qR-Xz-noj" secondAttribute="trailing" id="Xin-Au-uik"/>
-                            <constraint firstItem="x5w-4A-YVD" firstAttribute="top" secondItem="LRj-nz-2v1" secondAttribute="bottom" id="gGn-pi-G0g"/>
+                            <constraint firstItem="Ti5-Nh-hbX" firstAttribute="top" secondItem="LRj-nz-2v1" secondAttribute="bottom" id="W7S-uu-An1"/>
+                            <constraint firstItem="LRj-nz-2v1" firstAttribute="top" secondItem="F2i-s9-zcN" secondAttribute="bottom" id="aGF-7i-VV7"/>
+                            <constraint firstItem="Ti5-Nh-hbX" firstAttribute="leading" secondItem="6qR-Xz-noj" secondAttribute="trailing" id="gN7-Qw-EmM"/>
                             <constraint firstItem="e4G-Fl-X2b" firstAttribute="leading" secondItem="q8S-aX-db2" secondAttribute="leadingMargin" id="gdp-fr-VR7"/>
                             <constraint firstItem="kIR-x1-Hf1" firstAttribute="top" secondItem="e4G-Fl-X2b" secondAttribute="bottom" id="geg-Si-Cpj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6qR-Xz-noj" secondAttribute="bottom" constant="95" id="ght-wx-7t6"/>
                             <constraint firstItem="e4G-Fl-X2b" firstAttribute="centerY" secondItem="uuu-9a-tua" secondAttribute="centerY" id="ncr-xj-AuO"/>
-                            <constraint firstItem="j03-kJ-ivZ" firstAttribute="leading" secondItem="DXU-iR-yOg" secondAttribute="trailing" id="rz8-zK-PaL"/>
                             <constraint firstItem="6qR-Xz-noj" firstAttribute="centerX" secondItem="uuu-9a-tua" secondAttribute="centerX" id="y46-4A-HFS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LRj-nz-2v1" secondAttribute="trailing" id="yTR-Pw-7tH"/>
+                            <constraint firstItem="F2i-s9-zcN" firstAttribute="leading" secondItem="DXU-iR-yOg" secondAttribute="trailing" id="zau-BR-ycR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uuu-9a-tua"/>
                     </view>
@@ -140,4 +139,10 @@
             <point key="canvasLocation" x="-7.2000000000000002" y="94.902548725637189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BudgetIcon" width="100" height="100"/>
+        <image name="ChatIcon" width="100" height="100"/>
+        <image name="IdeaIcon" width="100" height="100"/>
+        <image name="TasksIcon" width="100" height="100"/>
+    </resources>
 </document>

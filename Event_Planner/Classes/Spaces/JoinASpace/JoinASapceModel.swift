@@ -37,7 +37,7 @@ class JoinASpaceModel {
 
     var wrongEntry: (()-> Void)?
     var emptyFields: (()-> Void)?
-    var rightEntry: (()-> Void)?
+    var rightEntry: ((String)-> Void)?
 
     func joinASpace(spaceName: String?, spacePassword: String?) {
         guard spaceName?.isEmpty != true, spacePassword?.isEmpty != true else {
@@ -57,7 +57,7 @@ class JoinASpaceModel {
                     let user = AddUser(uID: uID)
                     self.ref?.child("Spaces").child(name!).child("Allowed Users").setValue(user.sendData())
                 }
-                self.rightEntry?()
+                self.rightEntry?(name!)
             } else {
                 self.wrongEntry?()
                 return
