@@ -9,13 +9,24 @@
 import UIKit
 
 class ChatsController: UIViewController {
+    @IBOutlet weak var allChats: UITableView!
+    @IBOutlet weak var searchChat: UISearchBar!
+
+    var viewModel: ChatsModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        allChats.delegate = self
+
+        let addChat = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addChatPressed))
+        self.navigationItem.rightBarButtonItem = addChat
+    }
+
+    @objc func addChatPressed(sender: UIBarButtonItem) {
+        viewModel?.addChatPressed?()
     }
 }
-
 
 extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 
