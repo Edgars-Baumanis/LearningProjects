@@ -9,10 +9,23 @@
 import UIKit
 
 class IdeasController: UIViewController {
+    @IBOutlet weak var allIdeas: UITableView!
+    @IBOutlet weak var allIdeasSearchBar: UISearchBar!
 
+    var viewModel: IdeasModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        allIdeas.delegate = self
+        allIdeas.dataSource = self
+
+        let addTopic = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addTopicPressed))
+        self.navigationItem.rightBarButtonItem = addTopic
+    }
+
+    @objc func addTopicPressed(sender: UIBarButtonItem) {
+        viewModel?.addTopicPressed?()
     }
 }
 

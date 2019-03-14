@@ -69,6 +69,10 @@ class MainFlow: FlowController {
         return chatsSB.instantiateViewController(withIdentifier: String(describing: CreateChat.self)) as? CreateChat
     }
 
+    private var addIdeasController: AddTopicController? {
+        return ideasSB.instantiateViewController(withIdentifier: String(describing: AddTopicController.self)) as? AddTopicController
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -121,6 +125,13 @@ class MainFlow: FlowController {
 
     private func navigateToIdeas() {
         guard let vc = ideasViewController else { return }
+        let viewModel = IdeasModel()
+
+        viewModel.addTopicPressed = { [weak self] in
+            self?.navigateToAddTopic()
+        }
+
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -145,6 +156,11 @@ class MainFlow: FlowController {
 
     private func navigateToAddChat() {
         guard let vc = addChatController else { return }
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddTopic() {
+        guard let vc = addIdeasController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
 }
