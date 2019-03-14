@@ -69,6 +69,14 @@ class MainFlow: FlowController {
         return chatsSB.instantiateViewController(withIdentifier: String(describing: CreateChat.self)) as? CreateChat
     }
 
+    private var addIdeasController: AddTopicController? {
+        return ideasSB.instantiateViewController(withIdentifier: String(describing: AddTopicController.self)) as? AddTopicController
+    }
+
+    private var configureBudget: ConfigureBudget? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: ConfigureBudget.self)) as? ConfigureBudget
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -106,6 +114,11 @@ class MainFlow: FlowController {
 
     private func navigateToBudget() {
         guard let vc = budgetViewController else { return }
+        let viewModel = BudgetModel()
+        viewModel.configurePressed = { [weak self] in
+            self?.navigateToConfigureBudget()
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -121,6 +134,13 @@ class MainFlow: FlowController {
 
     private func navigateToIdeas() {
         guard let vc = ideasViewController else { return }
+        let viewModel = IdeasModel()
+
+        viewModel.addTopicPressed = { [weak self] in
+            self?.navigateToAddTopic()
+        }
+
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -147,5 +167,16 @@ class MainFlow: FlowController {
         guard let vc = addChatController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
+
+    private func navigateToAddTopic() {
+        guard let vc = addIdeasController else { return }
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToConfigureBudget() {
+        guard let vc = configureBudget else { return }
+        rootController?.pushViewController(vc, animated: true)
+    }
+
 }
 

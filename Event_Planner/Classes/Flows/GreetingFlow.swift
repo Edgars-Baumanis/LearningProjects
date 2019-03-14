@@ -10,13 +10,13 @@ import UIKit
 
 class GreetingFlow: FlowController {
     
-    private var rootController: UITabBarController?
+    private var tabbar: UITabBarController?
     private var userService: PUserService?
+    private var rootController: UINavigationController?
     var navigateToSpaces: (()->Void)?
-    
 
-    init(with rootController: UITabBarController, userService: PUserService?) {
-        self.rootController = rootController
+    init(with tabbar: UITabBarController, userService: PUserService?) {
+        self.tabbar = tabbar
         self.userService = userService
     }
     
@@ -29,18 +29,21 @@ class GreetingFlow: FlowController {
     }
     
     func start() {
+
+
         guard let vc = greetingViewController else { return }
-        rootController?.present(vc, animated: false, completion: nil)
         let viewModel = GreetingModel()
         viewModel.signInPressed = { [weak self] in
-            self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToLogin()
         }
         viewModel.signUpPressed = { [weak self] in
-            self?.rootController?.dismiss(animated: false, completion: nil)
             self?.navigateToRegister()
         }
         vc.viewModel = viewModel
+        rootController = UINavigationController(rootViewController: vc)
+        guard let navController = rootController else { return }
+        tabbar?.present(navController, animated: false, completion: nil)
+
     }
     
     private var loginVC: LoginVC? {
@@ -49,16 +52,15 @@ class GreetingFlow: FlowController {
     
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
-        rootController?.present(vc, animated: false, completion: nil)
+        rootController?.pushViewController(vc, animated: true)
         let viewModel = LoginModel(userService: userService)
        
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }
-            self.rootController?.dismiss(animated: true, completion: nil)
             self.navigateToSpaces?()
+            self.tabbar?.dismiss(animated: true, completion: nil)
         }
         viewModel.backPressed = {
-            self.rootController?.dismiss(animated: false, completion: nil)
             self.start()
         }
         vc.viewModel = viewModel
@@ -70,14 +72,13 @@ class GreetingFlow: FlowController {
     
     private func navigateToRegister() {
         guard let vc = registerVC else { return }
-        rootController?.present(vc, animated: false, completion: nil)
+        rootController?.pushViewController(vc, animated: true)
         let viewModel = SignUpModel(userService: userService)
         viewModel.signUpPressed = { [weak self] in
-            self?.rootController?.dismiss(animated: false, completion: nil)
+            self?.tabbar?.dismiss(animated: true, completion: nil)
             self?.navigateToSpaces?()
         }
         viewModel.backPressed = {
-            self.rootController?.dismiss(animated: false, completion: nil)
             self.start()
         }
         vc.viewModel = viewModel

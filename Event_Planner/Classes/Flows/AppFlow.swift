@@ -31,7 +31,6 @@ class AppFlow: FlowController {
 
     func start() {
         rootController = tabbar
-        window.rootViewController = rootController
         if Auth.auth().currentUser != nil {
             self.navigateToSpacesFlow()
         } else {
@@ -40,6 +39,7 @@ class AppFlow: FlowController {
     }
 
     private func navigateToGreetingFlow() {
+        window.rootViewController = rootController
         guard let tabbar = rootController else {return}
         let greetingFlow = GreetingFlow(with: tabbar, userService: userService)
         greetingFlow.start()
@@ -50,6 +50,7 @@ class AppFlow: FlowController {
     }
 
     private func navigateToSpacesFlow() {
+        window.rootViewController = rootController
         guard let tabbar = rootController else {return}
         let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
         spacesFlow.start()

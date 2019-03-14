@@ -18,6 +18,7 @@ class ChatsController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
         allChats.delegate = self
+        allChats.dataSource = self
 
         let addChat = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addChatPressed))
         self.navigationItem.rightBarButtonItem = addChat

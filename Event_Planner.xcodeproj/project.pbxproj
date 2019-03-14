@@ -11,6 +11,15 @@
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
+		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
+		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
+		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
+		49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD7223A59BB00C6A160 /* BudgetModel.swift */; };
+		49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */; };
+		49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDD223A8A4D00C6A160 /* FieldCell.swift */; };
+		49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */; };
+		49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE2223AA72C00C6A160 /* IdeaCell.swift */; };
+		49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE4223AA7DB00C6A160 /* TopicCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E172223022D300EB8474 /* LoginFunc_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E171223022D300EB8474 /* LoginFunc_Test.swift */; };
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
@@ -49,7 +58,6 @@
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
 		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
 		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
-		49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A635223907A300D4A8EC /* IdeasCell.swift */; };
 		49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6372239237B00D4A8EC /* TasksModel.swift */; };
 		49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63A223926B800D4A8EC /* AddTask.swift */; };
 		49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63C22392BE200D4A8EC /* UIColor.swift */; };
@@ -91,6 +99,15 @@
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
+		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
+		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
+		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
+		49108CD7223A59BB00C6A160 /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
+		49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBudget.swift; sourceTree = "<group>"; };
+		49108CDD223A8A4D00C6A160 /* FieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCell.swift; sourceTree = "<group>"; };
+		49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopic.swift; sourceTree = "<group>"; };
+		49108CE2223AA72C00C6A160 /* IdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCell.swift; sourceTree = "<group>"; };
+		49108CE4223AA7DB00C6A160 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
@@ -130,7 +147,6 @@
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
 		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
-		49B7A635223907A300D4A8EC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		49B7A6372239237B00D4A8EC /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		49B7A63A223926B800D4A8EC /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		49B7A63C22392BE200D4A8EC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -216,6 +232,48 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		49108CCF223A424C00C6A160 /* AddTopic */ = {
+			isa = PBXGroup;
+			children = (
+				49108CD0223A427C00C6A160 /* AddTopicController.swift */,
+				49108CDF223AA5A000C6A160 /* IdeaTopic */,
+			);
+			path = AddTopic;
+			sourceTree = "<group>";
+		};
+		49108CD4223A549500C6A160 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49108CD5223A54A200C6A160 /* BudgetCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		49108CD9223A5A2300C6A160 /* ConfigureBudget */ = {
+			isa = PBXGroup;
+			children = (
+				49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */,
+				49108CDC223A8A2900C6A160 /* Cell */,
+			);
+			path = ConfigureBudget;
+			sourceTree = "<group>";
+		};
+		49108CDC223A8A2900C6A160 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49108CDD223A8A4D00C6A160 /* FieldCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		49108CDF223AA5A000C6A160 /* IdeaTopic */ = {
+			isa = PBXGroup;
+			children = (
+				49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */,
+			);
+			path = IdeaTopic;
+			sourceTree = "<group>";
+		};
 		4911E170223022D300EB8474 /* UserService Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +287,9 @@
 			isa = PBXGroup;
 			children = (
 				4935AB222232884A0061AE47 /* IdeasController.swift */,
+				49108CD2223A436300C6A160 /* IdeasModel.swift */,
 				4935AB162232873D0061AE47 /* Ideas.storyboard */,
+				49108CCF223A424C00C6A160 /* AddTopic */,
 				49B7A6342239078F00D4A8EC /* Cell */,
 			);
 			path = Ideas;
@@ -262,8 +322,11 @@
 		4935AB212232879D0061AE47 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
-				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
+				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
+				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
+				49108CD9223A5A2300C6A160 /* ConfigureBudget */,
+				49108CD4223A549500C6A160 /* Cell */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -400,7 +463,8 @@
 		49B7A6342239078F00D4A8EC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				49B7A635223907A300D4A8EC /* IdeasCell.swift */,
+				49108CE2223AA72C00C6A160 /* IdeaCell.swift */,
+				49108CE4223AA7DB00C6A160 /* TopicCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -710,7 +774,7 @@
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
-				49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */,
+				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
@@ -718,15 +782,21 @@
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
+				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
+				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
+				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
+				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
+				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
@@ -738,11 +808,13 @@
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
+				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
 				49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
+				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,
 			);

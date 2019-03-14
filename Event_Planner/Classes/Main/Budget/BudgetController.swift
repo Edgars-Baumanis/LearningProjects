@@ -9,22 +9,35 @@
 import UIKit
 
 class BudgetController: UIViewController {
+    @IBOutlet weak var Allpossitions: UITableView!
+    var viewModel: BudgetModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        // Do any additional setup after loading the view.
+        Allpossitions.delegate = self
+        Allpossitions.dataSource = self
+
+        let configureBudget = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(configurePressed))
+        self.navigationItem.rightBarButtonItem = configureBudget
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func configurePressed(sender: UIBarButtonItem) {
+        viewModel?.configurePressed?()
     }
-    */
+}
 
+extension BudgetController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BudgetCell.self), for: indexPath)
+        if let myCell = cell as? BudgetCell {
+            myCell.displayContent(name: "String", sum: 21.12)
+        }
+        return cell
+    }
 }
