@@ -17,6 +17,8 @@ class TasksController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        allTasks.delegate = self
+        allTasks.dataSource = self
         let addTask = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addTaskPressed))
         self.navigationItem.rightBarButtonItem = addTask
     }
@@ -33,9 +35,9 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Strings.TasksSB.rawValue, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksCell.self), for: indexPath)
         if let myCell = cell as? TasksCell {
-            myCell.displayContent(taskName: String(describing: TasksCell.self))
+            myCell.displayContent(taskName: "String")
         }
         return cell
     }
