@@ -40,6 +40,4 @@ extension BudgetController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-
-
 }

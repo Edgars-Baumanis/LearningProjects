@@ -18,6 +18,7 @@ class ConfigureBudget: UIViewController {
         fieldTable.dataSource = self
         
     }
+    
     @IBAction func addFieldPressed(_ sender: Any) {
         
     }

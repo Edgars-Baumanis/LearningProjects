@@ -17,6 +17,9 @@
 		49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD7223A59BB00C6A160 /* BudgetModel.swift */; };
 		49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */; };
 		49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDD223A8A4D00C6A160 /* FieldCell.swift */; };
+		49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */; };
+		49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE2223AA72C00C6A160 /* IdeaCell.swift */; };
+		49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE4223AA7DB00C6A160 /* TopicCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E172223022D300EB8474 /* LoginFunc_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E171223022D300EB8474 /* LoginFunc_Test.swift */; };
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
@@ -55,7 +58,6 @@
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
 		499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */; };
 		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
-		49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A635223907A300D4A8EC /* IdeasCell.swift */; };
 		49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6372239237B00D4A8EC /* TasksModel.swift */; };
 		49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63A223926B800D4A8EC /* AddTask.swift */; };
 		49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63C22392BE200D4A8EC /* UIColor.swift */; };
@@ -103,6 +105,9 @@
 		49108CD7223A59BB00C6A160 /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
 		49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBudget.swift; sourceTree = "<group>"; };
 		49108CDD223A8A4D00C6A160 /* FieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCell.swift; sourceTree = "<group>"; };
+		49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopic.swift; sourceTree = "<group>"; };
+		49108CE2223AA72C00C6A160 /* IdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCell.swift; sourceTree = "<group>"; };
+		49108CE4223AA7DB00C6A160 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
@@ -142,7 +147,6 @@
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB322257BF900694DD6 /* OtherSpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpacesCell.swift; sourceTree = "<group>"; };
 		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
-		49B7A635223907A300D4A8EC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		49B7A6372239237B00D4A8EC /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		49B7A63A223926B800D4A8EC /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		49B7A63C22392BE200D4A8EC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				49108CD0223A427C00C6A160 /* AddTopicController.swift */,
+				49108CDF223AA5A000C6A160 /* IdeaTopic */,
 			);
 			path = AddTopic;
 			sourceTree = "<group>";
@@ -259,6 +264,14 @@
 				49108CDD223A8A4D00C6A160 /* FieldCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		49108CDF223AA5A000C6A160 /* IdeaTopic */ = {
+			isa = PBXGroup;
+			children = (
+				49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */,
+			);
+			path = IdeaTopic;
 			sourceTree = "<group>";
 		};
 		4911E170223022D300EB8474 /* UserService Test */ = {
@@ -450,7 +463,8 @@
 		49B7A6342239078F00D4A8EC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				49B7A635223907A300D4A8EC /* IdeasCell.swift */,
+				49108CE2223AA72C00C6A160 /* IdeaCell.swift */,
+				49108CE4223AA7DB00C6A160 /* TopicCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -760,7 +774,6 @@
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
-				49B7A636223907A300D4A8EC /* IdeasCell.swift in Sources */,
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
@@ -769,11 +782,14 @@
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
+				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
+				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
