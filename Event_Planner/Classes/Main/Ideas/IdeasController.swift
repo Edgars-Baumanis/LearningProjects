@@ -36,8 +36,8 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: IdeasCell.self), for: indexPath)
-        if let myCell = cell as? IdeasCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+        if let myCell = cell as? TopicCell {
             myCell.displayContent(subject: "String")
         }
         return cell
