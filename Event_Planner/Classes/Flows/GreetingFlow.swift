@@ -13,7 +13,6 @@ class GreetingFlow: FlowController {
     private var rootController: UITabBarController?
     private var userService: PUserService?
     var navigateToSpaces: (()->Void)?
-    
 
     init(with rootController: UITabBarController, userService: PUserService?) {
         self.rootController = rootController

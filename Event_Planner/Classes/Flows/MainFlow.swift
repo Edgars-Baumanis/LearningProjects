@@ -73,6 +73,10 @@ class MainFlow: FlowController {
         return ideasSB.instantiateViewController(withIdentifier: String(describing: AddTopicController.self)) as? AddTopicController
     }
 
+    private var configureBudget: ConfigureBudget? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: ConfigureBudget.self)) as? ConfigureBudget
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -110,6 +114,11 @@ class MainFlow: FlowController {
 
     private func navigateToBudget() {
         guard let vc = budgetViewController else { return }
+        let viewModel = BudgetModel()
+        viewModel.configurePressed = { [weak self] in
+            self?.navigateToConfigureBudget()
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -163,5 +172,11 @@ class MainFlow: FlowController {
         guard let vc = addIdeasController else { return }
         rootController?.pushViewController(vc, animated: true)
     }
+
+    private func navigateToConfigureBudget() {
+        guard let vc = configureBudget else { return }
+        rootController?.pushViewController(vc, animated: true)
+    }
+
 }
 
