@@ -16,6 +16,7 @@
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
 		49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD7223A59BB00C6A160 /* BudgetModel.swift */; };
 		49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */; };
+		49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDD223A8A4D00C6A160 /* FieldCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E172223022D300EB8474 /* LoginFunc_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E171223022D300EB8474 /* LoginFunc_Test.swift */; };
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
@@ -101,6 +102,7 @@
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
 		49108CD7223A59BB00C6A160 /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
 		49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBudget.swift; sourceTree = "<group>"; };
+		49108CDD223A8A4D00C6A160 /* FieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
@@ -246,8 +248,17 @@
 			isa = PBXGroup;
 			children = (
 				49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */,
+				49108CDC223A8A2900C6A160 /* Cell */,
 			);
 			path = ConfigureBudget;
+			sourceTree = "<group>";
+		};
+		49108CDC223A8A2900C6A160 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49108CDD223A8A4D00C6A160 /* FieldCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4911E170223022D300EB8474 /* UserService Test */ = {
@@ -768,6 +779,7 @@
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
+				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,

@@ -9,8 +9,11 @@
 import UIKit
 
 class BudgetCell: UITableViewCell {
-    @IBOutlet weak var budgetCell: UILabel!
+    @IBOutlet weak var budgetName: UILabel!
+    @IBOutlet weak var budgetSum: UILabel!
     func displayContent(name: String, sum: Double) {
-        budgetCell.text = "\(name): \(sum)"
+        budgetName.text = name
+        budgetSum.text = "\(sum)"
+        
     }
 }
