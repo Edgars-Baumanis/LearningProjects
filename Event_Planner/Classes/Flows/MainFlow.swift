@@ -15,10 +15,13 @@ class MainFlow: FlowController {
     private var rootController: UINavigationController?
     private var tabbar: UITabBarController?
     private var spaceName: String?
+    private var chatName: String?
+    private var userServices: PUserService?
 
-    init(with tabbar: UITabBarController, with spaceName: String?) {
+    init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
         self.tabbar = tabbar
         self.spaceName = spaceName
+        self.userServices = userServices
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -39,6 +42,10 @@ class MainFlow: FlowController {
 
     private lazy var tasksSB: UIStoryboard = {
         return UIStoryboard.init(name: Strings.TasksSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private lazy var chatSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.ChatSB.rawValue, bundle: Bundle.main)
     }()
 
     private var mainViewController: MainViewController? {
@@ -75,6 +82,10 @@ class MainFlow: FlowController {
 
     private var configureBudget: ConfigureBudget? {
         return budgetSB.instantiateViewController(withIdentifier: String(describing: ConfigureBudget.self)) as? ConfigureBudget
+    }
+
+    private var chatController: ChatController? {
+        return chatSB.instantiateViewController(withIdentifier: String(describing: ChatController.self)) as? ChatController
     }
 
     func start() {
@@ -124,9 +135,13 @@ class MainFlow: FlowController {
 
     private func navigateToChats() {
         guard let vc = chatsViewController else { return }
-        let viewModel = ChatsModel()
+        let viewModel = ChatsModel(spaceName: spaceName)
         viewModel.addChatPressed = { [weak self] in
             self?.navigateToAddChat()
+        }
+        viewModel.cellClicked = { [weak self] cellName in
+            self?.chatName = cellName
+            self?.navigateToChat()
         }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
@@ -165,6 +180,11 @@ class MainFlow: FlowController {
 
     private func navigateToAddChat() {
         guard let vc = addChatController else { return }
+        let viewModel = CreateChatModel(spaceName: spaceName)
+        viewModel.chatCreated = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -175,6 +195,14 @@ class MainFlow: FlowController {
 
     private func navigateToConfigureBudget() {
         guard let vc = configureBudget else { return }
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToChat() {
+        guard let vc = chatController else { return }
+        let viewModel = ChatModel(chatName: chatName, userServices: userServices, spaceName: spaceName)
+        
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
