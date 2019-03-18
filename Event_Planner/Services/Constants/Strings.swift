@@ -18,4 +18,5 @@ enum Strings: String {
     case BudgetSB = "Budget"
     case ChatsSB = "Chat"
     case TasksSB = "Tasks"
+    case ChatSB = "SingleChat"
 }
