@@ -12,6 +12,8 @@ class CreateChat: UIViewController {
     @IBOutlet weak var chatName: TextFieldSubclass!
     @IBOutlet weak var chatPassword: TextFieldSubclass!
     @IBOutlet weak var chatDescription: TextViewSubclass!
+    var viewModel: CreateChatModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -19,6 +21,11 @@ class CreateChat: UIViewController {
         chatDescription.text = "Enter chat description"
         chatDescription.textColor = UIColor.placholderGrey
     }
+
+    @IBAction func createChatPressed(_ sender: Any) {
+        viewModel?.createChat(name: chatName.text, desc: chatDescription.text)
+    }
+    
 }
 
 extension CreateChat: UITextViewDelegate {
