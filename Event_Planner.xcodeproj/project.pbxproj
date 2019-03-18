@@ -11,6 +11,12 @@
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
+		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
+		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
+		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
+		490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */; };
+		490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B24223BCAF300E07DB3 /* ChatCell.swift */; };
+		490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B27223F981500E07DB3 /* ChatModel.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -99,6 +105,12 @@
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
+		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
+		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
+		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleChat.storyboard; sourceTree = "<group>"; };
+		490D4B24223BCAF300E07DB3 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		490D4B27223F981500E07DB3 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -232,6 +244,25 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		490D4B1E223BC71800E07DB3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B1F223BC82F00E07DB3 /* ChatController.swift */,
+				490D4B27223F981500E07DB3 /* ChatModel.swift */,
+				490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */,
+				490D4B23223BCA9600E07DB3 /* Cell */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		490D4B23223BCA9600E07DB3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B24223BCAF300E07DB3 /* ChatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		49108CCF223A424C00C6A160 /* AddTopic */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */,
+				490D03E9223B9BC0000E6878 /* ConfigureModel.swift */,
 				49108CDC223A8A2900C6A160 /* Cell */,
 			);
 			path = ConfigureBudget;
@@ -301,6 +333,7 @@
 				4935AB282232888C0061AE47 /* ChatsController.swift */,
 				49B7A64022394EC800D4A8EC /* ChatsModel.swift */,
 				4935AB18223287440061AE47 /* Chat.storyboard */,
+				490D4B1E223BC71800E07DB3 /* Chat */,
 				49B7A642223951F700D4A8EC /* CreateChat */,
 				49B7A6312238F79800D4A8EC /* Cell */,
 			);
@@ -482,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				49B7A6452239521600D4A8EC /* CreateChat.swift */,
+				490D03EB223BA5A1000E6878 /* CreateChatModel.swift */,
 			);
 			path = CreateChat;
 			sourceTree = "<group>";
@@ -676,6 +710,7 @@
 			files = (
 				49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */,
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
+				490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */,
 				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
@@ -767,6 +802,7 @@
 			files = (
 				499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */,
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
+				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
@@ -782,6 +818,7 @@
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
 				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
@@ -789,13 +826,16 @@
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
+				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
+				490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
+				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
