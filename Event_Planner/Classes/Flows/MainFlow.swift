@@ -19,7 +19,10 @@ class MainFlow: FlowController {
     private var chatName: String?
     private var ideaTopicName: String?
     private var userServices: PUserService?
-
+    private var budgetFieldName: String?
+    private var budgetFieldSum: String?
+    private var fieldKey: String?
+    
     init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
         self.rootTabbar = tabbar
         self.spaceName = spaceName
@@ -115,9 +118,9 @@ class MainFlow: FlowController {
         return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskDone.self)) as? TaskDone
     }
 
-
-
-    
+    private var addBudgetFieldController: AddBudgetField? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: AddBudgetField.self)) as? AddBudgetField
+    }
 
     func start() {
         guard let vc = mainViewController else {return}
@@ -156,9 +159,15 @@ class MainFlow: FlowController {
 
     private func navigateToBudget() {
         guard let vc = budgetViewController else { return }
-        let viewModel = BudgetModel()
-        viewModel.configurePressed = { [weak self] in
+        let viewModel = BudgetModel(spaceName: spaceName)
+        viewModel.configurePressed = { [weak self] fieldName, fieldSum, fieldKey in
+            self?.fieldKey = fieldKey
+            self?.budgetFieldName = fieldName
+            self?.budgetFieldSum = fieldSum
             self?.navigateToConfigureBudget()
+        }
+        viewModel.addPressed = { [weak self] in
+            self?.navigateToAddBudgetField()
         }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
@@ -240,6 +249,12 @@ class MainFlow: FlowController {
 
     private func navigateToConfigureBudget() {
         guard let vc = configureBudget else { return }
+        let viewModel = ConfigureModel(fieldName: budgetFieldName, fieldSum: budgetFieldSum, spaceName: spaceName, fieldKey: fieldKey)
+
+        viewModel.savePressed = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -270,6 +285,16 @@ class MainFlow: FlowController {
         guard let newTaskTabbar = taskTabbar else { return }
         rootController?.pushViewController(newTaskTabbar, animated: true)
         newTaskTabbar.viewControllers = [vcNeedsDoing, vcInProgress, vcDone]
+    }
+
+    private func navigateToAddBudgetField() {
+        guard let vc = addBudgetFieldController else { return }
+        let viewModel = AddBudgetModel(spaceName: spaceName)
+        viewModel.fieldAdded = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
     }
 }
 

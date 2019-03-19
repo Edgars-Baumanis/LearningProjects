@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import Firebase
 
 class ConfigureModel {
-    var fieldNames: [String] = []
-    var fieldSums: [Double] = []
+    var fieldName: String?
+    var fieldSum: String?
+    var savePressed: (() -> Void)?
+    private var ref: DatabaseReference?
+    private var spaceName: String?
+    private var fieldKey: String?
 
-    func addField(name: String?, sum: Double?) {
-        
+
+    init(fieldName: String?, fieldSum: String?, spaceName: String?, fieldKey: String?) {
+        self.fieldKey = fieldKey
+        self.spaceName = spaceName
+        self.fieldName = fieldName
+        self.fieldSum = fieldSum
+        ref = Database.database().reference()
+    }
+
+    func savePressed(fieldName: String?, fieldSum: String?) {
+        guard fieldName?.isEmpty != true, fieldSum?.isEmpty != true else { return }
+        guard let key = fieldKey else { return }
+        let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
+        let childUpdates = [
+            "/Spaces/\(spaceName!)/BudgetFields/\(key)" : newField.sendData()
+        ]
+        ref?.updateChildValues(childUpdates)
+        savePressed?()
     }
 }

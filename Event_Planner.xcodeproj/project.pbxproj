@@ -25,6 +25,8 @@
 		490D4B38223FD77700E07DB3 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B37223FD77700E07DB3 /* TaskDone.swift */; };
 		490D4B3A223FD8FF00E07DB3 /* TaskTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */; };
 		490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */; };
+		490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */; };
+		490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -127,6 +129,8 @@
 		490D4B37223FD77700E07DB3 /* TaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
 		490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskTopic.storyboard; sourceTree = "<group>"; };
 		490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTabbarController.swift; sourceTree = "<group>"; };
+		490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetField.swift; sourceTree = "<group>"; };
+		490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetModel.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -299,6 +303,15 @@
 			path = Task;
 			sourceTree = "<group>";
 		};
+		490D4B3D2240DE8800E07DB3 /* AddBudgetField */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */,
+				490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */,
+			);
+			path = AddBudgetField;
+			sourceTree = "<group>";
+		};
 		49108CCF223A424C00C6A160 /* AddTopic */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +412,7 @@
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
 				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
+				490D4B3D2240DE8800E07DB3 /* AddBudgetField */,
 				49108CD9223A5A2300C6A160 /* ConfigureBudget */,
 				49108CD4223A549500C6A160 /* Cell */,
 			);
@@ -860,6 +874,7 @@
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
+				490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
@@ -897,6 +912,7 @@
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
+				490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
 				49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */,
 				490D4B2D223FB44100E07DB3 /* AddTopicModel.swift in Sources */,
