@@ -52,7 +52,6 @@ class SpacesFlow: FlowController {
         }
         vc.viewModel = viewModel
         rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
-
     }
     
     private func initiateSecondVC() {

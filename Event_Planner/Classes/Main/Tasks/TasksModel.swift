@@ -7,7 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 class TasksModel {
-    var addTaskPressed: (()->Void)?
+    var addTaskPressed: (() -> Void)?
+    var dataSource: [String] = []
+    var dataSourceChanged: (() -> Void)?
+    var cellPressed: (() -> Void)?
+    private var ref: DatabaseReference?
+    private var databaseHandle: DatabaseHandle?
+    private var spaceName: String?
+    init(spaceName: String?) {
+        self.spaceName = spaceName
+        ref = Database.database().reference()
+        databaseHandle = DatabaseHandle()
+    }
+
+    func getTaskTopics() {
+        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").observe(.childAdded, with:  { (snapshot) in
+            let post = snapshot.value as? [String: AnyObject]
+            guard let taskName = post?["name"] as? String else { return }
+
+            self.dataSource.append(taskName)
+            self.dataSourceChanged?()
+        })
+    }
 }

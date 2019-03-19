@@ -11,6 +11,24 @@
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
+		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
+		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
+		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
+		490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */; };
+		490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B24223BCAF300E07DB3 /* ChatCell.swift */; };
+		490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B27223F981500E07DB3 /* ChatModel.swift */; };
+		490D4B2A223FB29C00E07DB3 /* IdeaTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B29223FB29C00E07DB3 /* IdeaTopic.storyboard */; };
+		490D4B2D223FB44100E07DB3 /* AddTopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B2C223FB44100E07DB3 /* AddTopicModel.swift */; };
+		490D4B2F223FC94500E07DB3 /* IdeaTopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B2E223FC94500E07DB3 /* IdeaTopicModel.swift */; };
+		490D4B34223FD76200E07DB3 /* TaskNeedsDoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B33223FD76200E07DB3 /* TaskNeedsDoing.swift */; };
+		490D4B36223FD77000E07DB3 /* TaskInProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B35223FD77000E07DB3 /* TaskInProgress.swift */; };
+		490D4B38223FD77700E07DB3 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B37223FD77700E07DB3 /* TaskDone.swift */; };
+		490D4B3A223FD8FF00E07DB3 /* TaskTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */; };
+		490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */; };
+		490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */; };
+		490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */; };
+		490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4322412CE300E07DB3 /* AddIdea.swift */; };
+		490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -99,6 +117,24 @@
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
+		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
+		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
+		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleChat.storyboard; sourceTree = "<group>"; };
+		490D4B24223BCAF300E07DB3 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		490D4B27223F981500E07DB3 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		490D4B29223FB29C00E07DB3 /* IdeaTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdeaTopic.storyboard; sourceTree = "<group>"; };
+		490D4B2C223FB44100E07DB3 /* AddTopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicModel.swift; sourceTree = "<group>"; };
+		490D4B2E223FC94500E07DB3 /* IdeaTopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopicModel.swift; sourceTree = "<group>"; };
+		490D4B33223FD76200E07DB3 /* TaskNeedsDoing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNeedsDoing.swift; sourceTree = "<group>"; };
+		490D4B35223FD77000E07DB3 /* TaskInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInProgress.swift; sourceTree = "<group>"; };
+		490D4B37223FD77700E07DB3 /* TaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
+		490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskTopic.storyboard; sourceTree = "<group>"; };
+		490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTabbarController.swift; sourceTree = "<group>"; };
+		490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetField.swift; sourceTree = "<group>"; };
+		490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetModel.swift; sourceTree = "<group>"; };
+		490D4B4322412CE300E07DB3 /* AddIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdea.swift; sourceTree = "<group>"; };
+		490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaModel.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -232,11 +268,68 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		490D4B1E223BC71800E07DB3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B1F223BC82F00E07DB3 /* ChatController.swift */,
+				490D4B27223F981500E07DB3 /* ChatModel.swift */,
+				490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */,
+				490D4B23223BCA9600E07DB3 /* Cell */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		490D4B23223BCA9600E07DB3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B24223BCAF300E07DB3 /* ChatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		490D4B2B223FB2EC00E07DB3 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				49108CE2223AA72C00C6A160 /* IdeaCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		490D4B30223FD6EC00E07DB3 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B33223FD76200E07DB3 /* TaskNeedsDoing.swift */,
+				490D4B35223FD77000E07DB3 /* TaskInProgress.swift */,
+				490D4B37223FD77700E07DB3 /* TaskDone.swift */,
+				490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */,
+				490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		490D4B3D2240DE8800E07DB3 /* AddBudgetField */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */,
+				490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */,
+			);
+			path = AddBudgetField;
+			sourceTree = "<group>";
+		};
+		490D4B4222412C9A00E07DB3 /* Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B4322412CE300E07DB3 /* AddIdea.swift */,
+				490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */,
+			);
+			path = Ideas;
+			sourceTree = "<group>";
+		};
 		49108CCF223A424C00C6A160 /* AddTopic */ = {
 			isa = PBXGroup;
 			children = (
 				49108CD0223A427C00C6A160 /* AddTopicController.swift */,
-				49108CDF223AA5A000C6A160 /* IdeaTopic */,
+				490D4B2C223FB44100E07DB3 /* AddTopicModel.swift */,
 			);
 			path = AddTopic;
 			sourceTree = "<group>";
@@ -253,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */,
+				490D03E9223B9BC0000E6878 /* ConfigureModel.swift */,
 				49108CDC223A8A2900C6A160 /* Cell */,
 			);
 			path = ConfigureBudget;
@@ -270,6 +364,10 @@
 			isa = PBXGroup;
 			children = (
 				49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */,
+				490D4B2E223FC94500E07DB3 /* IdeaTopicModel.swift */,
+				490D4B29223FB29C00E07DB3 /* IdeaTopic.storyboard */,
+				490D4B4222412C9A00E07DB3 /* Ideas */,
+				490D4B2B223FB2EC00E07DB3 /* cell */,
 			);
 			path = IdeaTopic;
 			sourceTree = "<group>";
@@ -290,6 +388,7 @@
 				49108CD2223A436300C6A160 /* IdeasModel.swift */,
 				4935AB162232873D0061AE47 /* Ideas.storyboard */,
 				49108CCF223A424C00C6A160 /* AddTopic */,
+				49108CDF223AA5A000C6A160 /* IdeaTopic */,
 				49B7A6342239078F00D4A8EC /* Cell */,
 			);
 			path = Ideas;
@@ -301,6 +400,7 @@
 				4935AB282232888C0061AE47 /* ChatsController.swift */,
 				49B7A64022394EC800D4A8EC /* ChatsModel.swift */,
 				4935AB18223287440061AE47 /* Chat.storyboard */,
+				490D4B1E223BC71800E07DB3 /* Chat */,
 				49B7A642223951F700D4A8EC /* CreateChat */,
 				49B7A6312238F79800D4A8EC /* Cell */,
 			);
@@ -313,6 +413,7 @@
 				4935AB2A223288950061AE47 /* TasksController.swift */,
 				49B7A6372239237B00D4A8EC /* TasksModel.swift */,
 				4935AB1C223287730061AE47 /* Tasks.storyboard */,
+				490D4B30223FD6EC00E07DB3 /* Task */,
 				49B7A6392239269C00D4A8EC /* AddTask */,
 				4904C86422369A7D00A31D98 /* Cell */,
 			);
@@ -325,6 +426,7 @@
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
 				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
+				490D4B3D2240DE8800E07DB3 /* AddBudgetField */,
 				49108CD9223A5A2300C6A160 /* ConfigureBudget */,
 				49108CD4223A549500C6A160 /* Cell */,
 			);
@@ -463,7 +565,6 @@
 		49B7A6342239078F00D4A8EC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				49108CE2223AA72C00C6A160 /* IdeaCell.swift */,
 				49108CE4223AA7DB00C6A160 /* TopicCell.swift */,
 			);
 			path = Cell;
@@ -482,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				49B7A6452239521600D4A8EC /* CreateChat.swift */,
+				490D03EB223BA5A1000E6878 /* CreateChatModel.swift */,
 			);
 			path = CreateChat;
 			sourceTree = "<group>";
@@ -674,10 +776,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490D4B3A223FD8FF00E07DB3 /* TaskTopic.storyboard in Resources */,
 				49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */,
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
+				490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */,
 				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
+				490D4B2A223FB29C00E07DB3 /* IdeaTopic.storyboard in Resources */,
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
 				4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
@@ -766,7 +871,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */,
+				490D4B2F223FC94500E07DB3 /* IdeaTopicModel.swift in Sources */,
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
+				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
@@ -777,25 +884,35 @@
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
+				490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
+				490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
 				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
+				490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
+				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
+				490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */,
+				490D4B36223FD77000E07DB3 /* TaskInProgress.swift in Sources */,
+				490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
+				490D4B34223FD76200E07DB3 /* TaskNeedsDoing.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
+				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
@@ -811,11 +928,14 @@
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
+				490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
 				49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */,
+				490D4B2D223FB44100E07DB3 /* AddTopicModel.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
+				490D4B38223FD77700E07DB3 /* TaskDone.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

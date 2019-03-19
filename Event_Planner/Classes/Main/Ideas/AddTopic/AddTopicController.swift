@@ -10,8 +10,14 @@ import UIKit
 
 class AddTopicController: UIViewController {
 
+    @IBOutlet weak var topicName: TextFieldSubclass!
+    var viewModel: AddTopicModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+    }
+    @IBAction func addTopicPressed(_ sender: Any) {
+        viewModel?.addTopic(topicName: topicName.text)
     }
 }

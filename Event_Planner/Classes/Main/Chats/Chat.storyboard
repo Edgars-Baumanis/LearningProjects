@@ -155,6 +155,9 @@
                                 <state key="normal" title="Create chat">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createChatPressed:" destination="RJF-yC-6p4" eventType="touchUpInside" id="baA-bM-QYr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

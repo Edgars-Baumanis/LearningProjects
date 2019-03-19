@@ -19,6 +19,10 @@ class IdeasController: UIViewController {
         view.setGradientBackground()
         allIdeas.delegate = self
         allIdeas.dataSource = self
+        viewModel?.getTopics()
+        viewModel?.dataSourceChanged = { [weak self] in
+            self?.allIdeas.reloadData()
+        }
 
         let addTopic = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addTopicPressed))
         self.navigationItem.rightBarButtonItem = addTopic
@@ -32,16 +36,19 @@ class IdeasController: UIViewController {
 extension IdeasController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel?.dataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(subject: "String")
+            myCell.displayContent(subject: viewModel?.dataSource[indexPath.row] ?? "Something went wrong")
         }
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row] ?? "Something went wrong")
+    }
 
 }

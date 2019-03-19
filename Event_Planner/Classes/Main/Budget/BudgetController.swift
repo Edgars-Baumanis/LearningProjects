@@ -9,6 +9,8 @@
 import UIKit
 
 class BudgetController: UIViewController {
+    @IBOutlet weak var remainingBudget: UILabel!
+    @IBOutlet weak var totalBudget: UITextField!
     @IBOutlet weak var Allpossitions: UITableView!
     var viewModel: BudgetModel?
 
@@ -17,27 +19,39 @@ class BudgetController: UIViewController {
         view.setGradientBackground()
         Allpossitions.delegate = self
         Allpossitions.dataSource = self
-
-        let configureBudget = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(configurePressed))
+        viewModel?.getData()
+        viewModel?.dataSourceChanged = { [weak self] in
+            self?.Allpossitions.reloadData()
+        }
+        viewModel?.reloadData()
+        
+        let configureBudget = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addPressed))
         self.navigationItem.rightBarButtonItem = configureBudget
     }
 
-    @objc func configurePressed(sender: UIBarButtonItem) {
-        viewModel?.configurePressed?()
+
+    @objc func addPressed(sender: UIBarButtonItem) {
+        viewModel?.addPressed?()
     }
 }
 
 extension BudgetController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel?.dataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BudgetCell.self), for: indexPath)
         if let myCell = cell as? BudgetCell {
-            myCell.displayContent(name: "String", sum: 21.12)
+            myCell.displayContent(
+                name: viewModel?.dataSource[indexPath.row].name ?? "Default name" ,
+                sum: viewModel?.dataSource[indexPath.row].sum ?? "Default Sum")
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.configurePressed?(viewModel?.dataSource[indexPath.row].name, viewModel?.dataSource[indexPath.row].sum, viewModel?.dataSource[indexPath.row].key)
     }
 }
