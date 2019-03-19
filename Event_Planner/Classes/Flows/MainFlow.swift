@@ -13,16 +13,19 @@ class MainFlow: FlowController {
     var backPressed: (()-> Void)?
 
     private var rootController: UINavigationController?
-    private var tabbar: UITabBarController?
+    private var rootTabbar: UITabBarController?
+    private var taskTabbar: UITabBarController?
     private var spaceName: String?
     private var chatName: String?
+    private var ideaTopicName: String?
     private var userServices: PUserService?
 
     init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
-        self.tabbar = tabbar
+        self.rootTabbar = tabbar
         self.spaceName = spaceName
         self.userServices = userServices
     }
+    
 
     private lazy var mainSB: UIStoryboard = {
         return UIStoryboard.init(name: Strings.MainSB.rawValue, bundle: Bundle.main)
@@ -46,6 +49,14 @@ class MainFlow: FlowController {
 
     private lazy var chatSB: UIStoryboard = {
         return UIStoryboard.init(name: Strings.ChatSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private lazy var ideaTopicSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.IdeaTopicSB.rawValue, bundle: Bundle.main)
+    }()
+
+    private lazy var taskTopicSB: UIStoryboard = {
+        return UIStoryboard.init(name: Strings.TaskTopicSB.rawValue, bundle: Bundle.main)
     }()
 
     private var mainViewController: MainViewController? {
@@ -88,6 +99,26 @@ class MainFlow: FlowController {
         return chatSB.instantiateViewController(withIdentifier: String(describing: ChatController.self)) as? ChatController
     }
 
+    private var ideaTopic: IdeaTopic? {
+        return ideaTopicSB.instantiateViewController(withIdentifier: String(describing: IdeaTopic.self)) as? IdeaTopic
+    }
+
+    private var taskNeedsDoingController: TaskNeedsDoing? {
+        return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskNeedsDoing.self)) as? TaskNeedsDoing
+    }
+
+    private var taskInProgressController: TaskInProgress? {
+        return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskInProgress.self)) as? TaskInProgress
+    }
+
+    private var taskDoneController: TaskDone? {
+        return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskDone.self)) as? TaskDone
+    }
+
+
+
+    
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -111,7 +142,7 @@ class MainFlow: FlowController {
         }
 
         viewModel.backPressed = { [weak self] in
-            self?.tabbar?.dismiss(animated: true, completion: nil)
+            self?.rootTabbar?.dismiss(animated: true, completion: nil)
             self?.backPressed?()
         }
         viewModel.spaceName = self.spaceName
@@ -120,7 +151,7 @@ class MainFlow: FlowController {
 
         rootController = UINavigationController(rootViewController: vc)
         guard let navController = rootController else { return }
-        tabbar?.present(navController, animated: true, completion: nil)
+        rootTabbar?.present(navController, animated: true, completion: nil)
     }
 
     private func navigateToBudget() {
@@ -149,10 +180,15 @@ class MainFlow: FlowController {
 
     private func navigateToIdeas() {
         guard let vc = ideasViewController else { return }
-        let viewModel = IdeasModel()
+        let viewModel = IdeasModel(spaceName: spaceName)
 
         viewModel.addTopicPressed = { [weak self] in
             self?.navigateToAddTopic()
+        }
+
+        viewModel.cellPressed = { [weak self] cellName in
+            self?.ideaTopicName = cellName
+            self?.navigateToIdeaTopics()
         }
 
         vc.viewModel = viewModel
@@ -161,10 +197,14 @@ class MainFlow: FlowController {
 
     private func navigateToTasks() {
         guard let vc = tasksViewController else { return }
-        let viewModel = TasksModel()
+        let viewModel = TasksModel(spaceName: spaceName)
         
         viewModel.addTaskPressed = { [weak self] in
             self?.navigateToAddTask()
+        }
+
+        viewModel.cellPressed = { [weak self] in
+            self?.navigateToTaskTopics()
         }
 
         vc.viewModel = viewModel
@@ -173,7 +213,7 @@ class MainFlow: FlowController {
 
     private func navigateToAddTask() {
         guard let vc = addTaskController else { return }
-        let viewModel = AddTaskModel()
+        let viewModel = AddTaskModel(spaceName: spaceName)
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
@@ -190,6 +230,11 @@ class MainFlow: FlowController {
 
     private func navigateToAddTopic() {
         guard let vc = addIdeasController else { return }
+        let viewModel = AddTopicModel(spaceName: spaceName)
+        viewModel.addTopicPressed = { [weak self] in
+            self?.navigateToIdeas()
+        }
+        vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
@@ -201,10 +246,30 @@ class MainFlow: FlowController {
     private func navigateToChat() {
         guard let vc = chatController else { return }
         let viewModel = ChatModel(chatName: chatName, userServices: userServices, spaceName: spaceName)
-        
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
 
+    private func navigateToIdeaTopics() {
+        guard let vc = ideaTopic else { return }
+        let viewModel = IdeaTopicModel(topicName: ideaTopicName)
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToTaskTopics() {
+        taskTabbar = UITabBarController()
+        guard
+            let vcNeedsDoing = taskNeedsDoingController,
+            let vcInProgress = taskInProgressController,
+            let vcDone = taskDoneController
+            else { return }
+        vcNeedsDoing.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        vcInProgress.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        vcDone.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 2)
+        guard let newTaskTabbar = taskTabbar else { return }
+        rootController?.pushViewController(newTaskTabbar, animated: true)
+        newTaskTabbar.viewControllers = [vcNeedsDoing, vcInProgress, vcDone]
+    }
 }
 
