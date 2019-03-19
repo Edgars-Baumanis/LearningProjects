@@ -83,5 +83,73 @@
             </objects>
             <point key="canvasLocation" x="137" y="828"/>
         </scene>
+        <!--Add Idea-->
+        <scene sceneID="0VQ-iW-fsi">
+            <objects>
+                <viewController storyboardIdentifier="AddIdea" id="Spb-T1-YCb" customClass="AddIdea" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2TS-Fz-SXn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter topic for ideas" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C1f-y1-hRt" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="120" width="335" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ga6-LS-BWm"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4x9-Qr-oEj">
+                                <rect key="frame" x="20" y="230" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Mjf-aF-zP7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Add topic">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addIdeaPressed:" destination="Spb-T1-YCb" eventType="touchUpInside" id="HwA-st-a8l"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4x9-Qr-oEj" firstAttribute="leading" secondItem="Kdo-tr-Vh7" secondAttribute="leading" constant="20" id="3vR-R9-rcH"/>
+                            <constraint firstItem="Kdo-tr-Vh7" firstAttribute="trailing" secondItem="4x9-Qr-oEj" secondAttribute="trailing" constant="20" id="W4L-77-Oxn"/>
+                            <constraint firstItem="C1f-y1-hRt" firstAttribute="leading" secondItem="Kdo-tr-Vh7" secondAttribute="leading" constant="20" id="YJL-Ka-fJU"/>
+                            <constraint firstItem="C1f-y1-hRt" firstAttribute="top" secondItem="Kdo-tr-Vh7" secondAttribute="top" constant="100" id="gQE-Hz-qMa"/>
+                            <constraint firstItem="4x9-Qr-oEj" firstAttribute="top" secondItem="C1f-y1-hRt" secondAttribute="bottom" constant="50" id="xHf-Ny-7g1"/>
+                            <constraint firstItem="Kdo-tr-Vh7" firstAttribute="trailing" secondItem="C1f-y1-hRt" secondAttribute="trailing" constant="20" id="zEW-ab-8oq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kdo-tr-Vh7"/>
+                    </view>
+                    <connections>
+                        <outlet property="ideaName" destination="C1f-y1-hRt" id="kvg-ss-KLU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6UY-P0-WcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="827"/>
+        </scene>
     </scenes>
 </document>

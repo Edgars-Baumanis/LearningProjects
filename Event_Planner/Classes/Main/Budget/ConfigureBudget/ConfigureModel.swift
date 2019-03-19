@@ -27,8 +27,11 @@ class ConfigureModel {
     }
 
     func savePressed(fieldName: String?, fieldSum: String?) {
-        guard fieldName?.isEmpty != true, fieldSum?.isEmpty != true else { return }
-        guard let key = fieldKey else { return }
+        guard
+            fieldName?.isEmpty != true,
+            fieldSum?.isEmpty != true,
+            let key = fieldKey
+            else { return }
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
             "/Spaces/\(spaceName!)/BudgetFields/\(key)" : newField.sendData()

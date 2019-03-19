@@ -25,7 +25,7 @@ class IdeasModel {
 
     func getTopics() {
         databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").observe(.childAdded, with: { (snapshot) in
-            guard let topicName = snapshot.value as? String else { return }
+            guard let topicName = snapshot.key as? String else { return }
             self.dataSource.append(topicName)
             self.dataSourceChanged?()
         })

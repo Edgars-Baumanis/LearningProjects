@@ -27,6 +27,8 @@
 		490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */; };
 		490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */; };
 		490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */; };
+		490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4322412CE300E07DB3 /* AddIdea.swift */; };
+		490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -131,6 +133,8 @@
 		490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTabbarController.swift; sourceTree = "<group>"; };
 		490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetField.swift; sourceTree = "<group>"; };
 		490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetModel.swift; sourceTree = "<group>"; };
+		490D4B4322412CE300E07DB3 /* AddIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdea.swift; sourceTree = "<group>"; };
+		490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaModel.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,15 @@
 			path = AddBudgetField;
 			sourceTree = "<group>";
 		};
+		490D4B4222412C9A00E07DB3 /* Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				490D4B4322412CE300E07DB3 /* AddIdea.swift */,
+				490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */,
+			);
+			path = Ideas;
+			sourceTree = "<group>";
+		};
 		49108CCF223A424C00C6A160 /* AddTopic */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +366,7 @@
 				49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */,
 				490D4B2E223FC94500E07DB3 /* IdeaTopicModel.swift */,
 				490D4B29223FB29C00E07DB3 /* IdeaTopic.storyboard */,
+				490D4B4222412C9A00E07DB3 /* Ideas */,
 				490D4B2B223FB2EC00E07DB3 /* cell */,
 			);
 			path = IdeaTopic;
@@ -870,6 +884,7 @@
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
+				490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
@@ -887,6 +902,7 @@
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
+				490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */,
 				490D4B36223FD77000E07DB3 /* TaskInProgress.swift in Sources */,
 				490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,

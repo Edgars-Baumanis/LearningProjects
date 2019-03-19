@@ -122,6 +122,10 @@ class MainFlow: FlowController {
         return budgetSB.instantiateViewController(withIdentifier: String(describing: AddBudgetField.self)) as? AddBudgetField
     }
 
+    private var addIdeaController: AddIdea? {
+        return ideaTopicSB.instantiateViewController(withIdentifier: String(describing: AddIdea.self)) as? AddIdea
+    }
+
     func start() {
         guard let vc = mainViewController else {return}
         
@@ -241,7 +245,7 @@ class MainFlow: FlowController {
         guard let vc = addIdeasController else { return }
         let viewModel = AddTopicModel(spaceName: spaceName)
         viewModel.addTopicPressed = { [weak self] in
-            self?.navigateToIdeas()
+            self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
@@ -267,7 +271,10 @@ class MainFlow: FlowController {
 
     private func navigateToIdeaTopics() {
         guard let vc = ideaTopic else { return }
-        let viewModel = IdeaTopicModel(topicName: ideaTopicName)
+        let viewModel = IdeaTopicModel(topicName: ideaTopicName, spaceName: spaceName)
+        viewModel.addPressed = { [weak self] in
+            self?.navigateToAddIdea()
+        }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
@@ -291,6 +298,16 @@ class MainFlow: FlowController {
         guard let vc = addBudgetFieldController else { return }
         let viewModel = AddBudgetModel(spaceName: spaceName)
         viewModel.fieldAdded = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddIdea() {
+        guard let vc = addIdeaController else { return }
+        let viewModel = AddIdeaModel(spaceName: spaceName, topicName: ideaTopicName)
+        viewModel.ideaAdded = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
