@@ -22,6 +22,7 @@ class MainFlow: FlowController {
     private var budgetFieldName: String?
     private var budgetFieldSum: String?
     private var fieldKey: String?
+    private var taskTopic: TaskTopic?
     
     init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
         self.rootTabbar = tabbar
@@ -82,7 +83,7 @@ class MainFlow: FlowController {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
     }
 
-    private var addTaskController: AddTask? {
+    private var addTaskTopicController: AddTask? {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
     }
 
@@ -124,6 +125,10 @@ class MainFlow: FlowController {
 
     private var addIdeaController: AddIdea? {
         return ideaTopicSB.instantiateViewController(withIdentifier: String(describing: AddIdea.self)) as? AddIdea
+    }
+
+    private var addTaskController: TaskAddTask? {
+        return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskAddTask.self)) as? TaskAddTask
     }
 
     func start() {
@@ -213,10 +218,11 @@ class MainFlow: FlowController {
         let viewModel = TasksModel(spaceName: spaceName)
         
         viewModel.addTaskPressed = { [weak self] in
-            self?.navigateToAddTask()
+            self?.navigateToAddTaskTopic()
         }
 
-        viewModel.cellPressed = { [weak self] in
+        viewModel.cellPressed = { [weak self] taskTopic in
+            self?.taskTopic = TaskTopic(name: taskTopic.name, key: taskTopic.key)
             self?.navigateToTaskTopics()
         }
 
@@ -224,9 +230,12 @@ class MainFlow: FlowController {
         rootController?.pushViewController(vc, animated: true)
     }
 
-    private func navigateToAddTask() {
-        guard let vc = addTaskController else { return }
+    private func navigateToAddTaskTopic() {
+        guard let vc = addTaskTopicController else { return }
         let viewModel = AddTaskModel(spaceName: spaceName)
+        viewModel.addTaskPressed = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
@@ -286,12 +295,19 @@ class MainFlow: FlowController {
             let vcInProgress = taskInProgressController,
             let vcDone = taskDoneController
             else { return }
-        vcNeedsDoing.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        vcInProgress.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        vcDone.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 2)
+        vcNeedsDoing.tabBarItem = UITabBarItem(title: "Needs Doing", image: UIImage(named: "task-needsDoing"), tag: 0)
+        let needsDoingViewModel = TaskNeedsDoingModel(spaceName: spaceName, taskTopic: taskTopic)
+        needsDoingViewModel.addPressed = { [weak self] in
+            self?.navigateToAddTask()
+        }
+        vcNeedsDoing.viewModel = needsDoingViewModel
+
+        vcInProgress.tabBarItem = UITabBarItem(title: "In Progress", image: UIImage(named: "task-inProgress"), tag: 1)
+        vcDone.tabBarItem = UITabBarItem(title: "Done", image: UIImage(named: "task-done"), tag: 2)
         guard let newTaskTabbar = taskTabbar else { return }
-        rootController?.pushViewController(newTaskTabbar, animated: true)
+        
         newTaskTabbar.viewControllers = [vcNeedsDoing, vcInProgress, vcDone]
+        rootController?.pushViewController(newTaskTabbar, animated: true)
     }
 
     private func navigateToAddBudgetField() {
@@ -308,6 +324,16 @@ class MainFlow: FlowController {
         guard let vc = addIdeaController else { return }
         let viewModel = AddIdeaModel(spaceName: spaceName, topicName: ideaTopicName)
         viewModel.ideaAdded = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToAddTask() {
+        guard let vc = addTaskController else { return }
+        let viewModel = TaskAddTaskModel(spaceName: spaceName, taskTopic: taskTopic)
+        viewModel.addTaskPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel

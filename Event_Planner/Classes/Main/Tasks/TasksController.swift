@@ -23,8 +23,18 @@ class TasksController: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allTasks.reloadData()
         }
-        let addTask = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addTaskPressed))
-        self.navigationItem.rightBarButtonItem = addTask
+        floatingButton()
+    }
+
+    func floatingButton() {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
+        btn.setTitle("+", for: .normal)
+        btn.backgroundColor = UIColor.black
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 30
+        btn.addTarget(self, action: #selector(addTaskPressed), for: .touchUpInside)
+        view.addSubview(btn)
     }
 
     @objc func addTaskPressed(sender: UIBarButtonItem) {
@@ -41,12 +51,12 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksCell.self), for: indexPath)
         if let myCell = cell as? TasksCell {
-            myCell.displayContent(taskName: (viewModel?.dataSource[indexPath.row])!)
+            myCell.displayContent(taskName: viewModel?.dataSource[indexPath.row].name ?? "Default Name")
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?()
+        viewModel?.cellPressed?((viewModel?.dataSource[indexPath.row])!)
     }
 }

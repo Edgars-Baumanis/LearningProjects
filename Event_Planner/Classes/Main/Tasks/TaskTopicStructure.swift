@@ -9,18 +9,17 @@
 import UIKit
 
 struct TaskTopic {
-    let name: String
-    let description: String
+    var name: String
+    var key: String?
 
-    init(name: String, description: String) {
+    init(name: String, key: String?) {
         self.name = name
-        self.description = description
+        self.key = key
     }
 
     func sendData() -> Any {
         return [
-            "name": name,
-            "description": description
+            "name": name
         ]
     }
 }

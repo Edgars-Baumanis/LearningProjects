@@ -11,6 +11,7 @@ import Firebase
 
 class AddTaskModel {
     var emptyFields: (()->Void)?
+    var addTaskPressed: (() -> Void)?
     private var ref: DatabaseReference?
     private var spaceName: String?
 
@@ -19,12 +20,14 @@ class AddTaskModel {
         self.spaceName = spaceName
     }
 
-    func addTask(taskName: String?, taskDescription: String?) {
-        guard taskName?.isEmpty != true, taskDescription?.isEmpty != true else {
+    func addTask(taskName: String?) {
+        guard taskName?.isEmpty != true else {
             emptyFields?()
             return
         }
-        let newTask = TaskTopic(name: taskName!, description: taskDescription!)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child(taskName!).setValue(newTask.sendData())
+        let newTopic = TaskTopic(name: taskName!, key: nil)
+        ref?.child("Spaces").child(spaceName!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
+        self.addTaskPressed?()
+
     }
 }
