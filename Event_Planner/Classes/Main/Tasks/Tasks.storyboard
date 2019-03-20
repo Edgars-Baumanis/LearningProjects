@@ -87,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esF-us-akR" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="104" width="335" height="60"/>
+                                <rect key="frame" x="20" y="180" width="335" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="wT1-lo-dLl"/>
@@ -104,25 +104,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zbh-Et-0ab" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="204" width="335" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="W44-yz-PQz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5u-K5-VYS">
-                                <rect key="frame" x="20" y="464" width="335" height="60"/>
+                                <rect key="frame" x="20" y="300" width="335" height="60"/>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vZD-aD-8mW"/>
@@ -143,20 +126,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="W5u-K5-VYS" firstAttribute="top" secondItem="esF-us-akR" secondAttribute="bottom" constant="60" id="06A-Ne-HQ8"/>
                             <constraint firstItem="W5u-K5-VYS" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="0A0-kt-Qzl"/>
-                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="Zbh-Et-0ab" secondAttribute="trailing" constant="20" id="3xc-kB-1Tg"/>
                             <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="W5u-K5-VYS" secondAttribute="trailing" constant="20" id="4hM-ly-NTM"/>
-                            <constraint firstItem="esF-us-akR" firstAttribute="top" secondItem="hcj-pk-gIV" secondAttribute="top" constant="84" id="RE6-an-Mal"/>
-                            <constraint firstItem="Zbh-Et-0ab" firstAttribute="top" secondItem="esF-us-akR" secondAttribute="bottom" constant="40" id="l3k-Vp-RNb"/>
+                            <constraint firstItem="esF-us-akR" firstAttribute="top" secondItem="hcj-pk-gIV" secondAttribute="top" constant="160" id="RE6-an-Mal"/>
                             <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="esF-us-akR" secondAttribute="trailing" constant="20" id="pi7-b7-leI"/>
-                            <constraint firstItem="Zbh-Et-0ab" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="uzV-np-p5G"/>
                             <constraint firstItem="esF-us-akR" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="vte-6B-1Ml"/>
-                            <constraint firstItem="W5u-K5-VYS" firstAttribute="top" secondItem="Zbh-Et-0ab" secondAttribute="bottom" constant="60" id="xJx-e9-pLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hcj-pk-gIV"/>
                     </view>
                     <connections>
-                        <outlet property="taskDescription" destination="Zbh-Et-0ab" id="fRS-70-wue"/>
                         <outlet property="taskName" destination="esF-us-akR" id="uLX-mK-GCc"/>
                     </connections>
                 </viewController>

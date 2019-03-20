@@ -9,25 +9,6 @@
 import UIKit
 import Firebase
 
-struct BudgetField {
-    var name: String?
-    var sum: String?
-    let key: String?
-
-    init(name: String, sum: String, key: String?) {
-        self.name = name
-        self.sum = sum
-        self.key = key
-    }
-
-    func sendData() -> Any {
-        return [
-            "name": name,
-            "sum": sum
-        ]
-    }
-}
-
 class AddBudgetModel {
     private var ref: DatabaseReference?
     var emptyFields: (() -> Void)?

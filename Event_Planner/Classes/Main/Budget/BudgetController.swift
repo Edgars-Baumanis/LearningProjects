@@ -24,11 +24,25 @@ class BudgetController: UIViewController {
             self?.Allpossitions.reloadData()
         }
         viewModel?.reloadData()
-        
-        let configureBudget = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addPressed))
-        self.navigationItem.rightBarButtonItem = configureBudget
+        floatingButton()
     }
 
+    func floatingButton() {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
+        btn.setTitle("+", for: .normal)
+        btn.backgroundColor = UIColor.black
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 30
+        btn.addTarget(self, action: #selector(budgetEntered), for: .touchUpInside)
+        view.addSubview(btn)
+    }
+
+    @objc func budgetEntered(sender: UITextField) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+
+        })
+    }
 
     @objc func addPressed(sender: UIBarButtonItem) {
         viewModel?.addPressed?()
@@ -55,3 +69,4 @@ extension BudgetController: UITableViewDelegate, UITableViewDataSource {
         viewModel?.configurePressed?(viewModel?.dataSource[indexPath.row].name, viewModel?.dataSource[indexPath.row].sum, viewModel?.dataSource[indexPath.row].key)
     }
 }
+

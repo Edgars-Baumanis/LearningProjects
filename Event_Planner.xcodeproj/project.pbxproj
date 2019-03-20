@@ -24,11 +24,15 @@
 		490D4B36223FD77000E07DB3 /* TaskInProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B35223FD77000E07DB3 /* TaskInProgress.swift */; };
 		490D4B38223FD77700E07DB3 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B37223FD77700E07DB3 /* TaskDone.swift */; };
 		490D4B3A223FD8FF00E07DB3 /* TaskTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */; };
-		490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */; };
 		490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */; };
 		490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */; };
 		490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4322412CE300E07DB3 /* AddIdea.swift */; };
 		490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */; };
+		490D4B4822421E2D00E07DB3 /* BudgetFieldStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */; };
+		490D4B4A22421E6500E07DB3 /* SpaceStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4922421E6500E07DB3 /* SpaceStructure.swift */; };
+		490D4B4C22421E9A00E07DB3 /* TaskTopicStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4B22421E9A00E07DB3 /* TaskTopicStructure.swift */; };
+		490D4B4E22421EC200E07DB3 /* ChatStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4D22421EC200E07DB3 /* ChatStructure.swift */; };
+		490D4B5022421EEF00E07DB3 /* IdeaStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4F22421EEF00E07DB3 /* IdeaStructure.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -67,6 +71,13 @@
 		49451A4A2224426100AC8350 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A372224426100AC8350 /* LoginModel.swift */; };
 		49451A4B2224426100AC8350 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A382224426100AC8350 /* LogInVC.swift */; };
 		49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49459D09222E63B10020A8BA /* TextBoxSubclass.swift */; };
+		495E1C6622424C030002F096 /* TaskNeedsDoingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6522424C030002F096 /* TaskNeedsDoingCell.swift */; };
+		495E1C6822424C100002F096 /* TaskInProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6722424C100002F096 /* TaskInProgressCell.swift */; };
+		495E1C6A22424C170002F096 /* TaskDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6922424C170002F096 /* TaskDoneCell.swift */; };
+		495E1C6C22425E540002F096 /* TaskAddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6B22425E540002F096 /* TaskAddTask.swift */; };
+		495E1C6E224266B40002F096 /* TaskNeedsDoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */; };
+		495E1C702242751F0002F096 /* TaskAddTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */; };
+		495E1C72224276610002F096 /* TaskStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C71224276610002F096 /* TaskStructure.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
@@ -130,11 +141,15 @@
 		490D4B35223FD77000E07DB3 /* TaskInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInProgress.swift; sourceTree = "<group>"; };
 		490D4B37223FD77700E07DB3 /* TaskDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
 		490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskTopic.storyboard; sourceTree = "<group>"; };
-		490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTabbarController.swift; sourceTree = "<group>"; };
 		490D4B3E2240DEA700E07DB3 /* AddBudgetField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetField.swift; sourceTree = "<group>"; };
 		490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetModel.swift; sourceTree = "<group>"; };
 		490D4B4322412CE300E07DB3 /* AddIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdea.swift; sourceTree = "<group>"; };
 		490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaModel.swift; sourceTree = "<group>"; };
+		490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFieldStructure.swift; sourceTree = "<group>"; };
+		490D4B4922421E6500E07DB3 /* SpaceStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceStructure.swift; sourceTree = "<group>"; };
+		490D4B4B22421E9A00E07DB3 /* TaskTopicStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTopicStructure.swift; sourceTree = "<group>"; };
+		490D4B4D22421EC200E07DB3 /* ChatStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStructure.swift; sourceTree = "<group>"; };
+		490D4B4F22421EEF00E07DB3 /* IdeaStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaStructure.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -172,6 +187,13 @@
 		49451A372224426100AC8350 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49451A382224426100AC8350 /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		49459D09222E63B10020A8BA /* TextBoxSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxSubclass.swift; sourceTree = "<group>"; };
+		495E1C6522424C030002F096 /* TaskNeedsDoingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNeedsDoingCell.swift; sourceTree = "<group>"; };
+		495E1C6722424C100002F096 /* TaskInProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInProgressCell.swift; sourceTree = "<group>"; };
+		495E1C6922424C170002F096 /* TaskDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneCell.swift; sourceTree = "<group>"; };
+		495E1C6B22425E540002F096 /* TaskAddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddTask.swift; sourceTree = "<group>"; };
+		495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNeedsDoingModel.swift; sourceTree = "<group>"; };
+		495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddTaskModel.swift; sourceTree = "<group>"; };
+		495E1C71224276610002F096 /* TaskStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStructure.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C482223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spaces.storyboard; sourceTree = "<group>"; };
 		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -298,11 +320,15 @@
 		490D4B30223FD6EC00E07DB3 /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				495E1C71224276610002F096 /* TaskStructure.swift */,
+				495E1C6B22425E540002F096 /* TaskAddTask.swift */,
+				495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */,
 				490D4B33223FD76200E07DB3 /* TaskNeedsDoing.swift */,
+				495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */,
 				490D4B35223FD77000E07DB3 /* TaskInProgress.swift */,
 				490D4B37223FD77700E07DB3 /* TaskDone.swift */,
 				490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */,
-				490D4B3B223FDF5400E07DB3 /* TaskTabbarController.swift */,
+				495E1C6422424BE80002F096 /* Cells */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -384,6 +410,7 @@
 		4935AB1E2232878B0061AE47 /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
+				490D4B4F22421EEF00E07DB3 /* IdeaStructure.swift */,
 				4935AB222232884A0061AE47 /* IdeasController.swift */,
 				49108CD2223A436300C6A160 /* IdeasModel.swift */,
 				4935AB162232873D0061AE47 /* Ideas.storyboard */,
@@ -397,6 +424,7 @@
 		4935AB1F223287920061AE47 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				490D4B4D22421EC200E07DB3 /* ChatStructure.swift */,
 				4935AB282232888C0061AE47 /* ChatsController.swift */,
 				49B7A64022394EC800D4A8EC /* ChatsModel.swift */,
 				4935AB18223287440061AE47 /* Chat.storyboard */,
@@ -410,6 +438,7 @@
 		4935AB20223287970061AE47 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				490D4B4B22421E9A00E07DB3 /* TaskTopicStructure.swift */,
 				4935AB2A223288950061AE47 /* TasksController.swift */,
 				49B7A6372239237B00D4A8EC /* TasksModel.swift */,
 				4935AB1C223287730061AE47 /* Tasks.storyboard */,
@@ -423,6 +452,7 @@
 		4935AB212232879D0061AE47 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */,
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
 				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
@@ -480,6 +510,7 @@
 		49451A2A2224426100AC8350 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				490D4B4922421E6500E07DB3 /* SpaceStructure.swift */,
 				499D7EAC222571ED00694DD6 /* MainTabbarController.swift */,
 				49809C472223E61500295608 /* Spaces.storyboard */,
 				49CBE2ED22281BBA00DFE240 /* MySpaces */,
@@ -508,6 +539,16 @@
 				49451A372224426100AC8350 /* LoginModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		495E1C6422424BE80002F096 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				495E1C6522424C030002F096 /* TaskNeedsDoingCell.swift */,
+				495E1C6722424C100002F096 /* TaskInProgressCell.swift */,
+				495E1C6922424C170002F096 /* TaskDoneCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		49809C372223E61500295608 = {
@@ -872,15 +913,20 @@
 			files = (
 				499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */,
 				490D4B2F223FC94500E07DB3 /* IdeaTopicModel.swift in Sources */,
+				495E1C6C22425E540002F096 /* TaskAddTask.swift in Sources */,
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
 				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
+				495E1C702242751F0002F096 /* TaskAddTaskModel.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
+				495E1C6E224266B40002F096 /* TaskNeedsDoingModel.swift in Sources */,
 				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
+				495E1C6A22424C170002F096 /* TaskDoneCell.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
+				490D4B5022421EEF00E07DB3 /* IdeaStructure.swift in Sources */,
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
@@ -888,6 +934,7 @@
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				49FE6E06222D4109004FAD45 /* Strings.swift in Sources */,
 				49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */,
+				495E1C6622424C030002F096 /* TaskNeedsDoingCell.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
@@ -897,7 +944,7 @@
 				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
-				490D4B3C223FDF5400E07DB3 /* TaskTabbarController.swift in Sources */,
+				490D4B4E22421EC200E07DB3 /* ChatStructure.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
@@ -914,7 +961,12 @@
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
+				495E1C72224276610002F096 /* TaskStructure.swift in Sources */,
+				490D4B4A22421E6500E07DB3 /* SpaceStructure.swift in Sources */,
+				495E1C6822424C100002F096 /* TaskInProgressCell.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
+				490D4B4822421E2D00E07DB3 /* BudgetFieldStructure.swift in Sources */,
+				490D4B4C22421E9A00E07DB3 /* TaskTopicStructure.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
@@ -1074,6 +1126,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;

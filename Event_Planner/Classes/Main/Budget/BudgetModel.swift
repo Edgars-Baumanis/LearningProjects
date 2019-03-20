@@ -16,6 +16,7 @@ class BudgetModel {
     var addPressed: (() -> Void)?
     var dataSource: [BudgetField] = []
     var dataSourceChanged: (() -> Void)?
+    private var allFieldSum: [Float] = []
     private var spaceName: String?
 
     init(spaceName: String?) {
@@ -36,6 +37,7 @@ class BudgetModel {
             let newField = BudgetField(name: fieldName, sum: fieldSum, key: key)
 
             self.dataSource.append(newField)
+            self.allFieldSum.append((newField.sum! as NSString).floatValue)
             self.dataSourceChanged?()
         })
     }
@@ -58,7 +60,12 @@ class BudgetModel {
             }
             guard let idx = index else { return }
             self.dataSource[idx] = newField
+            self.allFieldSum[idx] = (newField.sum! as NSString).floatValue
             self.dataSourceChanged?()
         })
+    }
+
+    func calculateRemaining() {
+
     }
 }

@@ -9,25 +9,6 @@
 import UIKit
 import Firebase
 
-struct Idea {
-    let ideaName: String
-    let likeCount: Int
-    let key: String?
-
-    init(ideaName: String, likeCount: Int, key: String?) {
-        self.ideaName = ideaName
-        self.likeCount = likeCount
-        self.key = key
-    }
-
-    func sendData() -> Any {
-        return [
-            "name": ideaName,
-            "likes": likeCount
-        ]
-    }
-}
-
 class AddIdeaModel {
     private var ref: DatabaseReference?
     private var spaceName: String?

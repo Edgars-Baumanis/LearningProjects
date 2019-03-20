@@ -32,6 +32,7 @@ class ConfigureModel {
             fieldSum?.isEmpty != true,
             let key = fieldKey
             else { return }
+
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
             "/Spaces/\(spaceName!)/BudgetFields/\(key)" : newField.sendData()
