@@ -23,8 +23,18 @@ class ChatsController: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allChats.reloadData()
         }
-        let addChat = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addChatPressed))
-        self.navigationItem.rightBarButtonItem = addChat
+        floatingButton()
+    }
+
+    func floatingButton() {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
+        btn.setTitle("+", for: .normal)
+        btn.backgroundColor = UIColor.black
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 30
+        btn.addTarget(self, action: #selector(addChatPressed), for: .touchUpInside)
+        view.addSubview(btn)
     }
 
     @objc func addChatPressed(sender: UIBarButtonItem) {

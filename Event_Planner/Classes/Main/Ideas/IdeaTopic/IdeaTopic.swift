@@ -24,9 +24,20 @@ class IdeaTopic: UIViewController {
         }
         ideas.delegate = self
         ideas.dataSource = self
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPressed))
-        self.navigationItem.rightBarButtonItem = addButton
+        floatingButton()
     }
+
+    func floatingButton() {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
+        btn.setTitle("+", for: .normal)
+        btn.backgroundColor = UIColor.black
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 30
+        btn.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        view.addSubview(btn)
+    }
+
 
     @objc func addPressed(sender: UIBarButtonItem) {
         viewModel?.addPressed?()
