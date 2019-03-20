@@ -9,26 +9,6 @@
 import UIKit
 import Firebase
 
-struct Chat {
-    let chatName: String?
-    let chatDescription: String?
-    let user: String?
-
-    init (chatName: String, chatDescription: String, user: String) {
-        self.chatName = chatName
-        self.chatDescription = chatDescription
-        self.user = user
-    }
-
-    func sendData() -> Any {
-        return [
-            "Name": chatName,
-            "Description": chatDescription,
-            "User": user
-        ]
-    }
-}
-
 class CreateChatModel {
     private var ref: DatabaseReference?
     var chatCreated: (() -> Void)?

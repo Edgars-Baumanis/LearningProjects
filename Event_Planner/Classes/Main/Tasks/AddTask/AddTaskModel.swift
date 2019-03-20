@@ -9,23 +9,6 @@
 import UIKit
 import Firebase
 
-struct TaskTopic {
-    let name: String
-    let description: String
-
-    init(name: String, description: String) {
-        self.name = name
-        self.description = description
-    }
-
-    func sendData() -> Any {
-        return [
-            "name": name,
-            "description": description
-        ]
-    }
-}
-
 class AddTaskModel {
     var emptyFields: (()->Void)?
     private var ref: DatabaseReference?

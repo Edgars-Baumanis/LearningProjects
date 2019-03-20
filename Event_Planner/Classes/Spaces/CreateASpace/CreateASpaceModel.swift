@@ -10,29 +10,6 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-struct Space {
-    let spaceName: String?
-    let spacePassword: String?
-    let spaceDescription: String?
-    let mainUser: String?
-
-    init (spaceName: String, spacePassword: String, spaceDescription: String, mainUser: String) {
-        self.spaceName = spaceName
-        self.spacePassword = spacePassword
-        self.spaceDescription = spaceDescription
-        self.mainUser = mainUser
-    }
-
-    func sendData() -> Any {
-        return [
-            "Name": spaceName,
-            "Password": spacePassword,
-            "Description": spaceDescription,
-            "Main User": mainUser
-        ]
-    }
-}
-
 class CreateASpaceModel {
     private var ref: DatabaseReference?
     private var userService: PUserService?
