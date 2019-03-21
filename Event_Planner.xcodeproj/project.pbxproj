@@ -536,10 +536,7 @@
 				49451A352224426100AC8350 /* GreetingFlow.swift */,
 				49451A332224426100AC8350 /* SpacesFlow.swift */,
 				49E0413C22326B5500BCF2CA /* MainFlow.swift */,
-				495E1C79224297800002F096 /* TasksFlow.swift */,
-				495E1C77224297650002F096 /* ChatsFlow.swift */,
-				495E1C752242975C0002F096 /* IdeasFlow.swift */,
-				495E1C73224296CF0002F096 /* BudgetFlow.swift */,
+				495E1C7B2243735B0002F096 /* MainFlow */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -561,6 +558,17 @@
 				495E1C6922424C170002F096 /* TaskDoneCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		495E1C7B2243735B0002F096 /* MainFlow */ = {
+			isa = PBXGroup;
+			children = (
+				495E1C79224297800002F096 /* TasksFlow.swift */,
+				495E1C77224297650002F096 /* ChatsFlow.swift */,
+				495E1C752242975C0002F096 /* IdeasFlow.swift */,
+				495E1C73224296CF0002F096 /* BudgetFlow.swift */,
+			);
+			path = MainFlow;
 			sourceTree = "<group>";
 		};
 		49809C372223E61500295608 = {
