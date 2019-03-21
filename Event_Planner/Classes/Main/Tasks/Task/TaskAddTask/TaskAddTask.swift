@@ -14,7 +14,9 @@ class TaskAddTask: UIViewController {
     var viewModel: TaskAddTaskModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setGradientBackground()
     }
+
     @IBAction func addTaskPressed(_ sender: Any) {
         viewModel?.addTask(taskName: taskName.text, taskDescription: taskDescription.text)
     }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Task Add Task-->
+        <scene sceneID="2g7-R3-ogE">
+            <objects>
+                <viewController storyboardIdentifier="TaskAddTask" id="7go-Vp-SWa" customClass="TaskAddTask" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mbQ-6R-aA8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZN7-kc-SIu">
+                                <rect key="frame" x="20" y="410" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GV0-yI-VBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Add task">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addTaskPressed:" destination="7go-Vp-SWa" eventType="touchUpInside" id="Sg6-5p-kEu"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVp-Je-fHV">
+                                <rect key="frame" x="20" y="80" width="335" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="w7k-L7-Ris"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hK4-Rz-Exz" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="200" width="335" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="SpH-kS-ilZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kVp-Je-fHV" firstAttribute="leading" secondItem="C5z-Yp-koW" secondAttribute="leading" constant="20" id="2lC-gR-rcP"/>
+                            <constraint firstItem="ZN7-kc-SIu" firstAttribute="leading" secondItem="C5z-Yp-koW" secondAttribute="leading" constant="20" id="IbG-om-pRP"/>
+                            <constraint firstItem="hK4-Rz-Exz" firstAttribute="top" secondItem="kVp-Je-fHV" secondAttribute="bottom" constant="60" id="K0b-pk-onH"/>
+                            <constraint firstItem="ZN7-kc-SIu" firstAttribute="top" secondItem="hK4-Rz-Exz" secondAttribute="bottom" constant="60" id="PBF-d0-3FA"/>
+                            <constraint firstItem="C5z-Yp-koW" firstAttribute="trailing" secondItem="kVp-Je-fHV" secondAttribute="trailing" constant="20" id="Ukx-PU-FXR"/>
+                            <constraint firstItem="hK4-Rz-Exz" firstAttribute="leading" secondItem="C5z-Yp-koW" secondAttribute="leading" constant="20" id="Wc5-Jg-jU8"/>
+                            <constraint firstItem="kVp-Je-fHV" firstAttribute="top" secondItem="C5z-Yp-koW" secondAttribute="top" constant="60" id="iKZ-Qk-oaR"/>
+                            <constraint firstItem="C5z-Yp-koW" firstAttribute="trailing" secondItem="ZN7-kc-SIu" secondAttribute="trailing" constant="20" id="vfU-nD-S4t"/>
+                            <constraint firstItem="C5z-Yp-koW" firstAttribute="trailing" secondItem="hK4-Rz-Exz" secondAttribute="trailing" constant="20" id="wxZ-xb-2iZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C5z-Yp-koW"/>
+                    </view>
+                    <connections>
+                        <outlet property="taskDescription" destination="hK4-Rz-Exz" id="CHE-LS-lSW"/>
+                        <outlet property="taskName" destination="kVp-Je-fHV" id="3ji-sq-j4e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAK-Ib-HmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="78"/>
+        </scene>
+    </scenes>
+</document>

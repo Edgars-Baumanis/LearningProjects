@@ -25,7 +25,7 @@ class TaskAddTaskModel {
     func addTask(taskName: String?, taskDescription: String?) {
         guard taskName?.isEmpty != true, taskDescription?.isEmpty != true else { return }
         let newTask = Task(name: taskName!, description: taskDescription!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).childByAutoId().setValue(newTask.sendData())
+        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
         addTaskPressed?()
     }
 }

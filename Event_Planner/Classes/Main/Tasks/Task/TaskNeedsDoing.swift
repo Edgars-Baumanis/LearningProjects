@@ -18,6 +18,7 @@ class TaskNeedsDoing: UIViewController {
         tasksNeedDoing.delegate = self
         tasksNeedDoing.dataSource = self
         viewModel?.getData()
+        viewModel?.dataDeleted()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.tasksNeedDoing.reloadData()
         }
@@ -52,5 +53,9 @@ extension TaskNeedsDoing: UITableViewDelegate, UITableViewDataSource {
             myCell.displayContent(name: viewModel?.dataSource[indexPath.row].name ?? "Default Value")
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
     }
 }
