@@ -11,17 +11,20 @@ import UIKit
 struct Idea {
     let ideaName: String
     let likeCount: Int
+    var likedPeople: [String]
     let key: String?
 
-    init(ideaName: String, likeCount: Int, key: String?) {
+    init(ideaName: String, likeCount: Int, likedPeople: [String] , key: String?) {
         self.ideaName = ideaName
         self.likeCount = likeCount
+        self.likedPeople = likedPeople
         self.key = key
     }
 
     func sendData() -> Any {
         return [
             "name": ideaName,
+            "LikedPeople": likedPeople,
             "likes": likeCount
         ]
     }

@@ -20,9 +20,10 @@ class AddIdeaModel {
         self.spaceName = spaceName
         self.topicName = topicName
     }
+
     func addIdea(ideaName: String?) {
         guard ideaName?.isEmpty != true else { return }
-        let newIdea = Idea(ideaName: ideaName!, likeCount: 0, key: nil)
+        let newIdea = Idea(ideaName: ideaName!, likeCount: 0, likedPeople: [""], key: nil)
         ref?.child("Spaces").child(spaceName!).child("Ideas").child((topicName?.key)!).childByAutoId().setValue(newIdea.sendData())
         ideaAdded?()
     }

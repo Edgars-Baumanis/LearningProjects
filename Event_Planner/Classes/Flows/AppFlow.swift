@@ -32,6 +32,11 @@ class AppFlow: FlowController {
     func start() {
         rootController = tabbar
         if Auth.auth().currentUser != nil {
+            guard
+                let userID = Auth.auth().currentUser?.uid,
+                let email = Auth.auth().currentUser?.email
+                else { return }
+            self.userService?.user = User(email: email, userID: userID)
             self.navigateToSpacesFlow()
         } else {
             self.navigateToGreetingFlow()

@@ -59,5 +59,4 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
     }
-
 }
