@@ -12,7 +12,7 @@ import Firebase
 class BudgetModel {
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
-    var configurePressed: ((_ fieldName: String?, _ fieldSum: String?, _ key: String?) -> Void)?
+    var configurePressed: ((_ budgetField: BudgetField?) -> Void)?
     var addPressed: (() -> Void)?
     var dataSource: [BudgetField] = []
     var dataSourceChanged: (() -> Void)?

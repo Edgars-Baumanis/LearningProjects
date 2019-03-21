@@ -66,7 +66,7 @@ extension BudgetController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.configurePressed?(viewModel?.dataSource[indexPath.row].name, viewModel?.dataSource[indexPath.row].sum, viewModel?.dataSource[indexPath.row].key)
+        viewModel?.configurePressed?(viewModel?.dataSource[indexPath.row])
     }
 }
 
