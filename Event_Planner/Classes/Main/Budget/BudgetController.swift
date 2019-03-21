@@ -31,7 +31,7 @@ class BudgetController: UIViewController {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
         btn.setTitle("+", for: .normal)
-        btn.backgroundColor = UIColor.black
+        btn.setFloatingButtonGradient()
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 30
         btn.addTarget(self, action: #selector(budgetEntered), for: .touchUpInside)

@@ -82,6 +82,7 @@
 		495E1C762242975C0002F096 /* IdeasFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C752242975C0002F096 /* IdeasFlow.swift */; };
 		495E1C78224297650002F096 /* ChatsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C77224297650002F096 /* ChatsFlow.swift */; };
 		495E1C7A224297800002F096 /* TasksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C79224297800002F096 /* TasksFlow.swift */; };
+		495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C7C224374EA0002F096 /* ButtonSubclass.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
@@ -202,6 +203,7 @@
 		495E1C752242975C0002F096 /* IdeasFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasFlow.swift; sourceTree = "<group>"; };
 		495E1C77224297650002F096 /* ChatsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsFlow.swift; sourceTree = "<group>"; };
 		495E1C79224297800002F096 /* TasksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFlow.swift; sourceTree = "<group>"; };
+		495E1C7C224374EA0002F096 /* ButtonSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSubclass.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C482223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spaces.storyboard; sourceTree = "<group>"; };
 		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
+				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
 				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
 				495E1C702242751F0002F096 /* TaskAddTaskModel.swift in Sources */,
+				495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
