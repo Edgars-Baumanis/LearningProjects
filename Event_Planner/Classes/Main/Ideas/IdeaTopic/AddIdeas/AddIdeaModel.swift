@@ -12,10 +12,10 @@ import Firebase
 class AddIdeaModel {
     private var ref: DatabaseReference?
     private var spaceName: String?
-    private var topicName: String?
+    private var topicName: IdeaTopicStruct?
     var ideaAdded: (() -> Void)?
 
-    init(spaceName: String?, topicName: String?) {
+    init(spaceName: String?, topicName: IdeaTopicStruct?) {
         ref = Database.database().reference()
         self.spaceName = spaceName
         self.topicName = topicName
@@ -23,7 +23,7 @@ class AddIdeaModel {
     func addIdea(ideaName: String?) {
         guard ideaName?.isEmpty != true else { return }
         let newIdea = Idea(ideaName: ideaName!, likeCount: 0, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Ideas").child(topicName!).childByAutoId().setValue(newIdea.sendData())
+        ref?.child("Spaces").child(spaceName!).child("Ideas").child((topicName?.key)!).childByAutoId().setValue(newIdea.sendData())
         ideaAdded?()
     }
 }

@@ -16,7 +16,7 @@ class IdeaTopic: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        self.title = viewModel?.topicName
+        self.title = viewModel?.topicName?.name
         viewModel?.reloadData()
         viewModel?.getData()
         viewModel?.dataSourceChanged = { [weak self] in

@@ -11,9 +11,9 @@ import Firebase
 
 class IdeasModel {
     var addTopicPressed: (()-> Void)?
-    var cellPressed: ((_ cellName: String) -> Void)?
+    var cellPressed: ((_ ideaTopic: IdeaTopicStruct?) -> Void)?
     var dataSourceChanged: (() -> Void)?
-    var dataSource: [String] = []
+    var dataSource: [IdeaTopicStruct] = []
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
     private var spaceName: String?
@@ -25,8 +25,13 @@ class IdeasModel {
 
     func getTopics() {
         databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").observe(.childAdded, with: { (snapshot) in
-            guard let topicName = snapshot.key as? String else { return }
-            self.dataSource.append(topicName)
+            let post = snapshot.value as? [String : AnyObject]
+            guard
+                let name = post?["name"] as? String,
+                let key = snapshot.key as? String
+                else { return }
+            let newTopic = IdeaTopicStruct(name: name, key: key)
+            self.dataSource.append(newTopic)
             self.dataSourceChanged?()
         })
     }

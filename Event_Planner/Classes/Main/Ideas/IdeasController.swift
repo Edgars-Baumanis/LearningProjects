@@ -51,13 +51,13 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(subject: viewModel?.dataSource[indexPath.row] ?? "Something went wrong")
+            myCell.displayContent(subject: viewModel?.dataSource[indexPath.row].name ?? "Something went wrong")
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row] ?? "Something went wrong")
+        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
     }
 
 }

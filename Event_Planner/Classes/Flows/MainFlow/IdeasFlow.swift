@@ -12,9 +12,11 @@ class IdeasFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var spaceName: String?
-    private var ideaTopicName: String?
+    private var ideaTopic: IdeaTopicStruct?
+    private var userServices: PUserService?
 
-    init(rootController: UINavigationController?, spaceName: String?) {
+    init(rootController: UINavigationController?, spaceName: String?, userServices: PUserService?) {
+        self.userServices = userServices
         self.rootController = rootController
         self.spaceName = spaceName
     }
@@ -35,7 +37,7 @@ class IdeasFlow: FlowController {
         return ideasSB.instantiateViewController(withIdentifier: String(describing: AddTopicController.self)) as? AddTopicController
     }
 
-    private var ideaTopic: IdeaTopic? {
+    private var ideaTopicController: IdeaTopic? {
         return ideaTopicSB.instantiateViewController(withIdentifier: String(describing: IdeaTopic.self)) as? IdeaTopic
     }
 
@@ -56,7 +58,7 @@ class IdeasFlow: FlowController {
         }
 
         viewModel.cellPressed = { [weak self] cellName in
-            self?.ideaTopicName = cellName
+            self?.ideaTopic = cellName
             self?.navigateToIdeaTopics()
         }
 
@@ -75,8 +77,8 @@ class IdeasFlow: FlowController {
     }
 
     private func navigateToIdeaTopics() {
-        guard let vc = ideaTopic else { return }
-        let viewModel = IdeaTopicModel(topicName: ideaTopicName, spaceName: spaceName)
+        guard let vc = ideaTopicController else { return }
+        let viewModel = IdeaTopicModel(topicName: ideaTopic, spaceName: spaceName, userServices: userServices)
         viewModel.addPressed = { [weak self] in
             self?.navigateToAddIdea()
         }
@@ -86,7 +88,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToAddIdea() {
         guard let vc = addIdeaController else { return }
-        let viewModel = AddIdeaModel(spaceName: spaceName, topicName: ideaTopicName)
+        let viewModel = AddIdeaModel(spaceName: spaceName, topicName: ideaTopic)
         viewModel.ideaAdded = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }

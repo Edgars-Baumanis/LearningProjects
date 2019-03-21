@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 
 class AddTopicModel {
-    var ref: DatabaseReference?
-    var addTopicPressed: (() -> Void)?
+    private var ref: DatabaseReference?
     private var spaceName: String?
+    var addTopicPressed: (() -> Void)?
+
 
     init(spaceName: String?) {
         self.spaceName = spaceName
@@ -21,7 +22,8 @@ class AddTopicModel {
 
     func addTopic(topicName: String?) {
         guard topicName?.isEmpty != true else { return }
-        ref?.child("Spaces").child(spaceName!).child("Ideas").child(topicName!).setValue(topicName)
+        let newTopic = IdeaTopicStruct(name: topicName!, key: nil)
+        ref?.child("Spaces").child(spaceName!).child("Ideas").childByAutoId().setValue(newTopic.sendData())
         self.addTopicPressed?()
     }
 }

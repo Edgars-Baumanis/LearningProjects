@@ -80,7 +80,7 @@ class MainFlow: FlowController {
     }
 
     private func navigateToIdeaFlow() {
-        let ideaFlow = IdeasFlow(rootController: rootController, spaceName: spaceName)
+        let ideaFlow = IdeasFlow(rootController: rootController, spaceName: spaceName, userServices: userServices)
         ideaFlow.start()
         childFlow = ideaFlow
     }
