@@ -1,33 +1,32 @@
 //
-//  TaskNeedsDoingModel.swift
+//  TaskInProgressModel.swift
 //  Event_Planner
 //
-//  Created by Edgars Baumanis on 20.03.19.
+//  Created by Edgars Baumanis on 21.03.19.
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class TaskNeedsDoingModel {
-    var addPressed: (() -> Void)?
-    var dataSource: [Task] = []
-    var dataSourceChanged: (() -> Void)?
-    var cellPressed: ((_ task: Task?) -> Void)?
+class TaskInProgressModel {
     private var spaceName: String?
     private var taskTopic: TaskTopic?
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
+    var dataSource: [Task] = []
+    var dataSourceChanged: (() -> Void)?
+    var cellPressed: ((_ task: Task?) -> Void)?
 
     init(spaceName: String?, taskTopic: TaskTopic?) {
-        self.taskTopic = taskTopic
         self.spaceName = spaceName
+        self.taskTopic = taskTopic
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
@@ -37,12 +36,11 @@ class TaskNeedsDoingModel {
             let newTask = Task(name: name, description: description, key: key)
             self.dataSource.append(newTask)
             self.dataSourceChanged?()
-
         })
     }
 
     func dataDeleted() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").observe(.childRemoved, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childRemoved, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
@@ -53,7 +51,7 @@ class TaskNeedsDoingModel {
             self.dataSource.enumerated().forEach { (idx, task) in
                 if
                     task.name == removedTask.name &&
-                    task.description == removedTask.description &&
+                        task.description == removedTask.description &&
                         task.key == removedTask.key {
                     self.dataSource.remove(at: idx)
                 }

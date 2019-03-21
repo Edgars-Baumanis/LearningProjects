@@ -11,7 +11,7 @@ import UIKit
 struct BudgetField {
     var name: String?
     var sum: String?
-    let key: String?
+    var key: String?
 
     init(name: String, sum: String, key: String?) {
         self.name = name

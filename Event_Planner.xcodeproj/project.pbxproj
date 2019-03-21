@@ -78,6 +78,20 @@
 		495E1C6E224266B40002F096 /* TaskNeedsDoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */; };
 		495E1C702242751F0002F096 /* TaskAddTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */; };
 		495E1C72224276610002F096 /* TaskStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C71224276610002F096 /* TaskStructure.swift */; };
+		495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C73224296CF0002F096 /* BudgetFlow.swift */; };
+		495E1C762242975C0002F096 /* IdeasFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C752242975C0002F096 /* IdeasFlow.swift */; };
+		495E1C78224297650002F096 /* ChatsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C77224297650002F096 /* ChatsFlow.swift */; };
+		495E1C7A224297800002F096 /* TasksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C79224297800002F096 /* TasksFlow.swift */; };
+		495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C7C224374EA0002F096 /* ButtonSubclass.swift */; };
+		495E1C8022437CE00002F096 /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495E1C7F22437CE00002F096 /* AddTask.storyboard */; };
+		495E1C8322437EC70002F096 /* NeedsDoingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C8222437EC70002F096 /* NeedsDoingDetails.swift */; };
+		495E1C85224393D80002F096 /* NeedsDoingDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C84224393D80002F096 /* NeedsDoingDetailsModel.swift */; };
+		495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C862243A5420002F096 /* TaskInProgressModel.swift */; };
+		495E1C892243A5610002F096 /* TaskDoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C882243A5610002F096 /* TaskDoneModel.swift */; };
+		495E1C8B2243A9310002F096 /* InProgressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C8A2243A9310002F096 /* InProgressDetails.swift */; };
+		495E1C8D2243A9390002F096 /* DoneDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C8C2243A9390002F096 /* DoneDetails.swift */; };
+		495E1C8F2243A9410002F096 /* DoneDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C8E2243A9410002F096 /* DoneDetailsModel.swift */; };
+		495E1C912243A9500002F096 /* InProgressDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C902243A94F0002F096 /* InProgressDetailsModel.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
@@ -194,6 +208,20 @@
 		495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNeedsDoingModel.swift; sourceTree = "<group>"; };
 		495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddTaskModel.swift; sourceTree = "<group>"; };
 		495E1C71224276610002F096 /* TaskStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStructure.swift; sourceTree = "<group>"; };
+		495E1C73224296CF0002F096 /* BudgetFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFlow.swift; sourceTree = "<group>"; };
+		495E1C752242975C0002F096 /* IdeasFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasFlow.swift; sourceTree = "<group>"; };
+		495E1C77224297650002F096 /* ChatsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsFlow.swift; sourceTree = "<group>"; };
+		495E1C79224297800002F096 /* TasksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFlow.swift; sourceTree = "<group>"; };
+		495E1C7C224374EA0002F096 /* ButtonSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSubclass.swift; sourceTree = "<group>"; };
+		495E1C7F22437CE00002F096 /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
+		495E1C8222437EC70002F096 /* NeedsDoingDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsDoingDetails.swift; sourceTree = "<group>"; };
+		495E1C84224393D80002F096 /* NeedsDoingDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsDoingDetailsModel.swift; sourceTree = "<group>"; };
+		495E1C862243A5420002F096 /* TaskInProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInProgressModel.swift; sourceTree = "<group>"; };
+		495E1C882243A5610002F096 /* TaskDoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneModel.swift; sourceTree = "<group>"; };
+		495E1C8A2243A9310002F096 /* InProgressDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressDetails.swift; sourceTree = "<group>"; };
+		495E1C8C2243A9390002F096 /* DoneDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDetails.swift; sourceTree = "<group>"; };
+		495E1C8E2243A9410002F096 /* DoneDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDetailsModel.swift; sourceTree = "<group>"; };
+		495E1C902243A94F0002F096 /* InProgressDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressDetailsModel.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C482223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spaces.storyboard; sourceTree = "<group>"; };
 		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -321,13 +349,15 @@
 			isa = PBXGroup;
 			children = (
 				495E1C71224276610002F096 /* TaskStructure.swift */,
-				495E1C6B22425E540002F096 /* TaskAddTask.swift */,
-				495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */,
 				490D4B33223FD76200E07DB3 /* TaskNeedsDoing.swift */,
 				495E1C6D224266B40002F096 /* TaskNeedsDoingModel.swift */,
 				490D4B35223FD77000E07DB3 /* TaskInProgress.swift */,
+				495E1C862243A5420002F096 /* TaskInProgressModel.swift */,
 				490D4B37223FD77700E07DB3 /* TaskDone.swift */,
+				495E1C882243A5610002F096 /* TaskDoneModel.swift */,
 				490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */,
+				495E1C8122437E9B0002F096 /* TaskDetails */,
+				495E1C7E22437B810002F096 /* TaskAddTask */,
 				495E1C6422424BE80002F096 /* Cells */,
 			);
 			path = Task;
@@ -503,6 +533,7 @@
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
+				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +559,7 @@
 				49451A352224426100AC8350 /* GreetingFlow.swift */,
 				49451A332224426100AC8350 /* SpacesFlow.swift */,
 				49E0413C22326B5500BCF2CA /* MainFlow.swift */,
+				495E1C7B2243735B0002F096 /* MainFlow */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -549,6 +581,40 @@
 				495E1C6922424C170002F096 /* TaskDoneCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		495E1C7B2243735B0002F096 /* MainFlow */ = {
+			isa = PBXGroup;
+			children = (
+				495E1C79224297800002F096 /* TasksFlow.swift */,
+				495E1C77224297650002F096 /* ChatsFlow.swift */,
+				495E1C752242975C0002F096 /* IdeasFlow.swift */,
+				495E1C73224296CF0002F096 /* BudgetFlow.swift */,
+			);
+			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		495E1C7E22437B810002F096 /* TaskAddTask */ = {
+			isa = PBXGroup;
+			children = (
+				495E1C6B22425E540002F096 /* TaskAddTask.swift */,
+				495E1C6F2242751F0002F096 /* TaskAddTaskModel.swift */,
+				495E1C7F22437CE00002F096 /* AddTask.storyboard */,
+			);
+			path = TaskAddTask;
+			sourceTree = "<group>";
+		};
+		495E1C8122437E9B0002F096 /* TaskDetails */ = {
+			isa = PBXGroup;
+			children = (
+				495E1C8222437EC70002F096 /* NeedsDoingDetails.swift */,
+				495E1C84224393D80002F096 /* NeedsDoingDetailsModel.swift */,
+				495E1C8A2243A9310002F096 /* InProgressDetails.swift */,
+				495E1C902243A94F0002F096 /* InProgressDetailsModel.swift */,
+				495E1C8C2243A9390002F096 /* DoneDetails.swift */,
+				495E1C8E2243A9410002F096 /* DoneDetailsModel.swift */,
+			);
+			path = TaskDetails;
 			sourceTree = "<group>";
 		};
 		49809C372223E61500295608 = {
@@ -824,6 +890,7 @@
 				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				490D4B2A223FB29C00E07DB3 /* IdeaTopic.storyboard in Resources */,
+				495E1C8022437CE00002F096 /* AddTask.storyboard in Resources */,
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
 				4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
@@ -917,6 +984,7 @@
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
 				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
 				495E1C702242751F0002F096 /* TaskAddTaskModel.swift in Sources */,
+				495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */,
 				499D7EAD222571ED00694DD6 /* MainTabbarController.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
@@ -924,9 +992,12 @@
 				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				495E1C6A22424C170002F096 /* TaskDoneCell.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
+				495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */,
+				495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
 				490D4B5022421EEF00E07DB3 /* IdeaStructure.swift in Sources */,
+				495E1C8D2243A9390002F096 /* DoneDetails.swift in Sources */,
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
@@ -937,6 +1008,7 @@
 				495E1C6622424C030002F096 /* TaskNeedsDoingCell.swift in Sources */,
 				4902A1A32229214900580D44 /* UserService.swift in Sources */,
 				490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */,
+				495E1C85224393D80002F096 /* NeedsDoingDetailsModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
@@ -948,6 +1020,7 @@
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
+				495E1C78224297650002F096 /* ChatsFlow.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
 				490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */,
 				490D4B36223FD77000E07DB3 /* TaskInProgress.swift in Sources */,
@@ -955,6 +1028,7 @@
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
+				495E1C7A224297800002F096 /* TasksFlow.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				490D4B34223FD76200E07DB3 /* TaskNeedsDoing.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
@@ -967,12 +1041,14 @@
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				490D4B4822421E2D00E07DB3 /* BudgetFieldStructure.swift in Sources */,
 				490D4B4C22421E9A00E07DB3 /* TaskTopicStructure.swift in Sources */,
+				495E1C8322437EC70002F096 /* NeedsDoingDetails.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
 				4911E168223021A700EB8474 /* PUserService.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
 				49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */,
+				495E1C8F2243A9410002F096 /* DoneDetailsModel.swift in Sources */,
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
@@ -980,9 +1056,13 @@
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
+				495E1C8B2243A9310002F096 /* InProgressDetails.swift in Sources */,
 				490D4B3F2240DEA700E07DB3 /* AddBudgetField.swift in Sources */,
 				49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */,
+				495E1C762242975C0002F096 /* IdeasFlow.swift in Sources */,
 				49B7A63B223926B800D4A8EC /* AddTask.swift in Sources */,
+				495E1C912243A9500002F096 /* InProgressDetailsModel.swift in Sources */,
+				495E1C892243A5610002F096 /* TaskDoneModel.swift in Sources */,
 				490D4B2D223FB44100E07DB3 /* AddTopicModel.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,

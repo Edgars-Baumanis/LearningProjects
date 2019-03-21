@@ -14,8 +14,8 @@ class ConfigureBudget: UIViewController {
     var viewModel: ConfigureModel?
 
     override func viewWillAppear(_ animated: Bool) {
-        fieldName.text = viewModel?.fieldName
-        fieldSum.text = viewModel?.fieldSum
+        fieldName.text = viewModel?.budgetField?.name
+        fieldSum.text = viewModel?.budgetField?.sum
     }
     override func viewDidLoad() {
         super.viewDidLoad()

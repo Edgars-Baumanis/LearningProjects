@@ -18,6 +18,7 @@ class TaskNeedsDoing: UIViewController {
         tasksNeedDoing.delegate = self
         tasksNeedDoing.dataSource = self
         viewModel?.getData()
+        viewModel?.dataDeleted()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.tasksNeedDoing.reloadData()
         }
@@ -28,7 +29,7 @@ class TaskNeedsDoing: UIViewController {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: 300, y: 550, width: 50, height: 50)
         btn.setTitle("+", for: .normal)
-        btn.backgroundColor = UIColor.black
+        btn.setFloatingButtonGradient()
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 24
         btn.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
@@ -52,5 +53,9 @@ extension TaskNeedsDoing: UITableViewDelegate, UITableViewDataSource {
             myCell.displayContent(name: viewModel?.dataSource[indexPath.row].name ?? "Default Value")
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
     }
 }

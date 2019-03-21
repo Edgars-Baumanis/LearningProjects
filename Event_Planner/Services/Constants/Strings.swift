@@ -21,4 +21,5 @@ enum Strings: String {
     case ChatSB = "SingleChat"
     case IdeaTopicSB = "IdeaTopic"
     case TaskTopicSB = "TaskTopic"
+    case AddTaskSB = "AddTask"
 }
