@@ -36,6 +36,10 @@ class BudgetFlow: FlowController {
         return budgetSB.instantiateViewController(withIdentifier: String(describing: AddBudgetField.self)) as? AddBudgetField
     }
 
+    private var addTotalBudgetController: AddTotalBudget? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: AddTotalBudget.self)) as? AddTotalBudget
+    }
+
     func start() {
         navigateToBudget()
     }
@@ -49,6 +53,9 @@ class BudgetFlow: FlowController {
         }
         viewModel.addPressed = { [weak self] in
             self?.navigateToAddBudgetField()
+        }
+        viewModel.editBudgetPressed = { [weak self] in
+            self?.navigateToAddTotalBudget()
         }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
@@ -74,4 +81,15 @@ class BudgetFlow: FlowController {
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
+
+    private func navigateToAddTotalBudget() {
+        guard let vc = addTotalBudgetController else { return }
+        let viewModel = AddTotalBudgetModel(spaceName: spaceName)
+        viewModel.addPressed = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
 }

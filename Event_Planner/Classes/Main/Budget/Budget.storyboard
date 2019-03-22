@@ -10,6 +10,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add Total Budget-->
+        <scene sceneID="owP-7W-Tzd">
+            <objects>
+                <viewController storyboardIdentifier="AddTotalBudget" id="sRA-NV-fJO" customClass="AddTotalBudget" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgb-aJ-nSt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter total budget" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G12-Tu-HxG">
+                                <rect key="frame" x="20" y="247" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hzx-fW-rvU"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YvN-ER-9zT">
+                                <rect key="frame" x="20" y="407" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="M4c-bN-56E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Save budget">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveBudgetPressed:" destination="sRA-NV-fJO" eventType="touchUpInside" id="kIA-xG-I0P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YvN-ER-9zT" firstAttribute="leading" secondItem="aIw-ce-DDk" secondAttribute="leading" constant="20" id="0n3-85-Cnc"/>
+                            <constraint firstItem="G12-Tu-HxG" firstAttribute="leading" secondItem="aIw-ce-DDk" secondAttribute="leading" constant="20" id="AvU-PP-J3k"/>
+                            <constraint firstItem="aIw-ce-DDk" firstAttribute="trailing" secondItem="G12-Tu-HxG" secondAttribute="trailing" constant="20" id="Ekq-jW-fTu"/>
+                            <constraint firstItem="YvN-ER-9zT" firstAttribute="top" secondItem="G12-Tu-HxG" secondAttribute="bottom" constant="100" id="ORk-dk-ZZX"/>
+                            <constraint firstItem="aIw-ce-DDk" firstAttribute="trailing" secondItem="YvN-ER-9zT" secondAttribute="trailing" constant="20" id="RZe-45-QsM"/>
+                            <constraint firstItem="aIw-ce-DDk" firstAttribute="bottom" secondItem="YvN-ER-9zT" secondAttribute="bottom" constant="200" id="XiO-X5-PUZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aIw-ce-DDk"/>
+                    </view>
+                    <connections>
+                        <outlet property="totalBudget" destination="G12-Tu-HxG" id="DEe-I0-0tY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdU-X9-AgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="103"/>
+        </scene>
         <!--Budget-->
         <scene sceneID="1AK-ML-g9f">
             <objects>
@@ -91,16 +142,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter total budget" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQP-J7-FFQ">
-                                <rect key="frame" x="0.0" y="50" width="187" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="X5M-lb-5dJ"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqE-3Z-mcd">
                                 <rect key="frame" x="188" y="50" width="187" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,35 +152,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYx-Tf-ngq">
+                                <rect key="frame" x="0.0" y="50" width="187" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xbl-ga-x9T" firstAttribute="top" secondItem="uMG-0L-eRD" secondAttribute="top" id="03d-4F-W2b"/>
                             <constraint firstItem="dU2-fr-JSq" firstAttribute="leading" secondItem="iWH-eZ-hQM" secondAttribute="trailing" id="1hh-rV-9RJ"/>
+                            <constraint firstItem="l3w-a3-ywO" firstAttribute="top" secondItem="wYx-Tf-ngq" secondAttribute="bottom" id="4Eu-6a-TK7"/>
                             <constraint firstItem="iWH-eZ-hQM" firstAttribute="leading" secondItem="uMG-0L-eRD" secondAttribute="leading" id="7Rb-Qx-OPK"/>
-                            <constraint firstItem="oQP-J7-FFQ" firstAttribute="leading" secondItem="uMG-0L-eRD" secondAttribute="leading" id="BDz-VW-8Eg"/>
                             <constraint firstItem="jqE-3Z-mcd" firstAttribute="trailing" secondItem="uMG-0L-eRD" secondAttribute="trailing" id="BgC-3h-jma"/>
                             <constraint firstItem="jqE-3Z-mcd" firstAttribute="leading" secondItem="dU2-fr-JSq" secondAttribute="trailing" id="EgR-Kl-SpM"/>
+                            <constraint firstItem="dU2-fr-JSq" firstAttribute="leading" secondItem="wYx-Tf-ngq" secondAttribute="trailing" id="IV1-KK-OKA"/>
                             <constraint firstItem="jqE-3Z-mcd" firstAttribute="top" secondItem="Xbl-ga-x9T" secondAttribute="bottom" id="IdF-oX-gWe"/>
-                            <constraint firstItem="oQP-J7-FFQ" firstAttribute="top" secondItem="iWH-eZ-hQM" secondAttribute="bottom" id="ROw-B7-uwf"/>
                             <constraint firstItem="dU2-fr-JSq" firstAttribute="top" secondItem="uMG-0L-eRD" secondAttribute="top" id="RR9-f2-zre"/>
+                            <constraint firstItem="wYx-Tf-ngq" firstAttribute="top" secondItem="iWH-eZ-hQM" secondAttribute="bottom" id="XWl-e1-KBN"/>
                             <constraint firstItem="Xbl-ga-x9T" firstAttribute="leading" secondItem="dU2-fr-JSq" secondAttribute="trailing" id="dHT-Up-Qts"/>
                             <constraint firstItem="uMG-0L-eRD" firstAttribute="trailing" secondItem="Xbl-ga-x9T" secondAttribute="trailing" id="dQF-u2-AsP"/>
                             <constraint firstItem="l3w-a3-ywO" firstAttribute="leading" secondItem="uMG-0L-eRD" secondAttribute="leading" id="g7d-F5-gCA"/>
                             <constraint firstItem="l3w-a3-ywO" firstAttribute="top" secondItem="jqE-3Z-mcd" secondAttribute="bottom" id="gVZ-QU-lv1"/>
                             <constraint firstItem="uMG-0L-eRD" firstAttribute="trailing" secondItem="l3w-a3-ywO" secondAttribute="trailing" id="hXT-Z9-lbn"/>
+                            <constraint firstItem="wYx-Tf-ngq" firstAttribute="leading" secondItem="uMG-0L-eRD" secondAttribute="leading" id="ioI-xF-UJk"/>
                             <constraint firstItem="iWH-eZ-hQM" firstAttribute="top" secondItem="uMG-0L-eRD" secondAttribute="top" id="jXo-hR-S4I"/>
                             <constraint firstItem="dU2-fr-JSq" firstAttribute="centerX" secondItem="uMG-0L-eRD" secondAttribute="centerX" id="kLj-2H-sZE"/>
-                            <constraint firstItem="l3w-a3-ywO" firstAttribute="top" secondItem="oQP-J7-FFQ" secondAttribute="bottom" id="s8Q-RC-nHW"/>
                             <constraint firstItem="uMG-0L-eRD" firstAttribute="bottom" secondItem="l3w-a3-ywO" secondAttribute="bottom" id="uF4-Jn-yk0"/>
-                            <constraint firstItem="dU2-fr-JSq" firstAttribute="leading" secondItem="oQP-J7-FFQ" secondAttribute="trailing" id="wpr-CD-tRN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uMG-0L-eRD"/>
                     </view>
                     <connections>
                         <outlet property="Allpossitions" destination="l3w-a3-ywO" id="U86-qI-uCA"/>
                         <outlet property="remainingBudget" destination="jqE-3Z-mcd" id="Kzy-yR-6LK"/>
-                        <outlet property="totalBudget" destination="oQP-J7-FFQ" id="Wf3-lP-Cie"/>
+                        <outlet property="totalBudget" destination="wYx-Tf-ngq" id="PQJ-57-LJ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puR-5w-d9J" userLabel="First Responder" sceneMemberID="firstResponder"/>

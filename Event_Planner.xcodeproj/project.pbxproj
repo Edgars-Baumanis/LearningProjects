@@ -11,7 +11,8 @@
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
-		490543BA2244D8F300FC28A1 /* String extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543B92244D8F300FC28A1 /* String extention.swift */; };
+		490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543BF2245106800FC28A1 /* AddTotalBudget.swift */; };
+		490543C2224510AE00FC28A1 /* AddTotalBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */; };
 		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
 		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
 		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
@@ -146,7 +147,8 @@
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
-		490543B92244D8F300FC28A1 /* String extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String extention.swift"; sourceTree = "<group>"; };
+		490543BF2245106800FC28A1 /* AddTotalBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTotalBudget.swift; sourceTree = "<group>"; };
+		490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTotalBudgetModel.swift; sourceTree = "<group>"; };
 		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
 		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
 		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
@@ -496,6 +498,8 @@
 				490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */,
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
+				490543BF2245106800FC28A1 /* AddTotalBudget.swift */,
+				490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */,
 				4935AB1A2232874C0061AE47 /* Budget.storyboard */,
 				490D4B3D2240DE8800E07DB3 /* AddBudgetField */,
 				49108CD9223A5A2300C6A160 /* ConfigureBudget */,
@@ -545,7 +549,6 @@
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
 				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
-				490543B92244D8F300FC28A1 /* String extention.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */,
 				495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */,
+				490543C2224510AE00FC28A1 /* AddTotalBudgetModel.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
 				490D4B5022421EEF00E07DB3 /* IdeaStructure.swift in Sources */,
@@ -1024,7 +1028,6 @@
 				495E1C932243BDFA0002F096 /* IdeaTopicStructure.swift in Sources */,
 				495E1C85224393D80002F096 /* NeedsDoingDetailsModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
-				490543BA2244D8F300FC28A1 /* String extention.swift in Sources */,
 				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
@@ -1045,6 +1048,7 @@
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
 				495E1C7A224297800002F096 /* TasksFlow.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
+				490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */,
 				490D4B34223FD76200E07DB3 /* TaskNeedsDoing.swift in Sources */,
 				49B7A63F2239343900D4A8EC /* AddTaskModel.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,

@@ -31,7 +31,7 @@ class ConfigureModel {
 
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
-            "/Spaces/\(spaceName!)/BudgetFields/\(key)" : newField.sendData()
+            "/Spaces/\(spaceName!)/Budget/BudgetFields/\(key)" : newField.sendData()
         ]
         ref?.updateChildValues(childUpdates)
         savePressed?()

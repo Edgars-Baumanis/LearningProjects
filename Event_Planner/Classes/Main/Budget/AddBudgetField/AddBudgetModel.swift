@@ -25,7 +25,7 @@ class AddBudgetModel {
             return
         }
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("BudgetFields").childByAutoId().setValue(newField.sendData())
+        ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").childByAutoId().setValue(newField.sendData())
         self.fieldAdded?()
     }
 }

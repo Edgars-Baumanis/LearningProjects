@@ -13,21 +13,24 @@ class BudgetModel {
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
     var configurePressed: ((_ budgetField: BudgetField?) -> Void)?
+    var addTextToFields: (() -> Void)?
     var addPressed: (() -> Void)?
+    var totalBudget: String?
     var dataSource: [BudgetField] = []
     var dataSourceChanged: (() -> Void)?
+    var editBudgetPressed: (() -> Void)?
+    var remainingBudget: Float?
     private var allFieldSum: [Float] = []
     private var spaceName: String?
 
     init(spaceName: String?) {
-        
         self.spaceName = spaceName
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("BudgetFields").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let fieldName = post?["name"] as? String,
@@ -38,12 +41,20 @@ class BudgetModel {
 
             self.dataSource.append(newField)
             self.allFieldSum.append((newField.sum! as NSString).floatValue)
+            self.remainingBudget = self.calculateRemaining()
             self.dataSourceChanged?()
+            self.addTextToFields?()
+        })
+        ref?.child("Spaces").child(spaceName!).child("Budget").observe(.childAdded, with: { (snapshot) in
+            guard let totalBudget = snapshot.value as? String else { return }
+            self.totalBudget = totalBudget
+            self.remainingBudget = self.calculateRemaining()
+            self.addTextToFields?()
         })
     }
 
     func reloadData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("BudgetFields").observe(.childChanged, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let fieldName = post?["name"] as? String,
@@ -61,11 +72,20 @@ class BudgetModel {
             guard let idx = index else { return }
             self.dataSource[idx] = newField
             self.allFieldSum[idx] = (newField.sum! as NSString).floatValue
+            self.remainingBudget = self.calculateRemaining()
             self.dataSourceChanged?()
+            self.addTextToFields?()
+        })
+        ref?.child("Spaces").child(spaceName!).child("Budget").observe(.childChanged, with: { (snapshot) in
+            guard let changedTotalBudget = snapshot.value as? String else { return }
+            self.totalBudget = changedTotalBudget
+            self.remainingBudget = self.calculateRemaining()
+            self.addTextToFields?()
         })
     }
 
-    func calculateRemaining() {
-
+    private func calculateRemaining() -> Float {
+        guard let totalBudget = (self.totalBudget as NSString?)?.floatValue else { return 0 }
+        return totalBudget - allFieldSum.reduce(0, +)
     }
 }
