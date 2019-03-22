@@ -62,7 +62,7 @@
                                             <outlet property="chatterName" destination="wo8-aA-chj" id="CSM-BD-hWN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="15" id="ovH-7g-9CR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="15" reuseIdentifier="CurrentUserCell" id="ovH-7g-9CR" customClass="CurrentUserCell" customModule="Event_Planner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="325" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ovH-7g-9CR" id="huy-iO-FHo">
@@ -96,6 +96,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="userMessage" destination="gzz-GI-bHM" id="8qJ-Li-BSO"/>
+                                            <outlet property="userName" destination="VWD-Vs-Bu2" id="5My-9W-DGh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

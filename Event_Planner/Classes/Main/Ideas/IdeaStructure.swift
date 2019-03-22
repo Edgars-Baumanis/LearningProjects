@@ -14,7 +14,7 @@ struct Idea {
     var likedPeople: [String]
     let key: String?
 
-    init(ideaName: String, likeCount: Int, likedPeople: [String] , key: String?) {
+    init(ideaName: String, likeCount: Int, likedPeople: [String], key: String?) {
         self.ideaName = ideaName
         self.likeCount = likeCount
         self.likedPeople = likedPeople

@@ -39,10 +39,18 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatCell.self), for: indexPath)
-        if let myCell = cell as? ChatCell {
-            myCell.displayContent(chatter: (viewModel?.dataSource[indexPath.row].name)!, sentText: (viewModel?.dataSource[indexPath.row].message)!)
-        }
+        
+        let cellIdentifier = viewModel?.currentUserID != viewModel?.dataSource[indexPath.row].userID ? String(describing: ChatCell.self) : String(describing: CurrentUserCell.self)
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+
+        (cell as? ChatCell)?.displayContent(
+            chatter: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
+            sentText: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
+        (cell as? CurrentUserCell)?.displayContent(
+            user: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
+            message: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
+
         return cell
     }
 }

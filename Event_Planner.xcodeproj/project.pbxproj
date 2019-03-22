@@ -93,6 +93,8 @@
 		495E1C8F2243A9410002F096 /* DoneDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C8E2243A9410002F096 /* DoneDetailsModel.swift */; };
 		495E1C912243A9500002F096 /* InProgressDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C902243A94F0002F096 /* InProgressDetailsModel.swift */; };
 		495E1C932243BDFA0002F096 /* IdeaTopicStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C922243BDFA0002F096 /* IdeaTopicStructure.swift */; };
+		495E1C952243DE340002F096 /* CurrentUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C942243DE340002F096 /* CurrentUserCell.swift */; };
+		495E1C972243DF260002F096 /* MessageStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C962243DF260002F096 /* MessageStructure.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
 		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
@@ -224,6 +226,8 @@
 		495E1C8E2243A9410002F096 /* DoneDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneDetailsModel.swift; sourceTree = "<group>"; };
 		495E1C902243A94F0002F096 /* InProgressDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressDetailsModel.swift; sourceTree = "<group>"; };
 		495E1C922243BDFA0002F096 /* IdeaTopicStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopicStructure.swift; sourceTree = "<group>"; };
+		495E1C942243DE340002F096 /* CurrentUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserCell.swift; sourceTree = "<group>"; };
+		495E1C962243DF260002F096 /* MessageStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStructure.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C482223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spaces.storyboard; sourceTree = "<group>"; };
 		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -457,6 +461,7 @@
 		4935AB1F223287920061AE47 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				495E1C962243DF260002F096 /* MessageStructure.swift */,
 				490D4B4D22421EC200E07DB3 /* ChatStructure.swift */,
 				4935AB282232888C0061AE47 /* ChatsController.swift */,
 				49B7A64022394EC800D4A8EC /* ChatsModel.swift */,
@@ -668,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */,
+				495E1C942243DE340002F096 /* CurrentUserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1002,6 +1008,7 @@
 				490D4B5022421EEF00E07DB3 /* IdeaStructure.swift in Sources */,
 				495E1C8D2243A9390002F096 /* DoneDetails.swift in Sources */,
 				49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */,
+				495E1C952243DE340002F096 /* CurrentUserCell.swift in Sources */,
 				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */,
@@ -1071,6 +1078,7 @@
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
+				495E1C972243DF260002F096 /* MessageStructure.swift in Sources */,
 				490D4B38223FD77700E07DB3 /* TaskDone.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,
 			);
