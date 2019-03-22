@@ -38,6 +38,7 @@ class ChatController: UIViewController {
     @IBAction func sentPressed(_ sender: Any) {
         viewModel?.sendMessage(messageText: messageField.text)
         messageField.text = nil
+        scrollToBottom()
     }
 }
 
@@ -70,7 +71,7 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func scrollToBottom() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: { [weak self] in
             let indexPath = IndexPath(row: (self?.viewModel?.dataSource.count ?? 0)-1  , section: 0)
             self?.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
         })
