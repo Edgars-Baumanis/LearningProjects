@@ -9,11 +9,9 @@
 import UIKit
 
 class CurrentUserCell: UITableViewCell {
-    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userMessage: UILabel!
-    
-    func displayContent(user: String, message: String) {
-        userName.text = user
+
+    func displayContent(message: String) {
         userMessage.text = message
     }
 }

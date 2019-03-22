@@ -24,18 +24,35 @@ class ChatController: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.chatRoom.reloadData()
         }
+        scrollToBottom()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @IBAction func sentPressed(_ sender: Any) {
         viewModel?.sendMessage(messageText: messageField.text)
+        messageField.text = nil
     }
 }
-
 
 extension ChatController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.dataSource.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,10 +64,30 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         (cell as? ChatCell)?.displayContent(
             chatter: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
             sentText: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
-        (cell as? CurrentUserCell)?.displayContent(
-            user: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
-            message: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
+        (cell as? CurrentUserCell)?.displayContent(message: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
 
         return cell
+    }
+
+    func scrollToBottom() {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: { [weak self] in
+            let indexPath = IndexPath(row: (self?.viewModel?.dataSource.count ?? 0)-1  , section: 0)
+            self?.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        })
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= keyboardFrame.height
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 }

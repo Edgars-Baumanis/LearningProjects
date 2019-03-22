@@ -13,6 +13,7 @@ class ChatsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     func displayContent(chatName: String) {

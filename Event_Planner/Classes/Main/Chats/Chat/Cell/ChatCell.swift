@@ -11,6 +11,7 @@ import UIKit
 class ChatCell: UITableViewCell {
     @IBOutlet weak var chatterName: UILabel!
     @IBOutlet weak var chatText: UILabel!
+
     func displayContent(chatter: String, sentText: String) {
         chatterName.text = "\(chatter):"
         chatText.text = "\(sentText)"

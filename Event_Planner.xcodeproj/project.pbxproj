@@ -11,6 +11,7 @@
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
 		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
+		490543BA2244D8F300FC28A1 /* String extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543B92244D8F300FC28A1 /* String extention.swift */; };
 		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
 		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
 		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
@@ -145,6 +146,7 @@
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
 		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
+		490543B92244D8F300FC28A1 /* String extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String extention.swift"; sourceTree = "<group>"; };
 		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
 		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
 		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				490D4B24223BCAF300E07DB3 /* ChatCell.swift */,
+				495E1C942243DE340002F096 /* CurrentUserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -509,7 +512,7 @@
 				49451A2A2224426100AC8350 /* Spaces */,
 				49E0413922326B1000BCF2CA /* Main */,
 				49451A2F2224426100AC8350 /* Flows */,
-				49451A262224426100AC8350 /* View */,
+				49451A262224426100AC8350 /* Extentions */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -535,15 +538,16 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		49451A262224426100AC8350 /* View */ = {
+		49451A262224426100AC8350 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
 				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
+				490543B92244D8F300FC28A1 /* String extention.swift */,
 			);
-			path = View;
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 		49451A2A2224426100AC8350 /* Spaces */ = {
@@ -673,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */,
-				495E1C942243DE340002F096 /* CurrentUserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 				495E1C932243BDFA0002F096 /* IdeaTopicStructure.swift in Sources */,
 				495E1C85224393D80002F096 /* NeedsDoingDetailsModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
+				490543BA2244D8F300FC28A1 /* String extention.swift in Sources */,
 				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
 				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
 				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,

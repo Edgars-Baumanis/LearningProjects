@@ -48,4 +48,5 @@ class ChatModel {
             self.dataSourceChanged?()
         })
     }
+
 }
