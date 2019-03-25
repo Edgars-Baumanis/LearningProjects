@@ -14,7 +14,7 @@ class InProgressDetailsModel {
     private var spaceName: String?
     private var taskTopic: TaskTopic?
     var task: Task?
-    var donePressed: (() -> Void)?
+    var leavingInProgressDetails: (() -> Void)?
 
     init(spaceName: String?, taskTopic: TaskTopic?, task: Task?) {
         self.spaceName = spaceName
@@ -27,6 +27,11 @@ class InProgressDetailsModel {
         let newTask = Task(name: (task?.name)!, description: (task?.description)!, key: nil)
         ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("Done").child((task?.key)!).setValue(newTask.sendData())
         ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).removeValue()
-        self.donePressed?()
+        self.leavingInProgressDetails?()
+    }
+
+    func deletePressed() {
+        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).removeValue()
+        self.leavingInProgressDetails?()
     }
 }

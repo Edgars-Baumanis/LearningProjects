@@ -9,6 +9,7 @@
 import UIKit
 
 class NeedsDoingDetails: UIViewController {
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollViewContent: UIView!
     @IBOutlet weak var taskName: UILabel!
     @IBOutlet weak var taskDescription: TextViewSubclass!
@@ -22,9 +23,13 @@ class NeedsDoingDetails: UIViewController {
         scrollViewContent.setGradientBackground()
         taskName.text = viewModel?.task?.name
         taskDescription.text = viewModel?.task?.description
+        
     }
 
     @IBAction func inProgressPressed(_ sender: Any) {
         viewModel?.inProgressPressed()
+    }
+    @IBAction func deletePressed(_ sender: Any) {
+        viewModel?.deletePressed()
     }
 }

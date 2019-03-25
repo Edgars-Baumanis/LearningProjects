@@ -14,7 +14,8 @@ class NeedsDoingDetailsModel {
     private var spaceName: String?
     private var taskTopic: TaskTopic?
     var task: Task?
-    var toInProgress: (() -> Void)?
+    var leavingNeedsDoingDetails: (() -> Void)?
+    var calculateBoxHeight: (() -> Void)?
 
     init(spaceName: String?, taskTopic: TaskTopic?, task: Task?) {
         self.spaceName = spaceName
@@ -29,6 +30,13 @@ class NeedsDoingDetailsModel {
 
         ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
         
-        self.toInProgress?()
+        self.leavingNeedsDoingDetails?()
+    }
+
+    func deletePressed() {
+        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
+        self.leavingNeedsDoingDetails?()
+
     }
 }
+
