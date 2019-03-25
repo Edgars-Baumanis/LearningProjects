@@ -9,16 +9,18 @@
 import UIKit
 
 struct Space {
-    let spaceName: String?
+    let spaceName: String
     let spacePassword: String?
-    let spaceDescription: String?
-    let mainUser: String?
+    let spaceDescription: String
+    let mainUser: String
+    let key: String?
 
-    init (spaceName: String, spacePassword: String, spaceDescription: String, mainUser: String) {
+    init (spaceName: String, spacePassword: String?, spaceDescription: String, mainUser: String, key: String?) {
         self.spaceName = spaceName
         self.spacePassword = spacePassword
         self.spaceDescription = spaceDescription
         self.mainUser = mainUser
+        self.key = key
     }
 
     func sendData() -> Any {

@@ -15,14 +15,13 @@ class MySpacesModel {
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
     private var userService: PUserService?
-    var spaceName: String?
 
-    var signingOut: (()-> Void)?
-    var navigateToCreate: (()-> Void)?
-    var mySpacesDataSource: [String]?
-    var otherSpacesDataSource: [String]?
-    var dataSourceChanged: (()-> Void)?
-    var cellPressed: ((String)-> Void)?
+    var signingOut: (() -> Void)?
+    var navigateToCreate: (() -> Void)?
+    var mySpacesDataSource: [Space]?
+    var otherSpacesDataSource: [Space]?
+    var dataSourceChanged: (() -> Void)?
+    var cellPressed: ((Space) -> Void)?
 
     init(userService: PUserService?) {
         mySpacesDataSource = []
@@ -36,13 +35,16 @@ class MySpacesModel {
             let post = snapshot.value as? [String : Any]
             guard
                 let spaceName = post?["Name"] as? String,
-                let uID = post?["Main User"] as? String else { return }
-            self.spaceName = spaceName
+                let uID = post?["Main User"] as? String,
+                let spaceDesc = post?["Description"] as? String,
+                let key = snapshot.key as? String
+                else { return }
+            let newSpace = Space(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, mainUser: uID, key: key)
             if uID == self.userService?.user?.userID {
-                self.mySpacesDataSource?.append(spaceName)
+                self.mySpacesDataSource?.append(newSpace)
                 self.dataSourceChanged?()
             } else {
-                self.otherSpacesDataSource?.append(spaceName)
+                self.otherSpacesDataSource?.append(newSpace)
                 self.dataSourceChanged?()
             }
         })

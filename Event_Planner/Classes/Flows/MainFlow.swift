@@ -14,13 +14,13 @@ class MainFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var rootTabbar: UITabBarController?
-    private var spaceName: String?
+    private var space: Space?
     private var userServices: PUserService?
     private var childFlow: FlowController?
 
-    init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
+    init(with tabbar: UITabBarController, with space: Space?, with userServices: PUserService?) {
         self.rootTabbar = tabbar
-        self.spaceName = spaceName
+        self.space = space
         self.userServices = userServices
     }
 
@@ -58,7 +58,7 @@ class MainFlow: FlowController {
             self?.rootTabbar?.dismiss(animated: true, completion: nil)
             self?.backPressed?()
         }
-        viewModel.spaceName = self.spaceName
+        viewModel.space = self.space
 
         vc.viewModel = viewModel
 
@@ -68,25 +68,25 @@ class MainFlow: FlowController {
     }
 
     private func navigateToTasksFlow() {
-        let tasksFlow = TasksFlow(spaceName: spaceName, rootController: rootController)
+        let tasksFlow = TasksFlow(spaceKey: space?.key, rootController: rootController, userService: userServices)
         tasksFlow.start()
         childFlow = tasksFlow
     }
 
     private func navigateToChatFlow() {
-        let chatFlow = ChatsFlow(rootController: rootController, spaceName: spaceName, userServices: userServices)
+        let chatFlow = ChatsFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices)
         chatFlow.start()
         childFlow = chatFlow
     }
 
     private func navigateToIdeaFlow() {
-        let ideaFlow = IdeasFlow(rootController: rootController, spaceName: spaceName, userServices: userServices)
+        let ideaFlow = IdeasFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices)
         ideaFlow.start()
         childFlow = ideaFlow
     }
 
     private func navigateToBudgetFlow() {
-        let budgetFlow = BudgetFlow(rootController: rootController, spaceName: spaceName)
+        let budgetFlow = BudgetFlow(rootController: rootController, spaceKey: space?.key)
         budgetFlow.start()
         childFlow = budgetFlow
     }

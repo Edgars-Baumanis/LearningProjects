@@ -21,16 +21,16 @@ class BudgetModel {
     var editBudgetPressed: (() -> Void)?
     var remainingBudget: Float?
     private var allFieldSum: [Float] = []
-    private var spaceName: String?
+    private var spaceKey: String?
 
-    init(spaceName: String?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?) {
+        self.spaceKey = spaceKey
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Budget").child("BudgetFields").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let fieldName = post?["name"] as? String,
@@ -45,7 +45,7 @@ class BudgetModel {
             self.dataSourceChanged?()
             self.addTextToFields?()
         })
-        ref?.child("Spaces").child(spaceName!).child("Budget").observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Budget").observe(.childAdded, with: { (snapshot) in
             guard let totalBudget = snapshot.value as? String else { return }
             self.totalBudget = totalBudget
             self.remainingBudget = self.calculateRemaining()
@@ -54,7 +54,7 @@ class BudgetModel {
     }
 
     func reloadData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").observe(.childChanged, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Budget").child("BudgetFields").observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let fieldName = post?["name"] as? String,
@@ -76,7 +76,7 @@ class BudgetModel {
             self.dataSourceChanged?()
             self.addTextToFields?()
         })
-        ref?.child("Spaces").child(spaceName!).child("Budget").observe(.childChanged, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Budget").observe(.childChanged, with: { (snapshot) in
             guard let changedTotalBudget = snapshot.value as? String else { return }
             self.totalBudget = changedTotalBudget
             self.remainingBudget = self.calculateRemaining()

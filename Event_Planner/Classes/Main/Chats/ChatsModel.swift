@@ -12,30 +12,34 @@ import Firebase
 
 class ChatsModel {
     var addChatPressed: (()-> Void)?
-    var dataSource: [String] = []
+    var dataSource: [Chat] = []
     var dataSourceChanged: (() -> Void)?
-    var filteredDataSource: [String]?
-    var cellClicked: ((_ chatName: String) -> Void)?
+    var filteredDataSource: [Chat]?
+    var cellClicked: ((_ chatName: Chat?) -> Void)?
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
-    private var spaceName: String?
+    private var spaceKey: String?
 
 
-    init(spaceName: String?) {
+    init(spaceKey: String?) {
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
         filteredDataSource = []
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
 
     func getChats() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Chats").observe(.childAdded, with: { (snapshot) in
-            guard let post = snapshot.value as? [String : Any] else { return }
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Chats").observe(.childAdded, with: { (snapshot) in
+            let post = snapshot.value as? [String : Any]
             guard
-                let chatName = post["Name"] as? String
+                let chatName = post?["Name"] as? String,
+                let chatDesc = post?["Description"] as? String,
+                let key = snapshot.key as? String,
+                let user = post?["User"] as? String
                 else { return }
-            self.dataSource.append(chatName)
-            self.filteredDataSource?.append(chatName)
+            let newChat = Chat(chatName: chatName, chatDescription: chatDesc, user: user, key: key)
+            self.dataSource.append(newChat)
+            self.filteredDataSource?.append(newChat)
             self.dataSourceChanged?()
         })
     }

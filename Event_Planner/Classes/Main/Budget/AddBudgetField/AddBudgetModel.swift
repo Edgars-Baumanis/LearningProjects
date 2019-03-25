@@ -13,11 +13,11 @@ class AddBudgetModel {
     private var ref: DatabaseReference?
     var emptyFields: (() -> Void)?
     var fieldAdded: (() -> Void)?
-    private var spaceName: String?
+    private var spaceKey: String?
 
-    init(spaceName: String?) {
+    init(spaceKey: String?) {
         ref = Database.database().reference()
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
     func addField(fieldName: String?, fieldSum: String?) {
         guard fieldName?.isEmpty != true, fieldSum?.isEmpty != true else {
@@ -25,7 +25,7 @@ class AddBudgetModel {
             return
         }
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Budget").child("BudgetFields").childByAutoId().setValue(newField.sendData())
+        ref?.child("Spaces").child(spaceKey!).child("Budget").child("BudgetFields").childByAutoId().setValue(newField.sendData())
         self.fieldAdded?()
     }
 }

@@ -63,14 +63,14 @@ class AppFlow: FlowController {
         spacesFlow.logoutPressed = { [weak self] in
             self?.navigateToGreetingFlow()
         }
-        spacesFlow.cellPressed = { [weak self] spaceName in
-            self?.navigateToMainFlow(spaceName: spaceName)
+        spacesFlow.cellPressed = { [weak self] space in
+            self?.navigateToMainFlow(space: space)
         }
     }
 
-    private func navigateToMainFlow(spaceName: String) {
+    private func navigateToMainFlow(space: Space) {
         guard let tabbar = rootController else { return }
-        let mainFlow = MainFlow(with: tabbar, with: spaceName, with: userService)
+        let mainFlow = MainFlow(with: tabbar, with: space, with: userService)
         mainFlow.start()
         mainFlow.backPressed = { [weak self] in
             self?.start()

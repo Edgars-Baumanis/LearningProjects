@@ -63,14 +63,14 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
         let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource?[indexPath.row] ?? "Nothing to show")
-        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource?[indexPath.row] ?? "Nothing to show")
+        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource?[indexPath.row].spaceName ?? "Nothing to show")
+        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource?[indexPath.row].spaceName ?? "Nothing to show")
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.spaceName ?? "Some Space")
+        tableView == otherSpaces ? viewModel?.cellPressed?((viewModel?.otherSpacesDataSource?[indexPath.row])!) : viewModel?.cellPressed?((viewModel?.mySpacesDataSource?[indexPath.row])!)
     }
 }
 

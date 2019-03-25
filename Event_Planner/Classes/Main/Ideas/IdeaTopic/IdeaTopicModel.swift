@@ -12,23 +12,23 @@ import Firebase
 class IdeaTopicModel {
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
-    private var spaceName: String?
+    private var spaceKey: String?
     private var userServices: PUserService?
     var topicName: IdeaTopicStruct?
     var addPressed: (() -> Void)?
     var dataSource: [Idea] = []
     var dataSourceChanged: (() -> Void)?
 
-    init(topicName: IdeaTopicStruct?, spaceName: String?, userServices: PUserService?) {
+    init(topicName: IdeaTopicStruct?, spaceKey: String?, userServices: PUserService?) {
         self.userServices = userServices
         self.topicName = topicName
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").child((topicName?.key)!).observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let likedPeople = post?["LikedPeople"] as? [String],
@@ -57,14 +57,14 @@ class IdeaTopicModel {
 
             guard let key = likedField.key, let newTopicKey = topicName?.key else { return }
             let childUpdates = [
-                "/Spaces/\(spaceName!)/Ideas/\(newTopicKey)/\(key)" : newField.sendData()
+                "/Spaces/\(spaceKey!)/Ideas/\(newTopicKey)/\(key)" : newField.sendData()
             ]
             ref?.updateChildValues(childUpdates)
         }
     }
 
     func reloadData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").child((topicName?.key)!).observe(.childChanged, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let likedPeople = post?["LikedPeople"] as? [String],

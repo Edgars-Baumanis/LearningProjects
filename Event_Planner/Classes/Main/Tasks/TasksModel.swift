@@ -17,17 +17,17 @@ class TasksModel {
     var cellPressed: ((_ taskTopic: TaskTopic) -> Void)?
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
-    private var spaceName: String?
+    private var spaceKey: String?
 
-    init(spaceName: String?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?) {
+        self.spaceKey = spaceKey
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
         filteredDataSource = []
     }
 
     func getTaskTopics() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").observe(.childAdded, with:  { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Tasks").observe(.childAdded, with:  { (snapshot) in
             let post = snapshot.value as? [String: AnyObject]
             guard
                 let taskName = post?["name"] as? String,

@@ -60,21 +60,21 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatsCell.self), for: indexPath)
         if let myCell = cell as? ChatsCell {
-            myCell.displayContent(chatName: viewModel?.filteredDataSource?[indexPath.row] ?? "Default Value")
+            myCell.displayContent(chatName: viewModel?.filteredDataSource?[indexPath.row].chatName ?? "Default Value")
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellClicked?((viewModel?.dataSource[indexPath.row])!)
+        viewModel?.cellClicked?(viewModel?.dataSource[indexPath.row])
     }
 }
 
 extension ChatsController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: String) -> Bool in
-            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: Chat) -> Bool in
+            return item.chatName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         allChats.reloadData()
     }

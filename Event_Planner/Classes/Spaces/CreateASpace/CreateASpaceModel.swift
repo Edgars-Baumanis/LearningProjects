@@ -28,8 +28,8 @@ class CreateASpaceModel {
             return
         }
         guard let userID = Auth.auth().currentUser?.uid else {return}
-        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, mainUser: userID)
-        ref?.child("Spaces").child(name!).setValue(newSpace.sendData())
+        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, mainUser: userID, key: nil)
+        ref?.child("Spaces").childByAutoId().setValue(newSpace.sendData())
         backPressed?()
     }
     

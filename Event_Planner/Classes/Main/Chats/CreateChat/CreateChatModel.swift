@@ -13,11 +13,11 @@ class CreateChatModel {
     private var ref: DatabaseReference?
     var chatCreated: (() -> Void)?
     var emptyFields: (() -> Void)?
-    private var spaceName: String?
+    private var spaceKey: String?
 
-    init(spaceName: String?) {
+    init(spaceKey: String?) {
         ref = Database.database().reference()
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
 
     func createChat(name: String?, desc: String?) {
@@ -26,8 +26,8 @@ class CreateChatModel {
             return
         }
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        let newChat = Chat(chatName: name!, chatDescription: desc!, user: userID)
-        ref?.child("Spaces").child(spaceName!).child("Chats").child(name!).setValue(newChat.sendData())
+        let newChat = Chat(chatName: name!, chatDescription: desc!, user: userID, key: nil)
+        ref?.child("Spaces").child(spaceKey!).child("Chats").childByAutoId().setValue(newChat.sendData())
         chatCreated?()
     }
 }

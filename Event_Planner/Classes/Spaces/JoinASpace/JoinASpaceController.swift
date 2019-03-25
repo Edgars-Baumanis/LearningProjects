@@ -32,6 +32,6 @@ class JoinASpaceController: UIViewController {
     }
     
     @IBAction func joinSpacePressed(_ sender: Any) {
-        viewModel?.joinASpace(spaceName: spaceName.text, spacePassword: spacePassword.text)
+        viewModel?.joinASpace(enteredSpaceName: spaceName.text, enteredSpacePassword: spacePassword.text)
     }
 }

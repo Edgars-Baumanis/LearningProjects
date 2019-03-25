@@ -13,11 +13,11 @@ class AddTaskModel {
     var emptyFields: (()->Void)?
     var addTaskPressed: (() -> Void)?
     private var ref: DatabaseReference?
-    private var spaceName: String?
+    private var spaceKey: String?
 
-    init(spaceName: String?) {
+    init(spaceKey: String?) {
         ref = Database.database().reference()
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
 
     func addTask(taskName: String?) {
@@ -26,7 +26,7 @@ class AddTaskModel {
             return
         }
         let newTopic = TaskTopic(name: taskName!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
+        ref?.child("Spaces").child(spaceKey!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
         self.addTaskPressed?()
 
     }

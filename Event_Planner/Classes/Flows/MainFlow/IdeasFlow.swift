@@ -11,14 +11,14 @@ import UIKit
 class IdeasFlow: FlowController {
 
     private var rootController: UINavigationController?
-    private var spaceName: String?
+    private var spaceKey: String?
     private var ideaTopic: IdeaTopicStruct?
     private var userServices: PUserService?
 
-    init(rootController: UINavigationController?, spaceName: String?, userServices: PUserService?) {
+    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?) {
         self.userServices = userServices
         self.rootController = rootController
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
 
     private lazy var ideasSB: UIStoryboard = {
@@ -51,7 +51,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToIdeas() {
         guard let vc = ideasViewController else { return }
-        let viewModel = IdeasModel(spaceName: spaceName)
+        let viewModel = IdeasModel(spaceKey: spaceKey)
 
         viewModel.addTopicPressed = { [weak self] in
             self?.navigateToAddIdeaTopic()
@@ -68,7 +68,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToAddIdeaTopic() {
         guard let vc = addIdeasController else { return }
-        let viewModel = AddTopicModel(spaceName: spaceName)
+        let viewModel = AddTopicModel(spaceKey: spaceKey)
         viewModel.addTopicPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -78,7 +78,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToIdeaTopics() {
         guard let vc = ideaTopicController else { return }
-        let viewModel = IdeaTopicModel(topicName: ideaTopic, spaceName: spaceName, userServices: userServices)
+        let viewModel = IdeaTopicModel(topicName: ideaTopic, spaceKey: spaceKey, userServices: userServices)
         viewModel.addPressed = { [weak self] in
             self?.navigateToAddIdea()
         }
@@ -88,7 +88,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToAddIdea() {
         guard let vc = addIdeaController else { return }
-        let viewModel = AddIdeaModel(spaceName: spaceName, topicName: ideaTopic)
+        let viewModel = AddIdeaModel(spaceKey: spaceKey, topicName: ideaTopic)
         viewModel.ideaAdded = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }

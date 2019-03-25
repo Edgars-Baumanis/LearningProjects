@@ -12,12 +12,12 @@ import Firebase
 class ConfigureModel {
     var savePressed: (() -> Void)?
     private var ref: DatabaseReference?
-    private var spaceName: String?
+    private var spaceKey: String?
     var budgetField: BudgetField?
 
 
-    init(spaceName: String?, budgetField: BudgetField?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?, budgetField: BudgetField?) {
+        self.spaceKey = spaceKey
         self.budgetField = budgetField
         ref = Database.database().reference()
     }
@@ -31,7 +31,7 @@ class ConfigureModel {
 
         let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
-            "/Spaces/\(spaceName!)/Budget/BudgetFields/\(key)" : newField.sendData()
+            "/Spaces/\(spaceKey!)/Budget/BudgetFields/\(key)" : newField.sendData()
         ]
         ref?.updateChildValues(childUpdates)
         savePressed?()

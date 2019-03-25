@@ -37,10 +37,10 @@ class JoinASpaceModel {
 
     var wrongEntry: (()-> Void)?
     var emptyFields: (()-> Void)?
-    var rightEntry: ((String)-> Void)?
+    var rightEntry: ((Space)-> Void)?
 
-    func joinASpace(spaceName: String?, spacePassword: String?) {
-        guard spaceName?.isEmpty != true, spacePassword?.isEmpty != true else {
+    func joinASpace(enteredSpaceName: String?, enteredSpacePassword: String?) {
+        guard enteredSpaceName?.isEmpty != true, enteredSpacePassword?.isEmpty != true else {
             emptyFields?()
             return
         }
@@ -48,16 +48,21 @@ class JoinASpaceModel {
             let post = snapshot.value as? [String : Any]
 
             guard
-                let name = post?["name"] as? String?,
-                let password = post?["password"] as? String,
-                let uID = post?["uID"] as? String else { return }
-            if name == spaceName && password == spacePassword {
+                let spaceName = post?["name"] as? String,
+                let spacePassword = post?["password"] as? String,
+                let spaceDesc = post?["desription"] as? String,
+                let uID = post?["uID"] as? String,
+                let key = snapshot.key as? String
+                else { return }
+            if spaceName == enteredSpaceName && spacePassword == enteredSpacePassword {
+
                 if uID != self.userService?.user?.userID {
                     guard let uID = self.userService?.user?.userID else {return}
                     let user = AddUser(uID: uID)
-                    self.ref?.child("Spaces").child(name!).child("Allowed Users").setValue(user.sendData())
+                    self.ref?.child("Spaces").child(key).child("Allowed Users").setValue(user.sendData())
                 }
-                self.rightEntry?(name!)
+                let space = Space(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, mainUser: uID, key: key)
+                self.rightEntry?(space)
             } else {
                 self.wrongEntry?()
                 return

@@ -17,16 +17,17 @@ class IdeasModel {
     var filteredDataSource: [IdeaTopicStruct]?
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
-    private var spaceName: String?
-    init(spaceName: String?) {
-        self.spaceName = spaceName
+    private var spaceKey: String?
+    
+    init(spaceKey: String?) {
+        self.spaceKey = spaceKey
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
         filteredDataSource = []
     }
 
     func getTopics() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Ideas").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
