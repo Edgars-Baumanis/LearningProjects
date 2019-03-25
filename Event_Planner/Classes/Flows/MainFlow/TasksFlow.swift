@@ -154,7 +154,7 @@ class TasksFlow: FlowController {
     private func navigateToNeedsDoingDetails() {
         guard let vc = needsDoingDetails else { return }
         let viewModel = NeedsDoingDetailsModel(spaceName: spaceName, taskTopic: taskTopic, task: needsDoingTask)
-        viewModel.toInProgress = { [weak self] in
+        viewModel.leavingNeedsDoingDetails = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
@@ -164,7 +164,7 @@ class TasksFlow: FlowController {
     private func navigateToInProgressDetails() {
         guard let vc = inProgressDetails else { return }
         let viewModel = InProgressDetailsModel(spaceName: spaceName, taskTopic: taskTopic, task: inProgressTask)
-        viewModel.donePressed = { [weak self] in
+        viewModel.leavingInProgressDetails = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
@@ -180,5 +180,4 @@ class TasksFlow: FlowController {
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
-    
 }
