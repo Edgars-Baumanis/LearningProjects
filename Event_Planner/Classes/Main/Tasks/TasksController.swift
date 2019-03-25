@@ -58,10 +58,6 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         return viewModel?.filteredDataSource?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksCell.self), for: indexPath)
         if let myCell = cell as? TasksCell {

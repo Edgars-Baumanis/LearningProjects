@@ -10,19 +10,19 @@ import UIKit
 import Firebase
 
 class ChatModel {
-    var chatName: String?
+    var chat: Chat?
     var dataSource: [Message] = []
     var dataSourceChanged: (() -> Void)?
     private let ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
     private let userServices: PUserService?
-    private let spaceName: String?
+    private let spaceKey: String?
     var currentUserID: String?
 
-    init(chatName: String?, userServices: PUserService?, spaceName: String?) {
-        self.chatName = chatName
+    init(chat: Chat?, userServices: PUserService?, spaceKey: String?) {
+        self.chat = chat
         self.userServices = userServices
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
         currentUserID = userServices?.user?.userID
@@ -30,20 +30,24 @@ class ChatModel {
 
     func sendMessage(messageText: String?) {
         guard messageText?.isEmpty != true else { return }
-        let sentMessage = Message(name: userServices?.user?.userID ?? "Default userID", message: messageText!, userID: userServices?.user?.userID)
-        ref?.child("Spaces").child(spaceName!).child("Chats").child(chatName!).child("Messages").childByAutoId().setValue(sentMessage.sendData())
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        let currentTime = timeFormatter.string(from: Date())
+        let sentMessage = Message(name: userServices?.user?.userID ?? "Default userID", message: messageText!, userID: currentUserID, time: currentTime)
+        ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").childByAutoId().setValue(sentMessage.sendData())
     }
 
     func getMessages() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Chats").child(chatName!).child("Messages").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
                 let message = post?["message"] as? String,
+                let time = post?["time"] as? String,
                 let userID = post?["userID"] as? String
                 else { return }
             
-            let text = Message(name: name, message: message, userID: userID)
+            let text = Message(name: name, message: message, userID: userID, time: time)
             self.dataSource.append(text)
             self.dataSourceChanged?()
         })

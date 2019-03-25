@@ -19,12 +19,14 @@ class ChatController: UIViewController {
         view.setGradientBackground()
         chatRoom.delegate = self
         chatRoom.dataSource = self
-        self.title = viewModel?.chatName
+        self.title = viewModel?.chat?.chatName
         viewModel?.getMessages()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.chatRoom.reloadData()
         }
-        scrollToBottom()
+        if viewModel?.dataSource.count != 0 {
+            scrollToBottom()
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -38,7 +40,9 @@ class ChatController: UIViewController {
     @IBAction func sentPressed(_ sender: Any) {
         viewModel?.sendMessage(messageText: messageField.text)
         messageField.text = nil
-        scrollToBottom()
+        if viewModel?.dataSource.count != 0 {
+            scrollToBottom()
+        }
     }
 }
 
@@ -64,8 +68,11 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
 
         (cell as? ChatCell)?.displayContent(
             chatter: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
-            sentText: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
-        (cell as? CurrentUserCell)?.displayContent(message: viewModel?.dataSource[indexPath.row].message ?? "Default Value")
+            sentText: viewModel?.dataSource[indexPath.row].message ?? "Default Value",
+            timeStamp: viewModel?.dataSource[indexPath.row].time ?? "00:00")
+        (cell as? CurrentUserCell)?.displayContent(
+            message: viewModel?.dataSource[indexPath.row].message ?? "Default Value",
+            timeStamp: viewModel?.dataSource[indexPath.row].time ?? "00:00")
 
         return cell
     }
