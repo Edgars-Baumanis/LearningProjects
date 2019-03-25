@@ -12,20 +12,31 @@ import Firebase
 class TaskAddTaskModel {
     var emptyFields: (() -> Void)?
     var addTaskPressed: (() -> Void)?
+    var dateFormatter: DateFormatter?
     private var ref: DatabaseReference?
-    private var spaceName: String?
+    private var spaceKey: String?
     private var taskTopic: TaskTopic?
+    private var userServices: PUserService?
 
-    init(spaceName: String?, taskTopic: TaskTopic?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?, taskTopic: TaskTopic?, userServices: PUserService?) {
+        self.spaceKey = spaceKey
         self.taskTopic = taskTopic
+        self.userServices = userServices
+        dateFormatter = DateFormatter()
+        dateFormatter?.dateStyle = .short
+        dateFormatter?.timeStyle = .short
         ref = Database.database().reference()
     }
 
-    func addTask(taskName: String?, taskDescription: String?) {
-        guard taskName?.isEmpty != true, taskDescription?.isEmpty != true else { return }
-        let newTask = Task(name: taskName!, description: taskDescription!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
+    func addTask(taskName: String?, taskDescription: String?, deadline: String?) {
+        guard
+            taskName?.isEmpty != true,
+            taskDescription?.isEmpty != true,
+            deadline?.isEmpty != true,
+            let userID = userServices?.user?.userID
+            else { return }
+        let newTask = Task(name: taskName!, description: taskDescription!, key: nil, ownerID: userID, deadline: deadline!)
+        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
         addTaskPressed?()
     }
 }

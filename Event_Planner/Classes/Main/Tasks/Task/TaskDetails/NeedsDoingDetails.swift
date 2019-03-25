@@ -23,6 +23,8 @@ class NeedsDoingDetails: UIViewController {
         scrollViewContent.setGradientBackground()
         taskName.text = viewModel?.task?.name
         taskDescription.text = viewModel?.task?.description
+        timeAdded.text = viewModel?.task?.deadline
+        taskOwner.text = viewModel?.task?.ownerID
         
     }
 
