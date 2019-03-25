@@ -14,6 +14,7 @@ class IdeasModel {
     var cellPressed: ((_ ideaTopic: IdeaTopicStruct?) -> Void)?
     var dataSourceChanged: (() -> Void)?
     var dataSource: [IdeaTopicStruct] = []
+    var filteredDataSource: [IdeaTopicStruct]?
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
     private var spaceName: String?
@@ -21,6 +22,7 @@ class IdeasModel {
         self.spaceName = spaceName
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
+        filteredDataSource = []
     }
 
     func getTopics() {
@@ -32,6 +34,7 @@ class IdeasModel {
                 else { return }
             let newTopic = IdeaTopicStruct(name: name, key: key)
             self.dataSource.append(newTopic)
+            self.filteredDataSource?.append(newTopic)
             self.dataSourceChanged?()
         })
     }

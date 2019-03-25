@@ -14,6 +14,7 @@ class ChatsModel {
     var addChatPressed: (()-> Void)?
     var dataSource: [String] = []
     var dataSourceChanged: (() -> Void)?
+    var filteredDataSource: [String]?
     var cellClicked: ((_ chatName: String) -> Void)?
     private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
@@ -23,6 +24,7 @@ class ChatsModel {
     init(spaceName: String?) {
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
+        filteredDataSource = []
         self.spaceName = spaceName
     }
 
@@ -33,6 +35,7 @@ class ChatsModel {
                 let chatName = post["Name"] as? String
                 else { return }
             self.dataSource.append(chatName)
+            self.filteredDataSource?.append(chatName)
             self.dataSourceChanged?()
         })
     }

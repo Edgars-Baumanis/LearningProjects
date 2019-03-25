@@ -12,15 +12,18 @@ import Firebase
 class TasksModel {
     var addTaskPressed: (() -> Void)?
     var dataSource: [TaskTopic] = []
+    var filteredDataSource: [TaskTopic]?
     var dataSourceChanged: (() -> Void)?
     var cellPressed: ((_ taskTopic: TaskTopic) -> Void)?
     private var ref: DatabaseReference?
     private var databaseHandle: DatabaseHandle?
     private var spaceName: String?
+
     init(spaceName: String?) {
         self.spaceName = spaceName
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
+        filteredDataSource = []
     }
 
     func getTaskTopics() {
@@ -32,6 +35,7 @@ class TasksModel {
                 else { return }
             let newTopic = TaskTopic(name: taskName, key: key)
             self.dataSource.append(newTopic)
+            self.filteredDataSource?.append(newTopic)
             self.dataSourceChanged?()
         })
     }

@@ -28,6 +28,8 @@ class TaskNeedsDoing: UIViewController {
     func floatingButton() {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: 300, y: 550, width: 50, height: 50)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
         btn.setTitle("+", for: .normal)
         btn.setFloatingButtonGradient()
         btn.clipsToBounds = true
