@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TaskAddTaskModel {
+class AddTaskModel {
     var emptyFields: (() -> Void)?
     var addTaskPressed: (() -> Void)?
     var dateFormatter: DateFormatter?
@@ -23,8 +23,7 @@ class TaskAddTaskModel {
         self.taskTopic = taskTopic
         self.userServices = userServices
         dateFormatter = DateFormatter()
-        dateFormatter?.dateStyle = .short
-        dateFormatter?.timeStyle = .short
+        dateFormatter?.dateFormat = "EEEE, MMM d, yyyy"
         ref = Database.database().reference()
     }
 

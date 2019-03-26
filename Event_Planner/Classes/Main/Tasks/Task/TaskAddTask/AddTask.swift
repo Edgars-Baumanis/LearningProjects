@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TaskAddTask: UIViewController {
+class AddTask: UIViewController {
     
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var deadline: UIDatePicker!
-    var viewModel: TaskAddTaskModel?
+    var viewModel: AddTaskModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -31,7 +31,7 @@ class TaskAddTask: UIViewController {
 }
 
 
-extension TaskAddTask: UITextViewDelegate {
+extension AddTask: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if taskDescription.textColor == UIColor.placholderGrey {

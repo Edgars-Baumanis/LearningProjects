@@ -1,15 +1,15 @@
 //
-//  AddTaskModel.swift
+//  AddTaskTopicModel.swift
 //  Event_Planner
 //
-//  Created by Edgars Baumanis on 13.03.19.
+//  Created by Edgars Baumanis on 26.03.19.
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class AddTaskModel {
+class AddTaskTopicModel {
     var emptyFields: (()->Void)?
     var addTaskPressed: (() -> Void)?
     private var ref: DatabaseReference?
@@ -19,7 +19,7 @@ class AddTaskModel {
         ref = Database.database().reference()
         self.spaceKey = spaceKey
     }
-
+    
     func addTask(taskName: String?) {
         guard taskName?.isEmpty != true else {
             emptyFields?()

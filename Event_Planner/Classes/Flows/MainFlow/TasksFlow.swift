@@ -40,8 +40,8 @@ class TasksFlow: FlowController {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
     }
 
-    private var addTaskTopicController: AddTask? {
-        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
+    private var addTaskTopicController: AddTaskTopic? {
+        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTaskTopic.self)) as? AddTaskTopic
     }
 
     private var taskNeedsDoingController: TaskNeedsDoing? {
@@ -56,8 +56,8 @@ class TasksFlow: FlowController {
         return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskDone.self)) as? TaskDone
     }
 
-    private var addTaskController: TaskAddTask? {
-        return addTaskSB.instantiateViewController(withIdentifier: String(describing: TaskAddTask.self)) as? TaskAddTask
+    private var addTaskController: AddTask? {
+        return addTaskSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
     }
 
     private var needsDoingDetails: NeedsDoingDetails? {
@@ -95,7 +95,7 @@ class TasksFlow: FlowController {
 
     private func navigateToAddTaskTopic() {
         guard let vc = addTaskTopicController else { return }
-        let viewModel = AddTaskModel(spaceKey: spaceKey)
+        let viewModel = AddTaskTopicModel(spaceKey: spaceKey)
         viewModel.addTaskPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -145,7 +145,7 @@ class TasksFlow: FlowController {
 
     private func navigateToAddTask() {
         guard let vc = addTaskController else { return }
-        let viewModel = TaskAddTaskModel(spaceKey: spaceKey, taskTopic: taskTopic, userServices: userService)
+        let viewModel = AddTaskModel(spaceKey: spaceKey, taskTopic: taskTopic, userServices: userService)
         viewModel.addTaskPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }

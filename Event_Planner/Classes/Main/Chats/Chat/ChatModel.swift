@@ -26,7 +26,7 @@ class ChatModel {
         ref = Database.database().reference()
         databaseHandle = DatabaseHandle()
         currentUserID = userServices?.user?.userID
-    }
+    } 
 
     func sendMessage(messageText: String?) {
         guard messageText?.isEmpty != true else { return }
