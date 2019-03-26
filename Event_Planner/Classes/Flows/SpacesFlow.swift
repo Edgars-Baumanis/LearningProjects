@@ -47,7 +47,7 @@ class SpacesFlow: FlowController {
         viewModel.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
-        viewModel.cellPressed = { [weak self] space in
+        viewModel.navigateToMainFlow = { [weak self] space in
             self?.cellPressed?(space)
         }
         vc.viewModel = viewModel

@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 
 class AddTotalBudgetModel {
+    
     private var spaceKey: String?
     private var ref: DatabaseReference?
-    var addPressed: (() -> Void)?
+
+    var navigateToBudget: (() -> Void)?
 
     init(spaceKey: String?) {
         self.spaceKey = spaceKey
@@ -22,6 +24,6 @@ class AddTotalBudgetModel {
     func saveTotalBudget(totalBudget: String?) {
         guard totalBudget?.isEmpty != true else { return }
         ref?.child("Spaces").child(spaceKey!).child("Budget").child("TotalBudget").setValue(totalBudget!)
-        self.addPressed?()
+        self.navigateToBudget?()
     }
 }

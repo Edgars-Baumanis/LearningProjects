@@ -72,7 +72,7 @@ class AppFlow: FlowController {
         guard let tabbar = rootController else { return }
         let mainFlow = MainFlow(with: tabbar, with: space, with: userService)
         mainFlow.start()
-        mainFlow.backPressed = { [weak self] in
+        mainFlow.navigateToSpacesFlow = { [weak self] in
             self?.start()
         }
         childFlow = mainFlow

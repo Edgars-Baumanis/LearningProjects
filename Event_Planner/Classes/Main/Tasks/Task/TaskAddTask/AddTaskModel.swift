@@ -10,13 +10,15 @@ import UIKit
 import Firebase
 
 class AddTaskModel {
-    var emptyFields: (() -> Void)?
-    var addTaskPressed: (() -> Void)?
-    var dateFormatter: DateFormatter?
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
     private var taskTopic: TaskTopic?
     private var userServices: PUserService?
+
+    var emptyFields: (() -> Void)?
+    var addTaskPressed: (() -> Void)?
+    var dateFormatter: DateFormatter?
 
     init(spaceKey: String?, taskTopic: TaskTopic?, userServices: PUserService?) {
         self.spaceKey = spaceKey

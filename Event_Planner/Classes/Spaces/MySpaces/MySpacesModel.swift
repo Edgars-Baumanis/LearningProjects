@@ -12,7 +12,6 @@ import FirebaseDatabase
 
 class MySpacesModel {
 
-    private var databaseHandle: DatabaseHandle?
     private var ref: DatabaseReference?
     private var userService: PUserService?
 
@@ -21,7 +20,7 @@ class MySpacesModel {
     var mySpacesDataSource: [Space]?
     var otherSpacesDataSource: [Space]?
     var dataSourceChanged: (() -> Void)?
-    var cellPressed: ((Space) -> Void)?
+    var navigateToMainFlow: ((Space) -> Void)?
 
     init(userService: PUserService?) {
         mySpacesDataSource = []
@@ -31,7 +30,7 @@ class MySpacesModel {
     }
     
     func getData() {
-        databaseHandle = ref?.child("Spaces").observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : Any]
             guard
                 let spaceName = post?["Name"] as? String,

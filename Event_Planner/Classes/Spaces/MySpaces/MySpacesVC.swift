@@ -70,7 +70,7 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView == otherSpaces ? viewModel?.cellPressed?((viewModel?.otherSpacesDataSource?[indexPath.row])!) : viewModel?.cellPressed?((viewModel?.mySpacesDataSource?[indexPath.row])!)
+        tableView == otherSpaces ? viewModel?.navigateToMainFlow?((viewModel?.otherSpacesDataSource?[indexPath.row])!) : viewModel?.navigateToMainFlow?((viewModel?.mySpacesDataSource?[indexPath.row])!)
     }
 }
 

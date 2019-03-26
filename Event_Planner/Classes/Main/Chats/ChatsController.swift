@@ -47,7 +47,7 @@ class ChatsController: UIViewController {
     }
 
     @objc func addChatPressed(sender: UIBarButtonItem) {
-        viewModel?.addChatPressed?()
+        viewModel?.navigateToAddChat?()
     }
 }
 
@@ -66,7 +66,7 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellClicked?(viewModel?.dataSource[indexPath.row])
+        viewModel?.navigateToChat?(viewModel?.dataSource[indexPath.row])
     }
 }
 

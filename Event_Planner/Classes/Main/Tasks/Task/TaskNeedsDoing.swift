@@ -39,7 +39,7 @@ class TaskNeedsDoing: UIViewController {
     }
 
     @objc func addPressed(sender: UIButton) {
-        viewModel?.addPressed?()
+        viewModel?.navigateToAddTask?()
     }
 }
 
@@ -58,6 +58,6 @@ extension TaskNeedsDoing: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
+        viewModel?.navigateToDetails?(viewModel?.dataSource[indexPath.row])
     }
 }

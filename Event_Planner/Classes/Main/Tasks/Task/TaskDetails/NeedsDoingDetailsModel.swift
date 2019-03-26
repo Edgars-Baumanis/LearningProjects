@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 
 class NeedsDoingDetailsModel {
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
     private var taskTopic: TaskTopic?
+    
     var task: Task?
-    var leavingNeedsDoingDetails: (() -> Void)?
+    var leaveDetails: (() -> Void)?
     var calculateBoxHeight: (() -> Void)?
 
     init(spaceKey: String?, taskTopic: TaskTopic?, task: Task?) {
@@ -30,12 +32,12 @@ class NeedsDoingDetailsModel {
 
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
         
-        self.leavingNeedsDoingDetails?()
+        self.leaveDetails?()
     }
 
     func deletePressed() {
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
-        self.leavingNeedsDoingDetails?()
+        self.leaveDetails?()
 
     }
 }

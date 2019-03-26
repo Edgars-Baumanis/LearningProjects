@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 
 class AddIdeaModel {
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
     private var topicName: IdeaTopicStruct?
+    
     var ideaAdded: (() -> Void)?
 
     init(spaceKey: String?, topicName: IdeaTopicStruct?) {

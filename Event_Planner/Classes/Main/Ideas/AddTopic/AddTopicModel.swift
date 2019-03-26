@@ -10,8 +10,10 @@ import UIKit
 import Firebase
 
 class AddTopicModel {
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
+    
     var addTopicPressed: (() -> Void)?
 
 

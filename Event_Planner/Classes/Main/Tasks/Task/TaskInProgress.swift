@@ -11,6 +11,7 @@ import UIKit
 class TaskInProgress: UIViewController {
     @IBOutlet weak var tasksInProgress: UITableView!
     var viewModel: TaskInProgressModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -39,7 +40,7 @@ extension TaskInProgress: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
+        viewModel?.navigateToDetails?(viewModel?.dataSource[indexPath.row])
     }
 }
 

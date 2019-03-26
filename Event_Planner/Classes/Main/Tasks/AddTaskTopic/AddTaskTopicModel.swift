@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 
 class AddTaskTopicModel {
-    var emptyFields: (()->Void)?
-    var addTaskPressed: (() -> Void)?
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
+    
+    var emptyFields: (()->Void)?
+    var navigateToTaskTopic: (() -> Void)?
 
     init(spaceKey: String?) {
         ref = Database.database().reference()
@@ -27,7 +29,7 @@ class AddTaskTopicModel {
         }
         let newTopic = TaskTopic(name: taskName!, key: nil)
         ref?.child("Spaces").child(spaceKey!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
-        self.addTaskPressed?()
+        self.navigateToTaskTopic?()
 
     }
 }

@@ -47,11 +47,11 @@ class BudgetFlow: FlowController {
     private func navigateToBudget() {
         guard let vc = budgetViewController else { return }
         let viewModel = BudgetModel(spaceKey: spaceKey)
-        viewModel.configurePressed = { [weak self] budgetField in
+        viewModel.navigateToConfigureBudget = { [weak self] budgetField in
             self?.budgetField = budgetField
             self?.navigateToConfigureBudget()
         }
-        viewModel.addPressed = { [weak self] in
+        viewModel.navigateToAddField = { [weak self] in
             self?.navigateToAddBudgetField()
         }
         viewModel.editBudgetPressed = { [weak self] in
@@ -85,7 +85,7 @@ class BudgetFlow: FlowController {
     private func navigateToAddTotalBudget() {
         guard let vc = addTotalBudgetController else { return }
         let viewModel = AddTotalBudgetModel(spaceKey: spaceKey)
-        viewModel.addPressed = { [weak self] in
+        viewModel.navigateToBudget = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel

@@ -10,23 +10,23 @@ import UIKit
 import Firebase
 
 class TaskInProgressModel {
+
     private var spaceKey: String?
     private var taskTopic: TaskTopic?
     private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
+    
     var dataSource: [Task] = []
     var dataSourceChanged: (() -> Void)?
-    var cellPressed: ((_ task: Task?) -> Void)?
+    var navigateToDetails: ((_ task: Task?) -> Void)?
 
     init(spaceKey: String?, taskTopic: TaskTopic?) {
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
@@ -42,7 +42,7 @@ class TaskInProgressModel {
     }
 
     func dataDeleted() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childRemoved, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").observe(.childRemoved, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,

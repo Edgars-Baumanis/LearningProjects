@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 
 class ChatModel {
+    
+    private let ref: DatabaseReference?
+    private let userServices: PUserService?
+    private let spaceKey: String?
+
     var chat: Chat?
     var dataSource: [Message] = []
     var dataSourceChanged: (() -> Void)?
-    private let ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
-    private let userServices: PUserService?
-    private let spaceKey: String?
     var currentUserID: String?
 
     init(chat: Chat?, userServices: PUserService?, spaceKey: String?) {
@@ -24,7 +25,6 @@ class ChatModel {
         self.userServices = userServices
         self.spaceKey = spaceKey
         ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
         currentUserID = userServices?.user?.userID
     } 
 
@@ -38,7 +38,7 @@ class ChatModel {
     }
 
     func getMessages() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let name = post?["name"] as? String,
@@ -52,5 +52,4 @@ class ChatModel {
             self.dataSourceChanged?()
         })
     }
-
 }

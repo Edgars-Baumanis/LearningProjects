@@ -40,7 +40,7 @@ extension TaskDone: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
+        viewModel?.navigateToDetails?(viewModel?.dataSource[indexPath.row])
     }
 }
 

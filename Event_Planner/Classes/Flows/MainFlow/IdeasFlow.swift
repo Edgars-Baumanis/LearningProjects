@@ -53,11 +53,11 @@ class IdeasFlow: FlowController {
         guard let vc = ideasViewController else { return }
         let viewModel = IdeasModel(spaceKey: spaceKey)
 
-        viewModel.addTopicPressed = { [weak self] in
+        viewModel.navigateToAddTopic = { [weak self] in
             self?.navigateToAddIdeaTopic()
         }
 
-        viewModel.cellPressed = { [weak self] cellName in
+        viewModel.navigateToIdea = { [weak self] cellName in
             self?.ideaTopic = cellName
             self?.navigateToIdeaTopics()
         }

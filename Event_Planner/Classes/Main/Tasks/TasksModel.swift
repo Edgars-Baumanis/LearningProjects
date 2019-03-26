@@ -10,14 +10,16 @@ import UIKit
 import Firebase
 
 class TasksModel {
+
+    private var ref: DatabaseReference?
+    private var databaseHandle: DatabaseHandle?
+    private var spaceKey: String?
+    
     var addTaskPressed: (() -> Void)?
     var dataSource: [TaskTopic] = []
     var filteredDataSource: [TaskTopic]?
     var dataSourceChanged: (() -> Void)?
     var cellPressed: ((_ taskTopic: TaskTopic) -> Void)?
-    private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
-    private var spaceKey: String?
 
     init(spaceKey: String?) {
         self.spaceKey = spaceKey

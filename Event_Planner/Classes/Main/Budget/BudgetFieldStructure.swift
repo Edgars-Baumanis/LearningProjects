@@ -9,8 +9,8 @@
 import UIKit
 
 struct BudgetField {
-    var name: String?
-    var sum: String?
+    var name: String
+    var sum: String
     var key: String?
 
     init(name: String, sum: String, key: String?) {

@@ -11,25 +11,25 @@ import FirebaseDatabase
 import Firebase
 
 class ChatsModel {
-    var addChatPressed: (()-> Void)?
+    
+    private var ref: DatabaseReference?
+    private var spaceKey: String?
+
+    var navigateToAddChat: (()-> Void)?
     var dataSource: [Chat] = []
     var dataSourceChanged: (() -> Void)?
     var filteredDataSource: [Chat]?
-    var cellClicked: ((_ chatName: Chat?) -> Void)?
-    private var databaseHandle: DatabaseHandle?
-    private var ref: DatabaseReference?
-    private var spaceKey: String?
+    var navigateToChat: ((_ chatName: Chat?) -> Void)?
 
 
     init(spaceKey: String?) {
         ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
         filteredDataSource = []
         self.spaceKey = spaceKey
     }
 
     func getChats() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Chats").observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Chats").observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : Any]
             guard
                 let chatName = post?["Name"] as? String,

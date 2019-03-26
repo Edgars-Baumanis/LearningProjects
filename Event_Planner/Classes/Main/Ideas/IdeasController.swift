@@ -47,7 +47,7 @@ class IdeasController: UIViewController {
     }
 
     @objc func addTopicPressed() {
-        viewModel?.addTopicPressed?()
+        viewModel?.navigateToAddTopic?()
     }
 }
 
@@ -66,7 +66,7 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.filteredDataSource?[indexPath.row])
+        viewModel?.navigateToIdea?(viewModel?.filteredDataSource?[indexPath.row])
     }
 }
 

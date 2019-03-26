@@ -48,10 +48,10 @@ class ChatsFlow: FlowController {
     private func navigateToChats() {
         guard let vc = chatsViewController else { return }
         let viewModel = ChatsModel(spaceKey: spaceKey)
-        viewModel.addChatPressed = { [weak self] in
+        viewModel.navigateToAddChat = { [weak self] in
             self?.navigateToAddChat()
         }
-        viewModel.cellClicked = { [weak self] cell in
+        viewModel.navigateToChat = { [weak self] cell in
             self?.chat = cell
             self?.navigateToChat()
         }

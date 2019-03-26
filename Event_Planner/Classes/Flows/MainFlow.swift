@@ -10,7 +10,7 @@ import UIKit
 
 class MainFlow: FlowController {
 
-    var backPressed: (()-> Void)?
+    var navigateToSpacesFlow: (()-> Void)?
 
     private var rootController: UINavigationController?
     private var rootTabbar: UITabBarController?
@@ -56,7 +56,7 @@ class MainFlow: FlowController {
 
         viewModel.backPressed = { [weak self] in
             self?.rootTabbar?.dismiss(animated: true, completion: nil)
-            self?.backPressed?()
+            self?.navigateToSpacesFlow?()
         }
         viewModel.space = self.space
 

@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 
 class AddBudgetModel {
+
+    private var spaceKey: String?
     private var ref: DatabaseReference?
+    
     var emptyFields: (() -> Void)?
     var fieldAdded: (() -> Void)?
-    private var spaceKey: String?
 
     init(spaceKey: String?) {
         ref = Database.database().reference()

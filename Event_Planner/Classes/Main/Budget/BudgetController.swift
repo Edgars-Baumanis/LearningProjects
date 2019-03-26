@@ -52,7 +52,7 @@ class BudgetController: UIViewController {
     }
 
     @objc func addBudgetPressed(sender: UIButton) {
-        viewModel?.addPressed?()
+        viewModel?.navigateToAddField?()
     }
 
     @objc func editBudgetPressed(sender: UIBarButtonItem) {
@@ -77,7 +77,7 @@ extension BudgetController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.configurePressed?(viewModel?.dataSource[indexPath.row])
+        viewModel?.navigateToConfigureBudget?(viewModel?.dataSource[indexPath.row])
     }
 }
 

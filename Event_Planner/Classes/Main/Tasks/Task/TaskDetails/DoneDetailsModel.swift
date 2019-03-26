@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 
 class DoneDetailsModel {
+
     private var spaceKey: String?
     private var taskTopic: TaskTopic?
     private var ref: DatabaseReference?
+    
     var task: Task?
-    var deletePressed: (() -> Void)?
+    var leaveDetails: (() -> Void)?
 
     init(task: Task?, spaceKey: String?, taskTopic: TaskTopic?) {
         self.spaceKey = spaceKey
@@ -25,7 +27,7 @@ class DoneDetailsModel {
 
     func deleteTask() {
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("Done").child((task?.key)!).removeValue()
-        self.deletePressed?()
+        self.leaveDetails?()
     }
 
 }

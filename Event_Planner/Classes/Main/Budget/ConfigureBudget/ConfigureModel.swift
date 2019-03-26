@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 
 class ConfigureModel {
-    var savePressed: (() -> Void)?
+
     private var ref: DatabaseReference?
     private var spaceKey: String?
-    var budgetField: BudgetField?
 
+    var savePressed: (() -> Void)?
+    var budgetField: BudgetField?
 
     init(spaceKey: String?, budgetField: BudgetField?) {
         self.spaceKey = spaceKey

@@ -10,10 +10,11 @@ import UIKit
 import Firebase
 
 class IdeaTopicModel {
+
     private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
     private var spaceKey: String?
     private var userServices: PUserService?
+
     var topicName: IdeaTopicStruct?
     var addPressed: (() -> Void)?
     var dataSource: [Idea] = []
@@ -24,11 +25,10 @@ class IdeaTopicModel {
         self.topicName = topicName
         self.spaceKey = spaceKey
         ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childAdded, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let likedPeople = post?["LikedPeople"] as? [String],
@@ -64,7 +64,7 @@ class IdeaTopicModel {
     }
 
     func reloadData() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childChanged, with: { (snapshot) in
+        ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let likedPeople = post?["LikedPeople"] as? [String],

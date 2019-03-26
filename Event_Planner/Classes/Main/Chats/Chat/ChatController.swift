@@ -10,7 +10,6 @@ import UIKit
 
 class ChatController: UIViewController {
     @IBOutlet weak var chatRoom: UITableView!
-
     @IBOutlet weak var messageField: UITextField!
     var viewModel: ChatModel?
     

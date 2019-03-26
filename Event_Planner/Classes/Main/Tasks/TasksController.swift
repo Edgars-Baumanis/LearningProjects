@@ -12,6 +12,7 @@ class TasksController: UIViewController {
 
     var viewModel: TasksModel?
     var tap: UITapGestureRecognizer?
+    
     @IBOutlet weak var taskSearch: UISearchBar!
     @IBOutlet weak var allTasks: UITableView!
     
