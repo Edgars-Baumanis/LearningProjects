@@ -18,12 +18,14 @@ class MainFlow: FlowController {
     private var userServices: PUserService?
     private var childFlow: FlowController?
     private var ideaService: PIdeaService?
+    private var chatService: PChatService?
 
-    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?) {
+    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?) {
         self.rootTabbar = tabbar
         self.ideaService = ideaService
         self.userServices = userServices
-        self.space = space 
+        self.space = space
+        self.chatService = chatService
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -76,7 +78,7 @@ class MainFlow: FlowController {
     }
 
     private func navigateToChatFlow() {
-        let chatFlow = ChatsFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices)
+        let chatFlow = ChatsFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices, chatService: chatService)
         chatFlow.start()
         childFlow = chatFlow
     }

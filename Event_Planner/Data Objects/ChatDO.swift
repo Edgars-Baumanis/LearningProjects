@@ -1,14 +1,14 @@
 //
-//  Structure.swift
+//  ChatDO.swift
 //  Event_Planner
 //
-//  Created by Edgars Baumanis on 20.03.19.
+//  Created by Edgars Baumanis on 28.03.19.
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Chat {
+struct ChatDO {
     let chatName: String
     let chatDescription: String
     let user: String?

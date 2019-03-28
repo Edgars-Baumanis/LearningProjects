@@ -13,9 +13,9 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var chatText: UILabel!
     @IBOutlet weak var timeStamp: UILabel!
     
-    func displayContent(chatter: String, sentText: String, timeStamp: String) {
-        chatterName.text = "\(chatter):"
-        chatText.text = "\(sentText)"
-        self.timeStamp.text = "\(timeStamp)"
+    func displayContent(message: MessageDO?) {
+        chatterName.text = message?.name
+        chatText.text = message?.message
+        self.timeStamp.text = message?.time
     }
 }

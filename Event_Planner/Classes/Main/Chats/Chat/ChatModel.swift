@@ -7,49 +7,44 @@
 //
 
 import UIKit
-import Firebase
 
 class ChatModel {
     
-    private let ref: DatabaseReference?
     private let userServices: PUserService?
     private let spaceKey: String?
+    private let chatService: PChatService?
 
-    var chat: Chat?
-    var dataSource: [Message] = []
+    var chat: ChatDO?
+    var dataSource: [MessageDO] = []
     var dataSourceChanged: (() -> Void)?
-    var currentUserID: String?
+    var errorMessage: ((String?) -> Void)?
+    let currentUserID: String?
 
-    init(chat: Chat?, userServices: PUserService?, spaceKey: String?) {
+    init(chat: ChatDO?, userServices: PUserService?, spaceKey: String?, chatService: PChatService?) {
         self.chat = chat
         self.userServices = userServices
         self.spaceKey = spaceKey
-        ref = Database.database().reference()
         currentUserID = userServices?.user?.userID
+        self.chatService = chatService
     } 
 
     func sendMessage(messageText: String?) {
-        guard messageText?.isEmpty != true else { return }
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
-        let currentTime = timeFormatter.string(from: Date())
-        let sentMessage = Message(name: userServices?.user?.userID ?? "Default userID", message: messageText!, userID: currentUserID, time: currentTime)
-        ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").childByAutoId().setValue(sentMessage.sendData())
+        chatService?.sendMessage(spaceKey: spaceKey, chatKey: chat?.key, messageText: messageText, completionHandler: { (error) in
+            if error != nil {
+                self.errorMessage?(error)
+            }
+        })
     }
 
     func getMessages() {
-        ref?.child("Spaces").child(spaceKey!).child("Chats").child((chat?.key)!).child("Messages").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let message = post?["message"] as? String,
-                let time = post?["time"] as? String,
-                let userID = post?["userID"] as? String
-                else { return }
-            
-            let text = Message(name: name, message: message, userID: userID, time: time)
-            self.dataSource.append(text)
-            self.dataSourceChanged?()
+        chatService?.getMessages(spaceKey: spaceKey, chatKey: chat?.key, completionHandler: { [weak self] (message, error) in
+            if error == nil {
+                guard let newMessage = message else { return }
+                self?.dataSource.append(newMessage)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
     }
 }

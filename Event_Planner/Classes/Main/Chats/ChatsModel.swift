@@ -7,40 +7,42 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import Firebase
 
 class ChatsModel {
     
-    private var ref: DatabaseReference?
-    private var spaceKey: String?
+    private let spaceKey: String?
+    private let chatService: PChatService?
 
     var navigateToAddChat: (()-> Void)?
-    var dataSource: [Chat] = []
+    var dataSource: [ChatDO] = []
     var dataSourceChanged: (() -> Void)?
-    var filteredDataSource: [Chat]?
-    var navigateToChat: ((_ chatName: Chat?) -> Void)?
+    var filteredDataSource: [ChatDO] = []
+    var navigateToChat: ((_ chatName: ChatDO?) -> Void)?
+    var errorMessage: ((String?) -> Void)?
+    
 
 
-    init(spaceKey: String?) {
-        ref = Database.database().reference()
-        filteredDataSource = []
+    init(spaceKey: String?, chatService: PChatService?) {
         self.spaceKey = spaceKey
+        self.chatService = chatService
     }
 
     func getChats() {
-        ref?.child("Spaces").child(spaceKey!).child("Chats").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : Any]
-            guard
-                let chatName = post?["Name"] as? String,
-                let chatDesc = post?["Description"] as? String,
-                let key = snapshot.key as? String,
-                let user = post?["User"] as? String
-                else { return }
-            let newChat = Chat(chatName: chatName, chatDescription: chatDesc, user: user, key: key)
-            self.dataSource.append(newChat)
-            self.filteredDataSource?.append(newChat)
-            self.dataSourceChanged?()
+        chatService?.getChats(spaceKey: spaceKey, completionHandler: { [weak self] (chat, error) in
+            if error == nil {
+                guard let newChat = chat else { return }
+                self?.dataSource.append(newChat)
+                self?.filteredDataSource.append(newChat)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
+    }
+
+    func searchTextChanged(searchText: String) {
+        filteredDataSource = searchText.isEmpty ? dataSource : dataSource.filter { (item: ChatDO) -> Bool in
+            return item.chatName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
     }
 }

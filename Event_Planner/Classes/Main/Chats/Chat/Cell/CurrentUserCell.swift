@@ -12,8 +12,8 @@ class CurrentUserCell: UITableViewCell {
     @IBOutlet weak var timeStamp: UILabel!
     @IBOutlet weak var userMessage: UILabel!
 
-    func displayContent(message: String, timeStamp: String) {
-        userMessage.text = message
-        self.timeStamp.text = timeStamp
+    func displayContent(message: MessageDO?) {
+        userMessage.text = message?.message
+        self.timeStamp.text = message?.time
     }
 }

@@ -12,12 +12,14 @@ class ChatsFlow: FlowController {
     private var rootController: UINavigationController?
     private var spaceKey: String?
     private var userServices: PUserService?
-    private var chat: Chat?
+    private var chat: ChatDO?
+    private var chatService: PChatService?
     
-    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?) {
+    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?, chatService: PChatService?) {
         self.rootController = rootController
         self.spaceKey = spaceKey
         self.userServices = userServices
+        self.chatService = chatService
     }
 
     private lazy var chatsSB: UIStoryboard = {
@@ -47,7 +49,7 @@ class ChatsFlow: FlowController {
 
     private func navigateToChats() {
         guard let vc = chatsViewController else { return }
-        let viewModel = ChatsModel(spaceKey: spaceKey)
+        let viewModel = ChatsModel(spaceKey: spaceKey, chatService: chatService)
         viewModel.navigateToAddChat = { [weak self] in
             self?.navigateToAddChat()
         }
@@ -61,7 +63,7 @@ class ChatsFlow: FlowController {
 
     private func navigateToAddChat() {
         guard let vc = addChatController else { return }
-        let viewModel = CreateChatModel(spaceKey: spaceKey)
+        let viewModel = CreateChatModel(spaceKey: spaceKey, chatService: chatService)
         viewModel.chatCreated = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -71,7 +73,7 @@ class ChatsFlow: FlowController {
 
     private func navigateToChat() {
         guard let vc = chatController else { return }
-        let viewModel = ChatModel(chat: chat, userServices: userServices, spaceKey: spaceKey)
+        let viewModel = ChatModel(chat: chat, userServices: userServices, spaceKey: spaceKey, chatService: chatService)
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }

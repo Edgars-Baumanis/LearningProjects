@@ -15,5 +15,4 @@ protocol PDependencies {
 class Dependencies: PDependencies {
     static var instance = Dependencies()
     var userService = UserService()
-    var spaceService = SpaceService()
 }

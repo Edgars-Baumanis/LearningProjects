@@ -7,27 +7,25 @@
 //
 
 import UIKit
-import Firebase
 
 class CreateChatModel {
-    private var ref: DatabaseReference?
     var chatCreated: (() -> Void)?
-    var emptyFields: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
     private var spaceKey: String?
+    private var chatService: PChatService?
 
-    init(spaceKey: String?) {
-        ref = Database.database().reference()
+    init(spaceKey: String?, chatService: PChatService?) {
         self.spaceKey = spaceKey
+        self.chatService = chatService
     }
 
     func createChat(name: String?, desc: String?) {
-        guard name?.isEmpty != true, desc?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        let newChat = Chat(chatName: name!, chatDescription: desc!, user: userID, key: nil)
-        ref?.child("Spaces").child(spaceKey!).child("Chats").childByAutoId().setValue(newChat.sendData())
-        chatCreated?()
+        chatService?.createChat(chatName: name, chatDesc: desc, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.chatCreated?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }

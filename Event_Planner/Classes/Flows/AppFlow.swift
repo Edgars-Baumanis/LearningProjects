@@ -16,14 +16,16 @@ class AppFlow: FlowController {
     fileprivate var userService: PUserService?
     fileprivate var spaceService: PSpacesService?
     fileprivate var ideaService: PIdeaService?
+    fileprivate var chatService: PChatService?
 
     init(with window: UIWindow) {
         self.window = window
 
         window.makeKeyAndVisible()
+        userService = Dependencies.instance.userService
+        chatService = ChatService()
         ideaService = IdeaService()
         spaceService = SpaceService()
-        userService = Dependencies.instance.userService
     }
 
     func start() {
@@ -63,7 +65,7 @@ class AppFlow: FlowController {
     }
 
     private func navigateToMainFlow(space: SpaceDO?) {
-        let mainFlow = MainFlow(with: rootController, with: userService, ideaService: ideaService, space: space)
+        let mainFlow = MainFlow(with: rootController, with: userService, ideaService: ideaService, space: space, chatService: chatService)
         mainFlow.start()
         mainFlow.navigateToSpacesFlow = { [weak self] in
             self?.start()

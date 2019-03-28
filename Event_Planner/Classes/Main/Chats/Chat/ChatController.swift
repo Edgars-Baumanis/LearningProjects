@@ -22,10 +22,9 @@ class ChatController: UIViewController {
         viewModel?.getMessages()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.chatRoom.reloadData()
+            self?.scrollToBottom()
         }
-        if viewModel?.dataSource.count != 0 {
-            scrollToBottom()
-        }
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -39,9 +38,6 @@ class ChatController: UIViewController {
     @IBAction func sentPressed(_ sender: Any) {
         viewModel?.sendMessage(messageText: messageField.text)
         messageField.text = nil
-        if viewModel?.dataSource.count != 0 {
-            scrollToBottom()
-        }
     }
 }
 
@@ -65,23 +61,17 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
-        (cell as? ChatCell)?.displayContent(
-            chatter: viewModel?.dataSource[indexPath.row].name ?? "Default Value",
-            sentText: viewModel?.dataSource[indexPath.row].message ?? "Default Value",
-            timeStamp: viewModel?.dataSource[indexPath.row].time ?? "00:00")
-        (cell as? CurrentUserCell)?.displayContent(
-            message: viewModel?.dataSource[indexPath.row].message ?? "Default Value",
-            timeStamp: viewModel?.dataSource[indexPath.row].time ?? "00:00")
+        (cell as? ChatCell)?.displayContent(message: viewModel?.dataSource[indexPath.row])
+        (cell as? CurrentUserCell)?.displayContent(message: viewModel?.dataSource[indexPath.row])
 
         return cell
     }
 
     func scrollToBottom() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
-
-            let indexPath = IndexPath(row: (self?.viewModel?.dataSource.count ?? 0) - 1, section: 0)
-            self?.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        })
+        if viewModel?.dataSource.count != 0 {
+            let indexPath = IndexPath(row: (self.viewModel?.dataSource.count ?? 0) - 1, section: 0)
+            self.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

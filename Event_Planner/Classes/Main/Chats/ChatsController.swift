@@ -11,8 +11,9 @@ import UIKit
 class ChatsController: UIViewController {
     @IBOutlet weak var allChats: UITableView!
     @IBOutlet weak var searchChat: UISearchBar!
-    var tap: UITapGestureRecognizer?
     var viewModel: ChatsModel?
+    var addTap: (() -> Void)?
+    var removeTap: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,19 @@ class ChatsController: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allChats.reloadData()
         }
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
         floatingButton()
-        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
     }
 
     @objc func dismissKeyboard() {
@@ -54,13 +66,13 @@ class ChatsController: UIViewController {
 extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.filteredDataSource?.count ?? 0
+        return viewModel?.filteredDataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatsCell.self), for: indexPath)
         if let myCell = cell as? ChatsCell {
-            myCell.displayContent(chatName: viewModel?.filteredDataSource?[indexPath.row].chatName ?? "Default Value")
+            myCell.displayContent(chatName: viewModel?.filteredDataSource[indexPath.row].chatName ?? "Default Value")
         }
         return cell
     }
@@ -73,15 +85,13 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 extension ChatsController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: Chat) -> Bool in
-            return item.chatName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
+        viewModel?.searchTextChanged(searchText: searchText)
         allChats.reloadData()
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-        view.addGestureRecognizer(tap!)
+        addTap?()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -91,7 +101,7 @@ extension ChatsController: UISearchBarDelegate {
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.removeGestureRecognizer(tap!)
+        removeTap?()
         searchBar.resignFirstResponder()
     }
 }
