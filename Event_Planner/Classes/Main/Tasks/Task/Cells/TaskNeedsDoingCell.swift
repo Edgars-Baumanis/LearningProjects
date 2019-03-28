@@ -11,7 +11,7 @@ import UIKit
 class TaskNeedsDoingCell: UITableViewCell {
     @IBOutlet weak var taskNeedsDoing: UILabel!
 
-    func displayContent(name: String) {
+    func displayContent(name: String?) {
         taskNeedsDoing.text = name
     }
 }

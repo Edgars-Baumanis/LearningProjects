@@ -7,44 +7,51 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 
 class MySpacesModel {
 
-    private var databaseHandle: DatabaseHandle?
-    private var ref: DatabaseReference?
     private var userService: PUserService?
-    var spaceName: String?
+    private var spaceService: PSpacesService?
+    
+    var navigateToMainFlow: ((SpaceDO) -> Void)?
+    var signingOut: (() -> Void)?
+    var navigateToCreate: (() -> Void)?
+    var mySpaces: [SpaceDO] = []
+    var otherSpaces: [SpaceDO] = []
+    var dataSourceChanged: (() -> Void)?
 
-    var signingOut: (()-> Void)?
-    var navigateToCreate: (()-> Void)?
-    var mySpacesDataSource: [String]?
-    var otherSpacesDataSource: [String]?
-    var dataSourceChanged: (()-> Void)?
-    var cellPressed: ((String)-> Void)?
-
-    init(userService: PUserService?) {
-        mySpacesDataSource = []
-        otherSpacesDataSource = []
-        ref = Database.database().reference()
+    init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
+        self.spaceService = spaceService
+        getData()
     }
     
     func getData() {
-        databaseHandle = ref?.child("Spaces").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : Any]
-            guard
-                let spaceName = post?["Name"] as? String,
-                let uID = post?["Main User"] as? String else { return }
-            self.spaceName = spaceName
-            if uID == self.userService?.user?.userID {
-                self.mySpacesDataSource?.append(spaceName)
-                self.dataSourceChanged?()
+        spaceService?.getSpaces(completionHandler: { [weak self] (space, mySpace) in
+            if mySpace {
+                self?.mySpaces.append(space)
             } else {
-                self.otherSpacesDataSource?.append(spaceName)
-                self.dataSourceChanged?()
+                self?.otherSpaces.append(space)
+            }
+            self?.dataSourceChanged?()
+        })
+    }
+
+    func signOut() {
+        userService?.signOut(completionHandler: { [weak self] error in
+            if error == nil {
+                self?.signingOut?()
+            } else {
+                print(error)
             }
         })
+    }
+
+    func mySpacePressed(index: Int) {
+        navigateToMainFlow?(mySpaces[index])
+    }
+
+    func otherSpacePressed(index: Int) {
+        navigateToMainFlow?(otherSpaces[index])
     }
 }

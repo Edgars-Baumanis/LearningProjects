@@ -10,14 +10,16 @@ import UIKit
 
 class ChatsFlow: FlowController {
     private var rootController: UINavigationController?
-    private var spaceName: String?
+    private var spaceKey: String?
     private var userServices: PUserService?
-    private var chatName: String?
+    private var chat: ChatDO?
+    private var chatService: PChatService?
     
-    init(rootController: UINavigationController?, spaceName: String?, userServices: PUserService?) {
+    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?, chatService: PChatService?) {
         self.rootController = rootController
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
         self.userServices = userServices
+        self.chatService = chatService
     }
 
     private lazy var chatsSB: UIStoryboard = {
@@ -47,12 +49,12 @@ class ChatsFlow: FlowController {
 
     private func navigateToChats() {
         guard let vc = chatsViewController else { return }
-        let viewModel = ChatsModel(spaceName: spaceName)
-        viewModel.addChatPressed = { [weak self] in
+        let viewModel = ChatsModel(spaceKey: spaceKey, chatService: chatService)
+        viewModel.navigateToAddChat = { [weak self] in
             self?.navigateToAddChat()
         }
-        viewModel.cellClicked = { [weak self] cellName in
-            self?.chatName = cellName
+        viewModel.navigateToChat = { [weak self] cell in
+            self?.chat = cell
             self?.navigateToChat()
         }
         vc.viewModel = viewModel
@@ -61,7 +63,7 @@ class ChatsFlow: FlowController {
 
     private func navigateToAddChat() {
         guard let vc = addChatController else { return }
-        let viewModel = CreateChatModel(spaceName: spaceName)
+        let viewModel = CreateChatModel(spaceKey: spaceKey, chatService: chatService)
         viewModel.chatCreated = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -71,7 +73,7 @@ class ChatsFlow: FlowController {
 
     private func navigateToChat() {
         guard let vc = chatController else { return }
-        let viewModel = ChatModel(chatName: chatName, userServices: userServices, spaceName: spaceName)
+        let viewModel = ChatModel(chat: chat, userServices: userServices, spaceKey: spaceKey, chatService: chatService)
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }

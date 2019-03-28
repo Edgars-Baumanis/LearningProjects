@@ -7,33 +7,43 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import Firebase
 
 class ChatsModel {
-    var addChatPressed: (()-> Void)?
-    var dataSource: [String] = []
+    
+    private let spaceKey: String?
+    private let chatService: PChatService?
+
+    var navigateToAddChat: (()-> Void)?
+    var dataSource: [ChatDO] = []
     var dataSourceChanged: (() -> Void)?
-    var cellClicked: ((_ chatName: String) -> Void)?
-    private var databaseHandle: DatabaseHandle?
-    private var ref: DatabaseReference?
-    private var spaceName: String?
+    var filteredDataSource: [ChatDO] = []
+    var navigateToChat: ((_ chatName: ChatDO?) -> Void)?
+    var errorMessage: ((String?) -> Void)?
+    
 
 
-    init(spaceName: String?) {
-        ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
-        self.spaceName = spaceName
+    init(spaceKey: String?, chatService: PChatService?) {
+        self.spaceKey = spaceKey
+        self.chatService = chatService
+        getChats()
     }
 
     func getChats() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Chats").observe(.childAdded, with: { (snapshot) in
-            guard let post = snapshot.value as? [String : Any] else { return }
-            guard
-                let chatName = post["Name"] as? String
-                else { return }
-            self.dataSource.append(chatName)
-            self.dataSourceChanged?()
+        chatService?.getChats(spaceKey: spaceKey, completionHandler: { [weak self] (chat, error) in
+            if error == nil {
+                guard let newChat = chat else { return }
+                self?.dataSource.append(newChat)
+                self?.filteredDataSource.append(newChat)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
+    }
+
+    func searchTextChanged(searchText: String) {
+        filteredDataSource = searchText.isEmpty ? dataSource : dataSource.filter { (item: ChatDO) -> Bool in
+            return item.chatName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
     }
 }

@@ -23,8 +23,6 @@ class MySpacesVC: UIViewController {
         otherSpaces.dataSource = self
         mySpaces.delegate = self
         mySpaces.dataSource = self
-        viewModel?.getData()
-
         viewModel?.dataSourceChanged = { [weak self] in
             DispatchQueue.main.async {
                 self?.mySpaces.reloadData()
@@ -38,39 +36,37 @@ class MySpacesVC: UIViewController {
     }
     
     @IBAction func signOutPressed(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            viewModel?.signingOut?()
-        } catch let signOutError as NSError {
-            print(signOutError)
-        }
+        viewModel?.signOut()
     }
 }
 
 extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
-        if cellIdentifier == String(describing: MySpacesCell.self) {
-            return viewModel?.mySpacesDataSource?.count ?? 0
+        if tableView == otherSpaces {
+            return viewModel?.otherSpaces.count ?? 0
         } else {
-            return viewModel?.otherSpacesDataSource?.count ?? 0
+            return viewModel?.mySpaces.count ?? 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = tableView == otherSpaces ? String(describing: OtherSpacesCell.self) : String(describing: MySpacesCell.self)
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cellIdentifier = tableView == otherSpaces ?
+            String(describing: OtherSpacesCell.self) :
+            String(describing: MySpacesCell.self)
         
-        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpacesDataSource?[indexPath.row] ?? "Nothing to show")
-        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpacesDataSource?[indexPath.row] ?? "Nothing to show")
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+
+        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpaces[indexPath.row].spaceName)
+        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpaces[indexPath.row].spaceName)
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.spaceName ?? "Some Space")
+        tableView == otherSpaces ?
+            viewModel?.otherSpacePressed(index: indexPath.row) :
+            viewModel?.mySpacePressed(index: indexPath.row)
     }
 }
 

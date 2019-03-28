@@ -11,6 +11,7 @@ import UIKit
 class IdeaCell: UITableViewCell {
     @IBOutlet weak var ideaName: UILabel!
     @IBOutlet weak var likeCount: UILabel!
+    
     func displayContent(name: String, count: Int) {
         ideaName.text = name + ": "
         likeCount.text = "\(count)"

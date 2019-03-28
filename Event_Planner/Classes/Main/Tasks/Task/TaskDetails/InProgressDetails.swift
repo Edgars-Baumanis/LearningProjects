@@ -26,4 +26,7 @@ class InProgressDetails: UIViewController {
     @IBAction func donePressed(_ sender: Any) {
         viewModel?.taskDone()
     }
+    @IBAction func deletePressed(_ sender: Any) {
+        viewModel?.deletePressed()
+    }
 }

@@ -7,62 +7,45 @@
 //
 
 import UIKit
-import Firebase
-
-struct Message {
-    let name: String
-    let message: String
-
-    init (name: String, message: String) {
-        self.name = name
-        self.message = message
-    }
-
-    func sendData() -> Any {
-        return [
-            "name": name,
-            "message": message
-        ]
-    }
-}
 
 class ChatModel {
-    var chatName: String?
-    var dataSource: [Message] = []
-    var dataSourceChanged: (() -> Void)?
-    private let ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
+    
     private let userServices: PUserService?
-    private let spaceName: String?
+    private let spaceKey: String?
+    private let chatService: PChatService?
 
+    var chat: ChatDO?
+    var dataSource: [MessageDO] = []
+    var dataSourceChanged: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
+    let currentUserID: String?
 
-    init(
-        chatName: String?,
-        userServices: PUserService?,
-        spaceName: String?) {
-            self.chatName = chatName
-            self.userServices = userServices
-            self.spaceName = spaceName
-            ref = Database.database().reference()
-            databaseHandle = DatabaseHandle()
-    }
+    init(chat: ChatDO?, userServices: PUserService?, spaceKey: String?, chatService: PChatService?) {
+        self.chat = chat
+        self.userServices = userServices
+        self.spaceKey = spaceKey
+        currentUserID = userServices?.user?.userID
+        self.chatService = chatService
+        getMessages()
+    } 
 
     func sendMessage(messageText: String?) {
-        guard messageText?.isEmpty != true else { return }
-        let sentMessage = Message(name: userServices?.user?.userID ?? "Default userID", message: messageText!)
-        ref?.child("Spaces").child(spaceName!).child("Chats").child(chatName!).child("Messages").childByAutoId().setValue(sentMessage.sendData())
+        chatService?.sendMessage(spaceKey: spaceKey, chatKey: chat?.key, messageText: messageText, completionHandler: { (error) in
+            if error != nil {
+                self.errorMessage?(error)
+            }
+        })
     }
 
     func getMessages() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Chats").child(chatName!).child("Messages").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let message = post?["message"] as? String
-                else { return }
-            let text = Message(name: name, message: message)
-            self.dataSource.append(text)
-            self.dataSourceChanged?()
+        chatService?.getMessages(spaceKey: spaceKey, chatKey: chat?.key, completionHandler: { [weak self] (message, error) in
+            if error == nil {
+                guard let newMessage = message else { return }
+                self?.dataSource.append(newMessage)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class BudgetCell: UITableViewCell {
     @IBOutlet weak var budgetName: UILabel!
     @IBOutlet weak var budgetSum: UILabel!
+    
     func displayContent(name: String, sum: String) {
         budgetName.text = name
         budgetSum.text = sum

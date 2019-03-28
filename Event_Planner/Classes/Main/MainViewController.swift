@@ -15,24 +15,24 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        self.title = viewModel?.spaceName
-        let backButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backPressed))
-        self.navigationItem.leftBarButtonItem = backButton
+        title = viewModel?.space?.spaceName
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backPressed))
+        navigationItem.leftBarButtonItem = backButton
     }
 
-    @IBAction func chatPressed(_ sender: Any) {
+    @IBAction func chatPressed(_ sender: UIButton) {
         viewModel?.chatPressed?()
     }
 
-    @IBAction func budgetPressed(_ sender: Any) {
+    @IBAction func budgetPressed(_ sender: UIButton) {
         viewModel?.budgetPressed?()
     }
 
-    @IBAction func tasksPressed(_ sender: Any) {
+    @IBAction func tasksPressed(_ sender: UIButton) {
         viewModel?.tasksPressed?()
     }
 
-    @IBAction func ideasPressed(_ sender: Any) {
+    @IBAction func ideasPressed(_ sender: UIButton) {
         viewModel?.ideasPressed?()
     }
 

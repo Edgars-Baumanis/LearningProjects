@@ -10,22 +10,24 @@ import UIKit
 import Firebase
 
 class AddBudgetModel {
+
+    private var spaceKey: String?
     private var ref: DatabaseReference?
+    
     var emptyFields: (() -> Void)?
     var fieldAdded: (() -> Void)?
-    private var spaceName: String?
 
-    init(spaceName: String?) {
+    init(spaceKey: String?) {
         ref = Database.database().reference()
-        self.spaceName = spaceName
+        self.spaceKey = spaceKey
     }
     func addField(fieldName: String?, fieldSum: String?) {
         guard fieldName?.isEmpty != true, fieldSum?.isEmpty != true else {
             emptyFields?()
             return
         }
-        let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("BudgetFields").childByAutoId().setValue(newField.sendData())
+        let newField = BudgetDO(name: fieldName!, sum: fieldSum!, key: nil)
+        ref?.child("Spaces").child(spaceKey!).child("Budget").child("BudgetFields").childByAutoId().setValue(newField.sendData())
         self.fieldAdded?()
     }
 }

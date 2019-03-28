@@ -10,18 +10,24 @@ import UIKit
 
 class MainFlow: FlowController {
 
-    var backPressed: (()-> Void)?
+    var navigateToSpacesFlow: (()-> Void)?
 
     private var rootController: UINavigationController?
     private var rootTabbar: UITabBarController?
-    private var spaceName: String?
+    private var space: SpaceDO?
     private var userServices: PUserService?
     private var childFlow: FlowController?
+    private var ideaService: PIdeaService?
+    private var chatService: PChatService?
+    private var taskService: PTaskService?
 
-    init(with tabbar: UITabBarController, with spaceName: String?, with userServices: PUserService?) {
+    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?, taskService: PTaskService?) {
         self.rootTabbar = tabbar
-        self.spaceName = spaceName
+        self.ideaService = ideaService
         self.userServices = userServices
+        self.space = space
+        self.chatService = chatService
+        self.taskService = taskService
     }
 
     private lazy var mainSB: UIStoryboard = {
@@ -56,9 +62,9 @@ class MainFlow: FlowController {
 
         viewModel.backPressed = { [weak self] in
             self?.rootTabbar?.dismiss(animated: true, completion: nil)
-            self?.backPressed?()
+            self?.navigateToSpacesFlow?()
         }
-        viewModel.spaceName = self.spaceName
+        viewModel.space = self.space
 
         vc.viewModel = viewModel
 
@@ -68,25 +74,25 @@ class MainFlow: FlowController {
     }
 
     private func navigateToTasksFlow() {
-        let tasksFlow = TasksFlow(spaceName: spaceName, rootController: rootController)
+        let tasksFlow = TasksFlow(spaceKey: space?.key, rootController: rootController, userService: userServices, taskService: taskService)
         tasksFlow.start()
         childFlow = tasksFlow
     }
 
     private func navigateToChatFlow() {
-        let chatFlow = ChatsFlow(rootController: rootController, spaceName: spaceName, userServices: userServices)
+        let chatFlow = ChatsFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices, chatService: chatService)
         chatFlow.start()
         childFlow = chatFlow
     }
 
     private func navigateToIdeaFlow() {
-        let ideaFlow = IdeasFlow(rootController: rootController, spaceName: spaceName)
+        let ideaFlow = IdeasFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices, ideaService: ideaService)
         ideaFlow.start()
         childFlow = ideaFlow
     }
 
     private func navigateToBudgetFlow() {
-        let budgetFlow = BudgetFlow(rootController: rootController, spaceName: spaceName)
+        let budgetFlow = BudgetFlow(rootController: rootController, spaceKey: space?.key)
         budgetFlow.start()
         childFlow = budgetFlow
     }

@@ -7,27 +7,41 @@
 //
 
 import UIKit
-import Firebase
 
 class IdeasModel {
-    var addTopicPressed: (()-> Void)?
-    var cellPressed: ((_ cellName: String) -> Void)?
+
+    private var spaceKey: String?
+    private var ideaService: PIdeaService?
+    
+    var navigateToAddTopic: (()-> Void)?
+    var errorMessage: ((String?) -> Void)?
+    var navigateToIdea: ((_ ideaTopic: TopicDO?) -> Void)?
     var dataSourceChanged: (() -> Void)?
-    var dataSource: [String] = []
-    private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
-    private var spaceName: String?
-    init(spaceName: String?) {
-        self.spaceName = spaceName
-        ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
-    }
+    var dataSource: [TopicDO] = []
+    var filteredDataSource: [TopicDO] = []
+    
+    init(spaceKey: String?, ideaService: PIdeaService?) {
+        self.spaceKey = spaceKey
+        self.ideaService = ideaService
+    } 
 
     func getTopics() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Ideas").observe(.childAdded, with: { (snapshot) in
-            guard let topicName = snapshot.key as? String else { return }
-            self.dataSource.append(topicName)
-            self.dataSourceChanged?()
+        ideaService?.getTopics(spaceKey: spaceKey, completionHandler: { [weak self] (topic, error) in
+            if error == nil {
+                guard let newTopic = topic else { return }
+                self?.dataSource.append(newTopic)
+                self?.filteredDataSource.append(newTopic)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
+    }
+
+    func searchTextChanged(searchText: String) {
+        filteredDataSource = searchText.isEmpty ? dataSource :
+            dataSource.filter { (item: TopicDO) -> Bool in
+                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
     }
 }

@@ -35,9 +35,5 @@ class SignUpVC: UIViewController {
     
     @IBAction func signedUpPressed(_ sender: Any) {
         viewModel?.signUpUser(email: regEmail.text, password: regPassword.text)
-
-    }
-    @IBAction func backPressed(_ sender: Any) {
-        viewModel?.backPressed?()
     }
 }

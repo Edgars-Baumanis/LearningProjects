@@ -10,18 +10,28 @@ import UIKit
 import Firebase
 
 class AddTopicModel {
-    var ref: DatabaseReference?
-    var addTopicPressed: (() -> Void)?
-    private var spaceName: String?
 
-    init(spaceName: String?) {
-        self.spaceName = spaceName
+    private var ref: DatabaseReference?
+    private var spaceKey: String?
+    private var ideaService : PIdeaService?
+    
+    var addTopicPressed: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
+
+
+    init(spaceKey: String?, ideaService: PIdeaService?) {
+        self.spaceKey = spaceKey
+        self.ideaService = ideaService
         ref = Database.database().reference()
     }
 
     func addTopic(topicName: String?) {
-        guard topicName?.isEmpty != true else { return }
-        ref?.child("Spaces").child(spaceName!).child("Ideas").child(topicName!).setValue(topicName)
-        self.addTopicPressed?()
+        ideaService?.addTopic(topicName: topicName, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.addTopicPressed?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }

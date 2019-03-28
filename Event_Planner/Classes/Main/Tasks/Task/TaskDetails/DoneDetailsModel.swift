@@ -7,25 +7,32 @@
 //
 
 import UIKit
-import Firebase
 
 class DoneDetailsModel {
-    private var spaceName: String?
-    private var taskTopic: TaskTopic?
-    private var ref: DatabaseReference?
-    var task: Task?
-    var deletePressed: (() -> Void)?
 
-    init(task: Task?, spaceName: String?, taskTopic: TaskTopic?) {
-        self.spaceName = spaceName
+    private var spaceKey: String?
+    private var taskTopic: TopicDO?
+    private let taskService: PTaskService?
+
+    var task: TaskDO?
+    var leaveDetails: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
+
+    init(task: TaskDO?, spaceKey: String?, taskTopic: TopicDO?, taskService: PTaskService?) {
+        self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
-        ref = Database.database().reference()
+        self.taskService = taskService
     }
 
     func deleteTask() {
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("Done").child((task?.key)!).removeValue()
-        self.deletePressed?()
+        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: "Done", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 
 }

@@ -7,26 +7,41 @@
 //
 
 import UIKit
-import Firebase
 
 class InProgressDetailsModel {
-    private var ref: DatabaseReference?
-    private var spaceName: String?
-    private var taskTopic: TaskTopic?
-    var task: Task?
-    var donePressed: (() -> Void)?
+    
+    private var spaceKey: String?
+    private var taskTopic: TopicDO?
+    private let taskService: PTaskService?
 
-    init(spaceName: String?, taskTopic: TaskTopic?, task: Task?) {
-        self.spaceName = spaceName
+    var task: TaskDO?
+    var leaveDetails: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
+
+    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?, taskService: PTaskService?) {
+        self.spaceKey = spaceKey
         self.taskTopic = taskTopic
+        self.taskService = taskService
         self.task = task
-        ref = Database.database().reference()
     }
 
     func taskDone() {
-        let newTask = Task(name: (task?.name)!, description: (task?.description)!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("Done").child((task?.key)!).setValue(newTask.sendData())
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).removeValue()
-        self.donePressed?()
+        taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "Done", caller: "InProgress", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
+    }
+
+    func deletePressed() {
+        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: "InProgress", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }

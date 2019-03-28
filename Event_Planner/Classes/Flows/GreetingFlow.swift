@@ -74,12 +74,9 @@ class GreetingFlow: FlowController {
         guard let vc = registerVC else { return }
         rootController?.pushViewController(vc, animated: true)
         let viewModel = SignUpModel(userService: userService)
-        viewModel.signUpPressed = { [weak self] in
+        viewModel.navigateToSpaces = { [weak self] in
             self?.tabbar?.dismiss(animated: true, completion: nil)
             self?.navigateToSpaces?()
-        }
-        viewModel.backPressed = {
-            self.start()
         }
         vc.viewModel = viewModel
     }

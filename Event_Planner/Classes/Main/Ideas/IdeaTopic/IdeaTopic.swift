@@ -16,11 +16,14 @@ class IdeaTopic: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        self.title = viewModel?.topicName
-        viewModel?.reloadData()
-        viewModel?.getData()
+        self.title = viewModel?.topicName?.name
         viewModel?.dataSourceChanged = { [weak self] in
             self?.ideas.reloadData()
+        }
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
         }
         ideas.delegate = self
         ideas.dataSource = self
@@ -30,6 +33,8 @@ class IdeaTopic: UIViewController {
     func floatingButton() {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
         btn.setTitle("+", for: .normal)
         btn.setFloatingButtonGradient()
         btn.clipsToBounds = true

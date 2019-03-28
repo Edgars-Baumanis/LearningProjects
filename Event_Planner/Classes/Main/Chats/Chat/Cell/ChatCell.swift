@@ -11,8 +11,11 @@ import UIKit
 class ChatCell: UITableViewCell {
     @IBOutlet weak var chatterName: UILabel!
     @IBOutlet weak var chatText: UILabel!
-    func displayContent(chatter: String, sentText: String) {
-        chatterName.text = "\(chatter):"
-        chatText.text = "\(sentText)"
+    @IBOutlet weak var timeStamp: UILabel!
+    
+    func displayContent(message: MessageDO?) {
+        chatterName.text = message?.name
+        chatText.text = message?.message
+        self.timeStamp.text = message?.time
     }
 }

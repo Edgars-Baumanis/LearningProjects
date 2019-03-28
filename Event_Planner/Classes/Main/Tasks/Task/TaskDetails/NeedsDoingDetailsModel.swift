@@ -7,28 +7,43 @@
 //
 
 import UIKit
-import Firebase
 
 class NeedsDoingDetailsModel {
-    private var ref: DatabaseReference?
-    private var spaceName: String?
-    private var taskTopic: TaskTopic?
-    var task: Task?
-    var toInProgress: (() -> Void)?
 
-    init(spaceName: String?, taskTopic: TaskTopic?, task: Task?) {
-        self.spaceName = spaceName
+    private var spaceKey: String?
+    private var taskTopic: TopicDO?
+    private let taskService: PTaskService?
+    
+    var task: TaskDO?
+    var leaveDetails: (() -> Void)?
+    var calculateBoxHeight: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
+
+    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?, taskService: PTaskService?) {
+        self.taskService = taskService
+        self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
-        ref = Database.database().reference()
     }
 
     func inProgressPressed() {
-        let newTask = Task(name: (task?.name)!, description: (task?.description)!, key: nil)
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).setValue(newTask.sendData())
+        taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "InProgress", caller: "NeedsDoing", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
+    }
 
-        ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
-        
-        self.toInProgress?()
+    func deletePressed() {
+        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: "NeedsDoing", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }
+

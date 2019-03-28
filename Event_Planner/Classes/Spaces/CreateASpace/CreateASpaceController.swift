@@ -24,8 +24,8 @@ class CreateASpaceController: UIViewController {
         spaceDescription.text = "Enter a description for your Space"
         spaceDescription.textColor = UIColor.placholderGrey
         viewModel?.printEmail()
-        viewModel?.emptyFields = { [weak self] in
-            let alert = UIAlertController(title: "Empty!", message: "Please enter Space name and/or Space password and/or Space description", preferredStyle: .alert)
+        viewModel?.emptyFields = { [weak self] message in
+            let alert = UIAlertController(title: "Empty!", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }

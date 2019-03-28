@@ -9,8 +9,10 @@
 import UIKit
 
 class FieldCell: UITableViewCell {
+    
     @IBOutlet weak var fieldName: UILabel!
     @IBOutlet weak var fieldSum: UILabel!
+
     func displayContent(name: String, sum: Double) {
         fieldName.text = name
         fieldSum.text = "\(sum)"

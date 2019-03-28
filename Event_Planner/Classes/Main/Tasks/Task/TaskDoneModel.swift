@@ -7,56 +7,56 @@
 //
 
 import UIKit
-import Firebase
 
 class TaskDoneModel {
-    private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
-    private var spaceName: String?
-    private var taskTopic: TaskTopic?
-    var dataSource: [Task] = []
-    var dataSourceChanged: (() -> Void)?
-    var cellPressed: ((_ task: Task?) -> Void)?
 
-    init(spaceName: String?, taskTopic: TaskTopic?) {
-        self.spaceName = spaceName
+    private var spaceKey: String?
+    private var taskTopic: TopicDO?
+    private let taskService: PTaskService?
+    
+    var dataSource: [TaskDO] = []
+    var dataSourceChanged: (() -> Void)?
+    var navigateToDetails: ((_ task: TaskDO?) -> Void)?
+    var errorMessage: ((String?) -> Void)?
+
+    init(spaceKey: String?, taskTopic: TopicDO?, taskService: PTaskService?) {
+        self.spaceKey = spaceKey
         self.taskTopic = taskTopic
-        ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
+        self.taskService = taskService
     }
 
     func getData() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("Done").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let description = post?["description"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            let newTask = Task(name: name, description: description, key: key)
-            self.dataSource.append(newTask)
-            self.dataSourceChanged?()
+        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "Done", completionHandler: { [weak self] (task, error) in
+            if error == nil {
+                guard let newTask = task else { return }
+                self?.dataSource.append(newTask)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
     }
 
     func dataDeleted() {
-        databaseHandle = ref?.child("Spaces").child(spaceName!).child("Tasks").child((taskTopic?.key)!).child("Done").observe(.childRemoved, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let description = post?["description"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            let removedTask = Task(name: name, description: description, key: key)
-            self.dataSource.enumerated().forEach { (idx, task) in
-                if
-                    task.name == removedTask.name &&
-                        task.description == removedTask.description &&
-                        task.key == removedTask.key {
-                    self.dataSource.remove(at: idx)
+        taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "Done", completionHandler: { [weak self] (removedTask, error) in
+            if error == nil {
+                guard let removedTask = removedTask else { return }
+                self?.dataSource.enumerated().forEach { (idx, task) in
+                    if
+                        task.name == removedTask.name &&
+                            task.description == removedTask.description &&
+                            task.key == removedTask.key {
+                        self?.dataSource.remove(at: idx)
+                    }
                 }
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
             }
-            self.dataSourceChanged?()
         })
+    }
+
+    func cellPressed(index: Int) {
+        navigateToDetails?(dataSource[index])
     }
 }

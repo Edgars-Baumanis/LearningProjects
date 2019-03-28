@@ -10,14 +10,15 @@ import UIKit
 import Firebase
 
 class ConfigureModel {
-    var savePressed: (() -> Void)?
+
     private var ref: DatabaseReference?
-    private var spaceName: String?
-    var budgetField: BudgetField?
+    private var spaceKey: String?
 
+    var savePressed: (() -> Void)?
+    var budgetField: BudgetDO?
 
-    init(spaceName: String?, budgetField: BudgetField?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?, budgetField: BudgetDO?) {
+        self.spaceKey = spaceKey
         self.budgetField = budgetField
         ref = Database.database().reference()
     }
@@ -29,9 +30,9 @@ class ConfigureModel {
             let key = budgetField?.key
             else { return }
 
-        let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
+        let newField = BudgetDO(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
-            "/Spaces/\(spaceName!)/BudgetFields/\(key)" : newField.sendData()
+            "/Spaces/\(spaceKey!)/Budget/BudgetFields/\(key)" : newField.sendData()
         ]
         ref?.updateChildValues(childUpdates)
         savePressed?()

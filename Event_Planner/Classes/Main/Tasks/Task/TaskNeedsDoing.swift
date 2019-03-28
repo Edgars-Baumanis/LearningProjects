@@ -17,6 +17,11 @@ class TaskNeedsDoing: UIViewController {
         view.setGradientBackground()
         tasksNeedDoing.delegate = self
         tasksNeedDoing.dataSource = self
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
         viewModel?.getData()
         viewModel?.dataDeleted()
         viewModel?.dataSourceChanged = { [weak self] in
@@ -28,6 +33,8 @@ class TaskNeedsDoing: UIViewController {
     func floatingButton() {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: 300, y: 550, width: 50, height: 50)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
         btn.setTitle("+", for: .normal)
         btn.setFloatingButtonGradient()
         btn.clipsToBounds = true
@@ -37,7 +44,7 @@ class TaskNeedsDoing: UIViewController {
     }
 
     @objc func addPressed(sender: UIButton) {
-        viewModel?.addPressed?()
+        viewModel?.navigateToAddTask?()
     }
 }
 
@@ -50,12 +57,12 @@ extension TaskNeedsDoing: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskNeedsDoingCell.self), for: indexPath)
         if let myCell = cell as? TaskNeedsDoingCell {
-            myCell.displayContent(name: viewModel?.dataSource[indexPath.row].name ?? "Default Value")
+            myCell.displayContent(name: viewModel?.dataSource[indexPath.row].name)
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.cellPressed?(viewModel?.dataSource[indexPath.row])
+        viewModel?.cellPressed(index: indexPath.row)
     }
 }

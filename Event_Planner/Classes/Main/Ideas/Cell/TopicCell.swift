@@ -11,8 +11,7 @@ import UIKit
 class TopicCell: UITableViewCell {
     @IBOutlet weak var subjectCell: UILabel!
 
-    func displayContent(subject: String) {
+    func displayContent(subject: String?) {
         subjectCell.text = subject
     }
-
 }

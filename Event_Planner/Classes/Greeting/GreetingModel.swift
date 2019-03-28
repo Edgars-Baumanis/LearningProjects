@@ -9,6 +9,6 @@
 import Foundation
 
 class GreetingModel {
-    var signInPressed: (()->Void)?
+    var signInPressed: (() -> Void)?
     var signUpPressed: (()->Void)?
 }

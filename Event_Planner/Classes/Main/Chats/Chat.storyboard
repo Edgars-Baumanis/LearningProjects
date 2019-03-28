@@ -107,29 +107,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter chat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-y5-nl4" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="230" width="335" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Wcm-WP-tXe"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9dk-Ko-7C6" customClass="TextViewSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="340" width="335" height="167"/>
+                                <rect key="frame" x="20" y="240" width="335" height="267"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -164,15 +143,12 @@
                         <constraints>
                             <constraint firstItem="6aH-FS-kDh" firstAttribute="top" secondItem="9dk-Ko-7C6" secondAttribute="bottom" constant="50" id="76Z-rd-LKn"/>
                             <constraint firstItem="weh-9n-e3x" firstAttribute="trailing" secondItem="6aH-FS-kDh" secondAttribute="trailing" constant="20" id="88k-RM-78m"/>
-                            <constraint firstItem="ptd-y5-nl4" firstAttribute="leading" secondItem="weh-9n-e3x" secondAttribute="leading" constant="20" id="B9I-Nn-J7s"/>
-                            <constraint firstItem="9dk-Ko-7C6" firstAttribute="top" secondItem="ptd-y5-nl4" secondAttribute="bottom" constant="50" id="CER-TL-dZD"/>
                             <constraint firstItem="IKi-IS-P31" firstAttribute="leading" secondItem="weh-9n-e3x" secondAttribute="leading" constant="20" id="EON-pd-UDC"/>
                             <constraint firstItem="6aH-FS-kDh" firstAttribute="leading" secondItem="weh-9n-e3x" secondAttribute="leading" constant="20" id="EQN-vo-o5h"/>
+                            <constraint firstItem="9dk-Ko-7C6" firstAttribute="top" secondItem="IKi-IS-P31" secondAttribute="bottom" constant="60" id="KKQ-x4-DTB"/>
                             <constraint firstItem="weh-9n-e3x" firstAttribute="trailing" secondItem="9dk-Ko-7C6" secondAttribute="trailing" constant="20" id="UgJ-po-sh0"/>
-                            <constraint firstItem="ptd-y5-nl4" firstAttribute="top" secondItem="IKi-IS-P31" secondAttribute="bottom" constant="50" id="YEE-3J-2Jk"/>
                             <constraint firstItem="weh-9n-e3x" firstAttribute="trailing" secondItem="IKi-IS-P31" secondAttribute="trailing" constant="20" id="ZLm-gw-jM3"/>
                             <constraint firstItem="9dk-Ko-7C6" firstAttribute="leading" secondItem="weh-9n-e3x" secondAttribute="leading" constant="20" id="ldq-hb-pCD"/>
-                            <constraint firstItem="weh-9n-e3x" firstAttribute="trailing" secondItem="ptd-y5-nl4" secondAttribute="trailing" constant="20" id="p7s-wU-X3e"/>
                             <constraint firstItem="weh-9n-e3x" firstAttribute="bottom" secondItem="6aH-FS-kDh" secondAttribute="bottom" constant="50" id="tM1-Xv-bEf"/>
                             <constraint firstItem="IKi-IS-P31" firstAttribute="top" secondItem="weh-9n-e3x" secondAttribute="top" constant="100" id="x3v-a2-iYL"/>
                         </constraints>
@@ -181,7 +157,6 @@
                     <connections>
                         <outlet property="chatDescription" destination="9dk-Ko-7C6" id="QIx-YG-Qhx"/>
                         <outlet property="chatName" destination="IKi-IS-P31" id="Ppw-AX-Mlj"/>
-                        <outlet property="chatPassword" destination="ptd-y5-nl4" id="klZ-6l-4aM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbd-dv-9u9" userLabel="First Responder" sceneMemberID="firstResponder"/>

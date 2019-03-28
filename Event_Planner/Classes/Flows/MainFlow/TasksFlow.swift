@@ -10,16 +10,20 @@ import UIKit
 
 class TasksFlow: FlowController {
     private var rootController: UINavigationController?
-    private var spaceName: String?
-    private var taskTopic: TaskTopic?
+    private var userService: PUserService?
+    private var spaceKey: String?
+    private var taskTopic: TopicDO?
     private var taskTabbar: UITabBarController?
-    private var needsDoingTask: Task?
-    private var inProgressTask: Task?
-    private var doneTask: Task?
+    private var needsDoingTask: TaskDO?
+    private var inProgressTask: TaskDO?
+    private var doneTask: TaskDO?
+    private var taskService: PTaskService?
     
-    init(spaceName: String?, rootController: UINavigationController?) {
-        self.spaceName = spaceName
+    init(spaceKey: String?, rootController: UINavigationController?, userService: PUserService?, taskService: PTaskService?) {
+        self.userService = userService
+        self.spaceKey = spaceKey
         self.rootController = rootController
+        self.taskService = taskService
     }
 
     private lazy var tasksSB: UIStoryboard = {
@@ -38,8 +42,8 @@ class TasksFlow: FlowController {
         return tasksSB.instantiateViewController(withIdentifier: String(describing: TasksController.self)) as? TasksController
     }
 
-    private var addTaskTopicController: AddTask? {
-        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
+    private var addTaskTopicController: AddTaskTopic? {
+        return tasksSB.instantiateViewController(withIdentifier: String(describing: AddTaskTopic.self)) as? AddTaskTopic
     }
 
     private var taskNeedsDoingController: TaskNeedsDoing? {
@@ -54,8 +58,8 @@ class TasksFlow: FlowController {
         return taskTopicSB.instantiateViewController(withIdentifier: String(describing: TaskDone.self)) as? TaskDone
     }
 
-    private var addTaskController: TaskAddTask? {
-        return addTaskSB.instantiateViewController(withIdentifier: String(describing: TaskAddTask.self)) as? TaskAddTask
+    private var addTaskController: AddTask? {
+        return addTaskSB.instantiateViewController(withIdentifier: String(describing: AddTask.self)) as? AddTask
     }
 
     private var needsDoingDetails: NeedsDoingDetails? {
@@ -76,14 +80,14 @@ class TasksFlow: FlowController {
 
     private func navigateToTasks() {
         guard let vc = tasksViewController else { return }
-        let viewModel = TasksModel(spaceName: spaceName)
+        let viewModel = TasksModel(spaceKey: spaceKey, taskService: taskService)
 
         viewModel.addTaskPressed = { [weak self] in
             self?.navigateToAddTaskTopic()
         }
 
         viewModel.cellPressed = { [weak self] taskTopic in
-            self?.taskTopic = TaskTopic(name: taskTopic.name, key: taskTopic.key)
+            self?.taskTopic = TopicDO(name: taskTopic.name, key: taskTopic.key)
             self?.navigateToTaskTopics()
         }
 
@@ -93,8 +97,8 @@ class TasksFlow: FlowController {
 
     private func navigateToAddTaskTopic() {
         guard let vc = addTaskTopicController else { return }
-        let viewModel = AddTaskModel(spaceName: spaceName)
-        viewModel.addTaskPressed = { [weak self] in
+        let viewModel = AddTaskTopicModel(spaceKey: spaceKey, taskService: taskService)
+        viewModel.navigateToTaskTopic = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
@@ -110,27 +114,27 @@ class TasksFlow: FlowController {
             else { return }
 
         vcNeedsDoing.tabBarItem = UITabBarItem(title: "Needs Doing", image: UIImage(named: "task-needsDoing"), tag: 0)
-        let needsDoingViewModel = TaskNeedsDoingModel(spaceName: spaceName, taskTopic: taskTopic)
-        needsDoingViewModel.addPressed = { [weak self] in
+        let needsDoingViewModel = TaskNeedsDoingModel(spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
+        needsDoingViewModel.navigateToAddTask = { [weak self] in
             self?.navigateToAddTask()
         }
-        needsDoingViewModel.cellPressed = { [weak self] task in
+        needsDoingViewModel.navigateToDetails = { [weak self] task in
             self?.needsDoingTask = task
             self?.navigateToNeedsDoingDetails()
         }
         vcNeedsDoing.viewModel = needsDoingViewModel
 
         vcInProgress.tabBarItem = UITabBarItem(title: "In Progress", image: UIImage(named: "task-inProgress"), tag: 1)
-        let inProgressModel = TaskInProgressModel(spaceName: spaceName, taskTopic: taskTopic)
-        inProgressModel.cellPressed = { [weak self] task in
+        let inProgressModel = TaskInProgressModel(spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
+        inProgressModel.navigateToDetails = { [weak self] task in
             self?.inProgressTask = task
             self?.navigateToInProgressDetails()
         }
         vcInProgress.viewModel = inProgressModel
 
         vcDone.tabBarItem = UITabBarItem(title: "Done", image: UIImage(named: "task-done"), tag: 2)
-        let doneModel = TaskDoneModel(spaceName: spaceName, taskTopic: taskTopic)
-        doneModel.cellPressed = { [weak self] task in
+        let doneModel = TaskDoneModel(spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
+        doneModel.navigateToDetails = { [weak self] task in
             self?.doneTask = task
             self?.navigateToDoneDetails()
         }
@@ -143,7 +147,7 @@ class TasksFlow: FlowController {
 
     private func navigateToAddTask() {
         guard let vc = addTaskController else { return }
-        let viewModel = TaskAddTaskModel(spaceName: spaceName, taskTopic: taskTopic)
+        let viewModel = AddTaskModel(spaceKey: spaceKey, taskTopic: taskTopic, userServices: userService, taskService: taskService)
         viewModel.addTaskPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -153,8 +157,8 @@ class TasksFlow: FlowController {
 
     private func navigateToNeedsDoingDetails() {
         guard let vc = needsDoingDetails else { return }
-        let viewModel = NeedsDoingDetailsModel(spaceName: spaceName, taskTopic: taskTopic, task: needsDoingTask)
-        viewModel.toInProgress = { [weak self] in
+        let viewModel = NeedsDoingDetailsModel(spaceKey: spaceKey, taskTopic: taskTopic, task: needsDoingTask, taskService: taskService)
+        viewModel.leaveDetails = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
@@ -163,8 +167,8 @@ class TasksFlow: FlowController {
 
     private func navigateToInProgressDetails() {
         guard let vc = inProgressDetails else { return }
-        let viewModel = InProgressDetailsModel(spaceName: spaceName, taskTopic: taskTopic, task: inProgressTask)
-        viewModel.donePressed = { [weak self] in
+        let viewModel = InProgressDetailsModel(spaceKey: spaceKey, taskTopic: taskTopic, task: inProgressTask, taskService: taskService)
+        viewModel.leaveDetails = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
@@ -173,12 +177,11 @@ class TasksFlow: FlowController {
 
     private func navigateToDoneDetails() {
         guard let vc = doneDetails else { return }
-        let viewModel = DoneDetailsModel(task: doneTask, spaceName: spaceName, taskTopic: taskTopic)
-        viewModel.deletePressed = { [weak self] in
+        let viewModel = DoneDetailsModel(task: doneTask, spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
+        viewModel.leaveDetails = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
-    
 }

@@ -25,8 +25,8 @@ class MySpacesCell: UITableViewCell {
         self.gradient?.frame = bounds
     }
 
-    func displayContent(spaceName: String) {
-
+    func displayContent(spaceName: String?) {
+        guard spaceName?.isEmpty != true else { return }
         mySpacesContent.text = spaceName
     }
 
