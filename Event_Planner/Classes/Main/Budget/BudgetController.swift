@@ -19,7 +19,6 @@ class BudgetController: UIViewController {
         view.setGradientBackground()
         Allpossitions.delegate = self
         Allpossitions.dataSource = self
-        viewModel?.getData()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.Allpossitions.reloadData()
         }
@@ -27,10 +26,13 @@ class BudgetController: UIViewController {
             self?.remainingBudget.text = "\(self?.viewModel?.remainingBudget ?? 0)"
             self?.totalBudget.text = "\(self?.viewModel?.totalBudget ?? "0")"
         }
-        viewModel?.reloadData()
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
         floatingButton()
         navigationBarItem()
-
     }
 
     func navigationBarItem() {

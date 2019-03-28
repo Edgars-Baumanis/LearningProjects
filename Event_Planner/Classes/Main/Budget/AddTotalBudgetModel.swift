@@ -7,23 +7,27 @@
 //
 
 import UIKit
-import Firebase
 
 class AddTotalBudgetModel {
     
     private var spaceKey: String?
-    private var ref: DatabaseReference?
+    private let budgetService: PBudgetService?
 
     var navigateToBudget: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?) {
+    init(spaceKey: String?, budgetService: PBudgetService?) {
         self.spaceKey = spaceKey
-        ref = Database.database().reference()
+        self.budgetService = budgetService
     }
 
     func saveTotalBudget(totalBudget: String?) {
-        guard totalBudget?.isEmpty != true else { return }
-        ref?.child("Spaces").child(spaceKey!).child("Budget").child("TotalBudget").setValue(totalBudget!)
-        self.navigateToBudget?()
+        budgetService?.addTotalSum(spaceKey: spaceKey, totalSum: totalBudget, completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.navigateToBudget?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }
