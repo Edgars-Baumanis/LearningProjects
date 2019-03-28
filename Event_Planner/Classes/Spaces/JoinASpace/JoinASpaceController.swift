@@ -18,14 +18,8 @@ class JoinASpaceController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
 
-        viewModel?.emptyFields = { [weak self] in
-            let alert = UIAlertController(title: "Empty!", message: "Please enter data in fields!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
-            self?.present(alert, animated: true)
-        }
-
-        viewModel?.wrongEntry = { [weak self] in
-            let alert = UIAlertController(title: "Wrong!", message: "Space name or space password is wrong", preferredStyle: .alert)
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }

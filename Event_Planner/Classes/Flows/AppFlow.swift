@@ -11,26 +11,22 @@ import Firebase
 class AppFlow: FlowController {
     
     fileprivate var window: UIWindow
-    fileprivate var rootController: UITabBarController?
+    fileprivate var rootController = UITabBarController()
     fileprivate var childFlow: FlowController?
     fileprivate var userService: PUserService?
-
-    private var tabbar: MainTabbarController? = {
-        let tabbar = MainTabbarController()
-        return tabbar
-    }()
-
-    
+    fileprivate var spaceService: PSpacesService?
+    fileprivate var ideaService: PIdeaService?
 
     init(with window: UIWindow) {
         self.window = window
 
         window.makeKeyAndVisible()
-        userService = UserService()
+        ideaService = IdeaService()
+        spaceService = SpaceService()
+        userService = Dependencies.instance.userService
     }
 
     func start() {
-        rootController = tabbar
         if Auth.auth().currentUser != nil {
             guard
                 let userID = Auth.auth().currentUser?.uid,
@@ -45,8 +41,7 @@ class AppFlow: FlowController {
 
     private func navigateToGreetingFlow() {
         window.rootViewController = rootController
-        guard let tabbar = rootController else {return}
-        let greetingFlow = GreetingFlow(with: tabbar, userService: userService)
+        let greetingFlow = GreetingFlow(with: rootController, userService: userService)
         greetingFlow.start()
         greetingFlow.navigateToSpaces = { [weak self] in
             self?.navigateToSpacesFlow()
@@ -56,8 +51,7 @@ class AppFlow: FlowController {
 
     private func navigateToSpacesFlow() {
         window.rootViewController = rootController
-        guard let tabbar = rootController else {return}
-        let spacesFlow = SpacesFlow(with: tabbar, userService: userService)
+        let spacesFlow = SpacesFlow(with: rootController, userService: userService, spaceService: spaceService)
         spacesFlow.start()
         childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
@@ -68,9 +62,8 @@ class AppFlow: FlowController {
         }
     }
 
-    private func navigateToMainFlow(space: Space) {
-        guard let tabbar = rootController else { return }
-        let mainFlow = MainFlow(with: tabbar, with: space, with: userService)
+    private func navigateToMainFlow(space: SpaceDO?) {
+        let mainFlow = MainFlow(with: rootController, with: userService, ideaService: ideaService, space: space)
         mainFlow.start()
         mainFlow.navigateToSpacesFlow = { [weak self] in
             self?.start()

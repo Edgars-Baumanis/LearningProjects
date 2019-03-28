@@ -7,30 +7,25 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import Firebase
 
 class CreateASpaceModel {
-    private var ref: DatabaseReference?
     private var userService: PUserService?
+    private var spaceService: PSpacesService?
 
-    var backPressed: (()->Void)?
-    var emptyFields: (()->Void)?
+    var backPressed: (() -> Void)?
+    var emptyFields: ((String?) -> Void)?
     
-    init (userService: PUserService?) {
+    init (userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
-        ref = Database.database().reference()
+        self.spaceService = spaceService
     }
     
     func createASpace(name: String?, password: String?, description: String?) {
-        guard name?.isEmpty != true, password?.isEmpty != true, description?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        guard let userID = Auth.auth().currentUser?.uid else {return}
-        let newSpace = Space(spaceName: name!, spacePassword: password!, spaceDescription: description!, mainUser: userID, key: nil)
-        ref?.child("Spaces").childByAutoId().setValue(newSpace.sendData())
-        backPressed?()
+        spaceService?.createSpace(name: name, password: password, description: description, completionHandler: { [weak self] (error) in
+            error == nil ?
+                self?.backPressed?() :
+                self?.emptyFields?(error)
+        })
     }
     
     func printEmail() {

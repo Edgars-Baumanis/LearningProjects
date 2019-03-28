@@ -21,7 +21,8 @@ class OtherSpacesCell: UITableViewCell {
         self.gradient = grad
     }
     
-    func displayContent(spaceName: String) {
+    func displayContent(spaceName: String?) {
+        guard spaceName?.isEmpty != true else { return }
         otherSpacesContent.text = spaceName
     }
 

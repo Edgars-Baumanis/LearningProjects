@@ -7,66 +7,24 @@
 //
 
 import UIKit
-import FirebaseDatabase
-
-struct AddUser {
-    let uID: String?
-
-    init (uID: String) {
-        self.uID = uID
-    }
-
-    func sendData() -> Any {
-        return [
-            "uID": uID
-        ]
-    }
-}
 
 class JoinASpaceModel {
 
-    private var databaseHandle: DatabaseHandle?
-    private var ref: DatabaseReference?
-    private var spaceName: String?
     private var userService: PUserService?
+    private var spaceService: PSpacesService?
 
-    init(userService: PUserService?) {
+    init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
-        ref = Database.database().reference()
+        self.spaceService = spaceService
     }
 
-    var wrongEntry: (()-> Void)?
-    var emptyFields: (()-> Void)?
-    var rightEntry: ((Space)-> Void)?
+    var errorMessage: ((String?) -> Void)?
+    var rightEntry: ((_ space: SpaceDO) -> Void)?
 
     func joinASpace(enteredSpaceName: String?, enteredSpacePassword: String?) {
-        guard enteredSpaceName?.isEmpty != true, enteredSpacePassword?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        databaseHandle = ref?.child("Spaces").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : Any]
-
-            guard
-                let spaceName = post?["name"] as? String,
-                let spacePassword = post?["password"] as? String,
-                let spaceDesc = post?["desription"] as? String,
-                let uID = post?["uID"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            if spaceName == enteredSpaceName && spacePassword == enteredSpacePassword {
-
-                if uID != self.userService?.user?.userID {
-                    guard let uID = self.userService?.user?.userID else {return}
-                    let user = AddUser(uID: uID)
-                    self.ref?.child("Spaces").child(key).child("Allowed Users").setValue(user.sendData())
-                }
-                let space = Space(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, mainUser: uID, key: key)
-                self.rightEntry?(space)
-            } else {
-                self.wrongEntry?()
-                return
-            }
+        spaceService?.joinSpace(enteredSpaceName: enteredSpaceName, enteredSpacePassword: enteredSpacePassword, completionHandler: { [weak self] (space, error) in
+            guard let newSpace = space else { return }
+            error == nil ? self?.rightEntry?(newSpace) : self?.errorMessage?(error)
         })
     }
 }
