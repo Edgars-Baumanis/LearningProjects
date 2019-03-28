@@ -16,10 +16,10 @@ class TasksModel {
     private var spaceKey: String?
     
     var addTaskPressed: (() -> Void)?
-    var dataSource: [TaskTopic] = []
-    var filteredDataSource: [TaskTopic]?
+    var dataSource: [TopicDO] = []
+    var filteredDataSource: [TopicDO]?
     var dataSourceChanged: (() -> Void)?
-    var cellPressed: ((_ taskTopic: TaskTopic) -> Void)?
+    var cellPressed: ((_ taskTopic: TopicDO) -> Void)?
 
     init(spaceKey: String?) {
         self.spaceKey = spaceKey
@@ -35,7 +35,7 @@ class TasksModel {
                 let taskName = post?["name"] as? String,
                 let key = snapshot.key as? String
                 else { return }
-            let newTopic = TaskTopic(name: taskName, key: key)
+            let newTopic = TopicDO(name: taskName, key: key)
             self.dataSource.append(newTopic)
             self.filteredDataSource?.append(newTopic)
             self.dataSourceChanged?()

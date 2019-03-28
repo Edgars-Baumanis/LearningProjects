@@ -74,7 +74,7 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
 
 extension TasksController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: TaskTopic) -> Bool in
+        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: TopicDO) -> Bool in
             return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         allTasks.reloadData()

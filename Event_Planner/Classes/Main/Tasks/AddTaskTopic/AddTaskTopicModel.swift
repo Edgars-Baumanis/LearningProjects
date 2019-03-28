@@ -27,7 +27,7 @@ class AddTaskTopicModel {
             emptyFields?()
             return
         }
-        let newTopic = TaskTopic(name: taskName!, key: nil)
+        let newTopic = TopicDO(name: taskName!, key: nil)
         ref?.child("Spaces").child(spaceKey!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
         self.navigateToTaskTopic?()
 

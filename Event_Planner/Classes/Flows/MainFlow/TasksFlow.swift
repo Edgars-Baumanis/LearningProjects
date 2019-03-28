@@ -12,11 +12,11 @@ class TasksFlow: FlowController {
     private var rootController: UINavigationController?
     private var userService: PUserService?
     private var spaceKey: String?
-    private var taskTopic: TaskTopic?
+    private var taskTopic: TopicDO?
     private var taskTabbar: UITabBarController?
-    private var needsDoingTask: Task?
-    private var inProgressTask: Task?
-    private var doneTask: Task?
+    private var needsDoingTask: TaskDO?
+    private var inProgressTask: TaskDO?
+    private var doneTask: TaskDO?
     
     init(spaceKey: String?, rootController: UINavigationController?, userService: PUserService?) {
         self.userService = userService
@@ -85,7 +85,7 @@ class TasksFlow: FlowController {
         }
 
         viewModel.cellPressed = { [weak self] taskTopic in
-            self?.taskTopic = TaskTopic(name: taskTopic.name, key: taskTopic.key)
+            self?.taskTopic = TopicDO(name: taskTopic.name, key: taskTopic.key)
             self?.navigateToTaskTopics()
         }
 

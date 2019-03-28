@@ -13,12 +13,12 @@ class InProgressDetailsModel {
     
     private var ref: DatabaseReference?
     private var spaceKey: String?
-    private var taskTopic: TaskTopic?
+    private var taskTopic: TopicDO?
 
-    var task: Task?
+    var task: TaskDO?
     var leaveDetails: (() -> Void)?
 
-    init(spaceKey: String?, taskTopic: TaskTopic?, task: Task?) {
+    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?) {
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
@@ -26,7 +26,7 @@ class InProgressDetailsModel {
     }
 
     func taskDone() {
-        let newTask = Task(name: (task?.name)!, description: (task?.description)!, key: nil, ownerID: (task?.ownerID)!, deadline: (task?.deadline)!)
+        let newTask = TaskDO(name: (task?.name)!, description: (task?.description)!, key: nil, ownerID: (task?.ownerID)!, deadline: (task?.deadline)!)
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("Done").child((task?.key)!).setValue(newTask.sendData())
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).removeValue()
         self.leaveDetails?()

@@ -13,14 +13,14 @@ class AddTaskModel {
 
     private var ref: DatabaseReference?
     private var spaceKey: String?
-    private var taskTopic: TaskTopic?
+    private var taskTopic: TopicDO?
     private var userServices: PUserService?
 
     var emptyFields: (() -> Void)?
     var addTaskPressed: (() -> Void)?
     var dateFormatter: DateFormatter?
 
-    init(spaceKey: String?, taskTopic: TaskTopic?, userServices: PUserService?) {
+    init(spaceKey: String?, taskTopic: TopicDO?, userServices: PUserService?) {
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.userServices = userServices
@@ -36,7 +36,7 @@ class AddTaskModel {
             deadline?.isEmpty != true,
             let userID = userServices?.user?.userID
             else { return }
-        let newTask = Task(name: taskName!, description: taskDescription!, key: nil, ownerID: userID, deadline: deadline!)
+        let newTask = TaskDO(name: taskName!, description: taskDescription!, key: nil, ownerID: userID, deadline: deadline!)
         ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
         addTaskPressed?()
     }

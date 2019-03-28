@@ -12,15 +12,15 @@ import Firebase
 class TaskNeedsDoingModel {
 
     private var spaceKey: String?
-    private var taskTopic: TaskTopic?
+    private var taskTopic: TopicDO?
     private var ref: DatabaseReference?
     
     var navigateToAddTask: (() -> Void)?
-    var dataSource: [Task] = []
+    var dataSource: [TaskDO] = []
     var dataSourceChanged: (() -> Void)?
-    var navigateToDetails: ((_ task: Task?) -> Void)?
+    var navigateToDetails: ((_ task: TaskDO?) -> Void)?
 
-    init(spaceKey: String?, taskTopic: TaskTopic?) {
+    init(spaceKey: String?, taskTopic: TopicDO?) {
         self.taskTopic = taskTopic
         self.spaceKey = spaceKey
         ref = Database.database().reference()
@@ -36,7 +36,7 @@ class TaskNeedsDoingModel {
                 let ownerID = post?["ownerID"] as? String,
                 let deadline = post?["deadline"] as? String
                 else { return }
-            let newTask = Task(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
+            let newTask = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
             self.dataSource.append(newTask)
             self.dataSourceChanged?()
 
@@ -53,7 +53,7 @@ class TaskNeedsDoingModel {
                 let ownerID = post?["ownerID"] as? String,
                 let deadline = post?["deadline"] as? String
                 else { return }
-            let removedTask = Task(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
+            let removedTask = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
             self.dataSource.enumerated().forEach { (idx, task) in
                 if
                     task.name == removedTask.name &&

@@ -12,13 +12,13 @@ import Firebase
 class DoneDetailsModel {
 
     private var spaceKey: String?
-    private var taskTopic: TaskTopic?
+    private var taskTopic: TopicDO?
     private var ref: DatabaseReference?
     
-    var task: Task?
+    var task: TaskDO?
     var leaveDetails: (() -> Void)?
 
-    init(task: Task?, spaceKey: String?, taskTopic: TaskTopic?) {
+    init(task: TaskDO?, spaceKey: String?, taskTopic: TopicDO?) {
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
