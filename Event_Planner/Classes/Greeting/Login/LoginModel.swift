@@ -10,10 +10,10 @@ import UIKit
 
 class LoginModel {
     
-    var loggedIn: (()-> Void)?
-    var wrongSignIn: (()-> Void)?
-    var emptyFields: (()-> Void)?
-    var backPressed: (()->Void)?
+    var loggedIn: (() -> Void)?
+    var wrongSignIn: (() -> Void)?
+    var emptyFields: (() -> Void)?
+    var backPressed: (() -> Void)?
     var error: String?
     private var userService: PUserService?
 
@@ -27,13 +27,13 @@ class LoginModel {
             emptyFields?()
             return
         }
-        userService?.login(email: email!, password: password!, completionHandler: { (user, error)  in
+        userService?.login(email: email!, password: password!, completionHandler: { [weak self] (user, error)  in
             guard error == nil else {
-                self.wrongSignIn?()
+                self?.wrongSignIn?()
                 return
             }
-            self.loggedIn?()
-            self.error = "There is no error"
+            self?.loggedIn?()
+            self?.error = "There is no error"
         })
     }
 }

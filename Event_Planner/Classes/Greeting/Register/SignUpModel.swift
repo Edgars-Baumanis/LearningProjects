@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 class SignUpModel {
-    var navigateToSpaces: (()-> Void)?
-    var existingEmail: (()-> Void)?
-    var emptyFields: (()-> Void)?
+    var navigateToSpaces: (() -> Void)?
+    var existingEmail: (() -> Void)?
+    var emptyFields: (() -> Void)?
     private var userService: PUserService?
     
     init(userService: PUserService?) {

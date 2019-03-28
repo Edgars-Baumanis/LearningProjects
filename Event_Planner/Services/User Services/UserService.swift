@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 
 class UserService: PUserService {
+    private let firebaseAuth = Auth.auth()
     var user: User?
     
-    func login(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
+    func login(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             guard
                 error == nil,
@@ -31,7 +32,7 @@ class UserService: PUserService {
         }
     }
     
-    func register(email: String, password: String, completionHandler: @escaping ((User?, String?)->Void)) {
+    func register(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
         if self.isValid(email: email) {
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 guard
@@ -49,6 +50,15 @@ class UserService: PUserService {
 
                 completionHandler(myUser, nil)
             }
+        }
+    }
+
+    func signOut(completionHandler: @escaping ((NSError?) -> Void)) {
+        do {
+            try firebaseAuth.signOut()
+            completionHandler(nil)
+        } catch let signOutError as NSError {
+            completionHandler(signOutError)
         }
     }
 
