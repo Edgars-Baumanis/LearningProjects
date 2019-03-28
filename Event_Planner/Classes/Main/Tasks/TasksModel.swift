@@ -7,38 +7,41 @@
 //
 
 import UIKit
-import Firebase
 
 class TasksModel {
 
-    private var ref: DatabaseReference?
-    private var databaseHandle: DatabaseHandle?
-    private var spaceKey: String?
+    private let spaceKey: String?
+    private let taskService: PTaskService?
     
     var addTaskPressed: (() -> Void)?
     var dataSource: [TopicDO] = []
-    var filteredDataSource: [TopicDO]?
+    var filteredDataSource: [TopicDO] = []
     var dataSourceChanged: (() -> Void)?
     var cellPressed: ((_ taskTopic: TopicDO) -> Void)?
+    var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?) {
+    init(spaceKey: String?, taskService: PTaskService?) {
         self.spaceKey = spaceKey
-        ref = Database.database().reference()
-        databaseHandle = DatabaseHandle()
-        filteredDataSource = []
+        self.taskService = taskService
     }
 
     func getTaskTopics() {
-        databaseHandle = ref?.child("Spaces").child(spaceKey!).child("Tasks").observe(.childAdded, with:  { (snapshot) in
-            let post = snapshot.value as? [String: AnyObject]
-            guard
-                let taskName = post?["name"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            let newTopic = TopicDO(name: taskName, key: key)
-            self.dataSource.append(newTopic)
-            self.filteredDataSource?.append(newTopic)
-            self.dataSourceChanged?()
+        taskService?.getTopics(spaceKey: spaceKey, completionHandler: { [weak self] (topic, error) in
+            if error == nil {
+                guard let newTopic = topic else { return }
+                self?.dataSource.append(newTopic)
+                self?.filteredDataSource.append(newTopic)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
+    }
+
+    func searchTextChanged(searchText: String) {
+        filteredDataSource = searchText.isEmpty ? dataSource :
+            dataSource.filter { (item: TopicDO) -> Bool in
+                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
     }
 }

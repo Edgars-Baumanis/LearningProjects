@@ -21,7 +21,6 @@ class ChatsController: UIViewController {
         allChats.delegate = self
         allChats.dataSource = self
         searchChat.delegate = self
-        viewModel?.getChats()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allChats.reloadData()
         }

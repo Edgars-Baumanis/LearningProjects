@@ -11,7 +11,7 @@ import UIKit
 class TaskInProgressCell: UITableViewCell {
     @IBOutlet weak var taskInProgress: UILabel!
 
-    func displayContent(name: String) {
+    func displayContent(name: String?) {
         taskInProgress.text = name
     }
 }

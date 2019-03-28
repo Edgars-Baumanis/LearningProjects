@@ -25,6 +25,7 @@ class ChatsModel {
     init(spaceKey: String?, chatService: PChatService?) {
         self.spaceKey = spaceKey
         self.chatService = chatService
+        getChats()
     }
 
     func getChats() {

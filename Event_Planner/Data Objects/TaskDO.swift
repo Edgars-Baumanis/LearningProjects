@@ -11,7 +11,7 @@ import Foundation
 struct TaskDO {
     let name: String
     let description: String
-    let key: String?
+    var key: String?
     let ownerID: String
     let deadline: String
 

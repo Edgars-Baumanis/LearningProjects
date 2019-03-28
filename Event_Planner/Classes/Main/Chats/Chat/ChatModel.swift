@@ -26,6 +26,7 @@ class ChatModel {
         self.spaceKey = spaceKey
         currentUserID = userServices?.user?.userID
         self.chatService = chatService
+        getMessages()
     } 
 
     func sendMessage(messageText: String?) {

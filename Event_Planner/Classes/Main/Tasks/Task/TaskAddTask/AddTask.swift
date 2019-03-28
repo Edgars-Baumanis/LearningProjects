@@ -17,6 +17,11 @@ class AddTask: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
         taskDescription.delegate = self
         taskDescription.text = "Enter chat description"
         taskDescription.textColor = UIColor.placholderGrey

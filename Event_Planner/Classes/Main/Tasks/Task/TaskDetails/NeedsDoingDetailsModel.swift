@@ -7,38 +7,43 @@
 //
 
 import UIKit
-import Firebase
 
 class NeedsDoingDetailsModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
     private var taskTopic: TopicDO?
+    private let taskService: PTaskService?
     
     var task: TaskDO?
     var leaveDetails: (() -> Void)?
     var calculateBoxHeight: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?) {
+    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?, taskService: PTaskService?) {
+        self.taskService = taskService
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
-        ref = Database.database().reference()
     }
 
     func inProgressPressed() {
-        let newTask = TaskDO(name: (task?.name)!, description: (task?.description)!, key: nil, ownerID: (task?.ownerID)!, deadline: (task?.deadline)!)
-        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("InProgress").child((task?.key)!).setValue(newTask.sendData())
-
-        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
-        
-        self.leaveDetails?()
+        taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "InProgress", caller: "NeedsDoing", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 
     func deletePressed() {
-        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").child((task?.key)!).removeValue()
-        self.leaveDetails?()
-
+        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: "NeedsDoing", completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.leaveDetails?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }
 

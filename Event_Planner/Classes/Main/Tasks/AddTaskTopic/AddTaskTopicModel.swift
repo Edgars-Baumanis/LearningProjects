@@ -7,29 +7,27 @@
 //
 
 import UIKit
-import Firebase
 
 class AddTaskTopicModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
+    private let taskService: PTaskService?
     
-    var emptyFields: (()->Void)?
     var navigateToTaskTopic: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?) {
-        ref = Database.database().reference()
+    init(spaceKey: String?, taskService: PTaskService?) {
+        self.taskService = taskService
         self.spaceKey = spaceKey
     }
     
     func addTask(taskName: String?) {
-        guard taskName?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        let newTopic = TopicDO(name: taskName!, key: nil)
-        ref?.child("Spaces").child(spaceKey!).child("Tasks").childByAutoId().setValue(newTopic.sendData())
-        self.navigateToTaskTopic?()
-
+        taskService?.addTopic(topicName: taskName, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.navigateToTaskTopic?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
     }
 }

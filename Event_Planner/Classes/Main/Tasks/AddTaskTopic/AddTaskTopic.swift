@@ -15,8 +15,8 @@ class AddTaskTopic: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        viewModel?.emptyFields = { [weak self] in
-            let alert = UIAlertController(title: "Empty!", message: "Please enter a name and a description for the task", preferredStyle: .alert)
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }

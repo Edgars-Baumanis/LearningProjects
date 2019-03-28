@@ -60,7 +60,6 @@ class IdeaService: PIdeaService {
             let newIdea = IdeaDO(ideaName: name, likeCount: likes, likedPeople: likedPeople, key: key)
             completionHandler(newIdea, nil)
         })
-
     }
 
     func addLike(spaceKey: String?, topicKey: String?, likedObject: IdeaDO, ideaKey: String?, completionHandler: (String?) -> Void) {

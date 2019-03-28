@@ -7,26 +7,25 @@
 //
 
 import UIKit
-import Firebase
 
 class AddTaskModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
     private var taskTopic: TopicDO?
     private var userServices: PUserService?
+    private let taskService: PTaskService?
 
-    var emptyFields: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
     var addTaskPressed: (() -> Void)?
     var dateFormatter: DateFormatter?
 
-    init(spaceKey: String?, taskTopic: TopicDO?, userServices: PUserService?) {
+    init(spaceKey: String?, taskTopic: TopicDO?, userServices: PUserService?, taskService: PTaskService?) {
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.userServices = userServices
         dateFormatter = DateFormatter()
         dateFormatter?.dateFormat = "EEEE, MMM d, yyyy"
-        ref = Database.database().reference()
+        self.taskService = taskService
     }
 
     func addTask(taskName: String?, taskDescription: String?, deadline: String?) {
@@ -37,7 +36,12 @@ class AddTaskModel {
             let userID = userServices?.user?.userID
             else { return }
         let newTask = TaskDO(name: taskName!, description: taskDescription!, key: nil, ownerID: userID, deadline: deadline!)
-        ref?.child("Spaces").child(spaceKey!).child("Tasks").child((taskTopic?.key)!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
-        addTaskPressed?()
+        taskService?.addTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: newTask) { [weak self] (error) in
+            if error == nil {
+                self?.addTaskPressed?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        }
     }
 }

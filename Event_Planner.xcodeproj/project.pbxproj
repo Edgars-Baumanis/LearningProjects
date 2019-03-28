@@ -65,6 +65,8 @@
 		493E4E45224CB95F0009993A /* PChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E44224CB95F0009993A /* PChatService.swift */; };
 		493E4E47224CB9720009993A /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E46224CB9720009993A /* ChatService.swift */; };
 		493E4E49224CD3950009993A /* TaskDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E48224CD3950009993A /* TaskDO.swift */; };
+		493E4E4B224CD5890009993A /* PTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E4A224CD5890009993A /* PTaskService.swift */; };
+		493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E4C224CD5BD0009993A /* TaskService.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -204,6 +206,8 @@
 		493E4E44224CB95F0009993A /* PChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PChatService.swift; sourceTree = "<group>"; };
 		493E4E46224CB9720009993A /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		493E4E48224CD3950009993A /* TaskDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDO.swift; sourceTree = "<group>"; };
+		493E4E4A224CD5890009993A /* PTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTaskService.swift; sourceTree = "<group>"; };
+		493E4E4C224CD5BD0009993A /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -545,6 +549,8 @@
 		493E4E42224CB9440009993A /* TaskService */ = {
 			isa = PBXGroup;
 			children = (
+				493E4E4A224CD5890009993A /* PTaskService.swift */,
+				493E4E4C224CD5BD0009993A /* TaskService.swift */,
 			);
 			path = TaskService;
 			sourceTree = "<group>";
@@ -1144,10 +1150,12 @@
 				4911E168223021A700EB8474 /* PUserService.swift in Sources */,
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
 				493E4E47224CB9720009993A /* ChatService.swift in Sources */,
+				493E4E4B224CD5890009993A /* PTaskService.swift in Sources */,
 				49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */,
 				495E1C8F2243A9410002F096 /* DoneDetailsModel.swift in Sources */,
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
+				493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,

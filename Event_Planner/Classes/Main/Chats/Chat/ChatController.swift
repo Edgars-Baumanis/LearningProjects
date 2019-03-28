@@ -12,6 +12,8 @@ class ChatController: UIViewController {
     @IBOutlet weak var chatRoom: UITableView!
     @IBOutlet weak var messageField: UITextField!
     var viewModel: ChatModel?
+    var addTap: (() -> Void)?
+    var removeTap: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,6 @@ class ChatController: UIViewController {
         chatRoom.delegate = self
         chatRoom.dataSource = self
         self.title = viewModel?.chat?.chatName
-        viewModel?.getMessages()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.chatRoom.reloadData()
             self?.scrollToBottom()
@@ -28,11 +29,18 @@ class ChatController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+
     }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+        removeTap?()
     }
 
     @IBAction func sentPressed(_ sender: Any) {
@@ -81,6 +89,7 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         if self.view.frame.origin.y == 0 {
             self.view.frame.origin.y -= keyboardFrame.height
         }
+        addTap?()
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
