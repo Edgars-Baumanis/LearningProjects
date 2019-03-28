@@ -1,14 +1,14 @@
 //
-//  File.swift
+//  BudgetDO.swift
 //  Event_Planner
 //
-//  Created by Edgars Baumanis on 20.03.19.
+//  Created by Edgars Baumanis on 28.03.19.
 //  Copyright © 2019. g. chili. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct BudgetField {
+struct BudgetDO {
     var name: String
     var sum: String
     var key: String?

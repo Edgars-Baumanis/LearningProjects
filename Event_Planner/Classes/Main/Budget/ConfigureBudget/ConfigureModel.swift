@@ -15,9 +15,9 @@ class ConfigureModel {
     private var spaceKey: String?
 
     var savePressed: (() -> Void)?
-    var budgetField: BudgetField?
+    var budgetField: BudgetDO?
 
-    init(spaceKey: String?, budgetField: BudgetField?) {
+    init(spaceKey: String?, budgetField: BudgetDO?) {
         self.spaceKey = spaceKey
         self.budgetField = budgetField
         ref = Database.database().reference()
@@ -30,7 +30,7 @@ class ConfigureModel {
             let key = budgetField?.key
             else { return }
 
-        let newField = BudgetField(name: fieldName!, sum: fieldSum!, key: nil)
+        let newField = BudgetDO(name: fieldName!, sum: fieldSum!, key: nil)
         let childUpdates = [
             "/Spaces/\(spaceKey!)/Budget/BudgetFields/\(key)" : newField.sendData()
         ]

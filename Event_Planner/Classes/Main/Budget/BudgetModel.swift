@@ -15,11 +15,11 @@ class BudgetModel {
     private var allFieldSum: [Float] = []
     private var spaceKey: String?
     
-    var navigateToConfigureBudget: ((_ budgetField: BudgetField?) -> Void)?
+    var navigateToConfigureBudget: ((_ budgetField: BudgetDO?) -> Void)?
     var addTextToFields: (() -> Void)?
     var navigateToAddField: (() -> Void)?
     var totalBudget: String?
-    var dataSource: [BudgetField] = []
+    var dataSource: [BudgetDO] = []
     var dataSourceChanged: (() -> Void)?
     var editBudgetPressed: (() -> Void)?
     var remainingBudget: Float?
@@ -37,7 +37,7 @@ class BudgetModel {
                 let fieldSum = post?["sum"] as? String,
                 let key = snapshot.key as? String
                 else { return }
-            let newField = BudgetField(name: fieldName, sum: fieldSum, key: key)
+            let newField = BudgetDO(name: fieldName, sum: fieldSum, key: key)
 
             self.dataSource.append(newField)
             self.allFieldSum.append((newField.sum as NSString).floatValue)
@@ -61,7 +61,7 @@ class BudgetModel {
                 let fieldSum = post?["sum"] as? String,
                 let key = snapshot.key as? String
                 else { return }
-            let newField = BudgetField(name: fieldName, sum: fieldSum, key: key)
+            let newField = BudgetDO(name: fieldName, sum: fieldSum, key: key)
 
             var index: Int?
             self.dataSource.enumerated().forEach { (idx, value) in

@@ -30,7 +30,6 @@
 		490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */; };
 		490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4322412CE300E07DB3 /* AddIdea.swift */; };
 		490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */; };
-		490D4B4822421E2D00E07DB3 /* BudgetFieldStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */; };
 		49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD0223A427C00C6A160 /* AddTopicController.swift */; };
 		49108CD3223A436300C6A160 /* IdeasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD2223A436300C6A160 /* IdeasModel.swift */; };
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
@@ -67,6 +66,7 @@
 		493E4E49224CD3950009993A /* TaskDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E48224CD3950009993A /* TaskDO.swift */; };
 		493E4E4B224CD5890009993A /* PTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E4A224CD5890009993A /* PTaskService.swift */; };
 		493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E4C224CD5BD0009993A /* TaskService.swift */; };
+		493E4E4F224D052D0009993A /* BudgetDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E4E224D052D0009993A /* BudgetDO.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -172,7 +172,6 @@
 		490D4B402240E4B400E07DB3 /* AddBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetModel.swift; sourceTree = "<group>"; };
 		490D4B4322412CE300E07DB3 /* AddIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdea.swift; sourceTree = "<group>"; };
 		490D4B4522412E9000E07DB3 /* AddIdeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaModel.swift; sourceTree = "<group>"; };
-		490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFieldStructure.swift; sourceTree = "<group>"; };
 		49108CD0223A427C00C6A160 /* AddTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		49108CD2223A436300C6A160 /* IdeasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasModel.swift; sourceTree = "<group>"; };
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
@@ -208,6 +207,7 @@
 		493E4E48224CD3950009993A /* TaskDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDO.swift; sourceTree = "<group>"; };
 		493E4E4A224CD5890009993A /* PTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTaskService.swift; sourceTree = "<group>"; };
 		493E4E4C224CD5BD0009993A /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		493E4E4E224D052D0009993A /* BudgetDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDO.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -503,7 +503,6 @@
 			isa = PBXGroup;
 			children = (
 				4935AB2C223288A00061AE47 /* BudgetController.swift */,
-				490D4B4722421E2D00E07DB3 /* BudgetFieldStructure.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
 				490543BF2245106800FC28A1 /* AddTotalBudget.swift */,
 				490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */,
@@ -524,6 +523,7 @@
 				493E4E3C224CB7B40009993A /* MessageDO.swift */,
 				493E4E3E224CB8660009993A /* ChatDO.swift */,
 				493E4E48224CD3950009993A /* TaskDO.swift */,
+				493E4E4E224D052D0009993A /* BudgetDO.swift */,
 			);
 			path = "Data Objects";
 			sourceTree = "<group>";
@@ -1091,6 +1091,7 @@
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */,
 				495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */,
+				493E4E4F224D052D0009993A /* BudgetDO.swift in Sources */,
 				490543C2224510AE00FC28A1 /* AddTotalBudgetModel.swift in Sources */,
 				49459D0A222E63B10020A8BA /* TextBoxSubclass.swift in Sources */,
 				49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */,
@@ -1141,7 +1142,6 @@
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				495E1C6822424C100002F096 /* TaskInProgressCell.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
-				490D4B4822421E2D00E07DB3 /* BudgetFieldStructure.swift in Sources */,
 				495E1C8322437EC70002F096 /* NeedsDoingDetails.swift in Sources */,
 				499D7EB422257BF900694DD6 /* OtherSpacesCell.swift in Sources */,
 				493E4E45224CB95F0009993A /* PChatService.swift in Sources */,

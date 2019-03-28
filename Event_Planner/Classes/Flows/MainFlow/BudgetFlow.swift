@@ -12,7 +12,7 @@ class BudgetFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var spaceKey: String?
-    private var budgetField: BudgetField?
+    private var budgetField: BudgetDO?
     
 
     init(rootController: UINavigationController?, spaceKey: String?) {
