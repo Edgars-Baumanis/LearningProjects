@@ -14,5 +14,5 @@ class MainModel {
     var ideasPressed: (()-> Void)?
     var tasksPressed: (()-> Void)?
     var backPressed: (()-> Void)?
-    var space: Space?
+    var space: SpaceDO?
 }

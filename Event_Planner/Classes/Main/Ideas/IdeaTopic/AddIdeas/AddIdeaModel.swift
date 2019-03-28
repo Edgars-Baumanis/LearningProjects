@@ -13,11 +13,11 @@ class AddIdeaModel {
 
     private var ref: DatabaseReference?
     private var spaceKey: String?
-    private var topicName: IdeaTopicStruct?
+    private var topicName: TopicDO?
     
     var ideaAdded: (() -> Void)?
 
-    init(spaceKey: String?, topicName: IdeaTopicStruct?) {
+    init(spaceKey: String?, topicName: TopicDO?) {
         ref = Database.database().reference()
         self.spaceKey = spaceKey
         self.topicName = topicName
@@ -25,7 +25,7 @@ class AddIdeaModel {
 
     func addIdea(ideaName: String?) {
         guard ideaName?.isEmpty != true else { return }
-        let newIdea = Idea(ideaName: ideaName!, likeCount: 0, likedPeople: [""], key: nil)
+        let newIdea = IdeaDO(ideaName: ideaName!, likeCount: 0, likedPeople: [""], key: nil)
         ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).childByAutoId().setValue(newIdea.sendData())
         ideaAdded?()
     }

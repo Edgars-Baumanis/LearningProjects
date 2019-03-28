@@ -13,7 +13,6 @@ struct Chat {
     let chatDescription: String
     let user: String?
     let key: String?
-    
 
     init (chatName: String, chatDescription: String, user: String, key: String?) {
         self.chatName = chatName

@@ -12,13 +12,15 @@ class IdeasFlow: FlowController {
 
     private var rootController: UINavigationController?
     private var spaceKey: String?
-    private var ideaTopic: IdeaTopicStruct?
+    private var ideaTopic: TopicDO?
     private var userServices: PUserService?
+    private var ideaServices: PIdeaService?
 
-    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?) {
+    init(rootController: UINavigationController?, spaceKey: String?, userServices: PUserService?, ideaService: PIdeaService?) {
         self.userServices = userServices
         self.rootController = rootController
         self.spaceKey = spaceKey
+        self.ideaServices = ideaService
     }
 
     private lazy var ideasSB: UIStoryboard = {
@@ -51,7 +53,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToIdeas() {
         guard let vc = ideasViewController else { return }
-        let viewModel = IdeasModel(spaceKey: spaceKey)
+        let viewModel = IdeasModel(spaceKey: spaceKey, ideaService: ideaServices)
 
         viewModel.navigateToAddTopic = { [weak self] in
             self?.navigateToAddIdeaTopic()
@@ -68,7 +70,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToAddIdeaTopic() {
         guard let vc = addIdeasController else { return }
-        let viewModel = AddTopicModel(spaceKey: spaceKey)
+        let viewModel = AddTopicModel(spaceKey: spaceKey, ideaService: ideaServices)
         viewModel.addTopicPressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -78,7 +80,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToIdeaTopics() {
         guard let vc = ideaTopicController else { return }
-        let viewModel = IdeaTopicModel(topicName: ideaTopic, spaceKey: spaceKey, userServices: userServices)
+        let viewModel = IdeaTopicModel(topicName: ideaTopic, spaceKey: spaceKey, userServices: userServices, ideaService: ideaServices)
         viewModel.addPressed = { [weak self] in
             self?.navigateToAddIdea()
         }

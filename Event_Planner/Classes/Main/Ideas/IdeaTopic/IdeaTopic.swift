@@ -17,10 +17,13 @@ class IdeaTopic: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
         self.title = viewModel?.topicName?.name
-        viewModel?.reloadData()
-        viewModel?.getData()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.ideas.reloadData()
+        }
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
         }
         ideas.delegate = self
         ideas.dataSource = self

@@ -7,36 +7,41 @@
 //
 
 import UIKit
-import Firebase
 
 class IdeasModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
+    private var ideaService: PIdeaService?
     
     var navigateToAddTopic: (()-> Void)?
-    var navigateToIdea: ((_ ideaTopic: IdeaTopicStruct?) -> Void)?
+    var errorMessage: ((String?) -> Void)?
+    var navigateToIdea: ((_ ideaTopic: TopicDO?) -> Void)?
     var dataSourceChanged: (() -> Void)?
-    var dataSource: [IdeaTopicStruct] = []
-    var filteredDataSource: [IdeaTopicStruct]?
+    var dataSource: [TopicDO] = []
+    var filteredDataSource: [TopicDO] = []
     
-    init(spaceKey: String?) {
+    init(spaceKey: String?, ideaService: PIdeaService?) {
         self.spaceKey = spaceKey
-        ref = Database.database().reference()
-        filteredDataSource = []
-    }
+        self.ideaService = ideaService
+    } 
 
     func getTopics() {
-        ref?.child("Spaces").child(spaceKey!).child("Ideas").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            let newTopic = IdeaTopicStruct(name: name, key: key)
-            self.dataSource.append(newTopic)
-            self.filteredDataSource?.append(newTopic)
-            self.dataSourceChanged?()
+        ideaService?.getTopics(spaceKey: spaceKey, completionHandler: { [weak self] (topic, error) in
+            if error == nil {
+                guard let newTopic = topic else { return }
+                self?.dataSource.append(newTopic)
+                self?.filteredDataSource.append(newTopic)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
         })
+    }
+
+    func searchTextChanged(searchText: String) {
+        filteredDataSource = searchText.isEmpty ? dataSource :
+            dataSource.filter { (item: TopicDO) -> Bool in
+                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
     }
 }

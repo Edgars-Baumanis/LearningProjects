@@ -7,44 +7,37 @@
 //
 
 import UIKit
-import Firebase
 
 class IdeaTopicModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
     private var userServices: PUserService?
+    private var ideaService: PIdeaService?
 
-    var topicName: IdeaTopicStruct?
+    var errorMessage: ((String?) -> Void)?
+    var topicName: TopicDO?
     var addPressed: (() -> Void)?
-    var dataSource: [Idea] = []
+    var dataSource: [IdeaDO] = []
     var dataSourceChanged: (() -> Void)?
 
-    init(topicName: IdeaTopicStruct?, spaceKey: String?, userServices: PUserService?) {
+    init(topicName: TopicDO?, spaceKey: String?, userServices: PUserService?, ideaService: PIdeaService?) {
         self.userServices = userServices
         self.topicName = topicName
+        self.ideaService = ideaService
         self.spaceKey = spaceKey
-        ref = Database.database().reference()
+        reloadData()
+        getData()
     }
 
     func getData() {
-        ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let likedPeople = post?["LikedPeople"] as? [String],
-                let name = post?["name"] as? String,
-                let likes = post?["likes"] as? Int,
-                let key = snapshot.key as? String
-                else { return }
-            var newLikedPeople: [String] = []
-            likedPeople.forEach { value in
-                guard let newValue = value as? String else { return }
-                newLikedPeople.append(newValue)
+        ideaService?.getIdeas(spaceKey: spaceKey, topicKey: topicName?.key, completionHandler: { [weak self] (idea, error) in
+            if error == nil {
+                guard let newIdea = idea else { return }
+                self?.dataSource.append(newIdea)
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
             }
-            let newIdea = Idea(ideaName: name, likeCount: likes, likedPeople: newLikedPeople, key: key)
-
-            self.dataSource.append(newIdea)
-            self.dataSourceChanged?()
         })
     }
 
@@ -53,40 +46,33 @@ class IdeaTopicModel {
         if dataSource[index].likedPeople.contains(userID) != true {
             dataSource[index].likedPeople.append(userID)
             let likedField = dataSource[index]
-            let newField = Idea(ideaName: likedField.ideaName, likeCount: likedField.likeCount + 1, likedPeople: likedField.likedPeople, key: nil)
-
-            guard let key = likedField.key, let newTopicKey = topicName?.key else { return }
-            let childUpdates = [
-                "/Spaces/\(spaceKey!)/Ideas/\(newTopicKey)/\(key)" : newField.sendData()
-            ]
-            ref?.updateChildValues(childUpdates)
+            let newField = IdeaDO(ideaName: likedField.ideaName, likeCount: likedField.likeCount + 1, likedPeople: likedField.likedPeople, key: nil)
+            ideaService?.addLike(spaceKey: spaceKey, topicKey: topicName?.key, likedObject: newField, ideaKey: likedField.key, completionHandler: { [weak self] error in
+                if error == nil {
+                    return
+                } else {
+                    self?.errorMessage?(error)
+                }
+            })
         }
     }
 
     func reloadData() {
-        ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).observe(.childChanged, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let likedPeople = post?["LikedPeople"] as? [String],
-                let name = post?["name"] as? String,
-                let likes = post?["likes"] as? Int,
-                let key = snapshot.key as? String
-                else { return }
-            var newLikedPeople: [String] = []
-            likedPeople.forEach { value in
-                guard let newValue = value as? String else { return }
-                newLikedPeople.append(newValue)
-            }
-            let newIdea = Idea(ideaName: name, likeCount: likes, likedPeople: newLikedPeople, key: key)
-            var index: Int?
-            self.dataSource.enumerated().forEach { (idx, value) in
-                if value.key == key {
-                    index = idx
+        ideaService?.reloadIdeas(spaceKey: spaceKey, topicKey: topicName?.key, completionHandler: { [weak self] (changedIdea, error) in
+            if error == nil {
+                var index: Int?
+                self?.dataSource.enumerated().forEach { (idx, value) in
+                    if value.key == changedIdea?.key {
+                        index = idx
+                    }
                 }
+                guard let idx = index, let newIdea = changedIdea else { return }
+                self?.dataSource[idx] = newIdea
+                self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
             }
-            guard let idx = index else { return }
-            self.dataSource[idx] = newIdea
-            self.dataSourceChanged?()
         })
+
     }
 }

@@ -11,8 +11,9 @@ import UIKit
 class IdeasController: UIViewController {
     @IBOutlet weak var allIdeas: UITableView!
     @IBOutlet weak var allIdeasSearchBar: UISearchBar!
-    var tap: UITapGestureRecognizer?
     var viewModel: IdeasModel?
+    var addTap: (() -> Void)?
+    var removeTap: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,19 @@ class IdeasController: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allIdeas.reloadData()
         }
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
+        var tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
         floatingButton()
-        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     }
 
     @objc func dismissKeyboard() {
@@ -54,37 +66,36 @@ class IdeasController: UIViewController {
 extension IdeasController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.filteredDataSource?.count ?? 0
+        return viewModel?.filteredDataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(subject: viewModel?.filteredDataSource?[indexPath.row].name ?? "Something went wrong")
+            myCell.displayContent(subject: viewModel?.filteredDataSource[indexPath.row].name)
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.navigateToIdea?(viewModel?.filteredDataSource?[indexPath.row])
+        viewModel?.navigateToIdea?(viewModel?.filteredDataSource[indexPath.row])
     }
 }
 
 extension IdeasController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.filteredDataSource = searchText.isEmpty ? viewModel?.dataSource : viewModel?.dataSource.filter { (item: IdeaTopicStruct) -> Bool in
-            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
+        viewModel?.searchTextChanged(searchText: searchText)
         allIdeas.reloadData()
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        addTap?()
         searchBar.showsCancelButton = true
-        view.addGestureRecognizer(tap!)
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.removeGestureRecognizer(tap!)
+        removeTap?()
         searchBar.resignFirstResponder()
     }
 
