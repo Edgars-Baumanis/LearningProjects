@@ -22,6 +22,11 @@ class ConfigureBudget: UIViewController {
         view.setGradientBackground()
         let save = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(savePressed))
         self.navigationItem.rightBarButtonItem = save
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
 
     @objc func savePressed(sender: UIBarButtonItem) {

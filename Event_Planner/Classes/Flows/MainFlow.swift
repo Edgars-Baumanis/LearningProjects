@@ -20,8 +20,10 @@ class MainFlow: FlowController {
     private var ideaService: PIdeaService?
     private var chatService: PChatService?
     private var taskService: PTaskService?
+    private var budgetService: PBudgetService?
 
-    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?, taskService: PTaskService?) {
+    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+        self.budgetService = budgetService
         self.rootTabbar = tabbar
         self.ideaService = ideaService
         self.userServices = userServices
@@ -92,7 +94,7 @@ class MainFlow: FlowController {
     }
 
     private func navigateToBudgetFlow() {
-        let budgetFlow = BudgetFlow(rootController: rootController, spaceKey: space?.key)
+        let budgetFlow = BudgetFlow(rootController: rootController, spaceKey: space?.key, budgetService: budgetService)
         budgetFlow.start()
         childFlow = budgetFlow
     }
