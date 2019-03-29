@@ -60,9 +60,6 @@ class GreetingFlow: FlowController {
             self.navigateToSpaces?()
             self.tabbar?.dismiss(animated: true, completion: nil)
         }
-        viewModel.backPressed = {
-            self.start()
-        }
         vc.viewModel = viewModel
     }
     

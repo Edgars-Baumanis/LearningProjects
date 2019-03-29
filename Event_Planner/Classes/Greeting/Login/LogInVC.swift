@@ -38,8 +38,4 @@ class LoginVC: UIViewController {
     @IBAction func loggedIn(_ sender: Any) {
         viewModel?.loginUser(email: loginEmail.text, password: loginPassword.text)
     }
-
-    @IBAction func backPressed(_ sender: Any) {
-        viewModel?.backPressed?()
-    }
 }

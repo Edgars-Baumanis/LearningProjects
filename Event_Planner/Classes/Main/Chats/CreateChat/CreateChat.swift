@@ -25,11 +25,6 @@ class CreateChat: UIViewController {
         chatDescription.delegate = self
         chatDescription.text = "Enter chat description"
         chatDescription.textColor = UIColor.placholderGrey
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
     }
 
     @IBAction func createChatPressed(_ sender: Any) {

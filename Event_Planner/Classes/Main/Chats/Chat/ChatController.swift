@@ -35,13 +35,6 @@ class ChatController: UIViewController {
         removeTap = { [weak self] in
             self?.view.removeGestureRecognizer(tap)
         }
-
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
-
     }
 
     @objc func dismissKeyboard() {

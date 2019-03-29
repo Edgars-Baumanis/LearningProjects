@@ -25,6 +25,11 @@
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpPressed:" destination="Sv2-6W-0Yw" eventType="touchUpInside" id="c8o-rN-HGo"/>
                                 </connections>
@@ -39,6 +44,11 @@
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.73999999999999999" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInPressed:" destination="Sv2-6W-0Yw" eventType="touchUpInside" id="8Cw-eI-ELO"/>
                                 </connections>
@@ -79,72 +89,85 @@
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loggedIn:" destination="Zf2-Mq-o47" eventType="touchUpInside" id="62W-hV-j7Q"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W73-tZ-Iep" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="400" width="335" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqQ-WP-fiG">
+                                <rect key="frame" x="20" y="330" width="335" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJg-SG-SXV">
+                                        <rect key="frame" x="20" y="10" width="295" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="nlD-36-j5q"/>
+                                    <constraint firstItem="MJg-SG-SXV" firstAttribute="top" secondItem="AqQ-WP-fiG" secondAttribute="top" constant="10" id="DO7-ZK-J6N"/>
+                                    <constraint firstAttribute="height" constant="60" id="NV6-Rt-Znr"/>
+                                    <constraint firstAttribute="bottom" secondItem="MJg-SG-SXV" secondAttribute="bottom" constant="10" id="j11-nQ-12c"/>
+                                    <constraint firstAttribute="trailing" secondItem="MJg-SG-SXV" secondAttribute="trailing" constant="20" id="psC-jP-iIS"/>
+                                    <constraint firstItem="MJg-SG-SXV" firstAttribute="leading" secondItem="AqQ-WP-fiG" secondAttribute="leading" constant="20" id="r19-9V-jIP"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJg-SG-SXV" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="320" width="335" height="60"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-5H-1nz">
+                                <rect key="frame" x="20" y="410" width="335" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W73-tZ-Iep" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="10" width="295" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="pxo-WR-DQj"/>
+                                    <constraint firstItem="W73-tZ-Iep" firstAttribute="leading" secondItem="cd7-5H-1nz" secondAttribute="leading" constant="20" id="5N4-SY-2V7"/>
+                                    <constraint firstAttribute="trailing" secondItem="W73-tZ-Iep" secondAttribute="trailing" constant="20" id="8l9-2w-kE7"/>
+                                    <constraint firstAttribute="bottom" secondItem="W73-tZ-Iep" secondAttribute="bottom" constant="10" id="D0X-Dv-MYM"/>
+                                    <constraint firstAttribute="height" constant="60" id="MOB-Sx-fhP"/>
+                                    <constraint firstItem="W73-tZ-Iep" firstAttribute="top" secondItem="cd7-5H-1nz" secondAttribute="top" constant="10" id="Ryv-ih-5cP"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYC-2h-lAm">
-                                <rect key="frame" x="26" y="20" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backPressed:" destination="Zf2-Mq-o47" eventType="touchUpInside" id="ubX-SJ-EwV"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="W73-tZ-Iep" firstAttribute="top" secondItem="MJg-SG-SXV" secondAttribute="bottom" constant="20" id="BAJ-UL-N2c"/>
+                            <constraint firstItem="AqQ-WP-fiG" firstAttribute="leading" secondItem="rJL-aK-4L3" secondAttribute="leading" constant="20" id="Bxu-If-z4a"/>
                             <constraint firstItem="rJL-aK-4L3" firstAttribute="bottom" secondItem="Y3Q-kY-cPn" secondAttribute="bottom" constant="87" id="C1J-Ds-T2u"/>
-                            <constraint firstItem="Y3Q-kY-cPn" firstAttribute="top" secondItem="W73-tZ-Iep" secondAttribute="bottom" constant="60" id="FAE-kB-kj5"/>
-                            <constraint firstItem="MJg-SG-SXV" firstAttribute="leading" secondItem="rJL-aK-4L3" secondAttribute="leading" constant="20" id="Ivx-dz-fA5"/>
-                            <constraint firstItem="W73-tZ-Iep" firstAttribute="leading" secondItem="rJL-aK-4L3" secondAttribute="leading" constant="20" id="QMC-nH-Qgr"/>
-                            <constraint firstItem="rJL-aK-4L3" firstAttribute="trailing" secondItem="MJg-SG-SXV" secondAttribute="trailing" constant="20" id="VoX-16-CYk"/>
+                            <constraint firstItem="cd7-5H-1nz" firstAttribute="top" secondItem="AqQ-WP-fiG" secondAttribute="bottom" constant="20" id="TAr-7w-C2F"/>
                             <constraint firstItem="rJL-aK-4L3" firstAttribute="trailing" secondItem="Y3Q-kY-cPn" secondAttribute="trailing" constant="20" id="WT1-vO-AIa"/>
-                            <constraint firstItem="rJL-aK-4L3" firstAttribute="trailing" secondItem="W73-tZ-Iep" secondAttribute="trailing" constant="20" id="kl1-Mi-XNk"/>
+                            <constraint firstItem="cd7-5H-1nz" firstAttribute="leading" secondItem="rJL-aK-4L3" secondAttribute="leading" constant="20" id="WiO-73-F08"/>
+                            <constraint firstItem="rJL-aK-4L3" firstAttribute="trailing" secondItem="AqQ-WP-fiG" secondAttribute="trailing" constant="20" id="XIp-rK-qJm"/>
                             <constraint firstItem="Y3Q-kY-cPn" firstAttribute="leading" secondItem="rJL-aK-4L3" secondAttribute="leading" constant="20" id="rAb-1S-okL"/>
+                            <constraint firstItem="Y3Q-kY-cPn" firstAttribute="top" secondItem="cd7-5H-1nz" secondAttribute="bottom" constant="50" id="rwf-rk-Gpe"/>
+                            <constraint firstItem="rJL-aK-4L3" firstAttribute="trailing" secondItem="cd7-5H-1nz" secondAttribute="trailing" constant="20" id="wZr-el-GnS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rJL-aK-4L3"/>
                     </view>
@@ -229,6 +252,11 @@
                                 <state key="normal" title="SignUp">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signedUpPressed:" destination="rax-Pg-yOM" eventType="touchUpInside" id="m7f-f3-nee"/>
                                 </connections>

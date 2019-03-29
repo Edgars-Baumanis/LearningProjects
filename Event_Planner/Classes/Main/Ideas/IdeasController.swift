@@ -27,11 +27,6 @@ class IdeasController: UIViewController {
             self?.present(alert, animated: true)
         }
         floatingButton()
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
     }
 
     func floatingButton() {
@@ -60,7 +55,6 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
-
         
 
         if let myCell = cell as? TopicCell {

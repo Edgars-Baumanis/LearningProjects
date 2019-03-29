@@ -29,13 +29,18 @@ class MySpacesVC: UIViewController {
                 self?.otherSpaces.reloadData()
             }
         }
+
+        let tabbar = self.tabBarController?.tabBar
+        tabbar?.barTintColor = UIColor.black
+        tabbar?.tintColor = UIColor.lightYellow
+        tabbar?.unselectedItemTintColor = UIColor.gray
     }
     
-    @IBAction func plusPressed(_ sender: Any) {
+    @IBAction func plusPressed(_ sender: UIButton) {
         viewModel?.navigateToCreate?()
     }
     
-    @IBAction func signOutPressed(_ sender: Any) {
+    @IBAction func signOutPressed(_ sender: UIButton) {
         viewModel?.signOut()
     }
 }

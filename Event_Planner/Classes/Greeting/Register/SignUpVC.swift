@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpVC: UIViewController {
     @IBOutlet weak var regScreenName: UITextField!

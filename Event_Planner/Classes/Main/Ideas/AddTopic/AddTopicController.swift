@@ -21,11 +21,6 @@ class AddTopicController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
     }
     @IBAction func addTopicPressed(_ sender: Any) {
         viewModel?.addTopic(topicName: topicName.text)

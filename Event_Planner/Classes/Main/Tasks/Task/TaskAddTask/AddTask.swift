@@ -25,11 +25,6 @@ class AddTask: UIViewController {
         taskDescription.delegate = self
         taskDescription.text = "Enter chat description"
         taskDescription.textColor = UIColor.placholderGrey
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
     }
 
     @IBAction func addTaskPressed(_ sender: Any) {
