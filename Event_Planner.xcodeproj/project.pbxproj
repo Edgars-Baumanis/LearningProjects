@@ -126,7 +126,6 @@
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
 		49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413A22326B4800BCF2CA /* MainViewController.swift */; };
 		49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413C22326B5500BCF2CA /* MainFlow.swift */; };
-		49E0413F22327A1000BCF2CA /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413E22327A1000BCF2CA /* NavController.swift */; };
 		49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E50E9C222FC44500FFD8B7 /* Main.storyboard */; };
 		49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
 		49E50EA7222FD5B500FFD8B7 /* Event_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50EA6222FD5B500FFD8B7 /* Event_PlannerTests.swift */; };
@@ -271,7 +270,6 @@
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
 		49E0413A22326B4800BCF2CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		49E0413C22326B5500BCF2CA /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
-		49E0413E22327A1000BCF2CA /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		49E50E9C222FC44500FFD8B7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyUserService.swift; sourceTree = "<group>"; };
 		49E50EA4222FD5B500FFD8B7 /* Event_PlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Event_PlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -829,7 +827,6 @@
 		49E0413922326B1000BCF2CA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				49E0413E22327A1000BCF2CA /* NavController.swift */,
 				49E0413A22326B4800BCF2CA /* MainViewController.swift */,
 				4935AB142232869F0061AE47 /* MainModel.swift */,
 				49E50E9C222FC44500FFD8B7 /* Main.storyboard */,
@@ -1092,7 +1089,6 @@
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				495E1C6E224266B40002F096 /* TaskNeedsDoingModel.swift in Sources */,
-				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				495E1C6A22424C170002F096 /* TaskDoneCell.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */,

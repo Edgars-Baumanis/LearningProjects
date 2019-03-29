@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpModel {
     var navigateToSpaces: (() -> Void)?
@@ -24,8 +23,7 @@ class SignUpModel {
             emptyFields?()
             return
         }
-        userService?.register(email: email!
-            , password: password!, completionHandler: { (user, error) in
+        userService?.register(email: email!, password: password!, completionHandler: { (user, error) in
         guard error == nil else {
                 self.existingEmail?()
                 return

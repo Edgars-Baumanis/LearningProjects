@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import Firebase
 
 class AddTopicModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
     private var ideaService : PIdeaService?
     
@@ -22,7 +20,6 @@ class AddTopicModel {
     init(spaceKey: String?, ideaService: PIdeaService?) {
         self.spaceKey = spaceKey
         self.ideaService = ideaService
-        ref = Database.database().reference()
     }
 
     func addTopic(topicName: String?) {

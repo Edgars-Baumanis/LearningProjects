@@ -90,7 +90,7 @@ class IdeasFlow: FlowController {
 
     private func navigateToAddIdea() {
         guard let vc = addIdeaController else { return }
-        let viewModel = AddIdeaModel(spaceKey: spaceKey, topicName: ideaTopic)
+        let viewModel = AddIdeaModel(spaceKey: spaceKey, topicName: ideaTopic, userService: userServices, ideaService: ideaServices)
         viewModel.ideaAdded = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
