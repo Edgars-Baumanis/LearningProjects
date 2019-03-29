@@ -106,7 +106,6 @@ class SpaceService: PSpacesService {
                 let key = snapshot.key as? String
                 else { return }
             guard spaceName == enteredSpaceName, spacePassword == enteredSpacePassword else {
-                completionHandler(nil, "Incorrect space password or space name")
                 return
             }
             var isValid = false
@@ -129,7 +128,6 @@ class SpaceService: PSpacesService {
                 completionHandler(newSpace, nil)
                 return
             }
-
         })
     }
 }

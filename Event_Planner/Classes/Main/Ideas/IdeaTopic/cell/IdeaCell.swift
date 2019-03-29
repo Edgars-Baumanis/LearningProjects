@@ -22,12 +22,12 @@ class IdeaCell: UITableViewCell {
         ideaName.text = name + ": "
         likeCount.text = "\(count)"
         if isLiked {
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 self?.ideaView.backgroundColor = UIColor.green
             })
         } else {
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
-                self?.ideaView.backgroundColor = UIColor.red
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.ideaView.backgroundColor = UIColor.gray
             })
         }
     }

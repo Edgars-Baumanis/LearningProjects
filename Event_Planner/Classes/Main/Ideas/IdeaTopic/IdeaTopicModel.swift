@@ -88,12 +88,10 @@ class IdeaTopicModel {
     }
 
     func isLiked(index: Int) -> Bool? {
-        var isLiked: Bool?
+        var isLiked = false
         guard let userID = userServices?.user?.userID else { return false }
         if dataSource[index].likedPeople.contains(userID) {
             isLiked = true
-        } else {
-            isLiked = false
         }
         return isLiked
     }

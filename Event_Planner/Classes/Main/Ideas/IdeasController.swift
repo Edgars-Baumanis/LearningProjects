@@ -10,17 +10,13 @@ import UIKit
 
 class IdeasController: UIViewController {
     @IBOutlet weak var allIdeas: UITableView!
-    @IBOutlet weak var allIdeasSearchBar: UISearchBar!
     var viewModel: IdeasModel?
-    var addTap: (() -> Void)?
-    var removeTap: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
         allIdeas.delegate = self
         allIdeas.dataSource = self
-        allIdeasSearchBar.delegate = self
         viewModel?.getTopics()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allIdeas.reloadData()
@@ -30,19 +26,12 @@ class IdeasController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        addTap = { [weak self] in
-            self?.view.addGestureRecognizer(tap)
-        }
-        removeTap = { [weak self] in
-            self?.view.removeGestureRecognizer(tap)
-        }
         floatingButton()
-    }
 
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        allIdeasSearchBar.showsCancelButton = false
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
     }
 
     func floatingButton() {
@@ -72,36 +61,20 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
 
+        
+
         if let myCell = cell as? TopicCell {
             myCell.displayContent(subject: viewModel?.filteredDataSource[indexPath.row].name)
         }
+        
+        let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
+        let animator = Animations(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToIdea?(viewModel?.filteredDataSource[indexPath.row])
-    }
-}
-
-extension IdeasController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.searchTextChanged(searchText: searchText)
-        allIdeas.reloadData()
-    }
-
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        addTap?()
-        searchBar.showsCancelButton = true
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        removeTap?()
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
     }
 }

@@ -15,9 +15,14 @@ class AddIdea: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
     }
     
-    @IBAction func addIdeaPressed(_ sender: Any) {
+    @IBAction func addIdeaPressed(_ sender: UIButton) {
         viewModel?.addIdea(ideaName: ideaName.text)
     }
 }

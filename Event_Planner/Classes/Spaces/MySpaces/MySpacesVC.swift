@@ -51,14 +51,19 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cellIdentifier = tableView == otherSpaces ?
             String(describing: OtherSpacesCell.self) :
             String(describing: MySpacesCell.self)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
+        
         (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpaces[indexPath.row].spaceName)
         (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpaces[indexPath.row].spaceName)
+
+        let animation = AnimationFactory.makeMoveUpWithFade(rowHeight: cell.frame.height, duration: 0.3, delayFactor: 0.1)
+        let animator = Animations(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
 
         return cell
     }

@@ -28,6 +28,11 @@ class TaskNeedsDoing: UIViewController {
             self?.tasksNeedDoing.reloadData()
         }
         floatingButton()
+
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
     }
 
     func floatingButton() {

@@ -23,8 +23,12 @@ class JoinASpaceModel {
 
     func joinASpace(enteredSpaceName: String?, enteredSpacePassword: String?) {
         spaceService?.joinSpace(enteredSpaceName: enteredSpaceName, enteredSpacePassword: enteredSpacePassword, completionHandler: { [weak self] (space, error) in
-            guard let newSpace = space else { return }
-            error == nil ? self?.rightEntry?(newSpace) : self?.errorMessage?(error)
+            if error == nil {
+                guard let newSpace = space else { return }
+                self?.rightEntry?(newSpace)
+            } else {
+                self?.errorMessage?(error)
+            }
         })
     }
 }

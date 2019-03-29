@@ -9,9 +9,11 @@
 import UIKit
 
 class TasksCell: UITableViewCell {
+    @IBOutlet weak var taskView: UIView!
     @IBOutlet weak var task: UILabel!
 
     func displayContent(taskName: String?) {
         task.text = taskName
+        taskView.createGradient()
     }
 }
