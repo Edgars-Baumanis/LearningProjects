@@ -58,8 +58,9 @@ extension IdeaTopic: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: IdeaCell.self), for: indexPath)
         if let myCell = cell as? IdeaCell {
             myCell.displayContent(
-                name: viewModel?.dataSource[indexPath.row].ideaName ?? "Default Value",
-                count: viewModel?.dataSource[indexPath.row].likeCount ?? 0)
+                name: viewModel?.dataSource[indexPath.row].ideaName,
+                count: viewModel?.dataSource[indexPath.row].likeCount,
+                isLiked: viewModel?.isLiked(index: indexPath.row))
         }
         return cell
     }

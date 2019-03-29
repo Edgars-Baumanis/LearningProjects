@@ -54,6 +54,18 @@ class IdeaTopicModel {
                     self?.errorMessage?(error)
                 }
             })
+        } else {
+            dataSource[index].likedPeople.removeAll { (value) -> Bool in
+                return value == userID
+            }
+
+            let newIdea = IdeaDO(ideaName: dataSource[index].ideaName, likeCount: dataSource[index].likeCount - 1, likedPeople: dataSource[index].likedPeople, key: nil)
+
+            ideaService?.removeLike(spaceKey: spaceKey, topicKey: topicName?.key, pressedObject: newIdea, ideaKey: dataSource[index].key, completionHandler: { (error) in
+                if error == nil {
+
+                }
+            })
         }
     }
 
@@ -73,6 +85,16 @@ class IdeaTopicModel {
                 self?.errorMessage?(error)
             }
         })
+    }
 
+    func isLiked(index: Int) -> Bool? {
+        var isLiked: Bool?
+        guard let userID = userServices?.user?.userID else { return false }
+        if dataSource[index].likedPeople.contains(userID) {
+            isLiked = true
+        } else {
+            isLiked = false
+        }
+        return isLiked
     }
 }
