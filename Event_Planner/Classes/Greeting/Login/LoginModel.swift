@@ -13,7 +13,6 @@ class LoginModel {
     var loggedIn: (() -> Void)?
     var wrongSignIn: (() -> Void)?
     var emptyFields: (() -> Void)?
-    var backPressed: (() -> Void)?
     var error: String?
     private var userService: PUserService?
 

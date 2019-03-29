@@ -29,13 +29,18 @@ class MySpacesVC: UIViewController {
                 self?.otherSpaces.reloadData()
             }
         }
+
+        let tabbar = self.tabBarController?.tabBar
+        tabbar?.barTintColor = UIColor.black
+        tabbar?.tintColor = UIColor.lightYellow
+        tabbar?.unselectedItemTintColor = UIColor.gray
     }
     
-    @IBAction func plusPressed(_ sender: Any) {
+    @IBAction func plusPressed(_ sender: UIButton) {
         viewModel?.navigateToCreate?()
     }
     
-    @IBAction func signOutPressed(_ sender: Any) {
+    @IBAction func signOutPressed(_ sender: UIButton) {
         viewModel?.signOut()
     }
 }
@@ -51,14 +56,19 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cellIdentifier = tableView == otherSpaces ?
             String(describing: OtherSpacesCell.self) :
             String(describing: MySpacesCell.self)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
+        
         (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpaces[indexPath.row].spaceName)
         (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpaces[indexPath.row].spaceName)
+
+        let animation = AnimationFactory.makeMoveUpWithFade(rowHeight: cell.frame.height, duration: 0.3, delayFactor: 0.1)
+        let animator = Animations(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
 
         return cell
     }

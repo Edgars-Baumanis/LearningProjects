@@ -15,6 +15,13 @@ class GreetingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
+        nav?.navigationBar.tintColor = UIColor.black
+        nav?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
     
     @IBAction func signInPressed(_ sender: Any) {

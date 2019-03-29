@@ -17,7 +17,7 @@ class AddIdea: UIViewController {
         view.setGradientBackground()
     }
     
-    @IBAction func addIdeaPressed(_ sender: Any) {
+    @IBAction func addIdeaPressed(_ sender: UIButton) {
         viewModel?.addIdea(ideaName: ideaName.text)
     }
 }

@@ -7,26 +7,37 @@
 //
 
 import UIKit
-import Firebase
 
 class AddIdeaModel {
 
-    private var ref: DatabaseReference?
     private var spaceKey: String?
     private var topicName: TopicDO?
+    private let userService: PUserService?
+    private let ideaService: PIdeaService?
     
     var ideaAdded: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?, topicName: TopicDO?) {
-        ref = Database.database().reference()
+    init(spaceKey: String?, topicName: TopicDO?, userService: PUserService?, ideaService: PIdeaService?) {
         self.spaceKey = spaceKey
         self.topicName = topicName
+        self.userService = userService
+        self.ideaService = ideaService
     }
 
     func addIdea(ideaName: String?) {
-        guard ideaName?.isEmpty != true else { return }
-        let newIdea = IdeaDO(ideaName: ideaName!, likeCount: 0, likedPeople: [""], key: nil)
-        ref?.child("Spaces").child(spaceKey!).child("Ideas").child((topicName?.key)!).childByAutoId().setValue(newIdea.sendData())
-        ideaAdded?()
+        guard
+            ideaName?.isEmpty != true,
+            let userID = userService?.user?.userID
+            else { return }
+        let newIdea = IdeaDO(ideaName: ideaName!, likeCount: 1, likedPeople: ["",userID], key: nil)
+        ideaService?.addIdea(spaceKey: spaceKey, topicKey: topicName?.key, idea: newIdea, completionHandler: { [weak self] (error) in
+            if error == nil {
+                self?.ideaAdded?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
+
     }
 }

@@ -30,7 +30,6 @@ class NeedsDoingDetails: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-        
     }
 
     @IBAction func inProgressPressed(_ sender: Any) {

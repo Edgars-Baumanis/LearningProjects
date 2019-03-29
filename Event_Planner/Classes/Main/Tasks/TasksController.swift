@@ -11,10 +11,7 @@ import UIKit
 class TasksController: UIViewController {
 
     var viewModel: TasksModel?
-    var addTap: (() -> Void)?
-    var removeTap: (() -> Void)?
 
-    @IBOutlet weak var taskSearch: UISearchBar!
     @IBOutlet weak var allTasks: UITableView!
     
     override func viewDidLoad() {
@@ -22,7 +19,6 @@ class TasksController: UIViewController {
         view.setGradientBackground()
         allTasks.delegate = self
         allTasks.dataSource = self
-        taskSearch.delegate = self
         viewModel?.getTaskTopics()
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allTasks.reloadData()
@@ -33,19 +29,6 @@ class TasksController: UIViewController {
             self?.present(alert, animated: true)
         }
         floatingButton()
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        addTap = { [weak self] in
-            self?.view.addGestureRecognizer(tap)
-        }
-        removeTap = { [weak self] in
-            self?.view.removeGestureRecognizer(tap)
-        }
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        taskSearch.showsCancelButton = false
     }
 
     func floatingButton() {
@@ -77,6 +60,11 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         if let myCell = cell as? TasksCell {
             myCell.displayContent(taskName: viewModel?.filteredDataSource[indexPath.row].name)
         }
+        
+        let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
+        let animator = Animations(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+
         return cell
     }
 
@@ -85,25 +73,3 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension TasksController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.searchTextChanged(searchText: searchText)
-        allTasks.reloadData()
-    }
-
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.taskSearch.showsCancelButton = true
-        addTap?()
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        removeTap?()
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-}

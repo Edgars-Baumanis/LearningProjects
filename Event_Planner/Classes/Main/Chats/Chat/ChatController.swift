@@ -35,7 +35,6 @@ class ChatController: UIViewController {
         removeTap = { [weak self] in
             self?.view.removeGestureRecognizer(tap)
         }
-
     }
 
     @objc func dismissKeyboard() {
@@ -68,9 +67,10 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         let cellIdentifier = viewModel?.currentUserID != viewModel?.dataSource[indexPath.row].userID ? String(describing: ChatCell.self) : String(describing: CurrentUserCell.self)
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
-        (cell as? ChatCell)?.displayContent(message: viewModel?.dataSource[indexPath.row])
-        (cell as? CurrentUserCell)?.displayContent(message: viewModel?.dataSource[indexPath.row])
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            (cell as? ChatCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
+            (cell as? CurrentUserCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
+        })
 
         return cell
     }

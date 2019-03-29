@@ -44,6 +44,9 @@
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
 		4911E17A223022DE00EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E17B223144F100EB8474 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A372224426100AC8350 /* LoginModel.swift */; };
+		491EB8B7224E2B6600549B19 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB8B6224E2B6600549B19 /* Animations.swift */; };
+		491EB8B9224E2CD200549B19 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB8B8224E2CD200549B19 /* UITableView.swift */; };
+		491EB8BB224E2DC200549B19 /* AnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EB8BA224E2DC200549B19 /* AnimationFactory.swift */; };
 		4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */; };
 		4935AB152232869F0061AE47 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB142232869F0061AE47 /* MainModel.swift */; };
 		4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4935AB162232873D0061AE47 /* Ideas.storyboard */; };
@@ -126,7 +129,6 @@
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
 		49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413A22326B4800BCF2CA /* MainViewController.swift */; };
 		49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413C22326B5500BCF2CA /* MainFlow.swift */; };
-		49E0413F22327A1000BCF2CA /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413E22327A1000BCF2CA /* NavController.swift */; };
 		49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E50E9C222FC44500FFD8B7 /* Main.storyboard */; };
 		49E50E9F222FCB3000FFD8B7 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
 		49E50EA7222FD5B500FFD8B7 /* Event_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50EA6222FD5B500FFD8B7 /* Event_PlannerTests.swift */; };
@@ -187,6 +189,9 @@
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
 		4911E173223022D300EB8474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		491EB8B6224E2B6600549B19 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		491EB8B8224E2CD200549B19 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		491EB8BA224E2DC200549B19 /* AnimationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFactory.swift; sourceTree = "<group>"; };
 		4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacesCell.swift; sourceTree = "<group>"; };
 		4935AB142232869F0061AE47 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		4935AB162232873D0061AE47 /* Ideas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ideas.storyboard; sourceTree = "<group>"; };
@@ -271,7 +276,6 @@
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
 		49E0413A22326B4800BCF2CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		49E0413C22326B5500BCF2CA /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
-		49E0413E22327A1000BCF2CA /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		49E50E9C222FC44500FFD8B7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyUserService.swift; sourceTree = "<group>"; };
 		49E50EA4222FD5B500FFD8B7 /* Event_PlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Event_PlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -609,6 +613,9 @@
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
 				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
+				491EB8B8224E2CD200549B19 /* UITableView.swift */,
+				491EB8B6224E2B6600549B19 /* Animations.swift */,
+				491EB8BA224E2DC200549B19 /* AnimationFactory.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -829,7 +836,6 @@
 		49E0413922326B1000BCF2CA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				49E0413E22327A1000BCF2CA /* NavController.swift */,
 				49E0413A22326B4800BCF2CA /* MainViewController.swift */,
 				4935AB142232869F0061AE47 /* MainModel.swift */,
 				49E50E9C222FC44500FFD8B7 /* Main.storyboard */,
@@ -1092,7 +1098,6 @@
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				495E1C6E224266B40002F096 /* TaskNeedsDoingModel.swift in Sources */,
-				49E0413F22327A1000BCF2CA /* NavController.swift in Sources */,
 				495E1C6A22424C170002F096 /* TaskDoneCell.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
 				495E1C872243A5420002F096 /* TaskInProgressModel.swift in Sources */,
@@ -1128,6 +1133,7 @@
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
+				491EB8B7224E2B6600549B19 /* Animations.swift in Sources */,
 				495E1C78224297650002F096 /* ChatsFlow.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
 				490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */,
@@ -1143,6 +1149,7 @@
 				49498E8A224A5A03008D2475 /* SpaceService.swift in Sources */,
 				490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */,
 				490D4B34223FD76200E07DB3 /* TaskNeedsDoing.swift in Sources */,
+				491EB8B9224E2CD200549B19 /* UITableView.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
@@ -1165,6 +1172,7 @@
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
+				491EB8BB224E2DC200549B19 /* AnimationFactory.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,

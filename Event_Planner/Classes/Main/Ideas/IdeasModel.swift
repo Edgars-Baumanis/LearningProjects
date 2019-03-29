@@ -22,7 +22,7 @@ class IdeasModel {
     
     init(spaceKey: String?, ideaService: PIdeaService?) {
         self.spaceKey = spaceKey
-        self.ideaService = ideaService
+        self.ideaService = ideaService 
     } 
 
     func getTopics() {

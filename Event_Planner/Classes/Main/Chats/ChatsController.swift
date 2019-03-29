@@ -10,17 +10,13 @@ import UIKit
 
 class ChatsController: UIViewController {
     @IBOutlet weak var allChats: UITableView!
-    @IBOutlet weak var searchChat: UISearchBar!
     var viewModel: ChatsModel?
-    var addTap: (() -> Void)?
-    var removeTap: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
         allChats.delegate = self
         allChats.dataSource = self
-        searchChat.delegate = self
         viewModel?.dataSourceChanged = { [weak self] in
             self?.allChats.reloadData()
         }
@@ -30,18 +26,7 @@ class ChatsController: UIViewController {
             self?.present(alert, animated: true)
         }
         floatingButton()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        addTap = { [weak self] in
-            self?.view.addGestureRecognizer(tap)
-        }
-        removeTap = { [weak self] in
-            self?.view.removeGestureRecognizer(tap)
-        }
-    }
 
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        searchChat.showsCancelButton = false
     }
 
     func floatingButton() {
@@ -71,37 +56,18 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatsCell.self), for: indexPath)
         if let myCell = cell as? ChatsCell {
-            myCell.displayContent(chatName: viewModel?.filteredDataSource[indexPath.row].chatName ?? "Default Value")
+            myCell.displayContent(chatName: viewModel?.filteredDataSource[indexPath.row].chatName)
         }
+
+        let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
+        let animator = Animations(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToChat?(viewModel?.dataSource[indexPath.row])
-    }
-}
-
-extension ChatsController: UISearchBarDelegate {
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel?.searchTextChanged(searchText: searchText)
-        allChats.reloadData()
-    }
-
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        addTap?()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        removeTap?()
-        searchBar.resignFirstResponder()
     }
 }
 

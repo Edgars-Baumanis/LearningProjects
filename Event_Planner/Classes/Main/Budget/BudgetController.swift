@@ -19,6 +19,8 @@ class BudgetController: UIViewController {
         view.setGradientBackground()
         Allpossitions.delegate = self
         Allpossitions.dataSource = self
+        totalBudget.text = viewModel?.totalBudget
+        remainingBudget.text = "\(viewModel?.remainingBudget ?? 0)"
         viewModel?.dataSourceChanged = { [weak self] in
             self?.Allpossitions.reloadData()
         }
@@ -33,6 +35,11 @@ class BudgetController: UIViewController {
         }
         floatingButton()
         navigationBarItem()
+
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
     }
 
     func navigationBarItem() {
