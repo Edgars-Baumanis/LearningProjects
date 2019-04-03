@@ -16,7 +16,7 @@ class TaskOverviewModel {
     var navigateToAddTask: (() -> Void)?
     var dataSource: [[TaskDO]] = [[], [], []]
     var dataSourceChanged: (() -> Void)?
-    var navigateToDetails: ((_ task: TaskDO?) -> Void)?
+    var navigateToDetails: ((_ task: TaskDO?, String?) -> Void)?
     var errorMessage: ((String?) -> Void)?
 
     init(spaceKey: String?, taskTopic: TopicDO?, taskService: PTaskService?) {
@@ -29,7 +29,7 @@ class TaskOverviewModel {
         dataDoneDeleted()
     }
 
-    func getNeedsDoingData() {
+    private func getNeedsDoingData() {
         taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (tasks, error) in
             if error == nil {
                 guard let newTasks = tasks else { return }
@@ -99,7 +99,17 @@ class TaskOverviewModel {
     }
 
     func cellPressed(section: Int, index: Int) {
-        navigateToDetails?(dataSource[section][index])
+        switch section {
+        case 0:
+            navigateToDetails?(dataSource[section][index], "NeedsDoing")
+        case 1:
+            navigateToDetails?(dataSource[section][index], "InProgress")
+        case 2:
+            navigateToDetails?(dataSource[section][index], "Done")
+        default:
+            return
+        }
+
     }
 }
 

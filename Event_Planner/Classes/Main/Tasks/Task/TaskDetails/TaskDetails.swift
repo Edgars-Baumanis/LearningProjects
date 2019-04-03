@@ -16,6 +16,8 @@ class TaskDetails: UIViewController {
     @IBOutlet weak var taskDescription: TextViewSubclass!
     @IBOutlet weak var descriptionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var transferButton: UIButton!
+    
     var viewModel: TaskDetailsModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +28,32 @@ class TaskDetails: UIViewController {
         deadline.text = viewModel?.task?.deadline
         taskDescription.text = viewModel?.task?.description
         textViewDidChange(taskDescription)
+        setButtonTitle()
+
+        viewModel?.succesfulTransfer = { [weak self] in
+            self?.setButtonTitle()
+        }
     }
     @IBAction func progressPressed(_ sender: UIButton) {
+        viewModel?.progressTask()
     }
     @IBAction func deletePressed(_ sender: UIButton) {
+        viewModel?.deleteTask()
+    }
+
+    private func setButtonTitle() {
+        switch viewModel?.section {
+        case "NeedsDoing":
+            transferButton.setTitle("In progress", for: .normal)
+        case "InProgress":
+            transferButton.setTitle("Done", for: .normal)
+        case "Done":
+            transferButton.setTitle("Reset", for: .normal)
+        default:
+            return
+        }
     }
 }
-
 
 extension TaskDetails: UITextViewDelegate {
 

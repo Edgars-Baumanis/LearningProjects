@@ -12,30 +12,58 @@ class TaskDetailsModel {
     private var spaceKey: String?
     private var taskTopic: TopicDO?
     private let taskService: PTaskService?
+    var section: String?
 
     var task: TaskDO?
+    var succesfulTransfer: (() -> Void)?
     var deletePressed: (() -> Void)?
     var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?, taskService: PTaskService?) {
+    init(spaceKey: String?, taskTopic: TopicDO?, task: TaskDO?, taskService: PTaskService?, section: String?) {
         self.taskService = taskService
         self.spaceKey = spaceKey
         self.taskTopic = taskTopic
         self.task = task
+        self.section = section
     }
 
     func progressTask() {
-        taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "InProgress", caller: "NeedsDoing", completionHandler: { [weak self] (error) in
-            if error == nil {
-                // swap buttons
-            } else {
-                self?.errorMessage?(error)
-            }
-        })
+        switch section {
+        case "NeedsDoing":
+            taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "InProgress", caller: section, completionHandler: { [weak self] (error) in
+                if error == nil {
+                    self?.section = "InProgress"
+                    self?.succesfulTransfer?()
+                } else {
+                    self?.errorMessage?(error)
+                }
+            })
+        case "InProgress":
+            taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "Done", caller: section, completionHandler: { [weak self] (error) in
+                if error == nil {
+                    self?.section = "Done"
+                    self?.succesfulTransfer?()
+                } else {
+                    self?.errorMessage?(error)
+                }
+            })
+        case "Done":
+            taskService?.transferTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, transferTo: "NeedsDoing", caller: section, completionHandler: { [weak self] (error) in
+                if error == nil {
+                    self?.section = "NeedsDoing"
+                    self?.succesfulTransfer?()
+                } else {
+                    self?.errorMessage?(error)
+                }
+            })
+        default:
+            return
+        }
+
     }
 
     func deleteTask() {
-        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: "NeedsDoing", completionHandler: { [weak self] (error) in
+        taskService?.deleteTask(spaceKey: spaceKey, topicKey: taskTopic?.key, taskKey: task?.key, caller: section, completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.deletePressed?()
             } else {

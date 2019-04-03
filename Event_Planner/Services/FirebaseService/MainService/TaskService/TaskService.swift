@@ -46,8 +46,8 @@ class TaskService: PTaskService {
             completionHandler(nil, "Empty fields for database reference")
             return
         }
-        var tasks: [[TaskDO]] = [[],[],[]]
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childAdded, with: { (snapshot) in
+            var tasks: [[TaskDO]] = [[],[],[]]
             let post = snapshot.value as? [String : Any]
             post?.forEach({ (key, value) in
                 let newValue = value as? [String : Any]
@@ -101,8 +101,13 @@ class TaskService: PTaskService {
         completionHandler(nil)
     }
 
-    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String, completionHandler: @escaping (String?) -> Void) {
-        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true, taskKey?.isEmpty != true else {
+    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            taskKey?.isEmpty != true,
+            let caller = caller
+            else {
             completionHandler("Empty fields for database reference")
             return
         }
@@ -110,8 +115,14 @@ class TaskService: PTaskService {
         completionHandler(nil)
     }
 
-    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String, caller: String, completionHandler: @escaping (String?) -> Void) {
-        guard let newTask = task, spaceKey?.isEmpty != true, topicKey?.isEmpty != true, let taskKey = task?.key else {
+    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String?, caller: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            let newTask = task, spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            let taskKey = task?.key,
+            let caller = caller,
+            let transferTo = transferTo
+            else {
             completionHandler("Empty fields for database reference")
             return
         }

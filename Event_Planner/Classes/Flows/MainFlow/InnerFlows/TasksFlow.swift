@@ -16,6 +16,7 @@ class TasksFlow: FlowController {
     private var taskTabbar: UITabBarController?
     private var task: TaskDO?
     private var taskService: PTaskService?
+    private var section: String?
     
     init(spaceKey: String?, rootController: UINavigationController?, userService: PUserService?, taskService: PTaskService?) {
         self.userService = userService
@@ -90,8 +91,9 @@ class TasksFlow: FlowController {
     private func navigateToTaskOverview() {
         guard let vc = taskOverviewController else { return }
         let viewModel = TaskOverviewModel(spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
-        viewModel.navigateToDetails = { [weak self] task in
+        viewModel.navigateToDetails = { [weak self] task, section in
             self?.task = task
+            self?.section = section
             self?.navigateToTaskDetails()
         }
         viewModel.navigateToAddTask = { [weak self] in
@@ -113,7 +115,10 @@ class TasksFlow: FlowController {
 
     private func navigateToTaskDetails() {
         guard let vc = taskDetails else { return }
-        let viewModel = TaskDetailsModel(spaceKey: spaceKey, taskTopic: taskTopic, task: task, taskService: taskService)
+        let viewModel = TaskDetailsModel(spaceKey: spaceKey, taskTopic: taskTopic, task: task, taskService: taskService, section: section)
+        viewModel.deletePressed = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+        }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }

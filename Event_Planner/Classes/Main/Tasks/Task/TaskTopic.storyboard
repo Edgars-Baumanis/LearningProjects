@@ -284,6 +284,7 @@
                         <outlet property="owner" destination="yPp-E1-itk" id="e3Z-nt-OWq"/>
                         <outlet property="taskDescription" destination="Cbu-cr-nlv" id="Or5-nU-liv"/>
                         <outlet property="taskName" destination="DyA-rz-8iJ" id="3el-sp-xqd"/>
+                        <outlet property="transferButton" destination="Fqb-u6-XAM" id="QV0-un-Lgr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0w-hd-ieV" userLabel="First Responder" sceneMemberID="firstResponder"/>
