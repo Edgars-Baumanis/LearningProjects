@@ -70,6 +70,7 @@ class SpacesFlow: FlowController {
         }
         joinVC.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
         joinVC.viewModel = joinViewModel
+        rootController?.tabBar.isTranslucent = false 
         rootController?.viewControllers = [spacesNavController, joinVC] as? [UIViewController]
     }
 
