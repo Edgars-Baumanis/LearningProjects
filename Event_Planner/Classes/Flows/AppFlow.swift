@@ -57,23 +57,11 @@ class AppFlow: FlowController {
 
     private func navigateToSpacesFlow() {
         window.rootViewController = rootController
-        let spacesFlow = SpacesFlow(with: rootController, userService: userService, spaceService: spaceService)
+        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService)
         spacesFlow.start()
         childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
             self?.navigateToGreetingFlow()
         }
-        spacesFlow.cellPressed = { [weak self] space in
-            self?.navigateToMainFlow(space: space)
-        }
-    }
-
-    private func navigateToMainFlow(space: SpaceDO?) {
-        let mainFlow = MainFlow(with: rootController, with: userService, ideaService: ideaService, space: space, chatService: chatService, taskService: taskService, budgetService: budgetService)
-        mainFlow.start()
-        mainFlow.navigateToSpacesFlow = { [weak self] in
-            self?.start()
-        }
-        childFlow = mainFlow
     }
 }
