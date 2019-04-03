@@ -16,7 +16,7 @@ class NeedsDoingDetails: UIViewController {
     @IBOutlet weak var taskOwner: UILabel!
     @IBOutlet weak var timeAdded: UILabel!
     var viewModel: NeedsDoingDetailsModel?
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
