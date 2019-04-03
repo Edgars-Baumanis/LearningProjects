@@ -13,7 +13,6 @@ class MainFlow: FlowController {
     var navigateToSpacesFlow: (()-> Void)?
 
     private var rootController: UINavigationController?
-    private var rootTabbar: UITabBarController?
     private var space: SpaceDO?
     private var userServices: PUserService?
     private var childFlow: FlowController?
@@ -22,9 +21,9 @@ class MainFlow: FlowController {
     private var taskService: PTaskService?
     private var budgetService: PBudgetService?
 
-    init(with tabbar: UITabBarController, with userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+    init(rootController: UINavigationController, userServices: PUserService?, ideaService: PIdeaService?, space: SpaceDO?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+        self.rootController = rootController
         self.budgetService = budgetService
-        self.rootTabbar = tabbar
         self.ideaService = ideaService
         self.userServices = userServices
         self.space = space
@@ -42,8 +41,7 @@ class MainFlow: FlowController {
 
     func start() {
         guard let vc = mainViewController else {return}
-        
-
+        vc.hidesBottomBarWhenPushed = true
         let viewModel = MainModel()
 
         viewModel.budgetPressed = { [weak self] in
@@ -63,16 +61,13 @@ class MainFlow: FlowController {
         }
 
         viewModel.backPressed = { [weak self] in
-            self?.rootTabbar?.dismiss(animated: true, completion: nil)
-            self?.navigateToSpacesFlow?()
+            self?.rootController?.popViewController(animated: true)
         }
+        
         viewModel.space = self.space
 
         vc.viewModel = viewModel
-
-        rootController = UINavigationController(rootViewController: vc)
-        guard let navController = rootController else { return }
-        rootTabbar?.present(navController, animated: true, completion: nil)
+        rootController?.pushViewController(vc, animated: true)
     }
 
     private func navigateToTasksFlow() {
