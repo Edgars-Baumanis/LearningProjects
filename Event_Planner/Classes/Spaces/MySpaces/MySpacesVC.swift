@@ -14,7 +14,7 @@ class MySpacesVC: UIViewController {
     var viewModel: MySpacesModel?
     
     @IBOutlet weak var mySpaces: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -31,6 +31,10 @@ class MySpacesVC: UIViewController {
         tabbar?.barTintColor = UIColor.black
         tabbar?.tintColor = UIColor.lightYellow
         tabbar?.unselectedItemTintColor = UIColor.gray
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
 
     func confNavBar() {
@@ -68,21 +72,7 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-
-        switch section {
-        case 0:
-            label.text = "My Spaces"
-            label.backgroundColor = UIColor.red
-        case 1:
-            label.text = "Joined Spaces"
-            label.backgroundColor = UIColor.yellow
-        default:
-            label.text = "Programmers fck up"
-        }
-        
-        label.textAlignment = .center
-        return label
+        return setUpSections(section: section)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -108,6 +98,25 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.mySpacePressed(section: indexPath.section, index: indexPath.row)
+    }
+
+    private func setUpSections(section: Int) -> UIView {
+        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
+        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 10))
+
+        switch section {
+        case 0:
+            sectionLabel.text = "My Spaces"
+        case 1:
+            sectionLabel.text = "Joined Spaces"
+        default:
+            sectionLabel.text = "Programmers fck up"
+        }
+        sectionLabel.layer.borderWidth = 1
+        sectionLabel.layer.cornerRadius = 15
+        sectionLabel.textAlignment = .center
+        sectionHeaderView.addSubview(sectionLabel)
+        return sectionHeaderView
     }
 }
 
