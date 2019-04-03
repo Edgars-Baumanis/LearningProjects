@@ -24,18 +24,16 @@ class TaskOverviewModel {
         self.spaceKey = spaceKey
         self.taskService = taskService
         getNeedsDoingData()
-        getInProgressData()
-        getDoneData()
         dataProgressDeleted()
         dataNeedsDoingDeleted()
         dataDoneDeleted()
     }
 
     func getNeedsDoingData() {
-        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "NeedsDoing", completionHandler: { [weak self] (task, error) in
+        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (tasks, error) in
             if error == nil {
-                guard let newTask = task else { return }
-                self?.dataSource[0].append(newTask)
+                guard let newTasks = tasks else { return }
+                self?.dataSource = newTasks
                 self?.dataSourceChanged?()
             } else {
                 self?.errorMessage?(error)
@@ -62,18 +60,6 @@ class TaskOverviewModel {
         })
     }
 
-    func getInProgressData() {
-        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "InProgress", completionHandler: { [weak self] (task, error) in
-            if error == nil {
-                guard let newTask = task else { return }
-                self?.dataSource[1].append(newTask)
-                self?.dataSourceChanged?()
-            } else {
-                self?.errorMessage?(error)
-            }
-        })
-    }
-
     func dataProgressDeleted() {
         taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "InProgress", completionHandler: { [weak self] (removedTask, error) in
             if error == nil {
@@ -92,20 +78,7 @@ class TaskOverviewModel {
             }
         })
     }
-
-
-    func getDoneData() {
-        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "Done", completionHandler: { [weak self] (task, error) in
-            if error == nil {
-                guard let newTask = task else { return }
-                self?.dataSource[2].append(newTask)
-                self?.dataSourceChanged?()
-            } else {
-                self?.errorMessage?(error)
-            }
-        })
-    }
-
+    
     func dataDoneDeleted() {
         taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "Done", completionHandler: { [weak self] (removedTask, error) in
             if error == nil {

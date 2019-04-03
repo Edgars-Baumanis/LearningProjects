@@ -41,22 +41,39 @@ class TaskService: PTaskService {
         completionHandler(nil)
     }
 
-    func getTasks(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void) {
+    func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping ([[TaskDO]]?, String?) -> Void) {
         guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else {
             completionHandler(nil, "Empty fields for database reference")
             return
         }
-        ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let description = post?["description"] as? String,
-                let key = snapshot.key as? String,
-                let ownerID = post?["ownerID"] as? String,
-                let deadline = post?["deadline"] as? String
-                else { return }
-            let newTask = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
-            completionHandler(newTask, nil)
+        var tasks: [[TaskDO]] = [[],[],[]]
+        ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childAdded, with: { (snapshot) in
+            let post = snapshot.value as? [String : Any]
+            post?.forEach({ (key, value) in
+                let newValue = value as? [String : Any]
+                guard
+                    let name = newValue?["name"] as? String,
+                    let description = newValue?["description"] as? String,
+                    let key = key as? String,
+                let ownerID = newValue?["ownerID"] as? String,
+                let deadline = newValue?["deadline"] as? String
+                    else { return }
+                let task = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
+                switch snapshot.key as? String {
+                case "Done":
+                    tasks[2].append(task)
+                    completionHandler(tasks, nil)
+                case "InProgress":
+                    tasks[1].append(task)
+                    completionHandler(tasks, nil)
+                case "NeedsDoing":
+                    tasks[0].append(task)
+                    completionHandler(tasks, nil)
+                default:
+                    completionHandler(nil, "borked")
+                }
+            })
+
         })
     }
 

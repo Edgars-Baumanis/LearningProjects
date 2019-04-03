@@ -26,7 +26,6 @@ class MySpacesVC: UIViewController {
             }
         }
         confNavBar()
-
         let tabbar = self.tabBarController?.tabBar
         tabbar?.barTintColor = UIColor.black
         tabbar?.tintColor = UIColor.lightYellow
