@@ -16,8 +16,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
         title = viewModel?.space?.spaceName
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backPressed))
-        navigationItem.leftBarButtonItem = backButton
 
         let nav = self.navigationController
         nav?.navigationBar.barStyle = .blackTranslucent
