@@ -47,22 +47,7 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-            switch section {
-            case 0:
-                label.text = "Need doing"
-                label.backgroundColor = UIColor.red
-            case 1:
-                label.text = "In progress"
-                label.backgroundColor = UIColor.yellow
-            case 2:
-                label.text = "Done"
-                label.backgroundColor = UIColor.green
-            default:
-                label.text = "Programmers fck up"
-            }
-        label.textAlignment = .center
-        return label
+        return setUpSections(section: section)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -87,5 +72,29 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.cellPressed(section: indexPath.section, index: indexPath.row)
+    }
+
+    private func setUpSections(section: Int) -> UIView {
+        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
+        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 10))
+
+        switch section {
+        case 0:
+            sectionLabel.text = "Need doing"
+            sectionLabel.layer.backgroundColor = UIColor.red.cgColor
+        case 1:
+            sectionLabel.text = "In progress"
+            sectionLabel.layer.backgroundColor = UIColor.yellow.cgColor
+        case 2:
+            sectionLabel.text = "Done"
+            sectionLabel.layer.backgroundColor = UIColor.green.cgColor
+        default:
+            sectionLabel.text = "Programmers fck up"
+        }
+        sectionLabel.layer.borderWidth = 1
+        sectionLabel.layer.cornerRadius = 15
+        sectionLabel.textAlignment = .center
+        sectionHeaderView.addSubview(sectionLabel)
+        return sectionHeaderView
     }
 }
