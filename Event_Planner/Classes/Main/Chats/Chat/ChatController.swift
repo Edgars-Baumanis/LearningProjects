@@ -67,17 +67,15 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         let cellIdentifier = viewModel?.currentUserID != viewModel?.dataSource[indexPath.row].userID ? String(describing: ChatCell.self) : String(describing: CurrentUserCell.self)
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            (cell as? ChatCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
-            (cell as? CurrentUserCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
-        })
+            (cell as? ChatCell)?.displayContent(message: self.viewModel?.dataSource[indexPath.row])
+            (cell as? CurrentUserCell)?.displayContent(message: self.viewModel?.dataSource[indexPath.row])
 
         return cell
     }
 
     func scrollToBottom() {
         if viewModel?.dataSource.count != 0 {
-            let indexPath = IndexPath(row: (self.viewModel?.dataSource.count ?? 0) - 1, section: 0)
+            let indexPath = IndexPath(row: (self.viewModel?.dataSource.count ?? 1) - 1, section: 0)
             self.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
