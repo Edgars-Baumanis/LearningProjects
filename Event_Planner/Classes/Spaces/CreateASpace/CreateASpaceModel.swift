@@ -27,8 +27,4 @@ class CreateASpaceModel {
                 self?.emptyFields?(error)
         })
     }
-    
-    func printEmail() {
-        print("User with id: \(userService?.user?.userID)  has reached this far")
-    }
 }
