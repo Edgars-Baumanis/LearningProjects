@@ -34,10 +34,6 @@ class CreateASpaceController: UIViewController {
     @IBAction func createSpace(_ sender: Any) {
         viewModel?.createASpace(name: spaceName.text, password: spacePassword.text, description: spaceDescription.text)
     }
-    
-    @IBAction func closePressed(_ sender: Any) {
-        viewModel?.backPressed?()
-    }
 }
 
 extension CreateASpaceController: UITextViewDelegate {

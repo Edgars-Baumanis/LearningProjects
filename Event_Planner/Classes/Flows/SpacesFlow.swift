@@ -11,15 +11,24 @@ import UIKit
 class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
-    var cellPressed: ((_ space: SpaceDO)-> Void)?
     private var rootController: UITabBarController?
     private var userService: PUserService?
     private var spaceService: PSpacesService?
+    private var spacesNavController: UINavigationController?
+    private var ideaService: PIdeaService?
+    private var chatService: PChatService?
+    private var taskService: PTaskService?
+    private var budgetService: PBudgetService?
+    private var childFlow: FlowController?
     
-    init (with rootController: UITabBarController, userService: PUserService?, spaceService: PSpacesService?) {
+    init (rootController: UITabBarController, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
         self.rootController = rootController
         self.userService = userService
         self.spaceService = spaceService
+        self.ideaService = ideaService
+        self.chatService = chatService
+        self.taskService = taskService
+        self.budgetService = budgetService
     }
     
     private lazy var mainSB: UIStoryboard = {
@@ -39,39 +48,44 @@ class SpacesFlow: FlowController {
     }()
 
     func start() {
-        guard let vc = spacesVC else {return}
-        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-        initiateSecondVC()
-        let viewModel = MySpacesModel(userService: userService, spaceService: spaceService)
-        viewModel.signingOut = { [weak self] in
+        guard let spacesVC = spacesVC else { return }
+        spacesNavController = UINavigationController(rootViewController: spacesVC)
+        spacesVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
+        let spacesViewModel = MySpacesModel(userService: userService, spaceService: spaceService)
+        spacesViewModel.signingOut = { [weak self] in
             self?.logoutPressed?()
         }
-        viewModel.navigateToCreate = { [weak self] in
+        spacesViewModel.navigateToCreate = { [weak self] in
             self?.navigateToCreate()
         }
-        viewModel.navigateToMainFlow = { [weak self] space in
-            self?.cellPressed?(space)
+        spacesViewModel.navigateToMainFlow = { [weak self] space in
+            self?.navigateToMainFlow(space: space)
         }
-        vc.viewModel = viewModel
-        rootController?.viewControllers = [vc, joinVC] as? [UIViewController]
-    }
-    
-    private func initiateSecondVC() {
-        guard let vc = joinVC else {return}
-        let viewModel = JoinASpaceModel(userService: userService, spaceService: spaceService)
-        viewModel.rightEntry = { [weak self] space in
-            self?.cellPressed?(space)
+        spacesVC.viewModel = spacesViewModel
+
+        guard let joinVC = joinVC else {return}
+        let joinViewModel = JoinASpaceModel(userService: userService, spaceService: spaceService)
+        joinViewModel.rightEntry = { [weak self] space in
+            self?.navigateToMainFlow(space: space)
         }
-        vc.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
-        vc.viewModel = viewModel
+        joinVC.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
+        joinVC.viewModel = joinViewModel
+        rootController?.viewControllers = [spacesNavController, joinVC] as? [UIViewController]
     }
-    
+
     private func navigateToCreate() {
         guard let vc = createVC else {return}
         vc.viewModel = CreateASpaceModel(userService: userService, spaceService: spaceService)
         vc.viewModel?.backPressed = { [weak self] in
-            self?.rootController?.dismiss(animated: true, completion: nil)
+            self?.spacesNavController?.popViewController(animated: true)
         }
-        rootController?.present(vc, animated: true, completion: nil)
+        spacesNavController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToMainFlow(space: SpaceDO?) {
+        guard let navController = spacesNavController else { return }
+        let mainFlow = MainFlow(rootController: navController, userServices: userService, ideaService: ideaService, space: space, chatService: chatService, taskService: taskService, budgetService: budgetService)
+        mainFlow.start()
+        childFlow = mainFlow
     }
 }

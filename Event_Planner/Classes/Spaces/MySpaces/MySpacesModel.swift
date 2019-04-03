@@ -16,24 +16,33 @@ class MySpacesModel {
     var navigateToMainFlow: ((SpaceDO) -> Void)?
     var signingOut: (() -> Void)?
     var navigateToCreate: (() -> Void)?
-    var mySpaces: [SpaceDO] = []
-    var otherSpaces: [SpaceDO] = []
+    var spaces: [[SpaceDO]] = [[],[]]
     var dataSourceChanged: (() -> Void)?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
         self.spaceService = spaceService
         getData()
+        reloadData()
     }
     
     func getData() {
-        spaceService?.getSpaces(completionHandler: { [weak self] (space, mySpace) in
-            if mySpace {
-                self?.mySpaces.append(space)
-            } else {
-                self?.otherSpaces.append(space)
-            }
+        spaceService?.getSpaces(completionHandler: { [weak self] spaces in
+            self?.spaces = spaces
             self?.dataSourceChanged?()
+        })
+    }
+
+    func reloadData() {
+        spaceService?.reloadSpaces(completionHandler: { [weak self] (newSpace, section) in
+            if self?.spaces[section].contains(where: { (space) -> Bool in
+                space.key == newSpace.key
+            }) == true {
+                return
+            } else {
+                self?.spaces[section].append(newSpace)
+                self?.dataSourceChanged?()
+            }
         })
     }
 
@@ -47,11 +56,7 @@ class MySpacesModel {
         })
     }
 
-    func mySpacePressed(index: Int) {
-        navigateToMainFlow?(mySpaces[index])
-    }
-
-    func otherSpacePressed(index: Int) {
-        navigateToMainFlow?(otherSpaces[index])
+    func mySpacePressed(section: Int, index: Int) {
+        navigateToMainFlow?(spaces[section][index])
     }
 }

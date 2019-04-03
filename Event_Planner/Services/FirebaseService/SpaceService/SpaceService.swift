@@ -13,8 +13,6 @@ class SpaceService: PSpacesService {
 
     private let spacesString = "Spaces"
     private let ref = Database.database().reference()
-    private let myCellIdentificator = String(describing: MySpacesCell.self)
-    private let otherCellIdentificator = String(describing: OtherSpacesCell.self)
     private var spaceRoute: DatabaseReference?
 
     init() {
@@ -22,7 +20,8 @@ class SpaceService: PSpacesService {
     }
 
 
-    func getSpaces(completionHandler: @escaping (SpaceDO, Bool) -> Void) {
+    func getSpaces(completionHandler: @escaping ([[SpaceDO]]) -> Void) {
+        var allSpaces: [[SpaceDO]] = [[],[]]
         spaceRoute?.observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -32,6 +31,7 @@ class SpaceService: PSpacesService {
                 let key = snapshot.key as? String,
                 let mainUser = post?["mainUser"] as? String
                 else { return }
+
             var isValid = false
             var newUsers: [String] = []
             users.forEach { (value) in
@@ -41,14 +41,18 @@ class SpaceService: PSpacesService {
             let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
             if isValid {
                 if mainUser == Dependencies.instance.userService.user?.userID {
-                    completionHandler(newSpace, true)
+                    allSpaces[0].append(newSpace)
+                    completionHandler(allSpaces)
                 } else {
-                    completionHandler(newSpace, false)
+                    allSpaces[1].append(newSpace)
+                    completionHandler(allSpaces)
                 }
             } else {
                 return
             }
         })
+    }
+    func reloadSpaces(completionHandler: @escaping (SpaceDO, Int) -> Void) {
         spaceRoute?.observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -67,9 +71,9 @@ class SpaceService: PSpacesService {
             let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
             if isValid {
                 if mainUser == Dependencies.instance.userService.user?.userID {
-                    completionHandler(newSpace, true)
+                    completionHandler(newSpace, 0)
                 } else {
-                    completionHandler(newSpace, false)
+                    completionHandler(newSpace, 1)
                 }
             } else {
                 return

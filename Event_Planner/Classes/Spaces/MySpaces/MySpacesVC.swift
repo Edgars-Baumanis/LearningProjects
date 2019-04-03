@@ -13,27 +13,39 @@ class MySpacesVC: UIViewController {
 
     var viewModel: MySpacesModel?
     
-    @IBOutlet weak var otherSpaces: UITableView!
     @IBOutlet weak var mySpaces: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
-        otherSpaces.delegate = self
-        otherSpaces.dataSource = self
         mySpaces.delegate = self
         mySpaces.dataSource = self
         viewModel?.dataSourceChanged = { [weak self] in
             DispatchQueue.main.async {
                 self?.mySpaces.reloadData()
-                self?.otherSpaces.reloadData()
             }
         }
+        confNavBar()
 
         let tabbar = self.tabBarController?.tabBar
         tabbar?.barTintColor = UIColor.black
         tabbar?.tintColor = UIColor.lightYellow
         tabbar?.unselectedItemTintColor = UIColor.gray
+    }
+
+    func confNavBar() {
+        title = "Spaces"
+        let backButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
+        navigationItem.leftBarButtonItem = backButton
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusPressed))
+        navigationItem.rightBarButtonItem = addButton
+
+        let nav = self.navigationController
+        nav?.navigationBar.barStyle = .blackTranslucent
+        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav?.navigationBar.shadowImage = UIImage()
+        nav?.navigationBar.tintColor = UIColor.black
+        nav?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
     
     @IBAction func plusPressed(_ sender: UIButton) {
@@ -47,24 +59,45 @@ class MySpacesVC: UIViewController {
 
 extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel?.spaces.count ?? 0
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == otherSpaces {
-            return viewModel?.otherSpaces.count ?? 0
-        } else {
-            return viewModel?.mySpaces.count ?? 0
+        return viewModel?.spaces[section].count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+
+        switch section {
+        case 0:
+            label.text = "My Spaces"
+            label.backgroundColor = UIColor.red
+        case 1:
+            label.text = "Joined Spaces"
+            label.backgroundColor = UIColor.yellow
+        default:
+            label.text = "Programmers fck up"
         }
+        
+        label.textAlignment = .center
+        return label
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if viewModel?.spaces[section].isEmpty == true {
+            return 0
+        } else { return 60 }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MySpacesCell.self), for: indexPath)
 
-        let cellIdentifier = tableView == otherSpaces ?
-            String(describing: OtherSpacesCell.self) :
-            String(describing: MySpacesCell.self)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
-        (cell as? OtherSpacesCell)?.displayContent(spaceName: viewModel?.otherSpaces[indexPath.row].spaceName)
-        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.mySpaces[indexPath.row].spaceName)
+        if let myCell = cell as? MySpacesCell {
+            myCell.displayContent(spaceName: viewModel?.spaces[indexPath.section][indexPath.row].spaceName)
+        }
 
         let animation = AnimationFactory.makeMoveUpWithFade(rowHeight: cell.frame.height, duration: 0.3, delayFactor: 0.1)
         let animator = Animations(animation: animation)
@@ -74,9 +107,7 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView == otherSpaces ?
-            viewModel?.otherSpacePressed(index: indexPath.row) :
-            viewModel?.mySpacePressed(index: indexPath.row)
+        viewModel?.mySpacePressed(section: indexPath.section, index: indexPath.row)
     }
 }
 
