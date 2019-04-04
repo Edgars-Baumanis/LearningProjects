@@ -13,25 +13,25 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [
-            UIColor(red:0.00, green:0.16, blue:0.14, alpha:0.9).cgColor,
-            UIColor(red:0.38, green:0.60, blue:0.40, alpha:0.72).cgColor,
-            UIColor(red:0.98, green:0.99, blue:0.60, alpha:0.5).cgColor
+            UIColor(red:0.47, green:0.69, blue:1.00, alpha:1.0).cgColor,
+            UIColor(red:0.57, green:0.00, blue:1.00, alpha:1.0).cgColor
         ]
-        gradientLayer.locations = [0.0, 0.5, 1.0]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: frame.midX, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: frame.midX, y: 1.0)
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
 
-    func createGradient() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor(red:0.67, green:0.93, blue:0.84, alpha:1.0).cgColor, UIColor(red:0.98, green:0.93, blue:0.59, alpha:1.0).cgColor]
-        gradientLayer.startPoint = CGPoint(x: 1, y: 1)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.locations = [0.0, 1.0]
-
-        layer.insertSublayer(gradientLayer, at: 0)
+    func setCellBackground() {
+        self.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        self.insertSubview(blurView, at: 0)
+        NSLayoutConstraint.activate([
+            blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        ])
     }
 }

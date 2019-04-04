@@ -92,6 +92,7 @@ class TasksFlow: FlowController {
         guard let vc = taskOverviewController else { return }
         let viewModel = TaskOverviewModel(spaceKey: spaceKey, taskTopic: taskTopic, taskService: taskService)
         viewModel.navigateToDetails = { [weak self] task, section in
+            self?.rootController?.navigationBar.prefersLargeTitles = false
             self?.task = task
             self?.section = section
             self?.navigateToTaskDetails()

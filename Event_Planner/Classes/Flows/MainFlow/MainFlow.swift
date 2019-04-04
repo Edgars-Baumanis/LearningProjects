@@ -41,6 +41,7 @@ class MainFlow: FlowController {
 
     func start() {
         guard let vc = mainViewController else {return}
+        rootController?.navigationBar.prefersLargeTitles = true
         vc.hidesBottomBarWhenPushed = true
         let viewModel = MainModel()
 

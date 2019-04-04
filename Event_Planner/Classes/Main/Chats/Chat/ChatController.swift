@@ -26,6 +26,8 @@ class ChatController: UIViewController {
             self?.scrollToBottom()
         }
 
+        navigationController?.navigationBar.prefersLargeTitles = false
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -35,6 +37,11 @@ class ChatController: UIViewController {
         removeTap = { [weak self] in
             self?.view.removeGestureRecognizer(tap)
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     @objc func dismissKeyboard() {

@@ -13,7 +13,7 @@ class TopicCell: UITableViewCell {
     @IBOutlet weak var topicView: UIView!
 
     func displayContent(subject: String?) {
-        topicView.createGradient()
+        topicView.setCellBackground()
         subjectCell.text = subject
     }
 }

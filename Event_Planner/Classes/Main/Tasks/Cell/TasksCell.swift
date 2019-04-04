@@ -14,6 +14,6 @@ class TasksCell: UITableViewCell {
 
     func displayContent(taskName: String?) {
         task.text = taskName
-        taskView.createGradient()
+        taskView.setCellBackground()
     }
 }

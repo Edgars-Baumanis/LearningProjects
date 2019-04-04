@@ -14,6 +14,6 @@ class ChatsCell: UITableViewCell {
 
     func displayContent(chatName: String?) {
         chat.text = chatName
-        chatView.createGradient()
+        chatView.setCellBackground()
     }
 }

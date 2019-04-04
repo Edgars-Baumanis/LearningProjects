@@ -21,6 +21,7 @@ class TaskOverview: UIViewController {
             self?.tasks.reloadData()
         }
         floatingButton()
+        title = viewModel?.taskTopic?.name
     }
 
     func floatingButton() {
@@ -76,7 +77,7 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
 
     private func setUpSections(section: Int) -> UIView {
         let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
-        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 10))
+        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 20))
 
         switch section {
         case 0:
@@ -95,6 +96,7 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
         sectionLabel.layer.cornerRadius = 15
         sectionLabel.textAlignment = .center
         sectionHeaderView.addSubview(sectionLabel)
+        sectionHeaderView.setCellBackground()
         return sectionHeaderView
     }
 }
