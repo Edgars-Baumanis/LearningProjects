@@ -13,7 +13,9 @@ protocol PTaskService {
 
     func addTopic(topicName: String?, spaceKey: String?, completionHandler: @escaping (String?) -> Void)
 
-    func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping ([[TaskDO]]?, String?) -> Void)
+    func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void)
+
+    func reloadTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void)
 
     func taskDeleted(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void)
 

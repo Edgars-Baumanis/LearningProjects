@@ -9,8 +9,8 @@
 import Foundation
 
 class TaskOverviewModel {
-    private var spaceKey: String?
-    private var taskTopic: TopicDO?
+    private let spaceKey: String?
+    let taskTopic: TopicDO?
     private let taskService: PTaskService?
 
     var navigateToAddTask: (() -> Void)?
@@ -24,17 +24,36 @@ class TaskOverviewModel {
         self.spaceKey = spaceKey
         self.taskService = taskService
         getNeedsDoingData()
+        reloadData()
         dataProgressDeleted()
         dataNeedsDoingDeleted()
         dataDoneDeleted()
     }
 
     private func getNeedsDoingData() {
-        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (tasks, error) in
+        taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (tasks, section, error) in
             if error == nil {
-                guard let newTasks = tasks else { return }
-                self?.dataSource = newTasks
+                guard let newTasks = tasks, let section = section else { return }
+                self?.dataSource[section].append(newTasks)
                 self?.dataSourceChanged?()
+            } else {
+                self?.errorMessage?(error)
+            }
+        })
+    }
+
+    private func reloadData() {
+        taskService?.reloadTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (task, section, error) in
+            if error == nil {
+                guard let newTask = task, let section = section else { return }
+                if self?.dataSource[section].contains(where: { (task) -> Bool in
+                    task.key == newTask.key
+                }) == true {
+                    return
+                } else {
+                    self?.dataSource[section].append(newTask)
+                    self?.dataSourceChanged?()
+                }
             } else {
                 self?.errorMessage?(error)
             }
