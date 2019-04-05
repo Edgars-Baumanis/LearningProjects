@@ -16,6 +16,8 @@ class MySpacesVC: UIViewController {
 
     private var joinButton: UIButton?
     private var createButton: UIButton?
+    private let mySpacesID = "MySpacesCell"
+    private let otherSpacesID = "OtherCells"
     
     @IBOutlet weak var mySpaces: UITableView!
 
@@ -83,14 +85,14 @@ class MySpacesVC: UIViewController {
         FABPressed = !pressed
         if pressed != true {
             joinButton?.layer.borderWidth = 1
-            joinButton?.layer.cornerRadius = 30
+            joinButton?.layer.cornerRadius = 35
             joinButton?.backgroundColor = .white
             joinButton?.setTitle("Join", for: .normal)
             joinButton?.setTitleColor(.black, for: .normal)
             joinButton?.addTarget(self, action: #selector(joinPressed), for: .touchUpInside)
             joinButton?.alpha = 0.7
             createButton?.layer.borderWidth = 1
-            createButton?.layer.cornerRadius = 30
+            createButton?.layer.cornerRadius = 35
             createButton?.backgroundColor = .white
             createButton?.alpha = 0.7
             createButton?.setTitle("Create", for: .normal)
@@ -103,8 +105,8 @@ class MySpacesVC: UIViewController {
                     let maxY = self?.view.frame.maxY,
                     let buttonWidth = self?.joinButton?.frame.width
                     else { return }
-                self?.joinButton?.frame = CGRect(x: midX - buttonWidth * 10, y: maxY - maxY / 6.5, width: 60, height: 60)
-                self?.createButton?.frame = CGRect(x: midX + buttonWidth * 4, y: maxY - maxY / 6.5, width: 60, height: 60)
+                self?.joinButton?.frame = CGRect(x: midX - buttonWidth * 11.5, y: maxY - maxY / 6.5, width: 70, height: 70)
+                self?.createButton?.frame = CGRect(x: midX + buttonWidth * 4.5, y: maxY - maxY / 6.5, width: 70, height: 70)
             })
 
         } else {
@@ -128,31 +130,16 @@ class MySpacesVC: UIViewController {
 
 extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.spaces.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.spaces[section].count ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return setUpSections(section: section)
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if viewModel?.spaces[section].isEmpty == true {
-            return 0
-        } else { return 60 }
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MySpacesCell.self), for: indexPath)
+        let cellIdentifier = viewModel?.spaces[indexPath.row].mainUser == viewModel?.currentUser ? mySpacesID : otherSpacesID
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
-        if let myCell = cell as? MySpacesCell {
-            myCell.displayContent(spaceName: viewModel?.spaces[indexPath.section][indexPath.row].spaceName)
-        }
+        (cell as? MySpacesCell)?.displayContent(spaceName: viewModel?.spaces[indexPath.row].spaceName)
+        (cell as? OtherCells)?.displayContent(name: viewModel?.spaces[indexPath.row].spaceName)
 
         let animation = AnimationFactory.makeMoveUpWithFade(rowHeight: cell.frame.height, duration: 0.3, delayFactor: 0.1)
         let animator = Animations(animation: animation)
@@ -163,25 +150,6 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.mySpacePressed(section: indexPath.section, index: indexPath.row)
-    }
-
-    private func setUpSections(section: Int) -> UIView {
-        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
-        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 10))
-
-        switch section {
-        case 0:
-            sectionLabel.text = "My Spaces"
-        case 1:
-            sectionLabel.text = "Joined Spaces"
-        default:
-            sectionLabel.text = "Programmers fck up"
-        }
-        sectionLabel.layer.borderWidth = 1
-        sectionLabel.layer.cornerRadius = 15
-        sectionLabel.textAlignment = .center
-        sectionHeaderView.addSubview(sectionLabel)
-        return sectionHeaderView
     }
 }
 

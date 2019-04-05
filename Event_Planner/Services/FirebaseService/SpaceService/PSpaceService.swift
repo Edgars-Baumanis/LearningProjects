@@ -10,8 +10,8 @@ import Foundation
 
 protocol PSpacesService {
     
-    func getSpaces(completionHandler: @escaping ([[SpaceDO]]) -> Void)
+    func getSpaces(completionHandler: @escaping ([SpaceDO]) -> Void)
     func createSpace(name: String?, password: String?, description: String?, completionHandler: (String?) -> Void)
     func joinSpace(enteredSpaceName: String?, enteredSpacePassword: String?, completionHandler: @escaping (SpaceDO?, String?) -> Void)
-    func reloadSpaces(completionHandler: @escaping (SpaceDO, Int) -> Void)
+    func reloadSpaces(completionHandler: @escaping (SpaceDO) -> Void)
 }

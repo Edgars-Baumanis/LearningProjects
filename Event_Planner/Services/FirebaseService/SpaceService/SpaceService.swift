@@ -20,9 +20,9 @@ class SpaceService: PSpacesService {
     }
 
 
-    func getSpaces(completionHandler: @escaping ([[SpaceDO]]) -> Void) {
-        var allSpaces: [[SpaceDO]] = [[],[]]
-        spaceRoute?.observe(.childAdded, with: { (snapshot) in
+    func getSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
+        var allSpaces: [SpaceDO] = []
+        spaceRoute?.observe(.childAdded, with: { [weak self] (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let spaceName = post?["name"] as? String,
@@ -38,13 +38,14 @@ class SpaceService: PSpacesService {
                 value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
                 newUsers.append(value)
             }
-            let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
             if isValid {
                 if mainUser == Dependencies.instance.userService.user?.userID {
-                    allSpaces[0].append(newSpace)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+                    allSpaces.append(newSpace)
                     completionHandler(allSpaces)
                 } else {
-                    allSpaces[1].append(newSpace)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+                    allSpaces.append(newSpace)
                     completionHandler(allSpaces)
                 }
             } else {
@@ -52,8 +53,8 @@ class SpaceService: PSpacesService {
             }
         })
     }
-    func reloadSpaces(completionHandler: @escaping (SpaceDO, Int) -> Void) {
-        spaceRoute?.observe(.childChanged, with: { (snapshot) in
+    func reloadSpaces(completionHandler: @escaping (SpaceDO) -> Void) {
+        spaceRoute?.observe(.childChanged, with: { [weak self] (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let spaceName = post?["name"] as? String,
@@ -68,12 +69,14 @@ class SpaceService: PSpacesService {
                 value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
                 newUsers.append(value)
             }
-            let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+
             if isValid {
                 if mainUser == Dependencies.instance.userService.user?.userID {
-                    completionHandler(newSpace, 0)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+                    completionHandler(newSpace)
                 } else {
-                    completionHandler(newSpace, 1)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+                    completionHandler(newSpace)
                 }
             } else {
                 return

@@ -14,15 +14,17 @@ class MySpacesModel {
     private var spaceService: PSpacesService?
     
     var navigateToMainFlow: ((SpaceDO) -> Void)?
+    var currentUser: String?
     var signingOut: (() -> Void)?
     var navigateToCreate: (() -> Void)?
-    var spaces: [[SpaceDO]] = [[],[]]
+    var spaces: [SpaceDO] = []
     var dataSourceChanged: (() -> Void)?
     var joinPressed: (() -> Void)?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
         self.spaceService = spaceService
+        currentUser = userService?.user?.userID
         getData()
         reloadData()
     }
@@ -35,13 +37,13 @@ class MySpacesModel {
     }
 
     func reloadData() {
-        spaceService?.reloadSpaces(completionHandler: { [weak self] (newSpace, section) in
-            if self?.spaces[section].contains(where: { (space) -> Bool in
+        spaceService?.reloadSpaces(completionHandler: { [weak self] newSpace in
+            if self?.spaces.contains(where: { (space) -> Bool in
                 space.key == newSpace.key
             }) == true { 
                 return
             } else {
-                self?.spaces[section].append(newSpace)
+                self?.spaces.append(newSpace)
                 self?.dataSourceChanged?()
             }
         })
@@ -58,6 +60,14 @@ class MySpacesModel {
     }
 
     func mySpacePressed(section: Int, index: Int) {
-        navigateToMainFlow?(spaces[section][index])
+        navigateToMainFlow?(spaces[index])
+    }
+
+    func isCurrentUser(index: Int) -> Bool {
+        if spaces[index].mainUser == currentUser {
+            return true
+        } else {
+            return false
+        }
     }
 }
