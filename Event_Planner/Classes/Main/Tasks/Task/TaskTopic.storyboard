@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="TaskDetails" id="KrM-5w-Xmh" customClass="TaskDetails" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bpI-gE-v2B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTA-9I-um0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61X-X8-ZYJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="653"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqb-u6-XAM">
                                                 <rect key="frame" x="20" y="493" width="335" height="60"/>
@@ -299,7 +299,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WqI-rw-GZI"/>
                     </view>
-                    <size key="freeformSize" width="375" height="800"/>
+                    <size key="freeformSize" width="375" height="650"/>
                     <connections>
                         <outlet property="contentView" destination="61X-X8-ZYJ" id="XPu-a1-X8b"/>
                         <outlet property="deadline" destination="LPz-Mv-zg4" id="6op-zZ-b1k"/>

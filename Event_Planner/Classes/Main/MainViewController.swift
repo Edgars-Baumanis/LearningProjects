@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
         title = viewModel?.space?.spaceName
 
         let nav = self.navigationController?.navigationBar
-        nav?.barStyle = .blackTranslucent
         nav?.setBackgroundImage(UIImage(), for: .default)
         nav?.shadowImage = UIImage()
         nav?.tintColor = UIColor.black
@@ -39,9 +38,5 @@ class MainViewController: UIViewController {
 
     @IBAction func ideasPressed(_ sender: UIButton) {
         viewModel?.ideasPressed?()
-    }
-
-    @objc func backPressed(sender: UIBarButtonItem) {
-        viewModel?.backPressed?()
     }
 }

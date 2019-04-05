@@ -18,6 +18,7 @@ class MySpacesModel {
     var navigateToCreate: (() -> Void)?
     var spaces: [[SpaceDO]] = [[],[]]
     var dataSourceChanged: (() -> Void)?
+    var joinPressed: (() -> Void)?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
@@ -37,7 +38,7 @@ class MySpacesModel {
         spaceService?.reloadSpaces(completionHandler: { [weak self] (newSpace, section) in
             if self?.spaces[section].contains(where: { (space) -> Bool in
                 space.key == newSpace.key
-            }) == true {
+            }) == true { 
                 return
             } else {
                 self?.spaces[section].append(newSpace)

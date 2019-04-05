@@ -12,8 +12,13 @@ import Firebase
 class MySpacesVC: UIViewController {
 
     var viewModel: MySpacesModel?
+    private var FABPressed = false
+
+    private var joinButton: UIButton?
+    private var createButton: UIButton?
     
     @IBOutlet weak var mySpaces: UITableView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,33 +35,94 @@ class MySpacesVC: UIViewController {
         tabbar?.barTintColor = UIColor.black
         tabbar?.tintColor = UIColor.lightYellow
         tabbar?.unselectedItemTintColor = UIColor.gray
-    }
+        joinButton = UIButton(frame: CGRect(x: view.frame.midX, y: view.frame.maxY, width: 10, height: 10))
+        createButton = UIButton(frame: CGRect(x: view.frame.midX, y: view.frame.maxY, width: 10, height: 10))
+        guard let createButton = createButton, let joinButton = joinButton else { return }
+        view.addSubview(createButton)
+        view.addSubview(joinButton)
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
     }
 
     func confNavBar() {
         title = "Spaces"
         let backButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
         navigationItem.leftBarButtonItem = backButton
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusPressed))
-        navigationItem.rightBarButtonItem = addButton
 
         let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
         nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         nav?.navigationBar.shadowImage = UIImage()
         nav?.navigationBar.tintColor = UIColor.black
         nav?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        nav?.navigationBar.prefersLargeTitles = true
+
     }
-    
-    @IBAction func plusPressed(_ sender: UIButton) {
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+
+    @objc func signOutPressed(_ sender: UIBarButtonItem) {
+        viewModel?.signOut()
+    }
+    @IBAction func joinSpacePressed(_ sender: UIButton) {
+        showMoreButtons(pressed: FABPressed)
+    }
+
+    @objc func joinPressed(_ sender: UIButton) {
+        buttonsAlreadyThere()
+        viewModel?.joinPressed?()
+
+    }
+
+    @objc func createPressed(_ sender: UIButton) {
+        buttonsAlreadyThere()
         viewModel?.navigateToCreate?()
     }
-    
-    @IBAction func signOutPressed(_ sender: UIButton) {
-        viewModel?.signOut()
+
+    private func showMoreButtons(pressed: Bool) {
+        FABPressed = !pressed
+        if pressed != true {
+            joinButton?.layer.borderWidth = 1
+            joinButton?.layer.cornerRadius = 30
+            joinButton?.backgroundColor = .white
+            joinButton?.setTitle("Join", for: .normal)
+            joinButton?.setTitleColor(.black, for: .normal)
+            joinButton?.addTarget(self, action: #selector(joinPressed), for: .touchUpInside)
+            joinButton?.alpha = 0.7
+            createButton?.layer.borderWidth = 1
+            createButton?.layer.cornerRadius = 30
+            createButton?.backgroundColor = .white
+            createButton?.alpha = 0.7
+            createButton?.setTitle("Create", for: .normal)
+            createButton?.setTitleColor(.black, for: .normal)
+            createButton?.addTarget(self, action: #selector(createPressed), for: .touchUpInside)
+
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard
+                    let midX = self?.view.frame.midX,
+                    let maxY = self?.view.frame.maxY,
+                    let buttonWidth = self?.joinButton?.frame.width
+                    else { return }
+                self?.joinButton?.frame = CGRect(x: midX - buttonWidth * 10, y: maxY - maxY / 6.5, width: 60, height: 60)
+                self?.createButton?.frame = CGRect(x: midX + buttonWidth * 4, y: maxY - maxY / 6.5, width: 60, height: 60)
+            })
+
+        } else {
+            buttonsAlreadyThere()
+        }
+    }
+
+    private func buttonsAlreadyThere() {
+        joinButton?.setTitle("", for: .normal)
+        createButton?.setTitle("", for: .normal)
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard
+                let midX = self?.view.frame.midX,
+                let maxY = self?.view.frame.maxY
+                else { return }
+            self?.joinButton?.frame = CGRect(x: midX , y: maxY + 10, width: 10, height: 10)
+            self?.createButton?.frame = CGRect(x: midX, y: maxY + 10, width: 10, height: 10)
+        })
     }
 }
 

@@ -13,8 +13,8 @@ extension UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [
-            UIColor(red:0.47, green:0.69, blue:1.00, alpha:1.0).cgColor,
-            UIColor(red:0.57, green:0.00, blue:1.00, alpha:1.0).cgColor
+            UIColor(red:0.92, green:0.93, blue:1.00, alpha:1.0).cgColor,
+            UIColor(red:0.57, green:0.65, blue:1.00, alpha:1.0).cgColor
         ]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = CGPoint(x: frame.midX, y: 0.0)

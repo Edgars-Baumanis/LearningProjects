@@ -35,11 +35,6 @@ class BudgetController: UIViewController {
         }
         floatingButton()
         navigationBarItem()
-
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
     }
 
     func navigationBarItem() {

@@ -20,6 +20,7 @@ class JoinASpaceModel {
 
     var errorMessage: ((String?) -> Void)?
     var rightEntry: ((_ space: SpaceDO) -> Void)?
+    var backPressed: (() -> Void)?
 
     func joinASpace(enteredSpaceName: String?, enteredSpacePassword: String?) {
         spaceService?.joinSpace(enteredSpaceName: enteredSpaceName, enteredSpacePassword: enteredSpacePassword, completionHandler: { [weak self] (space, error) in

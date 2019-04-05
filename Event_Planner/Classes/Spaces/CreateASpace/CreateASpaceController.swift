@@ -30,8 +30,11 @@ class CreateASpaceController: UIViewController {
         }
     }
     
-    @IBAction func createSpace(_ sender: Any) {
+    @IBAction func createSpace(_ sender: UIButton) {
         viewModel?.createASpace(name: spaceName.text, password: spacePassword.text, description: spaceDescription.text)
+    }
+    @IBAction func backPressed(_ sender: UIButton) {
+        viewModel?.backPressed?()
     }
 }
 

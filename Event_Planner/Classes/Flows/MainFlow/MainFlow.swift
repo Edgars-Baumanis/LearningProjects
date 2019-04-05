@@ -42,7 +42,6 @@ class MainFlow: FlowController {
     func start() {
         guard let vc = mainViewController else {return}
         rootController?.navigationBar.prefersLargeTitles = true
-        vc.hidesBottomBarWhenPushed = true
         let viewModel = MainModel()
 
         viewModel.budgetPressed = { [weak self] in
@@ -59,10 +58,6 @@ class MainFlow: FlowController {
 
         viewModel.tasksPressed = { [weak self] in
             self?.navigateToTasksFlow()
-        }
-
-        viewModel.backPressed = { [weak self] in
-            self?.rootController?.popViewController(animated: true)
         }
         
         viewModel.space = self.space
