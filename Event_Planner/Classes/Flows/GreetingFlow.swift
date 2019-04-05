@@ -10,13 +10,13 @@ import UIKit
 
 class GreetingFlow: FlowController {
     
-    private var tabbar: UITabBarController?
+    var rootController: UINavigationController?
     private var userService: PUserService?
-    private var rootController: UINavigationController?
+    var greetingNavController: UINavigationController?
     var navigateToSpaces: (()->Void)?
 
-    init(with tabbar: UITabBarController, userService: PUserService?) {
-        self.tabbar = tabbar
+    init(with rootController: UINavigationController?, userService: PUserService?) {
+        self.rootController = rootController
         self.userService = userService
     }
     
@@ -40,9 +40,9 @@ class GreetingFlow: FlowController {
             self?.navigateToRegister()
         }
         vc.viewModel = viewModel
-        rootController = UINavigationController(rootViewController: vc)
-        guard let navController = rootController else { return }
-        tabbar?.present(navController, animated: false, completion: nil)
+        greetingNavController = UINavigationController(rootViewController: vc)
+        guard let navController = greetingNavController else { return }
+        rootController?.present(navController, animated: true, completion: nil)
 
     }
     
@@ -52,13 +52,13 @@ class GreetingFlow: FlowController {
     
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
-        rootController?.pushViewController(vc, animated: true)
+        greetingNavController?.pushViewController(vc, animated: true)
         let viewModel = LoginModel(userService: userService)
        
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }
             self.navigateToSpaces?()
-            self.tabbar?.dismiss(animated: true, completion: nil)
+            self.rootController?.dismiss(animated: true, completion: nil)
         }
         vc.viewModel = viewModel
     }
@@ -69,10 +69,10 @@ class GreetingFlow: FlowController {
     
     private func navigateToRegister() {
         guard let vc = registerVC else { return }
-        rootController?.pushViewController(vc, animated: true)
+        greetingNavController?.pushViewController(vc, animated: true)
         let viewModel = SignUpModel(userService: userService)
         viewModel.navigateToSpaces = { [weak self] in
-            self?.tabbar?.dismiss(animated: true, completion: nil)
+            self?.rootController?.dismiss(animated: true, completion: nil)
             self?.navigateToSpaces?()
         }
         vc.viewModel = viewModel

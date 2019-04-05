@@ -11,7 +11,7 @@ import Firebase
 class AppFlow: FlowController {
     
     fileprivate var window: UIWindow
-    fileprivate var rootController = UITabBarController()
+    fileprivate var rootController: UINavigationController?
     fileprivate var childFlow: FlowController?
     fileprivate var userService: PUserService?
     fileprivate var spaceService: PSpacesService?
@@ -20,9 +20,9 @@ class AppFlow: FlowController {
     fileprivate var taskService: PTaskService?
     fileprivate var budgetService: PBudgetService?
 
+
     init(with window: UIWindow) {
         self.window = window
-
         window.makeKeyAndVisible()
         userService = Dependencies.instance.userService
         chatService = ChatService()
@@ -46,9 +46,9 @@ class AppFlow: FlowController {
     }
 
     private func navigateToGreetingFlow() {
-        window.rootViewController = rootController
         let greetingFlow = GreetingFlow(with: rootController, userService: userService)
         greetingFlow.start()
+        window.rootViewController = greetingFlow.greetingNavController
         greetingFlow.navigateToSpaces = { [weak self] in
             self?.navigateToSpacesFlow()
         }
@@ -56,9 +56,9 @@ class AppFlow: FlowController {
     }
 
     private func navigateToSpacesFlow() {
-        window.rootViewController = rootController
         let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService)
         spacesFlow.start()
+        window.rootViewController = spacesFlow.rootController
         childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
             self?.navigateToGreetingFlow()

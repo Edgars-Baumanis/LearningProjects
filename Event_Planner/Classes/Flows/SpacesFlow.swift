@@ -11,17 +11,16 @@ import UIKit
 class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
-    private var rootController: UITabBarController?
+    var rootController: UINavigationController?
     private var userService: PUserService?
     private var spaceService: PSpacesService?
-    private var spacesNavController: UINavigationController?
     private var ideaService: PIdeaService?
     private var chatService: PChatService?
     private var taskService: PTaskService?
     private var budgetService: PBudgetService?
     private var childFlow: FlowController?
     
-    init (rootController: UITabBarController, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+    init (rootController: UINavigationController?, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
         self.rootController = rootController
         self.userService = userService
         self.spaceService = spaceService
@@ -49,8 +48,7 @@ class SpacesFlow: FlowController {
 
     func start() {
         guard let spacesVC = spacesVC else { return }
-        spacesNavController = UINavigationController(rootViewController: spacesVC)
-        spacesVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
+        rootController = UINavigationController(rootViewController: spacesVC)
         let spacesViewModel = MySpacesModel(userService: userService, spaceService: spaceService)
         spacesViewModel.signingOut = { [weak self] in
             self?.logoutPressed?()
@@ -61,30 +59,36 @@ class SpacesFlow: FlowController {
         spacesViewModel.navigateToMainFlow = { [weak self] space in
             self?.navigateToMainFlow(space: space)
         }
+        spacesViewModel.joinPressed = { [weak self] in
+            self?.navigateToJoin()
+        }
         spacesVC.viewModel = spacesViewModel
+    }
 
+    private func navigateToJoin() {
         guard let joinVC = joinVC else {return}
         let joinViewModel = JoinASpaceModel(userService: userService, spaceService: spaceService)
         joinViewModel.rightEntry = { [weak self] space in
-            self?.navigateToMainFlow(space: space)
+            self?.rootController?.dismiss(animated: true)
         }
-        joinVC.tabBarItem = UITabBarItem(title: "Join", image: UIImage(named: "Magnifying_glass_icon"), tag: 2)
+        joinViewModel.backPressed = { [weak self] in
+            self?.rootController?.dismiss(animated: true)
+        }
         joinVC.viewModel = joinViewModel
-        rootController?.tabBar.isTranslucent = false 
-        rootController?.viewControllers = [spacesNavController, joinVC] as? [UIViewController]
+        rootController?.present(joinVC, animated: true)
     }
 
     private func navigateToCreate() {
         guard let vc = createVC else {return}
         vc.viewModel = CreateASpaceModel(userService: userService, spaceService: spaceService)
         vc.viewModel?.backPressed = { [weak self] in
-            self?.spacesNavController?.popViewController(animated: true)
+            self?.rootController?.dismiss(animated: true)
         }
-        spacesNavController?.pushViewController(vc, animated: true)
+        rootController?.present(vc, animated: true)
     }
 
     private func navigateToMainFlow(space: SpaceDO?) {
-        guard let navController = spacesNavController else { return }
+        guard let navController = rootController else { return }
         let mainFlow = MainFlow(rootController: navController, userServices: userService, ideaService: ideaService, space: space, chatService: chatService, taskService: taskService, budgetService: budgetService)
         mainFlow.start()
         childFlow = mainFlow
