@@ -25,21 +25,10 @@ class ChatsController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-        floatingButton()
-
-    }
-
-    func floatingButton() {
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
-        btn.setTitle("+", for: .normal)
-        btn.setFloatingButtonGradient()
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 30
+        let btn = view.floatingButton()
         btn.addTarget(self, action: #selector(addChatPressed), for: .touchUpInside)
         view.addSubview(btn)
+
     }
 
     @objc func addChatPressed(sender: UIBarButtonItem) {

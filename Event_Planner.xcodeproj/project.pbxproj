@@ -58,6 +58,7 @@
 		4935AB292232888C0061AE47 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB282232888C0061AE47 /* ChatsController.swift */; };
 		4935AB2B223288950061AE47 /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2A223288950061AE47 /* TasksController.swift */; };
 		4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2C223288A00061AE47 /* BudgetController.swift */; };
+		493840B022576223004A9252 /* OtherCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493840AF22576223004A9252 /* OtherCells.swift */; };
 		493A9589224B5E9C007171F0 /* SpaceDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A9588224B5E9C007171F0 /* SpaceDO.swift */; };
 		493A958B224BAA39007171F0 /* IdeaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A958A224BAA39007171F0 /* IdeaService.swift */; };
 		493A958D224BAA45007171F0 /* PIdeaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A958C224BAA45007171F0 /* PIdeaService.swift */; };
@@ -98,7 +99,6 @@
 		495E1C762242975C0002F096 /* IdeasFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C752242975C0002F096 /* IdeasFlow.swift */; };
 		495E1C78224297650002F096 /* ChatsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C77224297650002F096 /* ChatsFlow.swift */; };
 		495E1C7A224297800002F096 /* TasksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C79224297800002F096 /* TasksFlow.swift */; };
-		495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C7C224374EA0002F096 /* ButtonSubclass.swift */; };
 		495E1C8022437CE00002F096 /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495E1C7F22437CE00002F096 /* AddTask.storyboard */; };
 		495E1C952243DE340002F096 /* CurrentUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C942243DE340002F096 /* CurrentUserCell.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
@@ -192,6 +192,7 @@
 		4935AB282232888C0061AE47 /* ChatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
 		4935AB2A223288950061AE47 /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
 		4935AB2C223288A00061AE47 /* BudgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetController.swift; sourceTree = "<group>"; };
+		493840AF22576223004A9252 /* OtherCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCells.swift; sourceTree = "<group>"; };
 		493A9588224B5E9C007171F0 /* SpaceDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDO.swift; sourceTree = "<group>"; };
 		493A958A224BAA39007171F0 /* IdeaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaService.swift; sourceTree = "<group>"; };
 		493A958C224BAA45007171F0 /* PIdeaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIdeaService.swift; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		495E1C752242975C0002F096 /* IdeasFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasFlow.swift; sourceTree = "<group>"; };
 		495E1C77224297650002F096 /* ChatsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsFlow.swift; sourceTree = "<group>"; };
 		495E1C79224297800002F096 /* TasksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFlow.swift; sourceTree = "<group>"; };
-		495E1C7C224374EA0002F096 /* ButtonSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSubclass.swift; sourceTree = "<group>"; };
 		495E1C7F22437CE00002F096 /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
 		495E1C942243DE340002F096 /* CurrentUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserCell.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -586,7 +586,6 @@
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
-				495E1C7C224374EA0002F096 /* ButtonSubclass.swift */,
 				491EB8B8224E2CD200549B19 /* UITableView.swift */,
 				491EB8B6224E2B6600549B19 /* Animations.swift */,
 				491EB8BA224E2DC200549B19 /* AnimationFactory.swift */,
@@ -742,6 +741,7 @@
 			isa = PBXGroup;
 			children = (
 				4926DD68222EBA8D00F1DB4E /* MySpacesCell.swift */,
+				493840AF22576223004A9252 /* OtherCells.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1069,7 +1069,6 @@
 				4902A1A622297D7300580D44 /* PDependencies.swift in Sources */,
 				490D4B28223F981500E07DB3 /* ChatModel.swift in Sources */,
 				495E1C702242751F0002F096 /* AddTaskModel.swift in Sources */,
-				495E1C7D224374EA0002F096 /* ButtonSubclass.swift in Sources */,
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
@@ -1125,6 +1124,7 @@
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
+				493840B022576223004A9252 /* OtherCells.swift in Sources */,
 				493E4E45224CB95F0009993A /* PChatService.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,

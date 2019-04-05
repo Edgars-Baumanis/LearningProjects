@@ -34,4 +34,16 @@ extension UIView {
             blurView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
+
+    func floatingButton() -> UIButton{
+        let btn = UIButton(frame: CGRect(x: self.frame.maxX - 90 , y: self.frame.maxY - 90, width: 70, height: 70))
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
+        btn.setTitle("+", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.black, for: .normal)
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = 34
+        return btn
+    }
 }

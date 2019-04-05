@@ -20,21 +20,13 @@ class TaskOverview: UIViewController {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.tasks.reloadData()
         }
-        floatingButton()
+        let floatingButton = view.floatingButton()
+        floatingButton.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        view.addSubview(floatingButton)
         title = viewModel?.taskTopic?.name
     }
 
-    func floatingButton() {
-        let btn = UIButton(frame: CGRect(x: view.frame.maxX - 90 , y: view.frame.maxY - 90, width: 70, height: 70))
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 50)
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
-        btn.setTitle("+", for: .normal)
-        btn.setFloatingButtonGradient()
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 34
-        btn.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
-        view.addSubview(btn)
-    }
+
 
     @objc func addPressed() {
         viewModel?.navigateToAddTask?()
