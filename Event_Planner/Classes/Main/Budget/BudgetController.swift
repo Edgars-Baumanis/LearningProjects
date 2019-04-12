@@ -57,7 +57,7 @@ class BudgetController: UIViewController {
             addField?.layer.borderWidth = 1
             addField?.layer.cornerRadius = 35
             addField?.backgroundColor = .white
-            addField?.setTitle("+", for: .normal)
+            addField?.setTitle("Add", for: .normal)
             addField?.titleLabel?.font = UIFont.systemFont(ofSize: 50)
             addField?.setTitleColor(.black, for: .normal)
             addField?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)

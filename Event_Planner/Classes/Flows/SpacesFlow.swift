@@ -11,6 +11,7 @@ import UIKit
 class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
+    var reloadSpaces: (() -> Void)?
     var rootController: UINavigationController?
     private var userService: PUserService?
     private var spaceService: PSpacesService?
@@ -19,8 +20,9 @@ class SpacesFlow: FlowController {
     private var taskService: PTaskService?
     private var budgetService: PBudgetService?
     private var childFlow: FlowController?
+    private var spacesVC: MySpacesVC?
     
-    init (rootController: UINavigationController?, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+    init (rootController: UINavigationController?, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?,  spacesVC: MySpacesVC?) {
         self.rootController = rootController
         self.userService = userService
         self.spaceService = spaceService
@@ -28,6 +30,7 @@ class SpacesFlow: FlowController {
         self.chatService = chatService
         self.taskService = taskService
         self.budgetService = budgetService
+        self.spacesVC = spacesVC
     }
     
     private lazy var mainSB: UIStoryboard = {
@@ -38,19 +41,15 @@ class SpacesFlow: FlowController {
         return mainSB.instantiateViewController(withIdentifier: String(describing: JoinASpaceController.self)) as? JoinASpaceController
     }()
     
-    private lazy var spacesVC: MySpacesVC? = {
-        return mainSB.instantiateViewController(withIdentifier: String(describing: MySpacesVC.self)) as? MySpacesVC
-    }()
-    
     private lazy var createVC: CreateASpaceController? = {
         return mainSB.instantiateViewController(withIdentifier: String(describing: CreateASpaceController.self)) as? CreateASpaceController
     }()
 
     func start() {
-        guard let spacesVC = spacesVC else { return }
-        rootController = UINavigationController(rootViewController: spacesVC)
         let spacesViewModel = MySpacesModel(userService: userService, spaceService: spaceService)
         spacesViewModel.signingOut = { [weak self] in
+            self?.spacesVC?.viewModel = nil
+            self?.spacesVC?.mySpaces.reloadData()
             self?.logoutPressed?()
         }
         spacesViewModel.navigateToCreate = { [weak self] in
@@ -62,7 +61,10 @@ class SpacesFlow: FlowController {
         spacesViewModel.joinPressed = { [weak self] in
             self?.navigateToJoin()
         }
-        spacesVC.viewModel = spacesViewModel
+        reloadSpaces = {
+            spacesViewModel.reloadSpaces()
+        }
+        spacesVC?.viewModel = spacesViewModel
     }
 
     private func navigateToJoin() {

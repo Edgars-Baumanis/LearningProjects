@@ -67,7 +67,7 @@ class ChatService: PChatService {
     }
 
     func sendMessage(spaceKey: String?, chatKey: String?, messageText: String?, completionHandler: (String?) -> Void) {
-        guard spaceKey?.isEmpty != true, chatKey?.isEmpty != true, let userID = Dependencies.instance.userService.user?.userID else {
+        guard spaceKey?.isEmpty != true, chatKey?.isEmpty != true, let userID = Dependencies.instance.userService.user?.userID, let username = Dependencies.instance.userService.user?.userName else {
             completionHandler("Empty fields for database reference")
             return
         }
@@ -75,7 +75,7 @@ class ChatService: PChatService {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         let currentTime = timeFormatter.string(from: Date())
-        let sentMessage = MessageDO(name: userID, message: messageText!, userID: userID, time: currentTime)
+        let sentMessage = MessageDO(name: username, message: messageText!, userID: userID, time: currentTime)
         ref.child(spaceString).child(spaceKey!).child(chatsString).child(chatKey!).child(messageString).childByAutoId().setValue(sentMessage.sendData())
         completionHandler(nil)
     }
