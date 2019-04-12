@@ -298,7 +298,6 @@
 				49498E88224A59D8008D2475 /* FirebaseService */,
 				49FE6E04222D40F3004FAD45 /* Constants */,
 				4902A1A422297D6400580D44 /* PDependencies */,
-				4902A1A12229212C00580D44 /* User Services */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -631,6 +630,7 @@
 		49498E88224A59D8008D2475 /* FirebaseService */ = {
 			isa = PBXGroup;
 			children = (
+				4902A1A12229212C00580D44 /* User Services */,
 				49498E8B224A5AC4008D2475 /* SpaceService */,
 				49498E8E224A788A008D2475 /* MainService */,
 			);
