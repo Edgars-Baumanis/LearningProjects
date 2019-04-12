@@ -15,14 +15,22 @@ struct SpaceDO {
     var users: [String]
     let key: String?
     let mainUser: String
+    let chats: AnyObject?
+    let budget: AnyObject?
+    let ideas: AnyObject?
+    let tasks: AnyObject?
 
-    init (spaceName: String, spacePassword: String?, spaceDescription: String, users: [String], key: String?, mainUser: String) {
+    init (spaceName: String, spacePassword: String?, spaceDescription: String, users: [String], key: String?, mainUser: String,chats: AnyObject?, budget: AnyObject?, ideas: AnyObject?, tasks: AnyObject?) {
         self.spaceName = spaceName
         self.spacePassword = spacePassword
         self.spaceDescription = spaceDescription
         self.users = users
         self.key = key
         self.mainUser = mainUser
+        self.chats = chats
+        self.budget = budget
+        self.ideas = ideas
+        self.tasks = tasks
     }
 
     func sendData() -> Any {
@@ -31,7 +39,11 @@ struct SpaceDO {
             "password": spacePassword,
             "description": spaceDescription,
             "users": users,
-            "mainUser": mainUser
+            "mainUser": mainUser,
+            "Chats" : chats,
+            "Budget": budget,
+            "Ideas": ideas,
+            "Tasks": tasks
         ]
     }
 }

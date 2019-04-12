@@ -11,43 +11,54 @@ import Firebase
 
 class UserService: PUserService {
     private let firebaseAuth = Auth.auth()
-    var user: User?
+    private let ref = Database.database().reference()
+    private let usersString = "Users"
+    var user: UserDO?
     
-    func login(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+    func login(email: String, password: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
             guard
                 error == nil,
-                let email = Auth.auth().currentUser?.email,
-                let uid = Auth.auth().currentUser?.uid
+                let loginEmail = self?.firebaseAuth.currentUser?.email,
+                let loginUserID = self?.firebaseAuth.currentUser?.uid
                 else {
                     completionHandler(nil, "Wrong credentionals!")
                     return
             }
-            let myUser = User(
-                email: email,
-                userID: uid)
-            self.user = myUser
-            
-            completionHandler(myUser,nil)
+            guard let usersString = self?.usersString else { return }
+            self?.ref.child(usersString).observeSingleEvent(of: .value, with: { (snapshot) in
+                let post = snapshot.value as? [String : Any]
+                guard
+                    let userThings = post?["\(loginUserID)"] as? [String : Any],
+                    let userName = userThings["userName"] as? String,
+                    let userID = userThings["userID"] as? String,
+                    let email = userThings["email"] as? String
+                    else { return }
+                if loginEmail == email && loginUserID == userID {
+                    let myUser = UserDO(email: email, userID: userID, userName: userName)
+                    self?.user = myUser
+
+                    completionHandler(myUser,nil)
+                }
+            })
         }
     }
     
-    func register(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
+    func register(email: String, password: String, userName: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
         if self.isValid(email: email) {
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
                 guard
                     error == nil,
-                    let email = Auth.auth().currentUser?.email,
-                    let uid = Auth.auth().currentUser?.uid
+                    let email = self?.firebaseAuth.currentUser?.email,
+                    let uid = self?.firebaseAuth.currentUser?.uid
                     else {
                         completionHandler(nil, "Email already exists")
                         return
                 }
-                let myUser = User(
-                    email: email,
-                    userID: uid)
-                self.user = myUser
-
+                guard let usersString = self?.usersString else { return }
+                let myUser = UserDO(email: email, userID: uid, userName: userName)
+                self?.user = myUser
+                self?.ref.child(usersString).child(uid).setValue(myUser.sendData())
                 completionHandler(myUser, nil)
             }
         }
@@ -66,5 +77,29 @@ class UserService: PUserService {
         let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let pred = NSPredicate(format: "SELF MATCHES %@", regEx)
         return pred.evaluate(with: email)
+    }
+
+    func getUser(completionHandler: @escaping () -> Void) {
+        guard let userID = firebaseAuth.currentUser?.uid
+            else { return }
+        ref.child(usersString).child(userID).observeSingleEvent(of: .value) { [weak self] (snapshot) in
+            let post = snapshot.value as? [String : Any]
+            guard
+                let username = post?["userName"] as? String,
+                let userID = post?["userID"] as? String,
+                let email = post?["email"] as? String
+                else { return }
+            let user = UserDO(email: email, userID: userID, userName: username)
+            self?.user = user
+            completionHandler()
+        }
+    }
+
+    func isLoggedIn() -> Bool {
+        if firebaseAuth.currentUser == nil {
+            return false
+        } else {
+            return true
+        }
     }
 }

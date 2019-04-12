@@ -27,11 +27,7 @@ class MySpacesVC: UIViewController {
         view.setGradientBackground()
         mySpaces.delegate = self
         mySpaces.dataSource = self
-        viewModel?.dataSourceChanged = { [weak self] in
-            DispatchQueue.main.async {
-                self?.mySpaces.reloadData()
-            }
-        }
+
         confNavBar()
         let tabbar = self.tabBarController?.tabBar
         tabbar?.barTintColor = UIColor.black
@@ -43,6 +39,15 @@ class MySpacesVC: UIViewController {
         view.addSubview(createButton)
         view.addSubview(joinButton)
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.dataSourceChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mySpaces.reloadData()
+            }
+        }
     }
 
     func confNavBar() {
@@ -71,13 +76,13 @@ class MySpacesVC: UIViewController {
     }
 
     @objc func joinPressed(_ sender: UIButton) {
-        buttonsAlreadyThere()
+        showMoreButtons(pressed: FABPressed)
         viewModel?.joinPressed?()
 
     }
 
     @objc func createPressed(_ sender: UIButton) {
-        buttonsAlreadyThere()
+        showMoreButtons(pressed: FABPressed)
         viewModel?.navigateToCreate?()
     }
 

@@ -23,14 +23,12 @@ class GreetingFlow: FlowController {
     private lazy var greetingSB: UIStoryboard = {
         return UIStoryboard(name: Strings.greetingSB.rawValue, bundle: Bundle.main)
     }()
-    
+
     private var greetingViewController: GreetingVC? {
         return greetingSB.instantiateViewController(withIdentifier: String(describing: GreetingVC.self)) as? GreetingVC
     }
     
     func start() {
-
-
         guard let vc = greetingViewController else { return }
         let viewModel = GreetingModel()
         viewModel.signInPressed = { [weak self] in
@@ -41,9 +39,8 @@ class GreetingFlow: FlowController {
         }
         vc.viewModel = viewModel
         greetingNavController = UINavigationController(rootViewController: vc)
-        guard let navController = greetingNavController else { return }
-        rootController?.present(navController, animated: true, completion: nil)
-
+        guard let greetingNavController = greetingNavController else { return }
+        rootController?.present(greetingNavController, animated: false, completion: nil)
     }
     
     private var loginVC: LoginVC? {

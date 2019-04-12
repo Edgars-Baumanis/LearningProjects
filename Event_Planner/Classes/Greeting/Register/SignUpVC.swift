@@ -33,6 +33,6 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signedUpPressed(_ sender: Any) {
-        viewModel?.signUpUser(email: regEmail.text, password: regPassword.text)
+        viewModel?.signUpUser(email: regEmail.text, password: regPassword.text, userName: regScreenName.text)
     }
 }

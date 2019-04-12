@@ -9,11 +9,12 @@
 import Foundation
 
 class DumbUserService: PUserService {
-    var user: User?
 
-    func login(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
+    var user: UserDO?
+
+    func login(email: String, password: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
         if isValid(email: email) {
-            let dummyUser = User(email: email, userID: "qwertyuioiuytrew")
+            let dummyUser = UserDO(email: email, userID: "qwertyuioiuytrew", userName: "randomUserName")
             completionHandler(dummyUser, nil)
             self.user = dummyUser
         } else {
@@ -21,7 +22,7 @@ class DumbUserService: PUserService {
         }
     }
 
-    func register(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void)) {
+    func register(email: String, password: String, userName: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
     }
 
     private func isValid(email: String) -> Bool {
@@ -31,5 +32,12 @@ class DumbUserService: PUserService {
     }
 
     func signOut(completionHandler: @escaping ((NSError?) -> Void)) {
+    }
+
+    func getUser(completionHandler: @escaping () -> Void) {
+    }
+
+    func isLoggedIn() -> Bool {
+        return true
     }
 }

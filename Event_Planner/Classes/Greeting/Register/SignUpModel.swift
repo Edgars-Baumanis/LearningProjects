@@ -18,12 +18,12 @@ class SignUpModel {
         self.userService = userService
     }
     
-    func signUpUser(email: String?, password: String?) {
-        guard email?.isEmpty != true, password?.isEmpty != true else {
+    func signUpUser(email: String?, password: String?, userName: String?) {
+        guard email?.isEmpty != true, password?.isEmpty != true, userName?.isEmpty != true else {
             emptyFields?()
             return
         }
-        userService?.register(email: email!, password: password!, completionHandler: { (user, error) in
+        userService?.register(email: email!, password: password!, userName: userName!, completionHandler: { (user, error) in
         guard error == nil else {
                 self.existingEmail?()
                 return

@@ -9,17 +9,15 @@
 import UIKit
 
 
-struct User {
-    var email: String
-    var userID: String
-}
 
 protocol PUserService {
-    var user: User? { get set }
+    var user: UserDO? { get set }
 
-    func login(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void))
+    func login(email: String, password: String, completionHandler: @escaping ((UserDO?, String?) -> Void))
 
-    func register(email: String, password: String, completionHandler: @escaping ((User?, String?) -> Void))
+    func register(email: String, password: String, userName: String, completionHandler: @escaping ((UserDO?, String?) -> Void))
 
     func signOut(completionHandler: @escaping ((NSError?) -> Void))
+    func getUser(completionHandler: @escaping () -> Void)
+    func isLoggedIn() -> Bool
 }

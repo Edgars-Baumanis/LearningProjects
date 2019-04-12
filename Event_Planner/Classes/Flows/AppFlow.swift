@@ -7,20 +7,19 @@
 //
 
 import UIKit
-import Firebase
 class AppFlow: FlowController {
     
-    fileprivate var window: UIWindow
-    fileprivate var rootController: UINavigationController?
-    fileprivate var childFlow: FlowController?
-    fileprivate var userService: PUserService?
-    fileprivate var spaceService: PSpacesService?
-    fileprivate var ideaService: PIdeaService?
-    fileprivate var chatService: PChatService?
-    fileprivate var taskService: PTaskService?
-    fileprivate var budgetService: PBudgetService?
-
-
+    private var window: UIWindow
+    private var rootController: UINavigationController?
+    private var childFlow: FlowController?
+    private var userService: PUserService?
+    private var spaceService: PSpacesService?
+    private var ideaService: PIdeaService?
+    private var chatService: PChatService?
+    private var taskService: PTaskService?
+    private var budgetService: PBudgetService?
+    
+    
     init(with window: UIWindow) {
         self.window = window
         window.makeKeyAndVisible()
@@ -30,35 +29,36 @@ class AppFlow: FlowController {
         spaceService = SpaceService()
         taskService = TaskService()
         budgetService = BudgetService()
+
     }
 
+    private lazy var spacesVC: MySpacesVC? = {
+        return UIStoryboard(name: Strings.SpacesSB.rawValue, bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: MySpacesVC.self)) as? MySpacesVC
+    }()
+    
     func start() {
-        if Auth.auth().currentUser != nil {
-            guard
-                let userID = Auth.auth().currentUser?.uid,
-                let email = Auth.auth().currentUser?.email
-                else { return }
-            self.userService?.user = User(email: email, userID: userID)
+        guard let isLoggedIn = userService?.isLoggedIn(), let spacesVC = spacesVC else { return }
+        rootController = UINavigationController(rootViewController: spacesVC)
+        window.rootViewController = rootController
+        if isLoggedIn {
             self.navigateToSpacesFlow()
         } else {
             self.navigateToGreetingFlow()
         }
     }
-
+    
     private func navigateToGreetingFlow() {
         let greetingFlow = GreetingFlow(with: rootController, userService: userService)
         greetingFlow.start()
-        window.rootViewController = greetingFlow.greetingNavController
         greetingFlow.navigateToSpaces = { [weak self] in
             self?.navigateToSpacesFlow()
         }
         childFlow = greetingFlow
     }
-
+    
     private func navigateToSpacesFlow() {
-        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService)
+        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService, spacesVC: spacesVC)
         spacesFlow.start()
-        window.rootViewController = spacesFlow.rootController
         childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
             self?.navigateToGreetingFlow()

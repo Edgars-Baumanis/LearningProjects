@@ -24,9 +24,15 @@ class MySpacesModel {
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
         self.spaceService = spaceService
-        currentUser = userService?.user?.userID
-        getData()
-        reloadData()
+        reloadSpaces()
+    }
+
+    func reloadSpaces() {
+        userService?.getUser(completionHandler: { [weak self] in
+            self?.getData()
+            self?.currentUser = self?.userService?.user?.userID
+            self?.reloadData()
+        })
     }
     
     func getData() {
@@ -40,7 +46,7 @@ class MySpacesModel {
         spaceService?.reloadSpaces(completionHandler: { [weak self] newSpace in
             if self?.spaces.contains(where: { (space) -> Bool in
                 space.key == newSpace.key
-            }) == true { 
+            }) == true {
                 return
             } else {
                 self?.spaces.append(newSpace)
