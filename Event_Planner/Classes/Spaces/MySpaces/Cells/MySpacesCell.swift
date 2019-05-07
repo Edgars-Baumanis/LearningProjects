@@ -13,7 +13,7 @@ class MySpacesCell: UITableViewCell {
     @IBOutlet weak var mySpacesContentView: UIView!
 
     func displayContent(spaceName: String?) {
-        mySpacesContentView.createGradient()
+        mySpacesContentView.setCellBackground()
         guard spaceName?.isEmpty != true else { return }
         mySpacesContent.text = spaceName
     }

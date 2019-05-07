@@ -15,6 +15,9 @@ class IdeasController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let id = String(describing: TopicCell.self)
+        allIdeas.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         allIdeas.delegate = self
         allIdeas.dataSource = self
         viewModel?.getTopics()
@@ -26,18 +29,7 @@ class IdeasController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-        floatingButton()
-    }
-
-    func floatingButton() {
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
-        btn.setTitle("+", for: .normal)
-        btn.setFloatingButtonGradient()
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 30
+        let btn = view.floatingButton()
         btn.addTarget(self, action: #selector(addTopicPressed), for: .touchUpInside)
         view.addSubview(btn)
     }
@@ -58,7 +50,7 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
         
 
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(subject: viewModel?.filteredDataSource[indexPath.row].name)
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].name)
         }
         
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
@@ -70,5 +62,9 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToIdea?(viewModel?.filteredDataSource[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
 }

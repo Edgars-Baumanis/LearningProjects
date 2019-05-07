@@ -41,24 +41,69 @@ class TaskService: PTaskService {
         completionHandler(nil)
     }
 
-    func getTasks(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void) {
+    func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void) {
         guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else {
-            completionHandler(nil, "Empty fields for database reference")
+            completionHandler(nil, nil, "Empty fields for database reference")
             return
         }
-        ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            guard
-                let name = post?["name"] as? String,
-                let description = post?["description"] as? String,
-                let key = snapshot.key as? String,
-                let ownerID = post?["ownerID"] as? String,
-                let deadline = post?["deadline"] as? String
-                else { return }
-            let newTask = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
-            completionHandler(newTask, nil)
+        ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childAdded, with: { (snapshot) in
+            let post = snapshot.value as? [String : Any]
+            post?.forEach({ (key, value) in
+                let newValue = value as? [String : Any]
+                guard
+                    let name = newValue?["name"] as? String,
+                    let description = newValue?["description"] as? String,
+                    let key = key as? String,
+                    let ownerID = newValue?["ownerID"] as? String,
+                    let deadline = newValue?["deadline"] as? String
+                    else { return }
+                let task = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
+                switch snapshot.key as? String {
+                case "Done":
+                    completionHandler(task, 2, nil)
+                case "InProgress":
+                    completionHandler(task, 1, nil)
+                case "NeedsDoing":
+                    completionHandler(task, 0 , nil)
+                default:
+                    completionHandler(nil, nil, "borked")
+                }
+            })
+
         })
     }
+
+    func reloadTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void) {
+        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else {
+            completionHandler(nil, nil, "Empty fields for database reference")
+            return
+        }
+        ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childChanged, with: { (snapshot) in
+            let post = snapshot.value as? [String : Any]
+            post?.forEach({ (key, value) in
+                let newValue = value as? [String : Any]
+                guard
+                    let name = newValue?["name"] as? String,
+                    let description = newValue?["description"] as? String,
+                    let key = key as? String,
+                    let ownerID = newValue?["ownerID"] as? String,
+                    let deadline = newValue?["deadline"] as? String
+                    else { return }
+                let task = TaskDO(name: name, description: description, key: key, ownerID: ownerID, deadline: deadline)
+                switch snapshot.key as? String {
+                case "Done":
+                    completionHandler(task, 2, nil)
+                case "InProgress":
+                    completionHandler(task, 1, nil)
+                case "NeedsDoing":
+                    completionHandler(task, 0 , nil)
+                default:
+                    completionHandler(nil, nil, "borked")
+                }
+            })
+        })
+    }
+
 
     func taskDeleted(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void) {
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).observe(.childRemoved, with: { (snapshot) in
@@ -84,24 +129,52 @@ class TaskService: PTaskService {
         completionHandler(nil)
     }
 
-    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String, completionHandler: @escaping (String?) -> Void) {
-        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true, taskKey?.isEmpty != true else {
-            completionHandler("Empty fields for database reference")
-            return
+    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            taskKey?.isEmpty != true,
+            let caller = caller
+            else {
+                completionHandler("Empty fields for database reference")
+                return
         }
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).child(taskKey!).removeValue()
         completionHandler(nil)
     }
 
-    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String, caller: String, completionHandler: @escaping (String?) -> Void) {
-        guard let newTask = task, spaceKey?.isEmpty != true, topicKey?.isEmpty != true, let taskKey = task?.key else {
-            completionHandler("Empty fields for database reference")
-            return
+    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String?, caller: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            let newTask = task, spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            let taskKey = task?.key,
+            let caller = caller,
+            let transferTo = transferTo
+            else {
+                completionHandler("Empty fields for database reference")
+                return
         }
         let task = TaskDO(name: newTask.name, description: newTask.description, key: nil, ownerID: newTask.ownerID, deadline: newTask.deadline)
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(transferTo).child(taskKey).setValue(task.sendData())
 
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).child(taskKey).removeValue()
+        completionHandler(nil)
+    }
+
+    func saveTask(spaceKey: String?, topicKey: String?, task: TaskDO, caller: String?, taskKey: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            taskKey?.isEmpty != true,
+            let caller = caller
+            else {
+                completionHandler("Empty fields for database reference")
+                return
+        }
+        let childUpdates = [
+            "/Spaces/\(spaceKey!)/Tasks/\(topicKey!)/\(caller)/\(taskKey!)" : task.sendData()
+        ]
+        self.ref.updateChildValues(childUpdates)
         completionHandler(nil)
     }
 }

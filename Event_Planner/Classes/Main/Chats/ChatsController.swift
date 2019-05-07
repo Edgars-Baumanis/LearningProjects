@@ -15,6 +15,9 @@ class ChatsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let id = String(describing: TopicCell.self)
+        allChats.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         allChats.delegate = self
         allChats.dataSource = self
         viewModel?.dataSourceChanged = { [weak self] in
@@ -25,21 +28,10 @@ class ChatsController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
         }
-        floatingButton()
-
-    }
-
-    func floatingButton() {
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 280, y: 570, width: 60, height: 60)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 35)
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 4, right: 0)
-        btn.setTitle("+", for: .normal)
-        btn.setFloatingButtonGradient()
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 30
+        let btn = view.floatingButton()
         btn.addTarget(self, action: #selector(addChatPressed), for: .touchUpInside)
         view.addSubview(btn)
+
     }
 
     @objc func addChatPressed(sender: UIBarButtonItem) {
@@ -54,9 +46,9 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatsCell.self), for: indexPath)
-        if let myCell = cell as? ChatsCell {
-            myCell.displayContent(chatName: viewModel?.filteredDataSource[indexPath.row].chatName)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+        if let myCell = cell as? TopicCell {
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].chatName)
         }
 
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
@@ -68,6 +60,10 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToChat?(viewModel?.dataSource[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
 }
 

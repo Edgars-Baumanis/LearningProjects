@@ -10,25 +10,21 @@ import UIKit
 
 class SignUpModel {
     var navigateToSpaces: (() -> Void)?
-    var existingEmail: (() -> Void)?
-    var emptyFields: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
     private var userService: PUserService?
     
     init(userService: PUserService?) {
         self.userService = userService
     }
     
-    func signUpUser(email: String?, password: String?) {
-        guard email?.isEmpty != true, password?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        userService?.register(email: email!, password: password!, completionHandler: { (user, error) in
+    func signUpUser(email: String?, password: String?, userName: String?) {
+        
+        userService?.register(email: email, password: password, userName: userName, completionHandler: { [weak self] (error) in
         guard error == nil else {
-                self.existingEmail?()
+                self?.errorMessage?(error)
                 return
             }
-            self.navigateToSpaces?()
+            self?.navigateToSpaces?()
         })
     }
 }

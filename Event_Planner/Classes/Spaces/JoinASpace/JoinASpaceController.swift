@@ -28,4 +28,7 @@ class JoinASpaceController: UIViewController {
     @IBAction func joinSpacePressed(_ sender: Any) {
         viewModel?.joinASpace(enteredSpaceName: spaceName.text, enteredSpacePassword: spacePassword.text)
     }
+    @IBAction func backPressed(_ sender: UIButton) {
+        viewModel?.backPressed?()
+    }
 }

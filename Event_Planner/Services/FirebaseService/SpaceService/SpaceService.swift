@@ -13,8 +13,6 @@ class SpaceService: PSpacesService {
 
     private let spacesString = "Spaces"
     private let ref = Database.database().reference()
-    private let myCellIdentificator = String(describing: MySpacesCell.self)
-    private let otherCellIdentificator = String(describing: OtherSpacesCell.self)
     private var spaceRoute: DatabaseReference?
 
     init() {
@@ -22,33 +20,38 @@ class SpaceService: PSpacesService {
     }
 
 
-    func getSpaces(completionHandler: @escaping (SpaceDO, Bool) -> Void) {
-        spaceRoute?.observe(.childAdded, with: { (snapshot) in
+    func getSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
+        var allSpaces: [SpaceDO] = []
+        spaceRoute?.observeSingleEvent(of: .value, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
-            guard
-                let spaceName = post?["name"] as? String,
-                let users = post?["users"] as? [String],
-                let spaceDesc = post?["description"] as? String,
-                let key = snapshot.key as? String,
-                let mainUser = post?["mainUser"] as? String
-                else { return }
-            var isValid = false
-            var newUsers: [String] = []
-            users.forEach { (value) in
-                value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
-                newUsers.append(value)
-            }
-            let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
-            if isValid {
-                if mainUser == Dependencies.instance.userService.user?.userID {
-                    completionHandler(newSpace, true)
-                } else {
-                    completionHandler(newSpace, false)
+            post?.forEach({ (key, value) in
+                let singleSpace = value as? [String : AnyObject]
+                guard
+                    let spaceName = singleSpace?["name"] as? String,
+                    let users = singleSpace?["users"] as? [String],
+                    let spaceDesc = singleSpace?["description"] as? String,
+                    let key = key as? String,
+                    let mainUser = singleSpace?["mainUser"] as? String
+                    else { return }
+
+                var isValid = false
+                var newUsers: [String] = []
+                users.forEach { (value) in
+                    value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
+                    newUsers.append(value)
                 }
-            } else {
-                return
-            }
+                if isValid {
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    allSpaces.append(newSpace)
+                    completionHandler(allSpaces)
+
+                } else {
+                    return
+                }
+            })
         })
+    }
+    func reloadSpaces(completionHandler: @escaping (SpaceDO) -> Void) {
         spaceRoute?.observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -64,12 +67,42 @@ class SpaceService: PSpacesService {
                 value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
                 newUsers.append(value)
             }
-            let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser)
+
             if isValid {
                 if mainUser == Dependencies.instance.userService.user?.userID {
-                    completionHandler(newSpace, true)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    completionHandler(newSpace)
                 } else {
-                    completionHandler(newSpace, false)
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    completionHandler(newSpace)
+                }
+            } else {
+                return
+            }
+        })
+        spaceRoute?.observe(.childAdded, with: {(snapshot) in
+            let post = snapshot.value as? [String : AnyObject]
+            guard
+                let spaceName = post?["name"] as? String,
+                let users = post?["users"] as? [String],
+                let spaceDesc = post?["description"] as? String,
+                let key = snapshot.key as? String,
+                let mainUser = post?["mainUser"] as? String
+                else { return }
+            var isValid = false
+            var newUsers: [String] = []
+            users.forEach { (value) in
+                value == Dependencies.instance.userService.user?.userID ? isValid = true : nil
+                newUsers.append(value)
+            }
+
+            if isValid {
+                if mainUser == Dependencies.instance.userService.user?.userID {
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    completionHandler(newSpace)
+                } else {
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: nil, spaceDescription: spaceDesc, users: newUsers, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    completionHandler(newSpace)
                 }
             } else {
                 return
@@ -85,7 +118,7 @@ class SpaceService: PSpacesService {
         var users: [String] = []
         guard let userID = Dependencies.instance.userService.user?.userID else {return}
         users.append(userID)
-        let newSpace = SpaceDO(spaceName: name!, spacePassword: password!, spaceDescription: description!, users: users, key: nil, mainUser: userID)
+        let newSpace = SpaceDO(spaceName: name!, spacePassword: password!, spaceDescription: description!, users: users, key: nil, mainUser: userID, chats: nil, budget: nil, ideas: nil, tasks: nil)
         spaceRoute?.childByAutoId().setValue(newSpace.sendData())
         completionHandler(nil)
     }
@@ -96,7 +129,11 @@ class SpaceService: PSpacesService {
             return
         }
         spaceRoute?.observe(.childAdded, with: { [weak self] (snapshot) in
-            let post = snapshot.value as? [String : Any]
+            let post = snapshot.value as? [String : AnyObject]
+            let chats = post?["Chats"]
+            let budget = post?["Budget"]
+            let ideas = post?["Ideas"]
+            let tasks = post?["Tasks"]
             guard
                 let spaceName = post?["name"] as? String,
                 let spacePassword = post?["password"] as? String,
@@ -112,7 +149,7 @@ class SpaceService: PSpacesService {
             users.forEach { (value) in
                 value == Dependencies.instance.userService.user?.userID ||
                     mainUser == Dependencies.instance.userService.user?.userID ?
-                    isValid = true : nil
+                        isValid = true : nil
             }
             if isValid {
                 completionHandler(nil, "Can't join a space you are already a part of")
@@ -120,7 +157,7 @@ class SpaceService: PSpacesService {
             } else {
                 guard let userID = Dependencies.instance.userService.user?.userID else { return }
                 users.append(userID)
-                let newSpace = SpaceDO(spaceName: spaceName, spacePassword: spacePassword, spaceDescription: spaceDescription, users: users, key: nil, mainUser: mainUser)
+                let newSpace = SpaceDO(spaceName: spaceName, spacePassword: spacePassword, spaceDescription: spaceDescription, users: users, key: nil, mainUser: mainUser, chats: chats, budget: budget, ideas: ideas, tasks: tasks)
                 let childUpdate = [
                     "/Spaces/\(key)/" : newSpace.sendData()
                 ]

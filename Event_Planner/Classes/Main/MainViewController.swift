@@ -16,15 +16,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
         title = viewModel?.space?.spaceName
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backPressed))
-        navigationItem.leftBarButtonItem = backButton
 
-        let nav = self.navigationController
-        nav?.navigationBar.barStyle = .blackTranslucent
-        nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav?.navigationBar.shadowImage = UIImage()
-        nav?.navigationBar.tintColor = UIColor.black
-        nav?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        let nav = self.navigationController?.navigationBar
+        nav?.setBackgroundImage(UIImage(), for: .default)
+        nav?.shadowImage = UIImage()
+        nav?.tintColor = UIColor.black
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
 
     @IBAction func chatPressed(_ sender: UIButton) {
@@ -41,9 +38,5 @@ class MainViewController: UIViewController {
 
     @IBAction func ideasPressed(_ sender: UIButton) {
         viewModel?.ideasPressed?()
-    }
-
-    @objc func backPressed(sender: UIBarButtonItem) {
-        viewModel?.backPressed?()
     }
 }

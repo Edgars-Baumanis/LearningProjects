@@ -11,8 +11,7 @@ import UIKit
 class LoginModel {
     
     var loggedIn: (() -> Void)?
-    var wrongSignIn: (() -> Void)?
-    var emptyFields: (() -> Void)?
+    var errorMessage: ((String?) -> Void)?
     var error: String?
     private var userService: PUserService?
 
@@ -22,13 +21,10 @@ class LoginModel {
 
     func loginUser(email: String?, password: String?) {
         error = "This is an error"
-        guard email?.isEmpty != true, password?.isEmpty != true else {
-            emptyFields?()
-            return
-        }
-        userService?.login(email: email!, password: password!, completionHandler: { [weak self] (user, error)  in
+
+        userService?.login(email: email, password: password, completionHandler: { [weak self] (error)  in
             guard error == nil else {
-                self?.wrongSignIn?()
+                self?.errorMessage?(error)
                 return
             }
             self?.loggedIn?()

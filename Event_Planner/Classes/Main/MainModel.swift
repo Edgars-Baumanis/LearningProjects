@@ -9,10 +9,9 @@
 import UIKit
 
 class MainModel {
-    var chatPressed: (()-> Void)?
-    var budgetPressed: (()-> Void)?
-    var ideasPressed: (()-> Void)?
-    var tasksPressed: (()-> Void)?
-    var backPressed: (()-> Void)?
+    var chatPressed: (() -> Void)?
+    var budgetPressed: (() -> Void)?
+    var ideasPressed: (() -> Void)?
+    var tasksPressed: (() -> Void)?
     var space: SpaceDO?
 }

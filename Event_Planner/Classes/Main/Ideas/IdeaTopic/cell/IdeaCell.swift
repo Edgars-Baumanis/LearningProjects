@@ -27,7 +27,7 @@ class IdeaCell: UITableViewCell {
             })
         } else {
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.ideaView.backgroundColor = UIColor.gray
+                self?.ideaView.backgroundColor = UIColor.clear
             })
         }
     }

@@ -23,7 +23,6 @@ class CreateASpaceController: UIViewController {
         spaceDescription.delegate = self
         spaceDescription.text = "Enter a description for your Space"
         spaceDescription.textColor = UIColor.placholderGrey
-        viewModel?.printEmail()
         viewModel?.emptyFields = { [weak self] message in
             let alert = UIAlertController(title: "Empty!", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
@@ -31,11 +30,10 @@ class CreateASpaceController: UIViewController {
         }
     }
     
-    @IBAction func createSpace(_ sender: Any) {
+    @IBAction func createSpace(_ sender: UIButton) {
         viewModel?.createASpace(name: spaceName.text, password: spacePassword.text, description: spaceDescription.text)
     }
-    
-    @IBAction func closePressed(_ sender: Any) {
+    @IBAction func backPressed(_ sender: UIButton) {
         viewModel?.backPressed?()
     }
 }

@@ -26,6 +26,8 @@ class ChatController: UIViewController {
             self?.scrollToBottom()
         }
 
+        navigationController?.navigationBar.prefersLargeTitles = false
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -35,6 +37,11 @@ class ChatController: UIViewController {
         removeTap = { [weak self] in
             self?.view.removeGestureRecognizer(tap)
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     @objc func dismissKeyboard() {
@@ -67,17 +74,15 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         let cellIdentifier = viewModel?.currentUserID != viewModel?.dataSource[indexPath.row].userID ? String(describing: ChatCell.self) : String(describing: CurrentUserCell.self)
 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            (cell as? ChatCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
-            (cell as? CurrentUserCell)?.displayContent(message: self?.viewModel?.dataSource[indexPath.row])
-        })
+            (cell as? ChatCell)?.displayContent(message: self.viewModel?.dataSource[indexPath.row])
+            (cell as? CurrentUserCell)?.displayContent(message: self.viewModel?.dataSource[indexPath.row])
 
         return cell
     }
 
     func scrollToBottom() {
         if viewModel?.dataSource.count != 0 {
-            let indexPath = IndexPath(row: (self.viewModel?.dataSource.count ?? 0) - 1, section: 0)
+            let indexPath = IndexPath(row: (self.viewModel?.dataSource.count ?? 1) - 1, section: 0)
             self.chatRoom.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }

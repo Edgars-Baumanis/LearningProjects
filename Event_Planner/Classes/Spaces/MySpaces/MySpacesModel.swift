@@ -14,26 +14,45 @@ class MySpacesModel {
     private var spaceService: PSpacesService?
     
     var navigateToMainFlow: ((SpaceDO) -> Void)?
+    var currentUser: String?
     var signingOut: (() -> Void)?
     var navigateToCreate: (() -> Void)?
-    var mySpaces: [SpaceDO] = []
-    var otherSpaces: [SpaceDO] = []
+    var spaces: [SpaceDO] = []
     var dataSourceChanged: (() -> Void)?
+    var joinPressed: (() -> Void)?
+    var toProfile: (() -> Void)?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
         self.spaceService = spaceService
-        getData()
+        reloadSpaces()
+    }
+
+    func reloadSpaces() {
+        userService?.getUser(completionHandler: { [weak self] in
+            self?.getData()
+            self?.currentUser = self?.userService?.user?.userID
+            self?.reloadData()
+        })
     }
     
     func getData() {
-        spaceService?.getSpaces(completionHandler: { [weak self] (space, mySpace) in
-            if mySpace {
-                self?.mySpaces.append(space)
-            } else {
-                self?.otherSpaces.append(space)
-            }
+        spaceService?.getSpaces(completionHandler: { [weak self] spaces in
+            self?.spaces = spaces
             self?.dataSourceChanged?()
+        })
+    }
+
+    func reloadData() {
+        spaceService?.reloadSpaces(completionHandler: { [weak self] newSpace in
+            if self?.spaces.contains(where: { (space) -> Bool in
+                space.key == newSpace.key
+            }) == true {
+                return
+            } else {
+                self?.spaces.append(newSpace)
+                self?.dataSourceChanged?()
+            }
         })
     }
 
@@ -47,11 +66,15 @@ class MySpacesModel {
         })
     }
 
-    func mySpacePressed(index: Int) {
-        navigateToMainFlow?(mySpaces[index])
+    func mySpacePressed(section: Int, index: Int) {
+        navigateToMainFlow?(spaces[index])
     }
 
-    func otherSpacePressed(index: Int) {
-        navigateToMainFlow?(otherSpaces[index])
+    func isCurrentUser(index: Int) -> Bool {
+        if spaces[index].mainUser == currentUser {
+            return true
+        } else {
+            return false
+        }
     }
 }

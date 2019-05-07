@@ -13,14 +13,16 @@ protocol PTaskService {
 
     func addTopic(topicName: String?, spaceKey: String?, completionHandler: @escaping (String?) -> Void)
 
-    func getTasks(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void)
+    func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void)
+
+    func reloadTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void)
 
     func taskDeleted(spaceKey: String?, topicKey: String?, caller: String, completionHandler: @escaping (TaskDO?, String?) -> Void)
 
     func addTask(spaceKey: String?, topicKey: String?, task: TaskDO?, completionHandler: @escaping (String?) -> Void)
 
-    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String, completionHandler: @escaping (String?) -> Void)
+    func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String?, completionHandler: @escaping (String?) -> Void)
 
-    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String, caller: String, completionHandler: @escaping (String?) -> Void)
-
+    func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String?, caller: String?, completionHandler: @escaping (String?) -> Void)
+    func saveTask(spaceKey: String?, topicKey: String?, task: TaskDO, caller: String?, taskKey: String?, completionHandler: @escaping (String?) -> Void)
 }

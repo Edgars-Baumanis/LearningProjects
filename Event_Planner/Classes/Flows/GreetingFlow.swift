@@ -10,27 +10,24 @@ import UIKit
 
 class GreetingFlow: FlowController {
     
-    private var tabbar: UITabBarController?
+    var rootController: UINavigationController?
     private var userService: PUserService?
-    private var rootController: UINavigationController?
     var navigateToSpaces: (()->Void)?
 
-    init(with tabbar: UITabBarController, userService: PUserService?) {
-        self.tabbar = tabbar
+    init(with rootController: UINavigationController?, userService: PUserService?) {
+        self.rootController = rootController
         self.userService = userService
     }
     
     private lazy var greetingSB: UIStoryboard = {
         return UIStoryboard(name: Strings.greetingSB.rawValue, bundle: Bundle.main)
     }()
-    
+
     private var greetingViewController: GreetingVC? {
         return greetingSB.instantiateViewController(withIdentifier: String(describing: GreetingVC.self)) as? GreetingVC
     }
     
     func start() {
-
-
         guard let vc = greetingViewController else { return }
         let viewModel = GreetingModel()
         viewModel.signInPressed = { [weak self] in
@@ -41,9 +38,6 @@ class GreetingFlow: FlowController {
         }
         vc.viewModel = viewModel
         rootController = UINavigationController(rootViewController: vc)
-        guard let navController = rootController else { return }
-        tabbar?.present(navController, animated: false, completion: nil)
-
     }
     
     private var loginVC: LoginVC? {
@@ -58,7 +52,7 @@ class GreetingFlow: FlowController {
         viewModel.loggedIn = { [weak self] in
             guard let `self` = self else { return }
             self.navigateToSpaces?()
-            self.tabbar?.dismiss(animated: true, completion: nil)
+            self.rootController?.dismiss(animated: true, completion: nil)
         }
         vc.viewModel = viewModel
     }
@@ -72,7 +66,7 @@ class GreetingFlow: FlowController {
         rootController?.pushViewController(vc, animated: true)
         let viewModel = SignUpModel(userService: userService)
         viewModel.navigateToSpaces = { [weak self] in
-            self?.tabbar?.dismiss(animated: true, completion: nil)
+            self?.rootController?.dismiss(animated: true, completion: nil)
             self?.navigateToSpaces?()
         }
         vc.viewModel = viewModel
