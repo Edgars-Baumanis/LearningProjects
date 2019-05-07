@@ -50,7 +50,6 @@ class BudgetController: UIViewController {
         view.addSubview(btn)
     }
 
-
     func showButtons(_ showing: Bool) {
         buttonsShown = !showing
         if !showing {
@@ -58,8 +57,7 @@ class BudgetController: UIViewController {
             addField?.layer.cornerRadius = 35
             addField?.backgroundColor = .white
             addField?.setTitle("Add", for: .normal)
-            addField?.titleLabel?.font = UIFont.systemFont(ofSize: 50)
-            addField?.setTitleColor(.black, for: .normal)
+             addField?.setTitleColor(.black, for: .normal)
             addField?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)
             addField?.alpha = 0.7
             editTotal?.layer.borderWidth = 1

@@ -22,4 +22,6 @@ enum Strings: String {
     case IdeaTopicSB = "IdeaTopic"
     case TaskTopicSB = "TaskTopic"
     case AddTaskSB = "AddTask"
+    case UserProfile = "UserProfile"
+    case CellLooks = "CellLooks"
 }

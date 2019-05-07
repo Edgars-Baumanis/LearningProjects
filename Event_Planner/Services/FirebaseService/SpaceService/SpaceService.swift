@@ -22,7 +22,7 @@ class SpaceService: PSpacesService {
 
     func getSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
         var allSpaces: [SpaceDO] = []
-        spaceRoute?.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        spaceRoute?.observeSingleEvent(of: .value, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             post?.forEach({ (key, value) in
                 let singleSpace = value as? [String : AnyObject]
@@ -52,7 +52,7 @@ class SpaceService: PSpacesService {
         })
     }
     func reloadSpaces(completionHandler: @escaping (SpaceDO) -> Void) {
-        spaceRoute?.observe(.childChanged, with: { [weak self] (snapshot) in
+        spaceRoute?.observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let spaceName = post?["name"] as? String,
@@ -80,7 +80,7 @@ class SpaceService: PSpacesService {
                 return
             }
         })
-        spaceRoute?.observe(.childAdded, with: { [weak self] (snapshot) in
+        spaceRoute?.observe(.childAdded, with: {(snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
                 let spaceName = post?["name"] as? String,

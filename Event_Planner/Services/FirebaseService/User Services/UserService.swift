@@ -10,19 +10,24 @@ import UIKit
 import Firebase
 
 class UserService: PUserService {
+
     private let firebaseAuth = Auth.auth()
     private let ref = Database.database().reference()
     private let usersString = "Users"
     var user: UserDO?
     
-    func login(email: String, password: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
+    func login(email: String?, password: String?, completionHandler: @escaping ((String?) -> Void)) {
+        guard email?.isEmpty != true, password?.isEmpty != true else {
+            completionHandler("Empty fields")
+            return
+        }
+        Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] (user, error) in
             guard
                 error == nil,
                 let loginEmail = self?.firebaseAuth.currentUser?.email,
                 let loginUserID = self?.firebaseAuth.currentUser?.uid
                 else {
-                    completionHandler(nil, "Wrong credentionals!")
+                    completionHandler("Wrong credentials")
                     return
             }
             guard let usersString = self?.usersString else { return }
@@ -37,29 +42,35 @@ class UserService: PUserService {
                 if loginEmail == email && loginUserID == userID {
                     let myUser = UserDO(email: email, userID: userID, userName: userName)
                     self?.user = myUser
-
-                    completionHandler(myUser,nil)
+                    completionHandler(nil)
                 }
             })
         }
     }
     
-    func register(email: String, password: String, userName: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
-        if self.isValid(email: email) {
-            Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+    func register(email: String?, password: String?, userName: String?, completionHandler: @escaping ((String?) -> Void)) {
+
+        guard email?.isEmpty != true, password?.isEmpty != true, userName?.isEmpty != true else {
+            completionHandler("Empty Fields")
+            return
+        }
+
+        if self.isValid(email: email!) {
+            Auth.auth().createUser(withEmail: email!, password: password!) { [weak self] (user, error) in
                 guard
                     error == nil,
                     let email = self?.firebaseAuth.currentUser?.email,
                     let uid = self?.firebaseAuth.currentUser?.uid
                     else {
-                        completionHandler(nil, "Email already exists")
+                        print(error)
+                        completionHandler("Email already exists")
                         return
                 }
                 guard let usersString = self?.usersString else { return }
-                let myUser = UserDO(email: email, userID: uid, userName: userName)
+                let myUser = UserDO(email: email, userID: uid, userName: userName!)
                 self?.user = myUser
                 self?.ref.child(usersString).child(uid).setValue(myUser.sendData())
-                completionHandler(myUser, nil)
+                completionHandler(nil)
             }
         }
     }
@@ -101,5 +112,16 @@ class UserService: PUserService {
         } else {
             return true
         }
+    }
+
+    func deleteAcc(completionHandler: @escaping ((String?) -> Void)) {
+        firebaseAuth.currentUser?.delete(completion: { (error) in
+            if error == nil {
+                completionHandler(nil)
+            } else {
+                guard let error = error as? String else { return }
+                completionHandler(error)
+            }
+        })
     }
 }

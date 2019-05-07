@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskOverview" customModule="Event_Planner" customModuleProvider="target">
+            <connections>
+                <outlet property="sectionHeaderButton" destination="n2b-Zv-Pj3" id="NCQ-dS-n3y"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wkG-xg-2dz">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xcg-Ls-Nze">
+                    <rect key="frame" x="335" y="20" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="i6A-fb-qPt"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-Zv-Pj3">
+                    <rect key="frame" x="20" y="10" width="315" height="40"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="headerPressed:" destination="-1" eventType="touchUpInside" id="bbQ-Ay-wui"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xcg-Ls-Nze" secondAttribute="trailing" constant="20" id="1Ob-TI-Uxc"/>
+                <constraint firstItem="n2b-Zv-Pj3" firstAttribute="leading" secondItem="5tL-SN-yKm" secondAttribute="leading" constant="20" id="8Qa-p9-azW"/>
+                <constraint firstAttribute="bottom" secondItem="xcg-Ls-Nze" secondAttribute="bottom" constant="20" id="LN1-ZR-X71"/>
+                <constraint firstItem="n2b-Zv-Pj3" firstAttribute="top" secondItem="5tL-SN-yKm" secondAttribute="top" constant="10" id="NAf-Er-pVZ"/>
+                <constraint firstItem="5tL-SN-yKm" firstAttribute="bottom" secondItem="n2b-Zv-Pj3" secondAttribute="bottom" constant="10" id="XOR-rF-Ttw"/>
+                <constraint firstItem="xcg-Ls-Nze" firstAttribute="top" secondItem="wkG-xg-2dz" secondAttribute="top" constant="20" id="ZWb-M4-V0z"/>
+                <constraint firstItem="xcg-Ls-Nze" firstAttribute="leading" secondItem="n2b-Zv-Pj3" secondAttribute="trailing" id="kbk-kq-n7h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="5tL-SN-yKm"/>
+            <point key="canvasLocation" x="103" y="162"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Arrow_Icon" width="512" height="512"/>
+    </resources>
+</document>

@@ -24,5 +24,5 @@ protocol PTaskService {
     func deleteTask(spaceKey: String?, topicKey: String?, taskKey: String?, caller: String?, completionHandler: @escaping (String?) -> Void)
 
     func transferTask(spaceKey: String?, topicKey: String?, task: TaskDO?, transferTo: String?, caller: String?, completionHandler: @escaping (String?) -> Void)
-
+    func saveTask(spaceKey: String?, topicKey: String?, task: TaskDO, caller: String?, taskKey: String?, completionHandler: @escaping (String?) -> Void)
 }

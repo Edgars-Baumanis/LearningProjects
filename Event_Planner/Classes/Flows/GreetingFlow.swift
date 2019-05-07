@@ -12,7 +12,6 @@ class GreetingFlow: FlowController {
     
     var rootController: UINavigationController?
     private var userService: PUserService?
-    var greetingNavController: UINavigationController?
     var navigateToSpaces: (()->Void)?
 
     init(with rootController: UINavigationController?, userService: PUserService?) {
@@ -38,9 +37,7 @@ class GreetingFlow: FlowController {
             self?.navigateToRegister()
         }
         vc.viewModel = viewModel
-        greetingNavController = UINavigationController(rootViewController: vc)
-        guard let greetingNavController = greetingNavController else { return }
-        rootController?.present(greetingNavController, animated: false, completion: nil)
+        rootController = UINavigationController(rootViewController: vc)
     }
     
     private var loginVC: LoginVC? {
@@ -49,7 +46,7 @@ class GreetingFlow: FlowController {
     
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
-        greetingNavController?.pushViewController(vc, animated: true)
+        rootController?.pushViewController(vc, animated: true)
         let viewModel = LoginModel(userService: userService)
        
         viewModel.loggedIn = { [weak self] in
@@ -66,7 +63,7 @@ class GreetingFlow: FlowController {
     
     private func navigateToRegister() {
         guard let vc = registerVC else { return }
-        greetingNavController?.pushViewController(vc, animated: true)
+        rootController?.pushViewController(vc, animated: true)
         let viewModel = SignUpModel(userService: userService)
         viewModel.navigateToSpaces = { [weak self] in
             self?.rootController?.dismiss(animated: true, completion: nil)

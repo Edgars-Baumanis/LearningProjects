@@ -24,7 +24,7 @@ class AddTaskModel {
         self.taskTopic = taskTopic
         self.userServices = userServices
         dateFormatter = DateFormatter()
-        dateFormatter?.dateFormat = "EEEE, MMM d, yyyy"
+        dateFormatter?.dateFormat = "EEEE, MMM d, yyyy, HH:mm"
         self.taskService = taskService
     }
 
@@ -33,9 +33,12 @@ class AddTaskModel {
             taskName?.isEmpty != true,
             taskDescription?.isEmpty != true,
             deadline?.isEmpty != true,
-            let userID = userServices?.user?.userID
-            else { return }
-        let newTask = TaskDO(name: taskName!, description: taskDescription!, key: nil, ownerID: userID, deadline: deadline!)
+            let user = userServices?.user?.userName
+            else {
+                errorMessage?("Empty Fields")
+                return
+        }
+        let newTask = TaskDO(name: taskName!, description: taskDescription!, key: nil, ownerID: user, deadline: deadline!)
         taskService?.addTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: newTask) { [weak self] (error) in
             if error == nil {
                 self?.addTaskPressed?()

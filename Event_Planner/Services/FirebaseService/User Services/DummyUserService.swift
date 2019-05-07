@@ -9,20 +9,23 @@
 import Foundation
 
 class DumbUserService: PUserService {
+    func deleteAcc(completionHandler: @escaping ((String?) -> Void)) {
+    }
+
 
     var user: UserDO?
 
-    func login(email: String, password: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
-        if isValid(email: email) {
-            let dummyUser = UserDO(email: email, userID: "qwertyuioiuytrew", userName: "randomUserName")
-            completionHandler(dummyUser, nil)
+    func login(email: String?, password: String?, completionHandler: @escaping ((String?) -> Void)) {
+        if isValid(email: email!) {
+            let dummyUser = UserDO(email: email!, userID: "qwertyuioiuytrew", userName: "randomUserName")
+            completionHandler(nil)
             self.user = dummyUser
         } else {
-            completionHandler(nil, "Something went wrong!")
+            completionHandler("Something went wrong!")
         }
     }
 
-    func register(email: String, password: String, userName: String, completionHandler: @escaping ((UserDO?, String?) -> Void)) {
+    func register(email: String?, password: String?, userName: String?, completionHandler: @escaping (( String?) -> Void)) {
     }
 
     private func isValid(email: String) -> Bool {

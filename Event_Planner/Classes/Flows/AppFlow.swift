@@ -31,15 +31,9 @@ class AppFlow: FlowController {
         budgetService = BudgetService()
 
     }
-
-    private lazy var spacesVC: MySpacesVC? = {
-        return UIStoryboard(name: Strings.SpacesSB.rawValue, bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: MySpacesVC.self)) as? MySpacesVC
-    }()
     
     func start() {
-        guard let isLoggedIn = userService?.isLoggedIn(), let spacesVC = spacesVC else { return }
-        rootController = UINavigationController(rootViewController: spacesVC)
-        window.rootViewController = rootController
+        guard let isLoggedIn = userService?.isLoggedIn() else { return }
         if isLoggedIn {
             self.navigateToSpacesFlow()
         } else {
@@ -53,15 +47,18 @@ class AppFlow: FlowController {
         greetingFlow.navigateToSpaces = { [weak self] in
             self?.navigateToSpacesFlow()
         }
+        window.rootViewController = greetingFlow.rootController
         childFlow = greetingFlow
     }
     
     private func navigateToSpacesFlow() {
-        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService, spacesVC: spacesVC)
+        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService)
         spacesFlow.start()
-        childFlow = spacesFlow
         spacesFlow.logoutPressed = { [weak self] in
-            self?.navigateToGreetingFlow()
+            self?.start()
         }
+        window.rootViewController = spacesFlow.rootController
+        childFlow = spacesFlow
     }
+
 }

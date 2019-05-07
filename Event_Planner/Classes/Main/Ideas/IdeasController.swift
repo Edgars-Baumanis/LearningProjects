@@ -15,6 +15,9 @@ class IdeasController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let id = String(describing: TopicCell.self)
+        allIdeas.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         allIdeas.delegate = self
         allIdeas.dataSource = self
         viewModel?.getTopics()
@@ -47,7 +50,7 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
         
 
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(subject: viewModel?.filteredDataSource[indexPath.row].name)
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].name)
         }
         
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
@@ -59,5 +62,9 @@ extension IdeasController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToIdea?(viewModel?.filteredDataSource[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
 }

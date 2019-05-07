@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3F599E29EFBFEDD4DB1E6C3A /* Pods_Event_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57EBC55AC46D9C331ABCD28 /* Pods_Event_Planner.framework */; };
-		4902173122520B2D00A1F670 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902173022520B2D00A1F670 /* TaskCell.swift */; };
 		4902173522520F8A00A1F670 /* TaskOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902173422520F8A00A1F670 /* TaskOverviewModel.swift */; };
 		4902173722525A7200A1F670 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902173622525A7200A1F670 /* TaskDetails.swift */; };
 		490217392252625600A1F670 /* TaskDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490217382252625600A1F670 /* TaskDetailsModel.swift */; };
 		4902A1A32229214900580D44 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A22229214900580D44 /* UserService.swift */; };
 		4902A1A622297D7300580D44 /* PDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902A1A522297D7300580D44 /* PDependencies.swift */; };
-		4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C86522369ADE00A31D98 /* TasksCell.swift */; };
 		490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543BF2245106800FC28A1 /* AddTotalBudget.swift */; };
 		490543C2224510AE00FC28A1 /* AddTotalBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */; };
+		49071D50227ABEBF0062C2D6 /* PresentableTaskDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49071D4F227ABEBF0062C2D6 /* PresentableTaskDO.swift */; };
+		490C17FF22783D6400BAE2B2 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C17FE22783D6400BAE2B2 /* Toolbar.swift */; };
+		490C180122785DDA00BAE2B2 /* TextFieldSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C180022785DDA00BAE2B2 /* TextFieldSubclass.swift */; };
 		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
 		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
 		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
@@ -39,7 +40,6 @@
 		49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDD223A8A4D00C6A160 /* FieldCell.swift */; };
 		49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */; };
 		49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE2223AA72C00C6A160 /* IdeaCell.swift */; };
-		49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE4223AA7DB00C6A160 /* TopicCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
 		4911E172223022D300EB8474 /* LoginFunc_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E171223022D300EB8474 /* LoginFunc_Test.swift */; };
 		4911E179223022DA00EB8474 /* DummyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E50E9E222FCB3000FFD8B7 /* DummyUserService.swift */; };
@@ -76,6 +76,11 @@
 		493E4E51224D0A320009993A /* PBudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E50224D0A320009993A /* PBudgetService.swift */; };
 		493E4E53224D0A670009993A /* BudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E4E52224D0A670009993A /* BudgetService.swift */; };
 		49407B2C2251F106004290D8 /* TaskOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49407B2B2251F106004290D8 /* TaskOverview.swift */; };
+		4940A633226456E100D2BCC9 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A632226456E100D2BCC9 /* UserProfileVC.swift */; };
+		4940A635226456FF00D2BCC9 /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A634226456FF00D2BCC9 /* UserProfileModel.swift */; };
+		4940A6382264578400D2BCC9 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4940A6372264578400D2BCC9 /* UserProfile.storyboard */; };
+		4940A63D22647AB400D2BCC9 /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A63C22647AB400D2BCC9 /* EditAccountVC.swift */; };
+		4940A63F22647ABC00D2BCC9 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A63E22647ABC00D2BCC9 /* EditAccountModel.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -108,7 +113,6 @@
 		49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49809C552223EE9900295608 /* GoogleService-Info.plist */; };
 		499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */; };
 		499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */; };
-		49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */; };
 		49B7A6382239237B00D4A8EC /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A6372239237B00D4A8EC /* TasksModel.swift */; };
 		49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A63C22392BE200D4A8EC /* UIColor.swift */; };
 		49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7A64022394EC800D4A8EC /* ChatsModel.swift */; };
@@ -117,6 +121,11 @@
 		49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CBE2E82227E56600DFE240 /* Greeting.storyboard */; };
 		49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */; };
 		49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */; };
+		49CD50AB227ADEED008103AC /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CD50AA227ADEED008103AC /* TableViewHeader.xib */; };
+		49CD50AE227B1FC1008103AC /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50AD227B1FC1008103AC /* ChangePassword.swift */; };
+		49CD50B0227B1FE6008103AC /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50AF227B1FE6008103AC /* ChangePasswordModel.swift */; };
+		49CD50C722818A91008103AC /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50C522818A91008103AC /* TopicCell.swift */; };
+		49CD50C822818A91008103AC /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CD50C622818A91008103AC /* TopicCell.xib */; };
 		49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413A22326B4800BCF2CA /* MainViewController.swift */; };
 		49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413C22326B5500BCF2CA /* MainFlow.swift */; };
 		49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E50E9C222FC44500FFD8B7 /* Main.storyboard */; };
@@ -144,15 +153,16 @@
 
 /* Begin PBXFileReference section */
 		41BA0A7A0FA3D970FCE2407E /* Pods-Event_Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event_Planner.release.xcconfig"; path = "Target Support Files/Pods-Event_Planner/Pods-Event_Planner.release.xcconfig"; sourceTree = "<group>"; };
-		4902173022520B2D00A1F670 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		4902173422520F8A00A1F670 /* TaskOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOverviewModel.swift; sourceTree = "<group>"; };
 		4902173622525A7200A1F670 /* TaskDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
 		490217382252625600A1F670 /* TaskDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsModel.swift; sourceTree = "<group>"; };
 		4902A1A22229214900580D44 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4902A1A522297D7300580D44 /* PDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDependencies.swift; sourceTree = "<group>"; };
-		4904C86522369ADE00A31D98 /* TasksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCell.swift; sourceTree = "<group>"; };
 		490543BF2245106800FC28A1 /* AddTotalBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTotalBudget.swift; sourceTree = "<group>"; };
 		490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTotalBudgetModel.swift; sourceTree = "<group>"; };
+		49071D4F227ABEBF0062C2D6 /* PresentableTaskDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableTaskDO.swift; sourceTree = "<group>"; };
+		490C17FE22783D6400BAE2B2 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		490C180022785DDA00BAE2B2 /* TextFieldSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSubclass.swift; sourceTree = "<group>"; };
 		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
 		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
 		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
@@ -175,7 +185,6 @@
 		49108CDD223A8A4D00C6A160 /* FieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCell.swift; sourceTree = "<group>"; };
 		49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopic.swift; sourceTree = "<group>"; };
 		49108CE2223AA72C00C6A160 /* IdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCell.swift; sourceTree = "<group>"; };
-		49108CE4223AA7DB00C6A160 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
 		4911E16F223022D300EB8474 /* UserService Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UserService Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911E171223022D300EB8474 /* LoginFunc_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFunc_Test.swift; sourceTree = "<group>"; };
@@ -211,6 +220,11 @@
 		493E4E50224D0A320009993A /* PBudgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBudgetService.swift; sourceTree = "<group>"; };
 		493E4E52224D0A670009993A /* BudgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetService.swift; sourceTree = "<group>"; };
 		49407B2B2251F106004290D8 /* TaskOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOverview.swift; sourceTree = "<group>"; };
+		4940A632226456E100D2BCC9 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		4940A634226456FF00D2BCC9 /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
+		4940A6372264578400D2BCC9 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		4940A63C22647AB400D2BCC9 /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
+		4940A63E22647ABC00D2BCC9 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -245,7 +259,6 @@
 		49809C552223EE9900295608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceController.swift; sourceTree = "<group>"; };
 		499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASpaceController.swift; sourceTree = "<group>"; };
-		49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
 		49B7A6372239237B00D4A8EC /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		49B7A63C22392BE200D4A8EC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		49B7A64022394EC800D4A8EC /* ChatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsModel.swift; sourceTree = "<group>"; };
@@ -254,6 +267,11 @@
 		49CBE2E82227E56600DFE240 /* Greeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Greeting.storyboard; sourceTree = "<group>"; };
 		49CBE2EA2227FAAC00DFE240 /* CreateASpaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateASpaceModel.swift; sourceTree = "<group>"; };
 		49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinASapceModel.swift; sourceTree = "<group>"; };
+		49CD50AA227ADEED008103AC /* TableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		49CD50AD227B1FC1008103AC /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		49CD50AF227B1FE6008103AC /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
+		49CD50C522818A91008103AC /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		49CD50C622818A91008103AC /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		49E0413A22326B4800BCF2CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		49E0413C22326B5500BCF2CA /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		49E50E9C222FC44500FFD8B7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -320,14 +338,6 @@
 			path = PDependencies;
 			sourceTree = "<group>";
 		};
-		4904C86422369A7D00A31D98 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				4904C86522369ADE00A31D98 /* TasksCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		490D4B1E223BC71800E07DB3 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,11 +370,11 @@
 			isa = PBXGroup;
 			children = (
 				49407B2B2251F106004290D8 /* TaskOverview.swift */,
+				49CD50AA227ADEED008103AC /* TableViewHeader.xib */,
 				4902173422520F8A00A1F670 /* TaskOverviewModel.swift */,
 				490D4B39223FD8FF00E07DB3 /* TaskTopic.storyboard */,
 				495E1C8122437E9B0002F096 /* TaskDetails */,
 				495E1C7E22437B810002F096 /* TaskAddTask */,
-				495E1C6422424BE80002F096 /* Cells */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -451,7 +461,6 @@
 				4935AB162232873D0061AE47 /* Ideas.storyboard */,
 				49108CCF223A424C00C6A160 /* AddTopic */,
 				49108CDF223AA5A000C6A160 /* IdeaTopic */,
-				49B7A6342239078F00D4A8EC /* Cell */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
@@ -464,7 +473,6 @@
 				4935AB18223287440061AE47 /* Chat.storyboard */,
 				490D4B1E223BC71800E07DB3 /* Chat */,
 				49B7A642223951F700D4A8EC /* CreateChat */,
-				49B7A6312238F79800D4A8EC /* Cell */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -477,7 +485,6 @@
 				4935AB1C223287730061AE47 /* Tasks.storyboard */,
 				490D4B30223FD6EC00E07DB3 /* Task */,
 				49B7A6392239269C00D4A8EC /* AddTaskTopic */,
-				4904C86422369A7D00A31D98 /* Cell */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -508,6 +515,7 @@
 				493E4E48224CD3950009993A /* TaskDO.swift */,
 				493E4E4E224D052D0009993A /* BudgetDO.swift */,
 				493840B1225789D6004A9252 /* UserDO.swift */,
+				49071D4F227ABEBF0062C2D6 /* PresentableTaskDO.swift */,
 			);
 			path = "Data Objects";
 			sourceTree = "<group>";
@@ -548,10 +556,31 @@
 			path = BudgetService;
 			sourceTree = "<group>";
 		};
+		4940A6362264577000D2BCC9 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				49CD50AC227B1FAC008103AC /* ChangePassword */,
+				4940A63922647A8B00D2BCC9 /* EditAccount */,
+				4940A632226456E100D2BCC9 /* UserProfileVC.swift */,
+				4940A634226456FF00D2BCC9 /* UserProfileModel.swift */,
+				4940A6372264578400D2BCC9 /* UserProfile.storyboard */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		4940A63922647A8B00D2BCC9 /* EditAccount */ = {
+			isa = PBXGroup;
+			children = (
+				4940A63C22647AB400D2BCC9 /* EditAccountVC.swift */,
+				4940A63E22647ABC00D2BCC9 /* EditAccountModel.swift */,
+			);
+			path = EditAccount;
+			sourceTree = "<group>";
+		};
 		49451A1F2224426100AC8350 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				49451A292224426100AC8350 /* AppDelegate.swift */,
+				49CD50B42281680E008103AC /* TopicCells */,
 				49451A202224426100AC8350 /* Greeting */,
 				49451A2A2224426100AC8350 /* Spaces */,
 				49E0413922326B1000BCF2CA /* Main */,
@@ -587,10 +616,12 @@
 			children = (
 				49451A272224426100AC8350 /* Background.swift */,
 				49459D09222E63B10020A8BA /* TextBoxSubclass.swift */,
+				490C180022785DDA00BAE2B2 /* TextFieldSubclass.swift */,
 				49B7A63C22392BE200D4A8EC /* UIColor.swift */,
 				491EB8B8224E2CD200549B19 /* UITableView.swift */,
 				491EB8B6224E2B6600549B19 /* Animations.swift */,
 				491EB8BA224E2DC200549B19 /* AnimationFactory.swift */,
+				490C17FE22783D6400BAE2B2 /* Toolbar.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -598,6 +629,7 @@
 		49451A2A2224426100AC8350 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				4940A6362264577000D2BCC9 /* UserProfile */,
 				49809C472223E61500295608 /* Spaces.storyboard */,
 				49CBE2ED22281BBA00DFE240 /* MySpaces */,
 				49CBE2EC22281B9C00DFE240 /* CreateASpace */,
@@ -668,14 +700,6 @@
 			path = InnerFlows;
 			sourceTree = "<group>";
 		};
-		495E1C6422424BE80002F096 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4902173022520B2D00A1F670 /* TaskCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		495E1C7B2243735B0002F096 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,6 +753,7 @@
 		49809C422223E61500295608 /* Event_Planner */ = {
 			isa = PBXGroup;
 			children = (
+				49451A292224426100AC8350 /* AppDelegate.swift */,
 				493A9587224B5E67007171F0 /* Data Objects */,
 				4902A1A02229212100580D44 /* Services */,
 				49451A1F2224426100AC8350 /* Classes */,
@@ -747,22 +772,6 @@
 				493840AF22576223004A9252 /* OtherCells.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		49B7A6312238F79800D4A8EC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				49B7A6322238F7BB00D4A8EC /* ChatsCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		49B7A6342239078F00D4A8EC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				49108CE4223AA7DB00C6A160 /* TopicCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		49B7A6392239269C00D4A8EC /* AddTaskTopic */ = {
@@ -809,6 +818,24 @@
 				49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */,
 			);
 			path = JoinASpace;
+			sourceTree = "<group>";
+		};
+		49CD50AC227B1FAC008103AC /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				49CD50AD227B1FC1008103AC /* ChangePassword.swift */,
+				49CD50AF227B1FE6008103AC /* ChangePasswordModel.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		49CD50B42281680E008103AC /* TopicCells */ = {
+			isa = PBXGroup;
+			children = (
+				49CD50C522818A91008103AC /* TopicCell.swift */,
+				49CD50C622818A91008103AC /* TopicCell.xib */,
+			);
+			path = TopicCells;
 			sourceTree = "<group>";
 		};
 		49E0413922326B1000BCF2CA /* Main */ = {
@@ -970,15 +997,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CD50AB227ADEED008103AC /* TableViewHeader.xib in Resources */,
 				490D4B3A223FD8FF00E07DB3 /* TaskTopic.storyboard in Resources */,
 				49CBE2E92227E56600DFE240 /* Greeting.storyboard in Resources */,
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
 				490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */,
+				49CD50C822818A91008103AC /* TopicCell.xib in Resources */,
 				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				490D4B2A223FB29C00E07DB3 /* IdeaTopic.storyboard in Resources */,
 				495E1C8022437CE00002F096 /* AddTask.storyboard in Resources */,
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
+				4940A6382264578400D2BCC9 /* UserProfile.storyboard in Resources */,
 				4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */,
 				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
 				4935AB19223287440061AE47 /* Chat.storyboard in Resources */,
@@ -1075,6 +1105,7 @@
 				49451A3F2224426100AC8350 /* AppDelegate.swift in Sources */,
 				49CBE2E72227CEEA00DFE240 /* FlowController.swift in Sources */,
 				49451A472224426100AC8350 /* SpacesFlow.swift in Sources */,
+				49CD50B0227B1FE6008103AC /* ChangePasswordModel.swift in Sources */,
 				495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */,
 				493E4E4F224D052D0009993A /* BudgetDO.swift in Sources */,
 				490543C2224510AE00FC28A1 /* AddTotalBudgetModel.swift in Sources */,
@@ -1086,7 +1117,7 @@
 				493A958B224BAA39007171F0 /* IdeaService.swift in Sources */,
 				4902173722525A7200A1F670 /* TaskDetails.swift in Sources */,
 				495E1C952243DE340002F096 /* CurrentUserCell.swift in Sources */,
-				4904C86622369ADE00A31D98 /* TasksCell.swift in Sources */,
+				490C180122785DDA00BAE2B2 /* TextFieldSubclass.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
@@ -1098,8 +1129,6 @@
 				490D4B412240E4B400E07DB3 /* AddBudgetModel.swift in Sources */,
 				49451A402224426100AC8350 /* MySpacesVC.swift in Sources */,
 				490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */,
-				49108CE5223AA7DB00C6A160 /* TopicCell.swift in Sources */,
-				49B7A6332238F7BB00D4A8EC /* ChatsCell.swift in Sources */,
 				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
@@ -1107,9 +1136,11 @@
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
 				491EB8B7224E2B6600549B19 /* Animations.swift in Sources */,
+				49071D50227ABEBF0062C2D6 /* PresentableTaskDO.swift in Sources */,
 				495E1C78224297650002F096 /* ChatsFlow.swift in Sources */,
 				49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */,
 				490D4B4422412CE300E07DB3 /* AddIdea.swift in Sources */,
+				4940A63F22647ABC00D2BCC9 /* EditAccountModel.swift in Sources */,
 				4902173522520F8A00A1F670 /* TaskOverviewModel.swift in Sources */,
 				490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */,
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
@@ -1119,6 +1150,7 @@
 				493E4E3F224CB8660009993A /* ChatDO.swift in Sources */,
 				493E4E3D224CB7B50009993A /* MessageDO.swift in Sources */,
 				495E1C7A224297800002F096 /* TasksFlow.swift in Sources */,
+				490C17FF22783D6400BAE2B2 /* Toolbar.swift in Sources */,
 				4935AB152232869F0061AE47 /* MainModel.swift in Sources */,
 				49498E8A224A5A03008D2475 /* SpaceService.swift in Sources */,
 				490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */,
@@ -1129,6 +1161,7 @@
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				493840B022576223004A9252 /* OtherCells.swift in Sources */,
+				4940A633226456E100D2BCC9 /* UserProfileVC.swift in Sources */,
 				493E4E45224CB95F0009993A /* PChatService.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
 				49451A422224426100AC8350 /* MySpacesModel.swift in Sources */,
@@ -1136,16 +1169,17 @@
 				49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */,
 				493E4E53224D0A670009993A /* BudgetService.swift in Sources */,
 				493E4E47224CB9720009993A /* ChatService.swift in Sources */,
+				4940A635226456FF00D2BCC9 /* UserProfileModel.swift in Sources */,
 				493E4E51224D0A320009993A /* PBudgetService.swift in Sources */,
 				493E4E4B224CD5890009993A /* PTaskService.swift in Sources */,
 				49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */,
+				49CD50AE227B1FC1008103AC /* ChangePassword.swift in Sources */,
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				491EB8BB224E2DC200549B19 /* AnimationFactory.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
-				4902173122520B2D00A1F670 /* TaskCell.swift in Sources */,
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,
 				49451A3D2224426100AC8350 /* Background.swift in Sources */,
@@ -1154,12 +1188,14 @@
 				495E1C762242975C0002F096 /* IdeasFlow.swift in Sources */,
 				493A958F224BAAAE007171F0 /* IdeaDO.swift in Sources */,
 				49498E85224A26A5008D2475 /* AddTaskTopic.swift in Sources */,
+				4940A63D22647AB400D2BCC9 /* EditAccountVC.swift in Sources */,
 				490D4B2D223FB44100E07DB3 /* AddTopicModel.swift in Sources */,
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
 				493A958D224BAA45007171F0 /* PIdeaService.swift in Sources */,
 				493A9593224BAB0E007171F0 /* TopicDO.swift in Sources */,
+				49CD50C722818A91008103AC /* TopicCell.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

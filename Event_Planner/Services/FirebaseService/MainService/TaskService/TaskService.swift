@@ -160,4 +160,21 @@ class TaskService: PTaskService {
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).child(taskKey).removeValue()
         completionHandler(nil)
     }
+
+    func saveTask(spaceKey: String?, topicKey: String?, task: TaskDO, caller: String?, taskKey: String?, completionHandler: @escaping (String?) -> Void) {
+        guard
+            spaceKey?.isEmpty != true,
+            topicKey?.isEmpty != true,
+            taskKey?.isEmpty != true,
+            let caller = caller
+            else {
+                completionHandler("Empty fields for database reference")
+                return
+        }
+        let childUpdates = [
+            "/Spaces/\(spaceKey!)/Tasks/\(topicKey!)/\(caller)/\(taskKey!)" : task.sendData()
+        ]
+        self.ref.updateChildValues(childUpdates)
+        completionHandler(nil)
+    }
 }

@@ -9,10 +9,11 @@
 import UIKit
 
 class AddTask: UIViewController {
-    
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
-    @IBOutlet weak var deadline: UIDatePicker!
+    @IBOutlet weak var deadline: UITextField!
+    @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
+    
     var viewModel: AddTaskModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,28 @@ class AddTask: UIViewController {
         taskDescription.text = "Enter chat description"
         taskDescription.textColor = UIColor.placholderGrey
     }
-
-    @IBAction func addTaskPressed(_ sender: Any) {
-        viewModel?.addTask(taskName: taskName.text, taskDescription: taskDescription.text, deadline: viewModel?.dateFormatter?.string(from: deadline.date))
+    
+    @IBAction func textDidBeginEditing(_ sender: UITextField) {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .dateAndTime
+        datePickerView.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        datePickerView.minuteInterval = 15
+        datePickerView.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        datePickerView.backgroundColor = .clear
+        sender.inputView = datePickerView
+        sender.inputAccessoryView = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
     }
-    @IBAction func currentDayPressed(_ sender: Any) {
-        deadline.setDate(Date(), animated: true)
+
+    @objc func dismissPicker(_ sender: UIBarButtonItem) {
+        view.endEditing(true)
+    }
+
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        deadline.text = viewModel?.dateFormatter?.string(from: sender.date)
+    }
+
+    @IBAction func saveTaskPressed(_ sender: Any) {
+        viewModel?.addTask(taskName: taskName.text, taskDescription: taskDescription.text, deadline: deadline.text)
     }
 }
 
@@ -50,5 +67,11 @@ extension AddTask: UITextViewDelegate {
             taskDescription.text = "Enter chat description"
             taskDescription.textColor = UIColor.placholderGrey
         }
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: view.frame.width, height: .infinity)
+        let estematedSize = taskDescription.sizeThatFits(size)
+
+        descriptionHeight.constant = estematedSize.height
     }
 }

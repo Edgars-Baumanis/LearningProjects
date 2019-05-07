@@ -20,6 +20,7 @@ class MySpacesModel {
     var spaces: [SpaceDO] = []
     var dataSourceChanged: (() -> Void)?
     var joinPressed: (() -> Void)?
+    var toProfile: (() -> Void)?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService

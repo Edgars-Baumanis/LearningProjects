@@ -14,7 +14,11 @@ class TaskOverviewModel {
     private let taskService: PTaskService?
 
     var navigateToAddTask: (() -> Void)?
-    var dataSource: [[TaskDO]] = [[], [], []]
+    var dataSource: [PresentableTaskDO] = [
+            PresentableTaskDO(tasks: [], isExpanded: true),
+            PresentableTaskDO(tasks: [], isExpanded: true),
+            PresentableTaskDO(tasks: [], isExpanded: true)
+    ]
     var dataSourceChanged: (() -> Void)?
     var navigateToDetails: ((_ task: TaskDO?, String?) -> Void)?
     var errorMessage: ((String?) -> Void)?
@@ -34,7 +38,8 @@ class TaskOverviewModel {
         taskService?.getTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (tasks, section, error) in
             if error == nil {
                 guard let newTasks = tasks, let section = section else { return }
-                self?.dataSource[section].append(newTasks)
+
+                self?.dataSource[section].tasks.append(newTasks)
                 self?.dataSourceChanged?()
             } else {
                 self?.errorMessage?(error)
@@ -46,12 +51,12 @@ class TaskOverviewModel {
         taskService?.reloadTasks(spaceKey: spaceKey, topicKey: taskTopic?.key, completionHandler: { [weak self] (task, section, error) in
             if error == nil {
                 guard let newTask = task, let section = section else { return }
-                if self?.dataSource[section].contains(where: { (task) -> Bool in
+                if self?.dataSource[section].tasks.contains(where: { (task) -> Bool in
                     task.key == newTask.key
                 }) == true {
                     return
                 } else {
-                    self?.dataSource[section].append(newTask)
+                    self?.dataSource[section].tasks.append(newTask)
                     self?.dataSourceChanged?()
                 }
             } else {
@@ -64,12 +69,11 @@ class TaskOverviewModel {
         taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "NeedsDoing", completionHandler: { [weak self] (removedTask, error) in
             if error == nil {
                 guard let removedTask = removedTask else { return }
-                self?.dataSource[0].enumerated().forEach { (idx, task) in
-                    if
-                        task.name == removedTask.name &&
-                            task.description == removedTask.description &&
-                            task.key == removedTask.key {
-                        self?.dataSource[0].remove(at: idx)
+                self?.dataSource[0].tasks.enumerated().forEach { (idx, task) in
+                    if task.name == removedTask.name &&
+                        task.description == removedTask.description &&
+                        task.key == removedTask.key {
+                        self?.dataSource[0].tasks.remove(at: idx)
                     }
                 }
                 self?.dataSourceChanged?()
@@ -83,12 +87,12 @@ class TaskOverviewModel {
         taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "InProgress", completionHandler: { [weak self] (removedTask, error) in
             if error == nil {
                 guard let removedTask = removedTask else { return }
-                self?.dataSource[1].enumerated().forEach { (idx, task) in
+                self?.dataSource[1].tasks.enumerated().forEach { (idx, task) in
                     if
                         task.name == removedTask.name &&
                             task.description == removedTask.description &&
                             task.key == removedTask.key {
-                        self?.dataSource[1].remove(at: idx)
+                        self?.dataSource[1].tasks.remove(at: idx)
                     }
                 }
                 self?.dataSourceChanged?()
@@ -102,12 +106,12 @@ class TaskOverviewModel {
         taskService?.taskDeleted(spaceKey: spaceKey, topicKey: taskTopic?.key, caller: "Done", completionHandler: { [weak self] (removedTask, error) in
             if error == nil {
                 guard let removedTask = removedTask else { return }
-                self?.dataSource[2].enumerated().forEach { (idx, task) in
+                self?.dataSource[2].tasks.enumerated().forEach { (idx, task) in
                     if
                         task.name == removedTask.name &&
                             task.description == removedTask.description &&
                             task.key == removedTask.key {
-                        self?.dataSource[2].remove(at: idx)
+                        self?.dataSource[2].tasks.remove(at: idx)
                     }
                 }
                 self?.dataSourceChanged?()
@@ -120,11 +124,11 @@ class TaskOverviewModel {
     func cellPressed(section: Int, index: Int) {
         switch section {
         case 0:
-            navigateToDetails?(dataSource[section][index], "NeedsDoing")
+            navigateToDetails?(dataSource[section].tasks[index], "NeedsDoing")
         case 1:
-            navigateToDetails?(dataSource[section][index], "InProgress")
+            navigateToDetails?(dataSource[section].tasks[index], "InProgress")
         case 2:
-            navigateToDetails?(dataSource[section][index], "Done")
+            navigateToDetails?(dataSource[section].tasks[index], "Done")
         default:
             return
         }

@@ -17,6 +17,10 @@ class TasksController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+        let id = String(describing: TopicCell.self)
+
+
+        allTasks.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         allTasks.delegate = self
         allTasks.dataSource = self
         viewModel?.getTaskTopics()
@@ -45,12 +49,17 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         return viewModel?.filteredDataSource.count ?? 0
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TasksCell.self), for: indexPath)
-        if let myCell = cell as? TasksCell {
-            myCell.displayContent(taskName: viewModel?.filteredDataSource[indexPath.row].name)
+        let id = String(describing: TopicCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath)
+        if let myCell = cell as? TopicCell {
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].name)
         }
-        
+
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
         let animator = Animations(animation: animation)
         animator.animate(cell: cell, at: indexPath, in: tableView)

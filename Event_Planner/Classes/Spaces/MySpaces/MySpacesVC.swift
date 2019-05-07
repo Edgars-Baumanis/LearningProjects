@@ -52,8 +52,10 @@ class MySpacesVC: UIViewController {
 
     func confNavBar() {
         title = "Spaces"
-        let backButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutPressed))
-        navigationItem.leftBarButtonItem = backButton
+        let barButtonImage = UIImage(named: "user-Icon")
+        let profile = UIBarButtonItem(title: "profile", style: .plain, target: self, action: #selector(profilePressed))
+        profile.image = barButtonImage
+        navigationItem.leftBarButtonItem = profile
 
         let nav = self.navigationController
         nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -68,8 +70,8 @@ class MySpacesVC: UIViewController {
         return UIStatusBarStyle.default
     }
 
-    @objc func signOutPressed(_ sender: UIBarButtonItem) {
-        viewModel?.signOut()
+    @objc func profilePressed(_ sender: UIBarButtonItem) {
+        viewModel?.toProfile?()
     }
     @IBAction func joinSpacePressed(_ sender: UIButton) {
         showMoreButtons(pressed: FABPressed)

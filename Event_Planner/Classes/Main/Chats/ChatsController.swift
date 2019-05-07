@@ -15,6 +15,9 @@ class ChatsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let id = String(describing: TopicCell.self)
+        allChats.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         allChats.delegate = self
         allChats.dataSource = self
         viewModel?.dataSourceChanged = { [weak self] in
@@ -43,9 +46,9 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChatsCell.self), for: indexPath)
-        if let myCell = cell as? ChatsCell {
-            myCell.displayContent(chatName: viewModel?.filteredDataSource[indexPath.row].chatName)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+        if let myCell = cell as? TopicCell {
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].chatName)
         }
 
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
@@ -57,6 +60,10 @@ extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.navigateToChat?(viewModel?.dataSource[indexPath.row])
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
 }
 

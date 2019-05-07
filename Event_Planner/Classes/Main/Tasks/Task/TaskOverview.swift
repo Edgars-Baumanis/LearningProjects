@@ -11,22 +11,28 @@ import UIKit
 class TaskOverview: UIViewController {
     var viewModel: TaskOverviewModel?
 
+    @IBOutlet weak var sectionHeaderButton: UIButton!
     @IBOutlet weak var tasks: UITableView!
+
+    private var headers: [UIImageView] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
+
+        let id = String(describing: TopicCell.self)
+        tasks.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
         tasks.dataSource = self
         tasks.delegate = self
         viewModel?.dataSourceChanged = { [weak self] in
             self?.tasks.reloadData()
+            self?.headers.removeAll()
         }
         let floatingButton = view.floatingButton()
         floatingButton.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
         view.addSubview(floatingButton)
         title = viewModel?.taskTopic?.name
     }
-
-
 
     @objc func addPressed() {
         viewModel?.navigateToAddTask?()
@@ -36,7 +42,10 @@ class TaskOverview: UIViewController {
 extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.dataSource[section].count ?? 0
+        if !(viewModel?.dataSource[section].isExpanded == true) {
+            return 0
+        }
+        return viewModel?.dataSource[section].tasks.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -44,7 +53,7 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if viewModel?.dataSource[section].isEmpty == true {
+        if viewModel?.dataSource[section].tasks.isEmpty == true {
             return 0
         } else {
             return 60
@@ -56,9 +65,9 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskCell.self), for: indexPath)
-        if let myCell = cell as? TaskCell {
-            myCell.displayContent(name: viewModel?.dataSource[indexPath.section][indexPath.row].name)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+        if let myCell = cell as? TopicCell {
+            myCell.displayContent(labelText: viewModel?.dataSource[indexPath.section].tasks[indexPath.row].name)
         }
         return cell
     }
@@ -67,28 +76,68 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
         viewModel?.cellPressed(section: indexPath.section, index: indexPath.row)
     }
 
-    private func setUpSections(section: Int) -> UIView {
-        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
-        let sectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: sectionHeaderView.frame.width - 20, height: sectionHeaderView.frame.height - 20))
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
 
+    private func setUpSections(section: Int) -> UIView {
+        let nib = UINib(nibName: "TableViewHeader", bundle: .main)
+        let nibView = nib.instantiate(withOwner: self, options: nil).first as! UIView
         switch section {
         case 0:
-            sectionLabel.text = "Need doing"
-            sectionLabel.layer.backgroundColor = UIColor.red.cgColor
+            sectionHeaderButton.setTitle("Need doing", for: .normal)
+            sectionHeaderButton.backgroundColor = .clear
+            sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            if let header = nibView.subviews[0] as? UIImageView{
+                headers.append(header)
+            }
         case 1:
-            sectionLabel.text = "In progress"
-            sectionLabel.layer.backgroundColor = UIColor.yellow.cgColor
+            sectionHeaderButton.setTitle("In progress", for: .normal)
+            sectionHeaderButton.backgroundColor = .clear
+            sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            if let header = nibView.subviews[0] as? UIImageView{
+                headers.append(header)
+            }
         case 2:
-            sectionLabel.text = "Done"
-            sectionLabel.layer.backgroundColor = UIColor.green.cgColor
+            sectionHeaderButton.setTitle("Done", for: .normal)
+            sectionHeaderButton.backgroundColor = .clear
+            sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            if let header = nibView.subviews[0] as? UIImageView{
+                headers.append(header)
+            }
         default:
-            sectionLabel.text = "Programmers fck up"
+            sectionHeaderButton.setTitle("Programmers fault", for: .normal)
         }
-        sectionLabel.layer.borderWidth = 1
-        sectionLabel.layer.cornerRadius = 15
-        sectionLabel.textAlignment = .center
-        sectionHeaderView.addSubview(sectionLabel)
-        sectionHeaderView.setCellBackground()
-        return sectionHeaderView
+        sectionHeaderButton.setTitleColor(.black, for: .normal)
+        sectionHeaderButton.tag = section
+        nibView.subviews[0].transform = CGAffineTransform(rotationAngle: .pi)
+        return nibView
+    }
+
+
+    @IBAction func headerPressed(_ sender: UIButton) {
+        let section = sender.tag
+
+        var indexPaths = [IndexPath]()
+        guard let indices = viewModel?.dataSource[section].tasks.indices else { return }
+        for row in indices {
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
+        }
+
+        guard let isExpanded = viewModel?.dataSource[section].isExpanded else { return }
+        viewModel?.dataSource[section].isExpanded = !isExpanded
+
+        if isExpanded {
+            tasks.deleteRows(at: indexPaths, with: .fade)
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.headers[section].transform = CGAffineTransform(rotationAngle: .pi / 2)
+            }
+        } else {
+            tasks.insertRows(at: indexPaths, with: .fade)
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.headers[section].transform = CGAffineTransform(rotationAngle: .pi)
+            }
+        }
     }
 }
