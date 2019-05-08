@@ -99,6 +99,7 @@
 		49498E87224A26CF008D2475 /* AddTaskTopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E86224A26CF008D2475 /* AddTaskTopicModel.swift */; };
 		49498E8A224A5A03008D2475 /* SpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E89224A5A03008D2475 /* SpaceService.swift */; };
 		49498E8D224A5AD4008D2475 /* PSpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E8C224A5AD4008D2475 /* PSpaceService.swift */; };
+		495557042282AB6500B3171A /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495557032282AB6500B3171A /* Throttler.swift */; };
 		495E1C6C22425E540002F096 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6B22425E540002F096 /* AddTask.swift */; };
 		495E1C702242751F0002F096 /* AddTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6F2242751F0002F096 /* AddTaskModel.swift */; };
 		495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C73224296CF0002F096 /* BudgetFlow.swift */; };
@@ -126,6 +127,8 @@
 		49CD50B0227B1FE6008103AC /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50AF227B1FE6008103AC /* ChangePasswordModel.swift */; };
 		49CD50C722818A91008103AC /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50C522818A91008103AC /* TopicCell.swift */; };
 		49CD50C822818A91008103AC /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CD50C622818A91008103AC /* TopicCell.xib */; };
+		49CD50CB2281A561008103AC /* SingleSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50CA2281A561008103AC /* SingleSpaceVC.swift */; };
+		49CD50CD2281A56D008103AC /* SingleSpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD50CC2281A56D008103AC /* SingleSpaceViewModel.swift */; };
 		49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413A22326B4800BCF2CA /* MainViewController.swift */; };
 		49E0413D22326B5500BCF2CA /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0413C22326B5500BCF2CA /* MainFlow.swift */; };
 		49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E50E9C222FC44500FFD8B7 /* Main.storyboard */; };
@@ -243,6 +246,7 @@
 		49498E86224A26CF008D2475 /* AddTaskTopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTopicModel.swift; sourceTree = "<group>"; };
 		49498E89224A5A03008D2475 /* SpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceService.swift; sourceTree = "<group>"; };
 		49498E8C224A5AD4008D2475 /* PSpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSpaceService.swift; sourceTree = "<group>"; };
+		495557032282AB6500B3171A /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		495E1C6B22425E540002F096 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		495E1C6F2242751F0002F096 /* AddTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskModel.swift; sourceTree = "<group>"; };
 		495E1C73224296CF0002F096 /* BudgetFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFlow.swift; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 		49CD50AF227B1FE6008103AC /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		49CD50C522818A91008103AC /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		49CD50C622818A91008103AC /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
+		49CD50CA2281A561008103AC /* SingleSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSpaceVC.swift; sourceTree = "<group>"; };
+		49CD50CC2281A56D008103AC /* SingleSpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSpaceViewModel.swift; sourceTree = "<group>"; };
 		49E0413A22326B4800BCF2CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		49E0413C22326B5500BCF2CA /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		49E50E9C222FC44500FFD8B7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -580,12 +586,11 @@
 		49451A1F2224426100AC8350 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				49CD50B42281680E008103AC /* TopicCells */,
 				49451A202224426100AC8350 /* Greeting */,
 				49451A2A2224426100AC8350 /* Spaces */,
 				49E0413922326B1000BCF2CA /* Main */,
 				49451A2F2224426100AC8350 /* Flows */,
-				49451A262224426100AC8350 /* Extentions */,
+				49451A262224426100AC8350 /* Supporting Files */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -611,7 +616,7 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		49451A262224426100AC8350 /* Extentions */ = {
+		49451A262224426100AC8350 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				49451A272224426100AC8350 /* Background.swift */,
@@ -622,13 +627,15 @@
 				491EB8B6224E2B6600549B19 /* Animations.swift */,
 				491EB8BA224E2DC200549B19 /* AnimationFactory.swift */,
 				490C17FE22783D6400BAE2B2 /* Toolbar.swift */,
+				495557032282AB6500B3171A /* Throttler.swift */,
 			);
-			path = Extentions;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		49451A2A2224426100AC8350 /* Spaces */ = {
 			isa = PBXGroup;
 			children = (
+				49CD50B42281680E008103AC /* TopicCells */,
 				4940A6362264577000D2BCC9 /* UserProfile */,
 				49809C472223E61500295608 /* Spaces.storyboard */,
 				49CBE2ED22281BBA00DFE240 /* MySpaces */,
@@ -814,6 +821,7 @@
 		49CBE2EE22281BD000DFE240 /* JoinASpace */ = {
 			isa = PBXGroup;
 			children = (
+				49CD50C92281A54F008103AC /* SingleSpace */,
 				499D7EB0222573DC00694DD6 /* JoinASpaceController.swift */,
 				49CBE2EF22281BFF00DFE240 /* JoinASapceModel.swift */,
 			);
@@ -836,6 +844,15 @@
 				49CD50C622818A91008103AC /* TopicCell.xib */,
 			);
 			path = TopicCells;
+			sourceTree = "<group>";
+		};
+		49CD50C92281A54F008103AC /* SingleSpace */ = {
+			isa = PBXGroup;
+			children = (
+				49CD50CA2281A561008103AC /* SingleSpaceVC.swift */,
+				49CD50CC2281A56D008103AC /* SingleSpaceViewModel.swift */,
+			);
+			path = SingleSpace;
 			sourceTree = "<group>";
 		};
 		49E0413922326B1000BCF2CA /* Main */ = {
@@ -1158,6 +1175,7 @@
 				491EB8B9224E2CD200549B19 /* UITableView.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
+				49CD50CD2281A56D008103AC /* SingleSpaceViewModel.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				493840B022576223004A9252 /* OtherCells.swift in Sources */,
@@ -1172,6 +1190,7 @@
 				4940A635226456FF00D2BCC9 /* UserProfileModel.swift in Sources */,
 				493E4E51224D0A320009993A /* PBudgetService.swift in Sources */,
 				493E4E4B224CD5890009993A /* PTaskService.swift in Sources */,
+				49CD50CB2281A561008103AC /* SingleSpaceVC.swift in Sources */,
 				49B7A63D22392BE200D4A8EC /* UIColor.swift in Sources */,
 				49CD50AE227B1FC1008103AC /* ChangePassword.swift in Sources */,
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
@@ -1179,6 +1198,7 @@
 				493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				491EB8BB224E2DC200549B19 /* AnimationFactory.swift in Sources */,
+				495557042282AB6500B3171A /* Throttler.swift in Sources */,
 				49CBE2EB2227FAAC00DFE240 /* CreateASpaceModel.swift in Sources */,
 				49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */,
 				4935AB232232884A0061AE47 /* IdeasController.swift in Sources */,

@@ -51,6 +51,35 @@ class SpaceService: PSpacesService {
             })
         })
     }
+
+    func getAllSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
+        var allSpaces: [SpaceDO] = []
+        spaceRoute?.observeSingleEvent(of: .value, with: { (snapshot) in
+            let post = snapshot.value as? [String : AnyObject]
+            post?.forEach({ (key, value) in
+                let singleSpace = value as? [String : AnyObject]
+                guard
+                    let spaceName = singleSpace?["name"] as? String,
+                    let users = singleSpace?["users"] as? [String],
+                    let spaceDesc = singleSpace?["description"] as? String,
+                    let key = key as? String,
+                    let mainUser = singleSpace?["mainUser"] as? String,
+                    let spacePassword = singleSpace?["password"] as? String
+                    else { return }
+
+                var isValid = false
+                users.forEach({ (userID) in
+                    userID == Dependencies.instance.userService.user?.userID ? isValid = true : nil
+                })
+                if !isValid {
+                    let newSpace = SpaceDO(spaceName: spaceName, spacePassword: spacePassword, spaceDescription: spaceDesc, users: users, key: key, mainUser: mainUser, chats: nil, budget: nil, ideas: nil, tasks: nil)
+                    allSpaces.append(newSpace)
+                    completionHandler(allSpaces)
+                } else { return }
+            })
+        })
+    }
+
     func reloadSpaces(completionHandler: @escaping (SpaceDO) -> Void) {
         spaceRoute?.observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
@@ -123,48 +152,32 @@ class SpaceService: PSpacesService {
         completionHandler(nil)
     }
 
-    func joinSpace(enteredSpaceName: String?, enteredSpacePassword: String?, completionHandler: @escaping (SpaceDO?, String?) -> Void) {
-        guard enteredSpaceName?.isEmpty != true, enteredSpacePassword?.isEmpty != true else {
-            completionHandler(nil, "Please enter Space name and/or Space password")
+    func joinSpace(space: SpaceDO?, completionHandler: @escaping (SpaceDO?, String?) -> Void) {
+        guard let space = space else {
+            completionHandler(nil, "Problem with space info")
             return
         }
-        spaceRoute?.observe(.childAdded, with: { [weak self] (snapshot) in
-            let post = snapshot.value as? [String : AnyObject]
-            let chats = post?["Chats"]
-            let budget = post?["Budget"]
-            let ideas = post?["Ideas"]
-            let tasks = post?["Tasks"]
-            guard
-                let spaceName = post?["name"] as? String,
-                let spacePassword = post?["password"] as? String,
-                let spaceDescription = post?["description"] as? String,
-                var users = post?["users"] as? [String],
-                let mainUser = post?["mainUser"] as? String,
-                let key = snapshot.key as? String
-                else { return }
-            guard spaceName == enteredSpaceName, spacePassword == enteredSpacePassword else {
-                return
-            }
-            var isValid = false
-            users.forEach { (value) in
-                value == Dependencies.instance.userService.user?.userID ||
-                    mainUser == Dependencies.instance.userService.user?.userID ?
-                        isValid = true : nil
-            }
-            if isValid {
-                completionHandler(nil, "Can't join a space you are already a part of")
-                return
-            } else {
-                guard let userID = Dependencies.instance.userService.user?.userID else { return }
-                users.append(userID)
-                let newSpace = SpaceDO(spaceName: spaceName, spacePassword: spacePassword, spaceDescription: spaceDescription, users: users, key: nil, mainUser: mainUser, chats: chats, budget: budget, ideas: ideas, tasks: tasks)
-                let childUpdate = [
-                    "/Spaces/\(key)/" : newSpace.sendData()
-                ]
-                self?.ref.updateChildValues(childUpdate)
-                completionHandler(newSpace, nil)
-                return
-            }
-        })
+        var newSpace = space
+        newSpace.key = nil
+        var isValid = false
+        newSpace.users.forEach { (value) in
+            value == Dependencies.instance.userService.user?.userID ||
+                newSpace.mainUser == Dependencies.instance.userService.user?.userID ?
+                    isValid = true : nil
+        }
+        if isValid {
+            completionHandler(nil, "Can't join a space you are already a part of")
+            return
+        } else {
+            guard let userID = Dependencies.instance.userService.user?.userID else { return }
+            newSpace.users.append(userID)
+            guard let key = space.key else { return }
+            let childUpdate = [
+                "/Spaces/\(key)/" : newSpace.sendData()
+            ]
+            ref.updateChildValues(childUpdate)
+            completionHandler(newSpace, nil)
+            return
+        }
     }
 }

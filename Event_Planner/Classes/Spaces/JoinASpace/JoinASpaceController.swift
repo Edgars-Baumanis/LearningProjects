@@ -9,26 +9,60 @@
 import UIKit
 
 class JoinASpaceController: UIViewController {
+    @IBOutlet weak var allSpaces: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel: JoinASpaceModel?
-    @IBOutlet weak var spaceName: UITextField!
-    @IBOutlet weak var spacePassword: UITextField!
+    let throttler: Throttler = Throttler(minimumDelay: 0.5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
 
-        viewModel?.errorMessage = { [weak self] message in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
-            self?.present(alert, animated: true)
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+
+        let id = String(describing: TopicCell.self)
+        allSpaces.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
+        allSpaces.dataSource = self
+        allSpaces.delegate = self
+        searchBar.delegate = self
+        viewModel?.dataSourceChanged = {
+            DispatchQueue.main.async { [weak self] in
+                self?.allSpaces.reloadData()
+            }
         }
     }
+}
+
+extension JoinASpaceController: UITableViewDataSource, UITableViewDelegate {
     
-    @IBAction func joinSpacePressed(_ sender: Any) {
-        viewModel?.joinASpace(enteredSpaceName: spaceName.text, enteredSpacePassword: spacePassword.text)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.filteredDataSource.count ?? 0
     }
-    @IBAction func backPressed(_ sender: UIButton) {
-        viewModel?.backPressed?()
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
+        if let myCell = cell as? TopicCell {
+            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].spaceName)
+        }
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.cellPressed(index: indexPath.row)
+    }
+}
+
+extension JoinASpaceController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        throttler.throttle { [weak self] in
+            self?.viewModel?.filterSpaces(searchText: searchText)
+        }
     }
 }

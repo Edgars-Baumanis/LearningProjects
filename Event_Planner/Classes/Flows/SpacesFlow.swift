@@ -58,6 +58,10 @@ class SpacesFlow: FlowController {
         return userSB.instantiateViewController(withIdentifier: String(describing: EditAccountVC.self)) as? EditAccountVC
     }()
 
+    private lazy var singleSpaceVC: SingleSpaceVC? = {
+        return mainSB.instantiateViewController(withIdentifier: String(describing: SingleSpaceVC.self)) as? SingleSpaceVC
+    }()
+
     func start() {
         guard let vc = spacesVC else { return }
         let spacesViewModel = MySpacesModel(userService: userService, spaceService: spaceService)
@@ -84,14 +88,17 @@ class SpacesFlow: FlowController {
     private func navigateToJoin() {
         guard let joinVC = joinVC else {return}
         let joinViewModel = JoinASpaceModel(userService: userService, spaceService: spaceService)
-        joinViewModel.rightEntry = { [weak self] space in
-            self?.rootController?.dismiss(animated: true)
-        }
+
         joinViewModel.backPressed = { [weak self] in
-            self?.rootController?.dismiss(animated: true)
+            joinVC.viewModel = nil
+            self?.rootController?.popViewController(animated: true)
+        }
+        joinViewModel.spacePressed = { [weak self] (space) in
+            guard let self = self else { return }
+            self.navigateToJoinSingleSpace(space: space)
         }
         joinVC.viewModel = joinViewModel
-        rootController?.present(joinVC, animated: true)
+        rootController?.pushViewController(joinVC, animated: true)
     }
 
     private func navigateToCreate() {
@@ -129,5 +136,20 @@ class SpacesFlow: FlowController {
         let viewModel = EditAccountModel(userService: userService)
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToJoinSingleSpace(space: SpaceDO?) {
+        guard let vc = singleSpaceVC else { return }
+
+        let viewModel = SingleSpaceViewModel(space: space, spaceService: spaceService)
+        viewModel.closePressed = { [weak self] in
+            self?.rootController?.dismiss(animated: false, completion: nil)
+        }
+        viewModel.rightEntry = { [weak self] space in
+            self?.rootController?.dismiss(animated: false)
+        }
+        vc.viewModel = viewModel
+        vc.modalPresentationStyle = .overCurrentContext
+        rootController?.present(vc, animated: false, completion: nil)
     }
 }
