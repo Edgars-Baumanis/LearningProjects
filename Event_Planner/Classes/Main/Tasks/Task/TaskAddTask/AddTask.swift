@@ -13,7 +13,10 @@ class AddTask: UIViewController {
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var deadline: UITextField!
     @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var viewBottomConstrint: NSLayoutConstraint!
+
+    private var addTap: (() -> Void)?
+    private var removeTap: (() -> Void)?
     var viewModel: AddTaskModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,36 @@ class AddTask: UIViewController {
         taskDescription.delegate = self
         taskDescription.text = "Enter chat description"
         taskDescription.textColor = UIColor.placholderGrey
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        removeTap?()
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        if viewBottomConstrint.constant == 20 {
+            viewBottomConstrint.constant += keyboardFrame.height - 10
+        }
+        addTap?()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if viewBottomConstrint.constant != 20 {
+            viewBottomConstrint.constant = 20
+        }
     }
     
     @IBAction func textDidBeginEditing(_ sender: UITextField) {
@@ -35,6 +68,7 @@ class AddTask: UIViewController {
         datePickerView.minuteInterval = 15
         datePickerView.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         datePickerView.backgroundColor = .clear
+        datePickerView.minimumDate = Date()
         sender.inputView = datePickerView
         sender.inputAccessoryView = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
     }
@@ -68,6 +102,7 @@ extension AddTask: UITextViewDelegate {
             taskDescription.textColor = UIColor.placholderGrey
         }
     }
+
     func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: view.frame.width, height: .infinity)
         let estematedSize = taskDescription.sizeThatFits(size)

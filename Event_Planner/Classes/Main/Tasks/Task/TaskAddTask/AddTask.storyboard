@@ -13,7 +13,7 @@
         <!--Add Task-->
         <scene sceneID="2g7-R3-ogE">
             <objects>
-                <viewController storyboardIdentifier="AddTask" id="7go-Vp-SWa" customClass="AddTask" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTask" title="Add Task" id="7go-Vp-SWa" customClass="AddTask" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbQ-6R-aA8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,6 +170,7 @@
                         <outlet property="descriptionHeight" destination="aAu-1J-D0g" id="Uhi-GU-zdZ"/>
                         <outlet property="taskDescription" destination="O13-Kn-FDg" id="Uq0-Mh-BM6"/>
                         <outlet property="taskName" destination="3I7-DV-zsn" id="m3s-Nj-nfU"/>
+                        <outlet property="viewBottomConstrint" destination="ABD-A0-jds" id="zbd-7l-Bez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAK-Ib-HmB" userLabel="First Responder" sceneMemberID="firstResponder"/>

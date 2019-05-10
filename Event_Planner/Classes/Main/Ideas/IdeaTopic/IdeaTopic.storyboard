@@ -31,17 +31,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsa-IC-tE2">
-                                                    <rect key="frame" x="20" y="5" width="335" height="33.5"/>
+                                                    <rect key="frame" x="20" y="5" width="335" height="34"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnp-Ev-4wL">
-                                                            <rect key="frame" x="10" y="5" width="262.5" height="23.5"/>
+                                                            <rect key="frame" x="10" y="5" width="262.5" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIh-Zt-R5p">
-                                                            <rect key="frame" x="272.5" y="5" width="52.5" height="23.5"/>
+                                                            <rect key="frame" x="272.5" y="5" width="52.5" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -167,6 +167,7 @@
                     </view>
                     <connections>
                         <outlet property="ideaName" destination="C1f-y1-hRt" id="kvg-ss-KLU"/>
+                        <outlet property="viewTopConstraint" destination="gQE-Hz-qMa" id="bnX-BU-zho"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UY-P0-WcT" userLabel="First Responder" sceneMemberID="firstResponder"/>

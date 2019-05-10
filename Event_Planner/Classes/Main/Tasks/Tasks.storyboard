@@ -40,65 +40,82 @@
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="100.29985007496252"/>
         </scene>
-        <!--Add Task Topic-->
+        <!--Add task topic-->
         <scene sceneID="NZw-mN-QAC">
             <objects>
-                <viewController storyboardIdentifier="AddTaskTopic" id="2kt-u9-2bU" customClass="AddTaskTopic" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTaskTopic" title="Add task topic" id="2kt-u9-2bU" customClass="AddTaskTopic" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u0K-le-vSz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esF-us-akR" customClass="TextFieldSubclass" customModule="Event_Planner" customModuleProvider="target">
-                                <rect key="frame" x="20" y="180" width="335" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="wT1-lo-dLl"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5u-K5-VYS">
-                                <rect key="frame" x="20" y="300" width="335" height="60"/>
-                                <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="250" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.44705882349999998" green="0.97254901959999995" blue="0.6588235294" alpha="0.59963613010000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vZD-aD-8mW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Add task">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add task topic">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addTaskClicked:" destination="2kt-u9-2bU" eventType="touchUpInside" id="hcq-84-H03"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBI-fe-PlR">
+                                <rect key="frame" x="20" y="120" width="335" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter task topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRg-jg-AHX">
+                                        <rect key="frame" x="10" y="5" width="315" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="BRg-jg-AHX" firstAttribute="leading" secondItem="CBI-fe-PlR" secondAttribute="leading" constant="10" id="Ody-dl-W2p"/>
+                                    <constraint firstAttribute="height" constant="70" id="XNQ-Na-elZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="BRg-jg-AHX" secondAttribute="bottom" constant="5" id="Yzv-N7-YuB"/>
+                                    <constraint firstAttribute="trailing" secondItem="BRg-jg-AHX" secondAttribute="trailing" constant="10" id="ymp-Fl-7Qd"/>
+                                    <constraint firstItem="BRg-jg-AHX" firstAttribute="top" secondItem="CBI-fe-PlR" secondAttribute="top" constant="5" id="zgY-oq-WbG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.masksToBounds">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="W5u-K5-VYS" firstAttribute="top" secondItem="esF-us-akR" secondAttribute="bottom" constant="60" id="06A-Ne-HQ8"/>
                             <constraint firstItem="W5u-K5-VYS" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="0A0-kt-Qzl"/>
+                            <constraint firstItem="CBI-fe-PlR" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="1YV-g5-Ma7"/>
                             <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="W5u-K5-VYS" secondAttribute="trailing" constant="20" id="4hM-ly-NTM"/>
-                            <constraint firstItem="esF-us-akR" firstAttribute="top" secondItem="hcj-pk-gIV" secondAttribute="top" constant="160" id="RE6-an-Mal"/>
-                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="esF-us-akR" secondAttribute="trailing" constant="20" id="pi7-b7-leI"/>
-                            <constraint firstItem="esF-us-akR" firstAttribute="leading" secondItem="hcj-pk-gIV" secondAttribute="leading" constant="20" id="vte-6B-1Ml"/>
+                            <constraint firstItem="W5u-K5-VYS" firstAttribute="top" secondItem="CBI-fe-PlR" secondAttribute="bottom" constant="60" id="9KR-an-o7N"/>
+                            <constraint firstItem="CBI-fe-PlR" firstAttribute="top" secondItem="hcj-pk-gIV" secondAttribute="top" constant="100" id="A3g-Ba-GdU"/>
+                            <constraint firstItem="hcj-pk-gIV" firstAttribute="trailing" secondItem="CBI-fe-PlR" secondAttribute="trailing" constant="20" id="Xnz-3N-led"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hcj-pk-gIV"/>
                     </view>
                     <connections>
-                        <outlet property="taskName" destination="esF-us-akR" id="uLX-mK-GCc"/>
+                        <outlet property="taskName" destination="BRg-jg-AHX" id="6jI-or-pV3"/>
+                        <outlet property="viewTopConstrint" destination="A3g-Ba-GdU" id="EZz-Ro-u5M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OvS-FN-p7W" userLabel="First Responder" sceneMemberID="firstResponder"/>

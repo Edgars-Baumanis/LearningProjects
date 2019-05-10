@@ -21,11 +21,12 @@ class UserService: PUserService {
             completionHandler("Empty fields")
             return
         }
-        Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] (user, error) in
+        firebaseAuth.signIn(withEmail: email!, password: password!) { [weak self] (user, error) in
             guard
                 error == nil,
                 let loginEmail = self?.firebaseAuth.currentUser?.email,
                 let loginUserID = self?.firebaseAuth.currentUser?.uid
+            
                 else {
                     completionHandler("Wrong credentials")
                     return

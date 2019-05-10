@@ -58,7 +58,7 @@ class BudgetController: UIViewController {
             addField?.backgroundColor = .white
             addField?.setTitle("Add", for: .normal)
              addField?.setTitleColor(.black, for: .normal)
-            addField?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)
+            addField?.addTarget(self, action: #selector(addBudgetPressed), for: .touchUpInside)
             addField?.alpha = 0.7
             editTotal?.layer.borderWidth = 1
             editTotal?.layer.cornerRadius = 35
@@ -66,7 +66,7 @@ class BudgetController: UIViewController {
             editTotal?.alpha = 0.7
             editTotal?.setTitle("Total", for: .normal)
             editTotal?.setTitleColor(.black, for: .normal)
-            editTotal?.addTarget(self, action: #selector(addBudgetPressed), for: .touchUpInside)
+            editTotal?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)
 
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 guard
