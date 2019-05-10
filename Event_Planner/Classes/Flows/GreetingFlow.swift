@@ -68,7 +68,7 @@ class GreetingFlow: FlowController {
         viewModel.navigateToSpaces = { [weak self] in
             self?.rootController?.dismiss(animated: true, completion: nil)
             self?.navigateToSpaces?()
-        }
+        } 
         vc.viewModel = viewModel
     }
 }

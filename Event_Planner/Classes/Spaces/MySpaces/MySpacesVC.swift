@@ -158,6 +158,6 @@ extension MySpacesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.mySpacePressed(section: indexPath.section, index: indexPath.row)
     }
-}
+} 
 
 

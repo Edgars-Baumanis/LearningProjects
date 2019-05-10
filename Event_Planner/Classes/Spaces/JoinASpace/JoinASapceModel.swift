@@ -12,24 +12,44 @@ class JoinASpaceModel {
 
     private var userService: PUserService?
     private var spaceService: PSpacesService?
+    private var throttler: Throttler?
 
     init(userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
         self.spaceService = spaceService
+        self.throttler = Throttler(minimumDelay: 0.5)
+        getSpaces()
+    }
+    var backPressed: (() -> Void)?
+    var dataSource = [SpaceDO]()
+    var filteredDataSource = [SpaceDO]()
+    var spacePressed: ((SpaceDO?) -> Void)?
+    var dataSourceChanged: (() -> Void)?
+
+    private func getSpaces() {
+        spaceService?.getAllSpaces(completionHandler: { [weak self] (spaces) in
+            self?.dataSource = spaces
+            self?.filteredDataSource = spaces
+            self?.dataSourceChanged?()
+        })
     }
 
-    var errorMessage: ((String?) -> Void)?
-    var rightEntry: ((_ space: SpaceDO) -> Void)?
-    var backPressed: (() -> Void)?
+    func cellPressed(index: Int) {
+        spacePressed?(dataSource[index])
+    }
 
-    func joinASpace(enteredSpaceName: String?, enteredSpacePassword: String?) {
-        spaceService?.joinSpace(enteredSpaceName: enteredSpaceName, enteredSpacePassword: enteredSpacePassword, completionHandler: { [weak self] (space, error) in
-            if error == nil {
-                guard let newSpace = space else { return }
-                self?.rightEntry?(newSpace)
-            } else {
-                self?.errorMessage?(error)
+    func filterSpaces(searchText: String) {
+        filteredDataSource.removeAll()
+        if searchText.isEmpty {
+            filteredDataSource = dataSource
+            dataSourceChanged?()
+        } else {
+            for space in dataSource {
+                if space.spaceName.lowercased().contains(searchText.lowercased()) {
+                    filteredDataSource.append(space)
+                    dataSourceChanged?()
+                }
             }
-        })
+        }
     }
 }

@@ -13,7 +13,7 @@ struct SpaceDO {
     let spacePassword: String?
     let spaceDescription: String
     var users: [String]
-    let key: String?
+    var key: String?
     let mainUser: String
     let chats: AnyObject?
     let budget: AnyObject?
