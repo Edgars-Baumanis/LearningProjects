@@ -18,8 +18,12 @@ class TaskDetails: UIViewController {
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var transferButton: UIButton!
+    @IBOutlet weak var viewBottomConstraint: NSLayoutConstraint!
+    
     var editButton: UIButton?
     private var lastContentOffset: CGFloat = 0
+    private var addTap: (() -> Void)?
+    private var removeTap: (() -> Void)?
     
     var viewModel: TaskDetailsModel?
     override func viewDidLoad() {
@@ -39,6 +43,39 @@ class TaskDetails: UIViewController {
             self?.setButtonTitle()
         }
         navigationController?.navigationBar.prefersLargeTitles = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        removeTap?()
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, let editButtonCenter = editButton?.center else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+
+        if viewBottomConstraint.constant == 20 {
+            viewBottomConstraint.constant += keyboardFrame.height
+            editButton?.frame = CGRect(x: keyboardFrame.maxX - 90, y: keyboardFrame.minY - 120, width: 60, height: 60)
+        }
+        addTap?()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if viewBottomConstraint.constant != 20 {
+            viewBottomConstraint.constant = 20
+            editButton?.frame = CGRect(x: view.frame.maxX - 90, y: view.frame.maxY - 120, width: 60, height: 60)
+        }
     }
 
     
@@ -47,6 +84,27 @@ class TaskDetails: UIViewController {
     }
     @IBAction func deletePressed(_ sender: UIButton) {
         viewModel?.deleteTask()
+    }
+    @IBAction func fieldDidBeginEditing(_ sender: UITextField) {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .dateAndTime
+        datePickerView.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        datePickerView.minuteInterval = 15
+        datePickerView.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        datePickerView.backgroundColor = .clear
+        guard let textDate = deadline.text, let date = viewModel?.dateFormatter?.date(from: textDate) else { return }
+        datePickerView.date = date
+        datePickerView.minimumDate = Date()
+        sender.inputView = datePickerView
+        sender.inputAccessoryView = UIToolbar().toolbarPicker(mySelect: #selector(dismissPicker))
+    }
+
+    @objc func dismissPicker(_ sender: UIBarButtonItem) {
+        view.endEditing(true)
+    }
+
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        deadline.text = viewModel?.dateFormatter?.string(from: sender.date)
     }
 
     private func createEditButton() {

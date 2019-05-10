@@ -14,7 +14,11 @@ class EditAccountVC: UIViewController {
     @IBOutlet weak var password: UITextField!
 
     var viewModel: EditAccountModel?
-    var saveButton: UIButton?
+    private var addTap: (() -> Void)?
+    private var removeTap: (() -> Void)?
+    private var isEdited = false
+    private var saveButtonCenter: CGPoint?
+    private var saveButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +29,47 @@ class EditAccountVC: UIViewController {
         newUsername.text = viewModel?.user?.userName
         newEmail.text = viewModel?.user?.email
         saveButton = UIButton(frame: CGRect(x: view.frame.maxX - 90, y: view.frame.maxY - 120, width: 0, height: 0))
+        saveButtonCenter = saveButton?.center
         saveButton?.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
         saveButton?.setImage(UIImage(named: "save_icon"), for: .normal)
         saveButton?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         guard let saveButton = saveButton else { return } 
         view.addSubview(saveButton)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        removeTap?()
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        if saveButton?.center == saveButtonCenter {
+            if isEdited {
+                saveButton?.frame = CGRect(x: keyboardFrame.maxX - 90, y: keyboardFrame.minY - 120, width: 60, height: 60)
+            } else {
+                saveButton?.frame = CGRect(x: keyboardFrame.maxX - 90, y: keyboardFrame.minY - 120, width: 0, height: 0)
+            }
+        }
+        addTap?()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if saveButton?.center != saveButtonCenter {
+            guard let saveButtonCenter = saveButtonCenter else { return }
+            saveButton?.center = saveButtonCenter
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +94,7 @@ class EditAccountVC: UIViewController {
     }
 
     private func createSaveIcon() {
+        isEdited = true
         saveButton?.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.saveButton?.frame.size.height = 60
@@ -64,6 +105,7 @@ class EditAccountVC: UIViewController {
     }
 
     private func hideSaveIcon() {
+        isEdited = false
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.saveButton?.frame.size.height = 0
             self?.saveButton?.frame.size.width = 0

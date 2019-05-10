@@ -11,6 +11,7 @@ import UIKit
 class IdeasController: UIViewController {
     @IBOutlet weak var allIdeas: UITableView!
     var viewModel: IdeasModel?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -43,7 +43,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOW-PI-fWK">
-                                                            <rect key="frame" x="8" y="34" width="232" height="31"/>
+                                                            <rect key="frame" x="8" y="34" width="237" height="31"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -56,7 +56,10 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDN-ij-pra">
-                                                            <rect key="frame" x="240" y="49" width="45" height="16"/>
+                                                            <rect key="frame" x="250" y="49" width="35" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="35" id="6Z1-OL-B5x"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -66,7 +69,6 @@
                                                     <constraints>
                                                         <constraint firstItem="vOW-PI-fWK" firstAttribute="top" secondItem="6cZ-9g-yb7" secondAttribute="bottom" constant="5" id="9Jn-0v-DXv"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="BUv-om-0cI" secondAttribute="trailing" id="INN-oO-6l8"/>
-                                                        <constraint firstItem="GDN-ij-pra" firstAttribute="leading" secondItem="Wd6-ec-HZQ" secondAttribute="leading" constant="240" id="K3T-Wc-eKh"/>
                                                         <constraint firstItem="BUv-om-0cI" firstAttribute="top" secondItem="Wd6-ec-HZQ" secondAttribute="topMargin" constant="5" id="P0x-Ju-8N9"/>
                                                         <constraint firstItem="vOW-PI-fWK" firstAttribute="leading" secondItem="Wd6-ec-HZQ" secondAttribute="leadingMargin" id="YbR-5U-nny"/>
                                                         <constraint firstAttribute="bottom" secondItem="vOW-PI-fWK" secondAttribute="bottom" constant="5" id="Yj9-il-uPm"/>
@@ -76,7 +78,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="GDN-ij-pra" secondAttribute="trailing" constant="5" id="meJ-3V-rPL"/>
                                                         <constraint firstAttribute="bottom" secondItem="GDN-ij-pra" secondAttribute="bottom" constant="5" id="rZy-Zo-r1D"/>
                                                         <constraint firstAttribute="trailing" secondItem="6cZ-9g-yb7" secondAttribute="trailing" constant="10" id="vAm-HV-uk3"/>
-                                                        <constraint firstItem="GDN-ij-pra" firstAttribute="leading" secondItem="vOW-PI-fWK" secondAttribute="trailing" id="wyz-Tr-cjs"/>
+                                                        <constraint firstItem="GDN-ij-pra" firstAttribute="leading" secondItem="vOW-PI-fWK" secondAttribute="trailing" constant="5" id="wyz-Tr-cjs"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">

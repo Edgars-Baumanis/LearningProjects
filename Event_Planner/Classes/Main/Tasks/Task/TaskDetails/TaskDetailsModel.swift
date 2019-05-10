@@ -15,6 +15,7 @@ class TaskDetailsModel {
     var section: String?
 
     var task: TaskDO?
+    var dateFormatter: DateFormatter?
     var succesfulTransfer: (() -> Void)?
     var deletePressed: (() -> Void)?
     var errorMessage: ((String?) -> Void)?
@@ -25,6 +26,9 @@ class TaskDetailsModel {
         self.taskTopic = taskTopic
         self.task = task
         self.section = section
+        
+        dateFormatter = DateFormatter()
+        dateFormatter?.dateFormat = "EEEE, MMM d, yyyy, HH:mm"
     }
 
     func progressTask() {

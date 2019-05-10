@@ -102,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="topicName" destination="VEz-jy-HS6" id="HLx-yW-qzZ"/>
+                        <outlet property="viewTopConstraint" destination="iQy-mV-bHk" id="ipj-Ca-G5O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEC-bH-kOc" userLabel="First Responder" sceneMemberID="firstResponder"/>

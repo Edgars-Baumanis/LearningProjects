@@ -38,6 +38,10 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.borderWidth" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="progressPressed:" destination="KrM-5w-Xmh" eventType="touchUpInside" id="N0D-23-efB"/>
@@ -57,6 +61,9 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="deletePressed:" destination="KrM-5w-Xmh" eventType="touchUpInside" id="ZWi-Nl-8DL"/>
@@ -66,7 +73,7 @@
                                                 <rect key="frame" x="20" y="20" width="335" height="111"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlW-9R-pXj">
-                                                        <rect key="frame" x="20" y="10" width="145" height="21"/>
+                                                        <rect key="frame" x="20" y="10" width="295" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -98,7 +105,7 @@
                                                     <constraint firstItem="s3N-jP-97O" firstAttribute="top" secondItem="GlW-9R-pXj" secondAttribute="bottom" constant="10" id="Bcb-1R-jwR"/>
                                                     <constraint firstAttribute="bottom" secondItem="s3N-jP-97O" secondAttribute="bottom" constant="10" id="KZj-rb-Kue"/>
                                                     <constraint firstItem="s3N-jP-97O" firstAttribute="leading" secondItem="k98-oT-aAE" secondAttribute="leading" constant="20" id="Sux-2u-i6K"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GlW-9R-pXj" secondAttribute="trailing" constant="170" id="bV2-qe-vYA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GlW-9R-pXj" secondAttribute="trailing" constant="20" id="bV2-qe-vYA"/>
                                                     <constraint firstAttribute="trailing" secondItem="s3N-jP-97O" secondAttribute="trailing" constant="20" id="c7R-MV-UYr"/>
                                                     <constraint firstItem="GlW-9R-pXj" firstAttribute="top" secondItem="k98-oT-aAE" secondAttribute="top" constant="10" id="xHs-iL-y3e"/>
                                                 </constraints>
@@ -116,7 +123,7 @@
                                                 <rect key="frame" x="20" y="151" width="335" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngy-pv-bKF">
-                                                        <rect key="frame" x="20" y="10" width="145" height="20"/>
+                                                        <rect key="frame" x="20" y="10" width="295" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -150,7 +157,7 @@
                                                     <constraint firstItem="ngy-pv-bKF" firstAttribute="leading" secondItem="lYU-jS-EvH" secondAttribute="leading" constant="20" id="YvF-bf-2t6"/>
                                                     <constraint firstItem="Cbu-cr-nlv" firstAttribute="leading" secondItem="lYU-jS-EvH" secondAttribute="leading" constant="20" id="f40-Ai-XAs"/>
                                                     <constraint firstAttribute="bottom" secondItem="Cbu-cr-nlv" secondAttribute="bottom" constant="10" id="gRA-SM-spc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ngy-pv-bKF" secondAttribute="trailing" constant="170" id="hHT-ZI-7vJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ngy-pv-bKF" secondAttribute="trailing" constant="20" id="hHT-ZI-7vJ"/>
                                                     <constraint firstAttribute="height" constant="60" id="mRH-81-Mpl"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -217,7 +224,7 @@
                                                 <rect key="frame" x="20" y="362" width="335" height="111"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task deadline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLy-1w-aYM">
-                                                        <rect key="frame" x="20" y="10" width="145" height="21"/>
+                                                        <rect key="frame" x="20" y="10" width="295" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -241,13 +248,16 @@
                                                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="fieldDidBeginEditing:" destination="KrM-5w-Xmh" eventType="editingDidBegin" id="11g-uR-fXc"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="BPd-X5-Pfs" secondAttribute="trailing" constant="20" id="1dn-aF-RXT"/>
                                                     <constraint firstItem="fLy-1w-aYM" firstAttribute="top" secondItem="iCk-Bx-CqR" secondAttribute="top" constant="10" id="2i2-Mt-Ztz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="fLy-1w-aYM" secondAttribute="trailing" constant="170" id="3Qc-Yx-JHj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fLy-1w-aYM" secondAttribute="trailing" constant="20" id="3Qc-Yx-JHj"/>
                                                     <constraint firstAttribute="bottom" secondItem="BPd-X5-Pfs" secondAttribute="bottom" constant="10" id="Tw9-4I-h7a"/>
                                                     <constraint firstItem="BPd-X5-Pfs" firstAttribute="leading" secondItem="iCk-Bx-CqR" secondAttribute="leading" constant="20" id="Usa-P1-YOp"/>
                                                     <constraint firstItem="fLy-1w-aYM" firstAttribute="leading" secondItem="iCk-Bx-CqR" secondAttribute="leading" constant="20" id="lKV-bX-Chb"/>
@@ -319,6 +329,7 @@
                         <outlet property="taskDescription" destination="Cbu-cr-nlv" id="Or5-nU-liv"/>
                         <outlet property="taskName" destination="s3N-jP-97O" id="OFF-sv-RQC"/>
                         <outlet property="transferButton" destination="Fqb-u6-XAM" id="QV0-un-Lgr"/>
+                        <outlet property="viewBottomConstraint" destination="Cv8-lH-DAr" id="gMD-9w-rE0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0w-hd-ieV" userLabel="First Responder" sceneMemberID="firstResponder"/>
