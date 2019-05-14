@@ -21,9 +21,9 @@ class SpaceService: PSpacesService {
 
 
     func getSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
-        var allSpaces: [SpaceDO] = []
-        spaceRoute?.observeSingleEvent(of: .value, with: { (snapshot) in
+        spaceRoute?.observe(.value, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
+            var allSpaces: [SpaceDO] = []
             post?.forEach({ (key, value) in
                 let singleSpace = value as? [String : AnyObject]
                 guard
@@ -53,8 +53,8 @@ class SpaceService: PSpacesService {
     }
 
     func getAllSpaces(completionHandler: @escaping ([SpaceDO]) -> Void) {
-        var allSpaces: [SpaceDO] = []
-        spaceRoute?.observeSingleEvent(of: .value, with: { (snapshot) in
+        spaceRoute?.observe(.value, with: { (snapshot) in
+            var allSpaces: [SpaceDO] = []
             let post = snapshot.value as? [String : AnyObject]
             post?.forEach({ (key, value) in
                 let singleSpace = value as? [String : AnyObject]

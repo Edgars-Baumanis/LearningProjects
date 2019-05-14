@@ -81,6 +81,11 @@
 		4940A6382264578400D2BCC9 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4940A6372264578400D2BCC9 /* UserProfile.storyboard */; };
 		4940A63D22647AB400D2BCC9 /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A63C22647AB400D2BCC9 /* EditAccountVC.swift */; };
 		4940A63F22647ABC00D2BCC9 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940A63E22647ABC00D2BCC9 /* EditAccountModel.swift */; };
+		494354D32289534500B3D9B6 /* EventUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494354D22289534500B3D9B6 /* EventUserController.swift */; };
+		494354D52289534D00B3D9B6 /* EventUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494354D42289534D00B3D9B6 /* EventUserModel.swift */; };
+		494354D722895A7800B3D9B6 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494354D622895A7800B3D9B6 /* MainService.swift */; };
+		494354D922895A8100B3D9B6 /* PMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494354D822895A8100B3D9B6 /* PMainService.swift */; };
+		494354DB2289641E00B3D9B6 /* EventUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494354DA2289641E00B3D9B6 /* EventUserCell.swift */; };
 		49451A392224426100AC8350 /* GreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A212224426100AC8350 /* GreetingVC.swift */; };
 		49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A222224426100AC8350 /* GreetingModel.swift */; };
 		49451A3B2224426100AC8350 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49451A242224426100AC8350 /* SignUpModel.swift */; };
@@ -100,6 +105,8 @@
 		49498E8A224A5A03008D2475 /* SpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E89224A5A03008D2475 /* SpaceService.swift */; };
 		49498E8D224A5AD4008D2475 /* PSpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E8C224A5AD4008D2475 /* PSpaceService.swift */; };
 		495557042282AB6500B3171A /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495557032282AB6500B3171A /* Throttler.swift */; };
+		495BE80C228AA1B10059C910 /* EventOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BE80B228AA1B10059C910 /* EventOwnerCell.swift */; };
+		495BE810228AE57A0059C910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495BE80F228AE57A0059C910 /* Assets.xcassets */; };
 		495E1C6C22425E540002F096 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6B22425E540002F096 /* AddTask.swift */; };
 		495E1C702242751F0002F096 /* AddTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C6F2242751F0002F096 /* AddTaskModel.swift */; };
 		495E1C74224296CF0002F096 /* BudgetFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C73224296CF0002F096 /* BudgetFlow.swift */; };
@@ -109,7 +116,6 @@
 		495E1C8022437CE00002F096 /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 495E1C7F22437CE00002F096 /* AddTask.storyboard */; };
 		495E1C952243DE340002F096 /* CurrentUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E1C942243DE340002F096 /* CurrentUserCell.swift */; };
 		49809C492223E61500295608 /* Spaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C472223E61500295608 /* Spaces.storyboard */; };
-		49809C4B2223E61500295608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4A2223E61500295608 /* Assets.xcassets */; };
 		49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49809C4C2223E61500295608 /* LaunchScreen.storyboard */; };
 		49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49809C552223EE9900295608 /* GoogleService-Info.plist */; };
 		499D7EAF2225733B00694DD6 /* CreateASpaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D7EAE2225733B00694DD6 /* CreateASpaceController.swift */; };
@@ -228,6 +234,11 @@
 		4940A6372264578400D2BCC9 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		4940A63C22647AB400D2BCC9 /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
 		4940A63E22647ABC00D2BCC9 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
+		494354D22289534500B3D9B6 /* EventUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserController.swift; sourceTree = "<group>"; };
+		494354D42289534D00B3D9B6 /* EventUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserModel.swift; sourceTree = "<group>"; };
+		494354D622895A7800B3D9B6 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		494354D822895A8100B3D9B6 /* PMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMainService.swift; sourceTree = "<group>"; };
+		494354DA2289641E00B3D9B6 /* EventUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUserCell.swift; sourceTree = "<group>"; };
 		49451A212224426100AC8350 /* GreetingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingVC.swift; sourceTree = "<group>"; };
 		49451A222224426100AC8350 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
 		49451A242224426100AC8350 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -247,6 +258,8 @@
 		49498E89224A5A03008D2475 /* SpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceService.swift; sourceTree = "<group>"; };
 		49498E8C224A5AD4008D2475 /* PSpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSpaceService.swift; sourceTree = "<group>"; };
 		495557032282AB6500B3171A /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
+		495BE80B228AA1B10059C910 /* EventOwnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventOwnerCell.swift; sourceTree = "<group>"; };
+		495BE80F228AE57A0059C910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		495E1C6B22425E540002F096 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		495E1C6F2242751F0002F096 /* AddTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskModel.swift; sourceTree = "<group>"; };
 		495E1C73224296CF0002F096 /* BudgetFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFlow.swift; sourceTree = "<group>"; };
@@ -257,7 +270,6 @@
 		495E1C942243DE340002F096 /* CurrentUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserCell.swift; sourceTree = "<group>"; };
 		49809C402223E61500295608 /* Event_Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event_Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49809C482223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spaces.storyboard; sourceTree = "<group>"; };
-		49809C4A2223E61500295608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49809C4D2223E61500295608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49809C4F2223E61500295608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49809C552223EE9900295608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -583,6 +595,17 @@
 			path = EditAccount;
 			sourceTree = "<group>";
 		};
+		494354D12289532800B3D9B6 /* EventUserController */ = {
+			isa = PBXGroup;
+			children = (
+				494354D22289534500B3D9B6 /* EventUserController.swift */,
+				494354D42289534D00B3D9B6 /* EventUserModel.swift */,
+				494354DA2289641E00B3D9B6 /* EventUserCell.swift */,
+				495BE80B228AA1B10059C910 /* EventOwnerCell.swift */,
+			);
+			path = EventUserController;
+			sourceTree = "<group>";
+		};
 		49451A1F2224426100AC8350 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +715,8 @@
 				493E4E42224CB9440009993A /* TaskService */,
 				493E4E41224CB93C0009993A /* ChatService */,
 				493E4E40224CB92E0009993A /* IdeasService */,
+				494354D622895A7800B3D9B6 /* MainService.swift */,
+				494354D822895A8100B3D9B6 /* PMainService.swift */,
 			);
 			path = MainService;
 			sourceTree = "<group>";
@@ -764,8 +789,8 @@
 				493A9587224B5E67007171F0 /* Data Objects */,
 				4902A1A02229212100580D44 /* Services */,
 				49451A1F2224426100AC8350 /* Classes */,
-				49809C4A2223E61500295608 /* Assets.xcassets */,
 				49809C4C2223E61500295608 /* LaunchScreen.storyboard */,
+				495BE80F228AE57A0059C910 /* Assets.xcassets */,
 				49809C4F2223E61500295608 /* Info.plist */,
 				49809C552223EE9900295608 /* GoogleService-Info.plist */,
 			);
@@ -858,6 +883,7 @@
 		49E0413922326B1000BCF2CA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				494354D12289532800B3D9B6 /* EventUserController */,
 				49E0413A22326B4800BCF2CA /* MainViewController.swift */,
 				4935AB142232869F0061AE47 /* MainModel.swift */,
 				49E50E9C222FC44500FFD8B7 /* Main.storyboard */,
@@ -1020,6 +1046,7 @@
 				49809C4E2223E61500295608 /* LaunchScreen.storyboard in Resources */,
 				490D4B22223BC88A00E07DB3 /* SingleChat.storyboard in Resources */,
 				49CD50C822818A91008103AC /* TopicCell.xib in Resources */,
+				495BE810228AE57A0059C910 /* Assets.xcassets in Resources */,
 				4935AB1B2232874C0061AE47 /* Budget.storyboard in Resources */,
 				49809C562223EE9900295608 /* GoogleService-Info.plist in Resources */,
 				490D4B2A223FB29C00E07DB3 /* IdeaTopic.storyboard in Resources */,
@@ -1027,7 +1054,6 @@
 				49E50E9D222FC44500FFD8B7 /* Main.storyboard in Resources */,
 				4940A6382264578400D2BCC9 /* UserProfile.storyboard in Resources */,
 				4935AB172232873D0061AE47 /* Ideas.storyboard in Resources */,
-				49809C4B2223E61500295608 /* Assets.xcassets in Resources */,
 				4935AB19223287440061AE47 /* Chat.storyboard in Resources */,
 				49809C492223E61500295608 /* Spaces.storyboard in Resources */,
 				4935AB1D223287730061AE47 /* Tasks.storyboard in Resources */,
@@ -1137,6 +1163,9 @@
 				490C180122785DDA00BAE2B2 /* TextFieldSubclass.swift in Sources */,
 				49E0413B22326B4800BCF2CA /* MainViewController.swift in Sources */,
 				490D4B4622412E9000E07DB3 /* AddIdeaModel.swift in Sources */,
+				495BE80C228AA1B10059C910 /* EventOwnerCell.swift in Sources */,
+				494354DB2289641E00B3D9B6 /* EventUserCell.swift in Sources */,
+				494354D32289534500B3D9B6 /* EventUserController.swift in Sources */,
 				4926DD69222EBA8D00F1DB4E /* MySpacesCell.swift in Sources */,
 				490217392252625600A1F670 /* TaskDetailsModel.swift in Sources */,
 				493E4E49224CD3950009993A /* TaskDO.swift in Sources */,
@@ -1149,6 +1178,7 @@
 				49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */,
 				4935AB2B223288950061AE47 /* TasksController.swift in Sources */,
 				49B7A6462239521600D4A8EC /* CreateChat.swift in Sources */,
+				494354D922895A8100B3D9B6 /* PMainService.swift in Sources */,
 				49CBE2F022281BFF00DFE240 /* JoinASapceModel.swift in Sources */,
 				49451A462224426100AC8350 /* AppFlow.swift in Sources */,
 				490D4B25223BCAF300E07DB3 /* ChatCell.swift in Sources */,
@@ -1179,6 +1209,7 @@
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,
 				493840B022576223004A9252 /* OtherCells.swift in Sources */,
+				494354D52289534D00B3D9B6 /* EventUserModel.swift in Sources */,
 				4940A633226456E100D2BCC9 /* UserProfileVC.swift in Sources */,
 				493E4E45224CB95F0009993A /* PChatService.swift in Sources */,
 				49B7A64122394EC800D4A8EC /* ChatsModel.swift in Sources */,
@@ -1196,6 +1227,7 @@
 				4935AB292232888C0061AE47 /* ChatsController.swift in Sources */,
 				499D7EB1222573DC00694DD6 /* JoinASpaceController.swift in Sources */,
 				493E4E4D224CD5BD0009993A /* TaskService.swift in Sources */,
+				494354D722895A7800B3D9B6 /* MainService.swift in Sources */,
 				49451A3A2224426100AC8350 /* GreetingModel.swift in Sources */,
 				491EB8BB224E2DC200549B19 /* AnimationFactory.swift in Sources */,
 				495557042282AB6500B3171A /* Throttler.swift in Sources */,

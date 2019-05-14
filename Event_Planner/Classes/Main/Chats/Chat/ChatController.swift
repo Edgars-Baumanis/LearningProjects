@@ -11,6 +11,7 @@ import UIKit
 class ChatController: UIViewController {
     @IBOutlet weak var chatRoom: UITableView!
     @IBOutlet weak var messageField: UITextField!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var viewModel: ChatModel?
     var addTap: (() -> Void)?
     var removeTap: (() -> Void)?
@@ -91,15 +92,15 @@ extension ChatController: UITableViewDelegate, UITableViewDataSource {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= keyboardFrame.height
+        if bottomConstraint.constant == 0 {
+            bottomConstraint.constant += keyboardFrame.height
         }
         addTap?()
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if bottomConstraint.constant != 0 {
+            bottomConstraint.constant = 0
         }
     }
 }

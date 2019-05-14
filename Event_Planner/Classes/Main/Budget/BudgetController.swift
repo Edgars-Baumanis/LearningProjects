@@ -60,13 +60,10 @@ class BudgetController: UIViewController {
              addField?.setTitleColor(.black, for: .normal)
             addField?.addTarget(self, action: #selector(addBudgetPressed), for: .touchUpInside)
             addField?.alpha = 0.7
-            editTotal?.layer.borderWidth = 1
-            editTotal?.layer.cornerRadius = 35
-            editTotal?.backgroundColor = .white
-            editTotal?.alpha = 0.7
-            editTotal?.setTitle("Total", for: .normal)
-            editTotal?.setTitleColor(.black, for: .normal)
-            editTotal?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)
+
+            if viewModel?.isMainUser() == true {
+                addTotalButton()
+            }
 
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 guard
@@ -75,11 +72,23 @@ class BudgetController: UIViewController {
                     let buttonWidth = self?.editTotal?.frame.width
                     else { return }
                 self?.addField?.frame = CGRect(x: maxX - buttonWidth * 9, y: maxY - maxY / 4, width: 70, height: 70)
-                self?.editTotal?.frame = CGRect(x: maxX - buttonWidth * 9, y: maxY - maxY / 2.5, width: 70, height: 70)
+                if self?.viewModel?.isMainUser() == true {
+                    self?.editTotal?.frame = CGRect(x: maxX - buttonWidth * 9, y: maxY - maxY / 2.5, width: 70, height: 70)
+                }
             })
         } else {
             buttonsThere()
         }
+    }
+
+    private func addTotalButton() {
+        editTotal?.layer.borderWidth = 1
+        editTotal?.layer.cornerRadius = 35
+        editTotal?.backgroundColor = .white
+        editTotal?.alpha = 0.7
+        editTotal?.setTitle("Total", for: .normal)
+        editTotal?.setTitleColor(.black, for: .normal)
+        editTotal?.addTarget(self, action: #selector(editBudgetPressed), for: .touchUpInside)
     }
 
     private func buttonsThere() {

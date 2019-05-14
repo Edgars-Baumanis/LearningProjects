@@ -12,6 +12,7 @@ class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
     var rootController: UINavigationController?
+    private var deleteVM: (() -> Void)?
     private var userService: PUserService?
     private var spaceService: PSpacesService?
     private var ideaService: PIdeaService?
@@ -19,8 +20,10 @@ class SpacesFlow: FlowController {
     private var taskService: PTaskService?
     private var budgetService: PBudgetService?
     private var childFlow: FlowController?
+    private var mainService: PMainService?
+
     
-    init (rootController: UINavigationController?, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?) {
+    init (rootController: UINavigationController?, userService: PUserService?, spaceService: PSpacesService?, ideaService: PIdeaService?, chatService: PChatService?, taskService: PTaskService?, budgetService: PBudgetService?, mainService: PMainService?) {
         self.rootController = rootController
         self.userService = userService
         self.spaceService = spaceService
@@ -28,6 +31,7 @@ class SpacesFlow: FlowController {
         self.chatService = chatService
         self.taskService = taskService
         self.budgetService = budgetService
+        self.mainService = mainService
     }
 
     private lazy var userSB: UIStoryboard = {
@@ -95,6 +99,9 @@ class SpacesFlow: FlowController {
         }
         joinViewModel.spacePressed = { [weak self] (space) in
             guard let self = self else { return }
+            self.deleteVM = {
+                joinVC.viewModel = nil
+            }
             self.navigateToJoinSingleSpace(space: space)
         }
         joinVC.viewModel = joinViewModel
@@ -112,7 +119,7 @@ class SpacesFlow: FlowController {
 
     private func navigateToMainFlow(space: SpaceDO?) {
         guard let navController = rootController else { return }
-        let mainFlow = MainFlow(rootController: navController, userServices: userService, ideaService: ideaService, space: space, chatService: chatService, taskService: taskService, budgetService: budgetService)
+        let mainFlow = MainFlow(rootController: navController, userServices: userService, ideaService: ideaService, space: space, chatService: chatService, taskService: taskService, budgetService: budgetService, mainService: mainService)
         mainFlow.start()
         childFlow = mainFlow
     }
@@ -146,7 +153,10 @@ class SpacesFlow: FlowController {
             self?.rootController?.dismiss(animated: false, completion: nil)
         }
         viewModel.rightEntry = { [weak self] space in
+            vc.viewModel = nil
+            self?.deleteVM?()
             self?.rootController?.dismiss(animated: false)
+            self?.rootController?.popViewController(animated: true)
         }
         vc.viewModel = viewModel
         vc.modalPresentationStyle = .overCurrentContext

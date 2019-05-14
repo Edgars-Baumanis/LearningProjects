@@ -13,6 +13,8 @@ class BudgetModel {
     private var allFieldSum: [Float] = []
     private var spaceKey: String?
     private let budgetService: PBudgetService?
+    private let userService: PUserService?
+    private let space: SpaceDO?
     
     var navigateToConfigureBudget: ((_ budgetField: BudgetDO?) -> Void)?
     var addTextToFields: (() -> Void)?
@@ -24,9 +26,11 @@ class BudgetModel {
     var remainingBudget: Float?
     var errorMessage: ((String?) -> Void)?
 
-    init(spaceKey: String?, budgetService: PBudgetService?) {
+    init(spaceKey: String?, budgetService: PBudgetService?, _ userService: PUserService?, _ space: SpaceDO?) {
         self.budgetService = budgetService
+        self.userService = userService
         self.spaceKey = spaceKey
+        self.space = space
         getData()
         reloadData()
     }
@@ -83,5 +87,11 @@ class BudgetModel {
     private func calculateRemaining() -> Float {
         guard let totalBudget = (self.totalBudget as NSString?)?.floatValue else { return 0 }
         return totalBudget - allFieldSum.reduce(0, +)
+    }
+
+    func isMainUser() -> Bool {
+        if userService?.isOwner(userID: space?.mainUser) == true {
+            return true
+        } else { return false }
     }
 }

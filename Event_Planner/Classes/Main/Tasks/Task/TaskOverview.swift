@@ -25,8 +25,10 @@ class TaskOverview: UIViewController {
         tasks.dataSource = self
         tasks.delegate = self
         viewModel?.dataSourceChanged = { [weak self] in
-            self?.tasks.reloadData()
-            self?.headers.removeAll()
+            DispatchQueue.main.async {
+                self?.headers.removeAll()
+                self?.tasks.reloadData()
+            }
         }
         let floatingButton = view.floatingButton()
         floatingButton.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
@@ -53,11 +55,9 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if viewModel?.dataSource[section].tasks.isEmpty == true {
-            return 0
-        } else {
+
             return 60
-        }
+        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,21 +88,21 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
             sectionHeaderButton.setTitle("Need doing", for: .normal)
             sectionHeaderButton.backgroundColor = .clear
             sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            if let header = nibView.subviews[0] as? UIImageView{
+            if let header = nibView.subviews[0] as? UIImageView {
                 headers.append(header)
             }
         case 1:
             sectionHeaderButton.setTitle("In progress", for: .normal)
             sectionHeaderButton.backgroundColor = .clear
             sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            if let header = nibView.subviews[0] as? UIImageView{
+            if let header = nibView.subviews[0] as? UIImageView {
                 headers.append(header)
             }
         case 2:
             sectionHeaderButton.setTitle("Done", for: .normal)
             sectionHeaderButton.backgroundColor = .clear
             sectionHeaderButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            if let header = nibView.subviews[0] as? UIImageView{
+            if let header = nibView.subviews[0] as? UIImageView {
                 headers.append(header)
             }
         default:
