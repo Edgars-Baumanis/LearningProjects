@@ -9,6 +9,10 @@
 import Foundation
 
 class DumbUserService: PUserService {
+    func isOwner(userID: String?) -> Bool {
+        return true
+    }
+
     func deleteAcc(completionHandler: @escaping ((String?) -> Void)) {
     }
 

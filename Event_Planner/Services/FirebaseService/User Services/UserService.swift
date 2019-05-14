@@ -125,4 +125,12 @@ class UserService: PUserService {
             }
         })
     }
+
+    func isOwner(userID: String?) -> Bool {
+        if firebaseAuth.currentUser?.uid == userID {
+            return true
+        } else {
+            return false
+        }
+    }
 }

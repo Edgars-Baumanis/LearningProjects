@@ -11,15 +11,17 @@ import UIKit
 class BudgetFlow: FlowController {
 
     private var rootController: UINavigationController?
-    private var spaceKey: String?
+    private var space: SpaceDO?
     private var budgetField: BudgetDO?
     private var budgetService: PBudgetService?
+    private var userService: PUserService?
     
 
-    init(rootController: UINavigationController?, spaceKey: String?, budgetService: PBudgetService?) {
+    init(rootController: UINavigationController?, space: SpaceDO?, budgetService: PBudgetService?, userService: PUserService?) {
         self.budgetService = budgetService
         self.rootController = rootController
-        self.spaceKey = spaceKey
+        self.space = space
+        self.userService = userService
     }
 
     private lazy var budgetSB: UIStoryboard = {
@@ -48,7 +50,7 @@ class BudgetFlow: FlowController {
 
     private func navigateToBudget() {
         guard let vc = budgetViewController else { return }
-        let viewModel = BudgetModel(spaceKey: spaceKey, budgetService: budgetService)
+        let viewModel = BudgetModel(spaceKey: space?.key, budgetService: budgetService, userService, space)
         viewModel.navigateToConfigureBudget = { [weak self] budgetField in
             self?.budgetField = budgetField
             self?.navigateToConfigureBudget()
@@ -65,7 +67,7 @@ class BudgetFlow: FlowController {
 
     private func navigateToConfigureBudget() {
         guard let vc = configureBudget else { return }
-        let viewModel = ConfigureModel(spaceKey: spaceKey, budgetField: budgetField, budgetService: budgetService)
+        let viewModel = ConfigureModel(spaceKey: space?.key, budgetField: budgetField, budgetService: budgetService)
 
         viewModel.savePressed = { [weak self] in
             self?.rootController?.popViewController(animated: true)
@@ -76,7 +78,7 @@ class BudgetFlow: FlowController {
 
     private func navigateToAddBudgetField() {
         guard let vc = addBudgetFieldController else { return }
-        let viewModel = AddBudgetModel(spaceKey: spaceKey, budgetService: budgetService)
+        let viewModel = AddBudgetModel(spaceKey: space?.key, budgetService: budgetService)
         viewModel.fieldAdded = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }
@@ -86,7 +88,7 @@ class BudgetFlow: FlowController {
 
     private func navigateToAddTotalBudget() {
         guard let vc = addTotalBudgetController else { return }
-        let viewModel = AddTotalBudgetModel(spaceKey: spaceKey, budgetService: budgetService)
+        let viewModel = AddTotalBudgetModel(spaceKey: space?.key, budgetService: budgetService)
         viewModel.navigateToBudget = { [weak self] in
             self?.rootController?.popViewController(animated: true)
         }

@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
         nav?.shadowImage = UIImage()
         nav?.tintColor = UIColor.black
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        makeInfoButton()
     }
 
     @IBAction func chatPressed(_ sender: UIButton) {
@@ -38,5 +39,22 @@ class MainViewController: UIViewController {
 
     @IBAction func ideasPressed(_ sender: UIButton) {
         viewModel?.ideasPressed?()
+    }
+
+    private func makeInfoButton() {
+        let infoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        infoButton.addTarget(self, action: #selector(infoPressed), for: .touchUpInside)
+        infoButton.setImage(UIImage(named: "user-Icon"), for: .normal)
+        let barInfoButton = UIBarButtonItem(customView: infoButton)
+        NSLayoutConstraint.activate([barInfoButton.customView!.widthAnchor.constraint(equalToConstant: 40), barInfoButton.customView!.heightAnchor.constraint(equalToConstant: 40)])
+        navigationItem.setRightBarButton(barInfoButton, animated: true)
+    }
+    
+    @IBAction func leaveEventPressed(_ sender: UIButton) {
+        viewModel?.leavePressed()
+    }
+
+    @objc private func infoPressed(_ sender: UIBarButtonItem) {
+        viewModel?.infoPressed?()
     }
 }

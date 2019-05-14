@@ -30,7 +30,12 @@ class JoinASpaceController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.allSpaces.reloadData()
             }
-        }
+        } 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        allSpaces.reloadData()
     }
 }
 

@@ -53,9 +53,16 @@ class MySpacesVC: UIViewController {
     func confNavBar() {
         title = "Spaces"
         let barButtonImage = UIImage(named: "user-Icon")
-        let profile = UIBarButtonItem(title: "profile", style: .plain, target: self, action: #selector(profilePressed))
-        profile.image = barButtonImage
-        navigationItem.leftBarButtonItem = profile
+        let profile = UIButton(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        profile.setImage(barButtonImage, for: .normal)
+        profile.addTarget(self, action: #selector(profilePressed), for: .touchUpInside)
+        profile.layer.cornerRadius = 15
+        profile.layer.borderWidth = 1
+        let barButtonItem = UIBarButtonItem(customView: profile)
+    NSLayoutConstraint.activate([
+        barButtonItem.customView!.widthAnchor.constraint(equalToConstant: 30), barButtonItem.customView!.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        navigationItem.leftBarButtonItem = barButtonItem
 
         let nav = self.navigationController
         nav?.navigationBar.setBackgroundImage(UIImage(), for: .default)

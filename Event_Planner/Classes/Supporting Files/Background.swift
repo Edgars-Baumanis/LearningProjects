@@ -24,15 +24,7 @@ extension UIView {
     }
 
     func setCellBackground() {
-        self.backgroundColor = .clear
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        self.insertSubview(blurView, at: 0)
-        NSLayoutConstraint.activate([
-            blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            blurView.widthAnchor.constraint(equalTo: self.widthAnchor)
-        ])
+        self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
     }
 
     func floatingButton() -> UIButton{

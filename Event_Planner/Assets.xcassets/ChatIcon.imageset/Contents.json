@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ChatIcon.png",
+      "filename" : "chatIcon.png",
       "scale" : "1x"
     },
     {

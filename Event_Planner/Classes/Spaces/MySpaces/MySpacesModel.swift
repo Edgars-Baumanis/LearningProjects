@@ -38,6 +38,7 @@ class MySpacesModel {
     
     func getData() {
         spaceService?.getSpaces(completionHandler: { [weak self] spaces in
+            self?.spaces.removeAll()
             self?.spaces = spaces
             self?.dataSourceChanged?()
         })

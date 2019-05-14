@@ -18,6 +18,7 @@ class AppFlow: FlowController {
     private var chatService: PChatService?
     private var taskService: PTaskService?
     private var budgetService: PBudgetService?
+    private var mainService: PMainService?
     
     
     init(with window: UIWindow) {
@@ -29,6 +30,7 @@ class AppFlow: FlowController {
         spaceService = SpaceService()
         taskService = TaskService()
         budgetService = BudgetService()
+        mainService = MainService()
 
     }
     
@@ -52,7 +54,7 @@ class AppFlow: FlowController {
     }
     
     private func navigateToSpacesFlow() {
-        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService)
+        let spacesFlow = SpacesFlow(rootController: rootController, userService: userService, spaceService: spaceService, ideaService: ideaService, chatService: chatService, taskService: taskService, budgetService: budgetService, mainService: mainService)
         spacesFlow.start()
         spacesFlow.logoutPressed = { [weak self] in
             self?.start()

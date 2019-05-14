@@ -20,7 +20,6 @@ class JoinASpaceModel {
         self.throttler = Throttler(minimumDelay: 0.5)
         getSpaces()
     }
-    var backPressed: (() -> Void)?
     var dataSource = [SpaceDO]()
     var filteredDataSource = [SpaceDO]()
     var spacePressed: ((SpaceDO?) -> Void)?

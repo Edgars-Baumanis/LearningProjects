@@ -54,7 +54,12 @@ class TaskOverviewModel {
                 if self?.dataSource[section].tasks.contains(where: { (task) -> Bool in
                     task.key == newTask.key
                 }) == true {
-                    return
+                    self?.dataSource[section].tasks.enumerated().forEach({ (offset, task) in
+                        if task.key == newTask.key {
+                            self?.dataSource[section].tasks[offset] = newTask
+                            self?.dataSourceChanged?()
+                        }
+                    })
                 } else {
                     self?.dataSource[section].tasks.append(newTask)
                     self?.dataSourceChanged?()
