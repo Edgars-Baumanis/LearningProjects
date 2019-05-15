@@ -12,6 +12,7 @@ class SpacesFlow: FlowController {
     
     var logoutPressed: (()->Void)?
     var rootController: UINavigationController?
+    private var deleteVM: (() -> Void)?
     private var userService: PUserService?
     private var spaceService: PSpacesService?
     private var ideaService: PIdeaService?
@@ -94,6 +95,9 @@ class SpacesFlow: FlowController {
 
         joinViewModel.spacePressed = { [weak self] (space) in
             guard let self = self else { return }
+            self.deleteVM = {
+                joinVC.viewModel = nil
+            }
             self.navigateToJoinSingleSpace(space: space)
         }
         joinVC.viewModel = joinViewModel
@@ -145,6 +149,8 @@ class SpacesFlow: FlowController {
             self?.rootController?.dismiss(animated: false, completion: nil)
         }
         viewModel.rightEntry = { [weak self] space in
+            vc.viewModel = nil
+            self?.deleteVM?()
             self?.rootController?.dismiss(animated: false)
             self?.rootController?.popViewController(animated: true)
         }

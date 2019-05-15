@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
         infoButton.setImage(UIImage(named: "user-Icon"), for: .normal)
         let barInfoButton = UIBarButtonItem(customView: infoButton)
         NSLayoutConstraint.activate([barInfoButton.customView!.widthAnchor.constraint(equalToConstant: 40), barInfoButton.customView!.heightAnchor.constraint(equalToConstant: 40)])
+
         navigationItem.setRightBarButton(barInfoButton, animated: true)
     }
     
