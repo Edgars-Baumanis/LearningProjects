@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IR8-ET-izm">
                         <rect key="frame" x="10" y="5" width="300" height="34.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-8L-Rwu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqc-8L-Rwu">
                                 <rect key="frame" x="20" y="5" width="236" height="24.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -32,6 +32,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="mks-yp-hQG">
                                 <rect key="frame" x="261" y="5" width="24" height="24.5"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="24.5" id="ADr-DT-rOl"/>
                                     <constraint firstAttribute="width" constant="24" id="NnA-2j-r8K"/>
                                 </constraints>
                             </imageView>
@@ -40,10 +41,9 @@
                         <constraints>
                             <constraint firstItem="mks-yp-hQG" firstAttribute="top" secondItem="IR8-ET-izm" secondAttribute="top" constant="5" id="0bL-ZR-kje"/>
                             <constraint firstItem="mks-yp-hQG" firstAttribute="leading" secondItem="Rqc-8L-Rwu" secondAttribute="trailing" constant="5" id="6kT-vs-Jfx"/>
-                            <constraint firstAttribute="bottom" secondItem="mks-yp-hQG" secondAttribute="bottom" constant="5" id="Hqq-ua-TI6"/>
+                            <constraint firstAttribute="bottom" secondItem="Rqc-8L-Rwu" secondAttribute="bottom" constant="5" id="IoN-Tm-CQ0"/>
                             <constraint firstAttribute="trailing" secondItem="mks-yp-hQG" secondAttribute="trailing" constant="15" id="Mbn-Mt-mb1"/>
                             <constraint firstItem="Rqc-8L-Rwu" firstAttribute="leading" secondItem="IR8-ET-izm" secondAttribute="leading" constant="20" id="XeK-OM-X4t"/>
-                            <constraint firstAttribute="bottom" secondItem="Rqc-8L-Rwu" secondAttribute="bottom" constant="5" id="aEn-U2-lgn"/>
                             <constraint firstItem="Rqc-8L-Rwu" firstAttribute="top" secondItem="IR8-ET-izm" secondAttribute="top" constant="5" id="kB8-pt-EBf"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

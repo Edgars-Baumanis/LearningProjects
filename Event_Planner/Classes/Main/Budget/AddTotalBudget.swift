@@ -60,6 +60,7 @@ class AddTotalBudget: UIViewController {
 }
 
 extension AddTotalBudget: UITextFieldDelegate {
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text as? NSString else { return true }
         let newText = text.replacingCharacters(in: range, with: string)

@@ -14,7 +14,6 @@ class MySpacesCell: UITableViewCell {
 
     func displayContent(spaceName: String?) {
         mySpacesContentView.setCellBackground()
-        guard spaceName?.isEmpty != true else { return }
         mySpacesContent.text = spaceName
     }
 }

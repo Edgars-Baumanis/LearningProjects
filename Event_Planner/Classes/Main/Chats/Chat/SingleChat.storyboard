@@ -244,6 +244,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="QMo-m8-JOQ" id="xaT-q7-psY"/>
                         <outlet property="chatRoom" destination="XG1-6y-IKf" id="gzp-4S-tIi"/>
+                        <outlet property="messageField" destination="DdZ-Dp-pa7" id="jVh-MK-xDU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozv-Ex-Ow8" userLabel="First Responder" sceneMemberID="firstResponder"/>

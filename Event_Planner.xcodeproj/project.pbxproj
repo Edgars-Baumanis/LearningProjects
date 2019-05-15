@@ -104,6 +104,8 @@
 		49498E87224A26CF008D2475 /* AddTaskTopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E86224A26CF008D2475 /* AddTaskTopicModel.swift */; };
 		49498E8A224A5A03008D2475 /* SpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E89224A5A03008D2475 /* SpaceService.swift */; };
 		49498E8D224A5AD4008D2475 /* PSpaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49498E8C224A5AD4008D2475 /* PSpaceService.swift */; };
+		494FC728228C308500ECD7A0 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494FC727228C308500ECD7A0 /* ForgotPassword.swift */; };
+		494FC72A228C30DB00ECD7A0 /* ForgorPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494FC729228C30DB00ECD7A0 /* ForgorPasswordModel.swift */; };
 		495557042282AB6500B3171A /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495557032282AB6500B3171A /* Throttler.swift */; };
 		495BE80C228AA1B10059C910 /* EventOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BE80B228AA1B10059C910 /* EventOwnerCell.swift */; };
 		495BE810228AE57A0059C910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 495BE80F228AE57A0059C910 /* Assets.xcassets */; };
@@ -257,6 +259,8 @@
 		49498E86224A26CF008D2475 /* AddTaskTopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTopicModel.swift; sourceTree = "<group>"; };
 		49498E89224A5A03008D2475 /* SpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceService.swift; sourceTree = "<group>"; };
 		49498E8C224A5AD4008D2475 /* PSpaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSpaceService.swift; sourceTree = "<group>"; };
+		494FC727228C308500ECD7A0 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		494FC729228C30DB00ECD7A0 /* ForgorPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgorPasswordModel.swift; sourceTree = "<group>"; };
 		495557032282AB6500B3171A /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		495BE80B228AA1B10059C910 /* EventOwnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventOwnerCell.swift; sourceTree = "<group>"; };
 		495BE80F228AE57A0059C910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -683,6 +687,7 @@
 		49451A362224426100AC8350 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				494FC726228C306F00ECD7A0 /* ForgotPassword */,
 				49451A382224426100AC8350 /* LogInVC.swift */,
 				49451A372224426100AC8350 /* LoginModel.swift */,
 			);
@@ -730,6 +735,15 @@
 				495E1C73224296CF0002F096 /* BudgetFlow.swift */,
 			);
 			path = InnerFlows;
+			sourceTree = "<group>";
+		};
+		494FC726228C306F00ECD7A0 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				494FC727228C308500ECD7A0 /* ForgotPassword.swift */,
+				494FC729228C30DB00ECD7A0 /* ForgorPasswordModel.swift */,
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		495E1C7B2243735B0002F096 /* MainFlow */ = {
@@ -1194,6 +1208,7 @@
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				49407B2C2251F106004290D8 /* TaskOverview.swift in Sources */,
 				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
+				494FC72A228C30DB00ECD7A0 /* ForgorPasswordModel.swift in Sources */,
 				493E4E3F224CB8660009993A /* ChatDO.swift in Sources */,
 				493E4E3D224CB7B50009993A /* MessageDO.swift in Sources */,
 				495E1C7A224297800002F096 /* TasksFlow.swift in Sources */,
@@ -1205,6 +1220,7 @@
 				491EB8B9224E2CD200549B19 /* UITableView.swift in Sources */,
 				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
+				494FC728228C308500ECD7A0 /* ForgotPassword.swift in Sources */,
 				49CD50CD2281A56D008103AC /* SingleSpaceViewModel.swift in Sources */,
 				49108CD1223A427C00C6A160 /* AddTopicController.swift in Sources */,
 				49451A4A2224426100AC8350 /* LoginModel.swift in Sources */,

@@ -26,6 +26,18 @@ class GreetingFlow: FlowController {
     private var greetingViewController: GreetingVC? {
         return greetingSB.instantiateViewController(withIdentifier: String(describing: GreetingVC.self)) as? GreetingVC
     }
+
+    private var loginVC: LoginVC? {
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: LoginVC.self)) as? LoginVC
+    }
+
+    private var registerVC: SignUpVC? {
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: SignUpVC.self)) as? SignUpVC
+    }
+
+    private var forgotPasswordVC: ForgotPassword? {
+        return greetingSB.instantiateViewController(withIdentifier: String(describing: ForgotPassword.self)) as? ForgotPassword
+    }
     
     func start() {
         guard let vc = greetingViewController else { return }
@@ -39,11 +51,7 @@ class GreetingFlow: FlowController {
         vc.viewModel = viewModel
         rootController = UINavigationController(rootViewController: vc)
     }
-    
-    private var loginVC: LoginVC? {
-        return greetingSB.instantiateViewController(withIdentifier: String(describing: LoginVC.self)) as? LoginVC
-    }
-    
+
     private func navigateToLogin() {
         guard let vc = loginVC else { return }
         rootController?.pushViewController(vc, animated: true)
@@ -54,11 +62,11 @@ class GreetingFlow: FlowController {
             self.navigateToSpaces?()
             self.rootController?.dismiss(animated: true, completion: nil)
         }
+
+        viewModel.forgotPassword = { [weak self] in
+            self?.navigateToForgotPassword()
+        }
         vc.viewModel = viewModel
-    }
-    
-    private var registerVC: SignUpVC? {
-        return greetingSB.instantiateViewController(withIdentifier: String(describing: SignUpVC.self)) as? SignUpVC
     }
     
     private func navigateToRegister() {
@@ -70,6 +78,17 @@ class GreetingFlow: FlowController {
             self?.navigateToSpaces?()
         } 
         vc.viewModel = viewModel
+    }
+
+    private func navigateToForgotPassword() {
+        guard let vc = forgotPasswordVC else { return }
+        let viewModel = ForgorPasswordModel(userService: userService)
+        viewModel.closePressed = { [weak self] in
+            self?.rootController?.dismiss(animated: false, completion: nil)
+        }
+        vc.viewModel = viewModel
+        vc.modalPresentationStyle = .overCurrentContext
+        rootController?.present(vc, animated: false, completion: nil)
     }
 }
 

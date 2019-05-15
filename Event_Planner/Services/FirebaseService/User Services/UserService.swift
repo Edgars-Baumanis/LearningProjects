@@ -73,6 +73,8 @@ class UserService: PUserService {
                 self?.ref.child(usersString).child(uid).setValue(myUser.sendData())
                 completionHandler(nil)
             }
+        } else {
+            completionHandler("Email badly formated")
         }
     }
 
@@ -132,5 +134,23 @@ class UserService: PUserService {
         } else {
             return false
         }
+    }
+
+    func resetPassword(email: String?, completionHandler: @escaping (String?) -> Void) {
+        guard let email = email, !email.isEmpty else {
+            completionHandler("Please enter email to send password reset to")
+            return
+        }
+        firebaseAuth.sendPasswordReset(withEmail: email) { (error) in
+            if let error = error as? String {
+                completionHandler(error)
+            } else {
+                completionHandler("Please check your email")
+            }
+        }
+    }
+
+    func changeUserData(newUser: UserDO?, completionHandler: @escaping (String?) -> Void) {
+        
     }
 }

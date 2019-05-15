@@ -12,6 +12,7 @@ class LoginModel {
     
     var loggedIn: (() -> Void)?
     var errorMessage: ((String?) -> Void)?
+    var forgotPassword: (() -> Void)?
     var error: String?
     private var userService: PUserService?
 

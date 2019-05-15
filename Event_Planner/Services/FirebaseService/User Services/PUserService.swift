@@ -22,4 +22,6 @@ protocol PUserService {
     func isLoggedIn() -> Bool
     func deleteAcc(completionHandler: @escaping ((String?) -> Void))
     func isOwner(userID: String?) -> Bool
+    func resetPassword(email: String?, completionHandler: @escaping (String?) -> Void)
+    func changeUserData(newUser: UserDO?, completionHandler: @escaping (String?) -> Void) 
 }

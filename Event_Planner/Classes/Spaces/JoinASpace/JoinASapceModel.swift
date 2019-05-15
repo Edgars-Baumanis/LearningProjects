@@ -47,7 +47,7 @@ class JoinASpaceModel {
                 if space.spaceName.lowercased().contains(searchText.lowercased()) {
                     filteredDataSource.append(space)
                     dataSourceChanged?()
-                }
+                } else { dataSourceChanged?() }
             }
         }
     }

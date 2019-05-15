@@ -9,6 +9,16 @@
 import Foundation
 
 class DumbUserService: PUserService {
+    
+    func resetPassword(email: String?, completionHandler: @escaping (String?) -> Void) {
+
+    }
+
+    func changeUserData(newUser: UserDO?, completionHandler: @escaping (String?) -> Void) {
+
+    }
+
+
     func isOwner(userID: String?) -> Bool {
         return true
     }

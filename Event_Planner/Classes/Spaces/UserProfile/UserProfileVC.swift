@@ -9,7 +9,6 @@
 import UIKit
 
 class UserProfileVC: UIViewController {
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
 
@@ -29,9 +28,6 @@ class UserProfileVC: UIViewController {
         super.viewWillAppear(animated)
         username.text = viewModel?.user?.userName
         email.text = viewModel?.user?.email
-    }
-    
-    @IBAction func removeIconPressed(_ sender: UIButton) {
     }
 
     @IBAction func editAccountPressed(_ sender: UIButton) {
