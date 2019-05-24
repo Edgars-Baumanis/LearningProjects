@@ -22,13 +22,33 @@ class ChatController: UIViewController {
         chatRoom.delegate = self
         chatRoom.dataSource = self
         self.title = viewModel?.chat?.chatName
+        addHandlers()
+        configureInfoButton()
+        configureNotifications()
+    }
+
+    private func addHandlers() {
         viewModel?.dataSourceChanged = { [weak self] in
             self?.chatRoom.reloadData()
             self?.scrollToBottom()
         }
+    }
 
-        navigationController?.navigationBar.prefersLargeTitles = false
+    private func configureInfoButton() {
+        let infoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        infoButton.addTarget(self, action: #selector(infoPressed), for: .touchUpInside)
+        infoButton.setImage(UIImage(named: "info-icon"), for: .normal)
+        let barInfoButton = UIBarButtonItem(customView: infoButton)
+        NSLayoutConstraint.activate([barInfoButton.customView!.widthAnchor.constraint(equalToConstant: 40), barInfoButton.customView!.heightAnchor.constraint(equalToConstant: 40)])
 
+        navigationItem.setRightBarButton(barInfoButton, animated: true)
+    }
+
+    @objc func infoPressed(_ sender: UIBarButtonItem) {
+        viewModel?.infoPressed?()
+    }
+
+    private func configureNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

@@ -14,8 +14,9 @@ class BudgetCell: UITableViewCell {
     @IBOutlet weak var fieldNameView: UIView!
 
     func displayContent(name: String, sum: String) {
+        guard let sum = Double(sum) else { return }
         fieldNameView.setCellBackground()
         budgetName.text = name
-        budgetSum.text = sum
+        budgetSum.text = String(format: "%.2f", sum)
     }
 }

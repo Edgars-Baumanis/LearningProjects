@@ -44,10 +44,10 @@ class JoinASpaceModel {
             dataSourceChanged?()
         } else {
             for space in dataSource {
-                if space.spaceName.lowercased().contains(searchText.lowercased()) {
+                if space.spaceName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased().contains(searchText.lowercased()) {
                     filteredDataSource.append(space)
                     dataSourceChanged?()
-                } else { dataSourceChanged?() }
+                } else { dataSourceChanged?() } 
             }
         }
     }

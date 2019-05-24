@@ -18,6 +18,8 @@
 		49071D50227ABEBF0062C2D6 /* PresentableTaskDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49071D4F227ABEBF0062C2D6 /* PresentableTaskDO.swift */; };
 		490C17FF22783D6400BAE2B2 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C17FE22783D6400BAE2B2 /* Toolbar.swift */; };
 		490C180122785DDA00BAE2B2 /* TextFieldSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C180022785DDA00BAE2B2 /* TextFieldSubclass.swift */; };
+		490CE388228D541B00525E92 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490CE387228D541B00525E92 /* ChatInfo.swift */; };
+		490CE38A228D543900525E92 /* ChatInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490CE389228D543900525E92 /* ChatInfoModel.swift */; };
 		490D03EA223B9BC0000E6878 /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03E9223B9BC0000E6878 /* ConfigureModel.swift */; };
 		490D03EC223BA5A1000E6878 /* CreateChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D03EB223BA5A1000E6878 /* CreateChatModel.swift */; };
 		490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490D4B1F223BC82F00E07DB3 /* ChatController.swift */; };
@@ -37,7 +39,6 @@
 		49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD5223A54A200C6A160 /* BudgetCell.swift */; };
 		49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CD7223A59BB00C6A160 /* BudgetModel.swift */; };
 		49108CDB223A5A3600C6A160 /* ConfigureBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */; };
-		49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CDD223A8A4D00C6A160 /* FieldCell.swift */; };
 		49108CE1223AA5BD00C6A160 /* IdeaTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */; };
 		49108CE3223AA72C00C6A160 /* IdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49108CE2223AA72C00C6A160 /* IdeaCell.swift */; };
 		4911E168223021A700EB8474 /* PUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911E167223021A700EB8474 /* PUserService.swift */; };
@@ -57,7 +58,7 @@
 		4935AB232232884A0061AE47 /* IdeasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB222232884A0061AE47 /* IdeasController.swift */; };
 		4935AB292232888C0061AE47 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB282232888C0061AE47 /* ChatsController.swift */; };
 		4935AB2B223288950061AE47 /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2A223288950061AE47 /* TasksController.swift */; };
-		4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2C223288A00061AE47 /* BudgetController.swift */; };
+		4935AB2D223288A00061AE47 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935AB2C223288A00061AE47 /* BudgetViewController.swift */; };
 		493840B022576223004A9252 /* OtherCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493840AF22576223004A9252 /* OtherCells.swift */; };
 		493840B2225789D6004A9252 /* UserDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493840B1225789D6004A9252 /* UserDO.swift */; };
 		493A9589224B5E9C007171F0 /* SpaceDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A9588224B5E9C007171F0 /* SpaceDO.swift */; };
@@ -174,6 +175,8 @@
 		49071D4F227ABEBF0062C2D6 /* PresentableTaskDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableTaskDO.swift; sourceTree = "<group>"; };
 		490C17FE22783D6400BAE2B2 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		490C180022785DDA00BAE2B2 /* TextFieldSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSubclass.swift; sourceTree = "<group>"; };
+		490CE387228D541B00525E92 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
+		490CE389228D543900525E92 /* ChatInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfoModel.swift; sourceTree = "<group>"; };
 		490D03E9223B9BC0000E6878 /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
 		490D03EB223BA5A1000E6878 /* CreateChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatModel.swift; sourceTree = "<group>"; };
 		490D4B1F223BC82F00E07DB3 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
@@ -193,7 +196,6 @@
 		49108CD5223A54A200C6A160 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
 		49108CD7223A59BB00C6A160 /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
 		49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBudget.swift; sourceTree = "<group>"; };
-		49108CDD223A8A4D00C6A160 /* FieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCell.swift; sourceTree = "<group>"; };
 		49108CE0223AA5BD00C6A160 /* IdeaTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTopic.swift; sourceTree = "<group>"; };
 		49108CE2223AA72C00C6A160 /* IdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCell.swift; sourceTree = "<group>"; };
 		4911E167223021A700EB8474 /* PUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUserService.swift; sourceTree = "<group>"; };
@@ -212,7 +214,7 @@
 		4935AB222232884A0061AE47 /* IdeasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasController.swift; sourceTree = "<group>"; };
 		4935AB282232888C0061AE47 /* ChatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
 		4935AB2A223288950061AE47 /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
-		4935AB2C223288A00061AE47 /* BudgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetController.swift; sourceTree = "<group>"; };
+		4935AB2C223288A00061AE47 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		493840AF22576223004A9252 /* OtherCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCells.swift; sourceTree = "<group>"; };
 		493840B1225789D6004A9252 /* UserDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDO.swift; sourceTree = "<group>"; };
 		493A9588224B5E9C007171F0 /* SpaceDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDO.swift; sourceTree = "<group>"; };
@@ -360,12 +362,22 @@
 			path = PDependencies;
 			sourceTree = "<group>";
 		};
+		490CE386228D540D00525E92 /* ChatInfo */ = {
+			isa = PBXGroup;
+			children = (
+				490CE387228D541B00525E92 /* ChatInfo.swift */,
+				490CE389228D543900525E92 /* ChatInfoModel.swift */,
+			);
+			path = ChatInfo;
+			sourceTree = "<group>";
+		};
 		490D4B1E223BC71800E07DB3 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
 				490D4B1F223BC82F00E07DB3 /* ChatController.swift */,
 				490D4B27223F981500E07DB3 /* ChatModel.swift */,
 				490D4B21223BC88A00E07DB3 /* SingleChat.storyboard */,
+				490CE386228D540D00525E92 /* ChatInfo */,
 				490D4B23223BCA9600E07DB3 /* Cell */,
 			);
 			path = Chat;
@@ -441,17 +453,8 @@
 			children = (
 				49108CDA223A5A3600C6A160 /* ConfigureBudget.swift */,
 				490D03E9223B9BC0000E6878 /* ConfigureModel.swift */,
-				49108CDC223A8A2900C6A160 /* Cell */,
 			);
 			path = ConfigureBudget;
-			sourceTree = "<group>";
-		};
-		49108CDC223A8A2900C6A160 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				49108CDD223A8A4D00C6A160 /* FieldCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		49108CDF223AA5A000C6A160 /* IdeaTopic */ = {
@@ -514,7 +517,7 @@
 		4935AB212232879D0061AE47 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
-				4935AB2C223288A00061AE47 /* BudgetController.swift */,
+				4935AB2C223288A00061AE47 /* BudgetViewController.swift */,
 				49108CD7223A59BB00C6A160 /* BudgetModel.swift */,
 				490543BF2245106800FC28A1 /* AddTotalBudget.swift */,
 				490543C1224510AE00FC28A1 /* AddTotalBudgetModel.swift */,
@@ -1207,7 +1210,7 @@
 				49451A3C2224426100AC8350 /* SignUpVC.swift in Sources */,
 				49108CD8223A59BB00C6A160 /* BudgetModel.swift in Sources */,
 				49407B2C2251F106004290D8 /* TaskOverview.swift in Sources */,
-				4935AB2D223288A00061AE47 /* BudgetController.swift in Sources */,
+				4935AB2D223288A00061AE47 /* BudgetViewController.swift in Sources */,
 				494FC72A228C30DB00ECD7A0 /* ForgorPasswordModel.swift in Sources */,
 				493E4E3F224CB8660009993A /* ChatDO.swift in Sources */,
 				493E4E3D224CB7B50009993A /* MessageDO.swift in Sources */,
@@ -1218,7 +1221,6 @@
 				490543C02245106800FC28A1 /* AddTotalBudget.swift in Sources */,
 				493840B2225789D6004A9252 /* UserDO.swift in Sources */,
 				491EB8B9224E2CD200549B19 /* UITableView.swift in Sources */,
-				49108CDE223A8A4D00C6A160 /* FieldCell.swift in Sources */,
 				490D4B20223BC82F00E07DB3 /* ChatController.swift in Sources */,
 				494FC728228C308500ECD7A0 /* ForgotPassword.swift in Sources */,
 				49CD50CD2281A56D008103AC /* SingleSpaceViewModel.swift in Sources */,
@@ -1261,8 +1263,10 @@
 				49451A4B2224426100AC8350 /* LogInVC.swift in Sources */,
 				49108CD6223A54A200C6A160 /* BudgetCell.swift in Sources */,
 				49451A392224426100AC8350 /* GreetingVC.swift in Sources */,
+				490CE388228D541B00525E92 /* ChatInfo.swift in Sources */,
 				493A958D224BAA45007171F0 /* PIdeaService.swift in Sources */,
 				493A9593224BAB0E007171F0 /* TopicDO.swift in Sources */,
+				490CE38A228D543900525E92 /* ChatInfoModel.swift in Sources */,
 				49CD50C722818A91008103AC /* TopicCell.swift in Sources */,
 				49451A492224426100AC8350 /* GreetingFlow.swift in Sources */,
 			);

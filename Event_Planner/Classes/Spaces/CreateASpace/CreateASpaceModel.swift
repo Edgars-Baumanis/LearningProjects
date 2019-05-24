@@ -13,7 +13,7 @@ class CreateASpaceModel {
     private var spaceService: PSpacesService?
 
     var backPressed: (() -> Void)?
-    var emptyFields: ((String?) -> Void)?
+    var errorMessage: ((String?) -> Void)?
     
     init (userService: PUserService?, spaceService: PSpacesService?) {
         self.userService = userService
@@ -21,10 +21,14 @@ class CreateASpaceModel {
     }
     
     func createASpace(name: String?, password: String?, description: String?) {
-        spaceService?.createSpace(name: name, password: password, description: description, completionHandler: { [weak self] (error) in
+        spaceService?.createSpace(
+            name: name?.trimmingCharacters(in: .whitespacesAndNewlines),
+            password: password?.trimmingCharacters(in: .whitespacesAndNewlines),
+            description: description?.trimmingCharacters(in: .whitespacesAndNewlines),
+            completionHandler: { [weak self] (error) in
             error == nil ?
                 self?.backPressed?() :
-                self?.emptyFields?(error)
+                self?.errorMessage?(error)
         })
     }
 }

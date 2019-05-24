@@ -19,7 +19,7 @@ class IdeaService: PIdeaService {
             topicName?.isEmpty != true,
             spaceKey?.isEmpty != true
             else {
-            completionHandler("Please enter Space name and/or Space password and/or Space description")
+            completionHandler("Please enter idea topic name")
             return
         }
         let newTopic = TopicDO(name: topicName!, key: nil)
@@ -30,10 +30,7 @@ class IdeaService: PIdeaService {
     func getTopics(spaceKey: String?, completionHandler: @escaping (TopicDO?, String?) -> Void) {
         guard
             spaceKey?.isEmpty != true
-            else {
-            completionHandler(nil, "Empty fields for database reference")
-            return
-        }
+            else { return }
         ref.child(spacesString).child(spaceKey!).child(ideasString).observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -51,10 +48,7 @@ class IdeaService: PIdeaService {
         guard
             spaceKey?.isEmpty != true,
             topicKey?.isEmpty != true
-            else {
-            completionHandler(nil, "Empty fields for database reference")
-            return
-        }
+            else { return }
         ref.child(spacesString).child(spaceKey!).child(ideasString).child(topicKey!).observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -76,8 +70,8 @@ class IdeaService: PIdeaService {
             spaceKey?.isEmpty != true,
             topicKey?.isEmpty != true
             else {
-            completionHandler("Programmer messed up")
-            return
+                completionHandler("Please enter idea name")
+                return
         }
         ref.child(spacesString).child(spaceKey!).child(ideasString).child(topicKey!).childByAutoId().setValue(newIdea.sendData())
         completionHandler(nil)
@@ -88,10 +82,7 @@ class IdeaService: PIdeaService {
             spaceKey?.isEmpty != true,
             topicKey?.isEmpty != true,
             ideaKey?.isEmpty != true
-            else {
-            completionHandler("Empty fields for database reference")
-            return
-        }
+            else { return }
         let childUpdates = [
             "/Spaces/\(spaceKey!)/Ideas/\(topicKey!)/\(ideaKey!)" : likedObject.sendData()
         ]
@@ -103,10 +94,7 @@ class IdeaService: PIdeaService {
         guard
             spaceKey?.isEmpty != true,
             topicKey?.isEmpty != true
-            else {
-                completionHandler(nil, "Programmer messed up")
-                return
-        }
+            else { return }
         ref.child(spacesString).child(spaceKey!).child(ideasString).child(topicKey!).observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : AnyObject]
             guard
@@ -125,10 +113,7 @@ class IdeaService: PIdeaService {
             spaceKey?.isEmpty != true,
             topicKey?.isEmpty != true,
             ideaKey?.isEmpty != true
-            else {
-                completionHandler("Empty fields for database reference")
-                return
-        }
+            else { return }
         let childUpdates = [
             "/Spaces/\(spaceKey!)/Ideas/\(topicKey!)/\(ideaKey!)" : pressedObject.sendData()
         ]

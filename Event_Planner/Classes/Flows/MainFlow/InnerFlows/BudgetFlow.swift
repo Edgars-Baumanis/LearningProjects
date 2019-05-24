@@ -28,8 +28,8 @@ class BudgetFlow: FlowController {
         return UIStoryboard.init(name: Strings.BudgetSB.rawValue, bundle: Bundle.main)
     }()
 
-    private var budgetViewController: BudgetController? {
-        return budgetSB.instantiateViewController(withIdentifier: String(describing: BudgetController.self)) as? BudgetController
+    private var budgetViewController: BudgetViewController? {
+        return budgetSB.instantiateViewController(withIdentifier: String(describing: BudgetViewController.self)) as? BudgetViewController
     }
 
     private var configureBudget: ConfigureBudget? {

@@ -39,9 +39,7 @@ class TaskDetails: UIViewController {
         setButtonTitle()
         createEditButton()
 
-        viewModel?.succesfulTransfer = { [weak self] in
-            self?.setButtonTitle()
-        }
+        addHandlers()
         navigationController?.navigationBar.prefersLargeTitles = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -54,6 +52,17 @@ class TaskDetails: UIViewController {
         }
     }
 
+    private func addHandlers() {
+        viewModel?.succesfulTransfer = { [weak self] in
+            self?.setButtonTitle()
+        }
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: true)
+        }
+    }
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
         removeTap?()
@@ -61,7 +70,7 @@ class TaskDetails: UIViewController {
 
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, let editButtonCenter = editButton?.center else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = keyboardSize.cgRectValue
 
         if viewBottomConstraint.constant == 20 {

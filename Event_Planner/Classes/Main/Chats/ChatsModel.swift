@@ -16,7 +16,6 @@ class ChatsModel {
     var navigateToAddChat: (()-> Void)?
     var dataSource: [ChatDO] = []
     var dataSourceChanged: (() -> Void)?
-    var filteredDataSource: [ChatDO] = []
     var navigateToChat: ((_ chatName: ChatDO?) -> Void)?
     var errorMessage: ((String?) -> Void)?
     
@@ -32,18 +31,20 @@ class ChatsModel {
         chatService?.getChats(spaceKey: spaceKey, completionHandler: { [weak self] (chat, error) in
             if error == nil {
                 guard let newChat = chat else { return }
-                self?.dataSource.append(newChat)
-                self?.filteredDataSource.append(newChat)
-                self?.dataSourceChanged?()
+                if self?.dataSource.contains(where: {$0.key == newChat.key}) == true {
+                    self?.dataSource.enumerated().forEach({ (offset, chat) in
+                        if chat.key == newChat.key {
+                            self?.dataSource[offset] = newChat
+                            self?.dataSourceChanged?()
+                        }
+                    })
+                } else {
+                    self?.dataSource.append(newChat)
+                    self?.dataSourceChanged?()
+                }
             } else {
                 self?.errorMessage?(error)
             }
         })
-    }
-
-    func searchTextChanged(searchText: String) {
-        filteredDataSource = searchText.isEmpty ? dataSource : dataSource.filter { (item: ChatDO) -> Bool in
-            return item.chatName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
     }
 }

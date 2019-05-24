@@ -30,15 +30,23 @@ class AddTaskModel {
 
     func addTask(taskName: String?, taskDescription: String?, deadline: String?) {
         guard
-            taskName?.isEmpty != true,
-            taskDescription?.isEmpty != true,
-            deadline?.isEmpty != true,
+            let taskName = taskName,
+            let taskDescription = taskDescription,
+            let deadline = deadline,
+            !taskName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+            !taskDescription.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+            !deadline.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
             let user = userServices?.user?.userName
             else {
-                errorMessage?("Empty Fields")
+                errorMessage?("Please enter task name and/or task description and/or task deadline")
                 return
         }
-        let newTask = TaskDO(name: taskName!, description: taskDescription!, key: nil, ownerID: user, deadline: deadline!)
+        let newTask = TaskDO(
+            name: taskName.trimmingCharacters(in: .whitespacesAndNewlines),
+            description: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines),
+            key: nil,
+            ownerID: user,
+            deadline: deadline.trimmingCharacters(in: .whitespacesAndNewlines))
         taskService?.addTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: newTask) { [weak self] (error) in
             if error == nil {
                 self?.addTaskPressed?()

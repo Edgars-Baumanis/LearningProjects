@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ideas-->
+        <!--Idea topics-->
         <scene sceneID="cGU-h8-YjL">
             <objects>
-                <viewController storyboardIdentifier="IdeasController" title="Ideas" id="3jI-A4-1bP" customClass="IdeasController" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdeasController" title="Idea topics" id="3jI-A4-1bP" customClass="IdeasController" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wdr-H0-t4Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

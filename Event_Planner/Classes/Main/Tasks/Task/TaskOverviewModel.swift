@@ -30,7 +30,7 @@ class TaskOverviewModel {
         getNeedsDoingData()
         reloadData()
         dataProgressDeleted()
-        dataNeedsDoingDeleted()
+        dataNeedsDoingDeleted() 
         dataDoneDeleted()
     }
 
@@ -118,7 +118,7 @@ class TaskOverviewModel {
                             task.key == removedTask.key {
                         self?.dataSource[2].tasks.remove(at: idx)
                     }
-                }
+                } 
                 self?.dataSourceChanged?()
             } else {
                 self?.errorMessage?(error)

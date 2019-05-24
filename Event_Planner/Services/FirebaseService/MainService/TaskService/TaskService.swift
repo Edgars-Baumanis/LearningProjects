@@ -16,10 +16,7 @@ class TaskService: PTaskService {
     private let taskString = "Tasks"
 
     func getTopics(spaceKey: String?, completionHandler: @escaping (TopicDO?, String?) -> Void) {
-        guard spaceKey?.isEmpty != true else {
-            completionHandler(nil, "Empty fields for database reference")
-            return
-        }
+        guard spaceKey?.isEmpty != true else { return }
         ref.child(spacesString).child(spaceKey!).child(taskString).observe(.childAdded, with:  { (snapshot) in
             let post = snapshot.value as? [String: AnyObject]
             guard
@@ -33,7 +30,7 @@ class TaskService: PTaskService {
 
     func addTopic(topicName: String?, spaceKey: String?, completionHandler: @escaping (String?) -> Void) {
         guard topicName?.isEmpty != true, spaceKey?.isEmpty != true else {
-            completionHandler("Please enter Space name and/or Space password and/or Space description")
+            completionHandler("Please enter task topic name")
             return
         }
         let newTopic = TopicDO(name: topicName!, key: nil)
@@ -42,10 +39,7 @@ class TaskService: PTaskService {
     }
 
     func getTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void) {
-        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else {
-            completionHandler(nil, nil, "Empty fields for database reference")
-            return
-        }
+        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else { return }
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childAdded, with: { (snapshot) in
             let post = snapshot.value as? [String : Any]
             post?.forEach({ (key, value) in
@@ -66,7 +60,7 @@ class TaskService: PTaskService {
                 case "NeedsDoing":
                     completionHandler(task, 0 , nil)
                 default:
-                    completionHandler(nil, nil, "borked")
+                    return
                 }
             })
 
@@ -74,10 +68,7 @@ class TaskService: PTaskService {
     }
 
     func reloadTasks(spaceKey: String?, topicKey: String?, completionHandler: @escaping (TaskDO?, Int?, String?) -> Void) {
-        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else {
-            completionHandler(nil, nil, "Empty fields for database reference")
-            return
-        }
+        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true else { return }
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).observe(.childChanged, with: { (snapshot) in
             let post = snapshot.value as? [String : Any]
             post?.forEach({ (key, value) in
@@ -98,7 +89,7 @@ class TaskService: PTaskService {
                 case "NeedsDoing":
                     completionHandler(task, 0 , nil)
                 default:
-                    completionHandler(nil, nil, "borked")
+                    return
                 }
             })
         })
@@ -121,10 +112,7 @@ class TaskService: PTaskService {
     }
 
     func addTask(spaceKey: String?, topicKey: String?, task: TaskDO?, completionHandler: @escaping (String?) -> Void) {
-        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true, let newTask = task else {
-            completionHandler("Empty fields for database reference")
-            return
-        }
+        guard spaceKey?.isEmpty != true, topicKey?.isEmpty != true, let newTask = task else { return }
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child("NeedsDoing").childByAutoId().setValue(newTask.sendData())
         completionHandler(nil)
     }
@@ -135,10 +123,7 @@ class TaskService: PTaskService {
             topicKey?.isEmpty != true,
             taskKey?.isEmpty != true,
             let caller = caller
-            else {
-                completionHandler("Empty fields for database reference")
-                return
-        }
+            else { return }
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(caller).child(taskKey!).removeValue()
         completionHandler(nil)
     }
@@ -150,10 +135,7 @@ class TaskService: PTaskService {
             let taskKey = task?.key,
             let caller = caller,
             let transferTo = transferTo
-            else {
-                completionHandler("Empty fields for database reference")
-                return
-        }
+            else { return }
         let task = TaskDO(name: newTask.name, description: newTask.description, key: nil, ownerID: newTask.ownerID, deadline: newTask.deadline)
         ref.child(spacesString).child(spaceKey!).child(taskString).child(topicKey!).child(transferTo).child(taskKey).setValue(task.sendData())
 
@@ -167,10 +149,7 @@ class TaskService: PTaskService {
             topicKey?.isEmpty != true,
             taskKey?.isEmpty != true,
             let caller = caller
-            else {
-                completionHandler("Empty fields for database reference")
-                return
-        }
+            else { return }
         let childUpdates = [
             "/Spaces/\(spaceKey!)/Tasks/\(topicKey!)/\(caller)/\(taskKey!)" : task.sendData()
         ]

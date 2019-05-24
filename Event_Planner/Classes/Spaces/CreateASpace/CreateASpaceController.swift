@@ -13,9 +13,13 @@ import Firebase
 class CreateASpaceController: UIViewController {
     @IBOutlet weak var spaceName: UITextField!
     @IBOutlet weak var spacePassword: UITextField!
-    @IBOutlet weak var spaceDescription: TextViewSubclass!
+    @IBOutlet weak var spaceDescription: UITextView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
     
     var viewModel: CreateASpaceModel?
+    private var addTap: (() -> Void)?
+    private var removeTap: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +27,41 @@ class CreateASpaceController: UIViewController {
         spaceDescription.delegate = self
         spaceDescription.text = "Enter a description for your Space"
         spaceDescription.textColor = UIColor.placholderGrey
-        viewModel?.emptyFields = { [weak self] message in
+        viewModel?.errorMessage = { [weak self] message in
             let alert = UIAlertController(title: "Empty!", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: nil))
             self?.present(alert, animated: true)
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        removeTap?()
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        if bottomConstraint.constant == 20 {
+            bottomConstraint.constant += keyboardFrame.height
+        }
+        addTap?()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if bottomConstraint.constant != 20 {
+            bottomConstraint.constant = 20
         }
     }
     
@@ -51,5 +86,12 @@ extension CreateASpaceController: UITextViewDelegate {
             spaceDescription.text = "Enter a description for your Space"
             spaceDescription.textColor = UIColor.placholderGrey
         }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: view.frame.width, height: .infinity)
+        let estematedSize = spaceDescription.sizeThatFits(size)
+
+        descriptionHeight.constant = estematedSize.height + 10
     }
 }

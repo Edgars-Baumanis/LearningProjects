@@ -45,7 +45,7 @@ class EventUserModel {
                     self?.dataSource.remove(at: index)
                     self?.dataSourceChanged?()
                 }
-            })
+            }) 
         } else {
             errorMessage?("Cannot delete space owner")
         }

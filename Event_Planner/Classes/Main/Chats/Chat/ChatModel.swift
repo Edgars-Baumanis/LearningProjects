@@ -18,6 +18,7 @@ class ChatModel {
     var dataSource: [MessageDO] = []
     var dataSourceChanged: (() -> Void)?
     var errorMessage: ((String?) -> Void)?
+    var infoPressed: (() -> Void)?
     let currentUserID: String?
 
     init(chat: ChatDO?, userServices: PUserService?, spaceKey: String?, chatService: PChatService?) {
@@ -30,7 +31,11 @@ class ChatModel {
     } 
 
     func sendMessage(messageText: String?) {
-        chatService?.sendMessage(spaceKey: spaceKey, chatKey: chat?.key, messageText: messageText, completionHandler: { (error) in
+        chatService?.sendMessage( 
+            spaceKey: spaceKey,
+            chatKey: chat?.key,
+            messageText: messageText?.trimmingCharacters(in: .whitespacesAndNewlines),
+            completionHandler: { (error) in
             if error != nil {
                 self.errorMessage?(error)
             }

@@ -19,7 +19,7 @@ class ForgorPasswordModel {
     }
 
     func sendPasswordReset(_ email: String?) {
-        userService?.resetPassword(email: email, completionHandler: { [weak self] (error) in
+        userService?.resetPassword(email: email?.trimmingCharacters(in: .whitespacesAndNewlines), completionHandler: { [weak self] (error) in
             if let error = error {
                 if error == "Please check your email" {
                     self?.errorMessage?("Success", error)

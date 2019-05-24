@@ -5,6 +5,16 @@
 //  Created by Edgars Baumanis on 14.03.19.
 //  Copyright © 2019. g. chili. All rights reserved.
 //
+/****************************************
+BudgetModel
+Contains all data functionality for BudgetViewController
+
+ Contains functions:
+    *   getData() - gets inital data from database.
+    *   reloadData() - listens for changes in database
+    *   calculateRemaining() -> Float - returns a float value based on maxSum and all field sum
+    *   isMainUser() -> Bool - returns a bool value based on if the user is the main user of this Space
+****************************************/
 
 import UIKit
 
@@ -36,6 +46,7 @@ class BudgetModel {
     }
 
     func getData() {
+//        BudgetService connects to Firebase and has all functions for budget interaction
         budgetService?.getBudgetFields(spaceKey: spaceKey, completionHandler: { [weak self] (budgetField, totalBudget, error) in
             if error == nil {
                 if totalBudget == nil {
@@ -57,6 +68,7 @@ class BudgetModel {
     }
 
     func reloadData() {
+//        BudgetService connects to Firebase and has all functions for budget interaction
         budgetService?.reloadBudgetFields(spaceKey: spaceKey, completionHandler: { [weak self] (budgetField, changedTotalBudget, error) in
             if error == nil {
                 if changedTotalBudget == nil {
@@ -90,6 +102,7 @@ class BudgetModel {
     }
 
     func isMainUser() -> Bool {
+//        UserService connects to Firebase and has all functions for user interaction
         if userService?.isOwner(userID: space?.mainUser) == true {
             return true
         } else { return false }

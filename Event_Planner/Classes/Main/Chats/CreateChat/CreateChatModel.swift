@@ -20,7 +20,11 @@ class CreateChatModel {
     }
 
     func createChat(name: String?, desc: String?) {
-        chatService?.createChat(chatName: name, chatDesc: desc, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+        chatService?.createChat(
+            chatName: name?.trimmingCharacters(in: .whitespacesAndNewlines),
+            chatDesc: desc?.trimmingCharacters(in: .whitespacesAndNewlines),
+            spaceKey: spaceKey,
+            completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.chatCreated?()
             } else {

@@ -182,56 +182,79 @@
             </objects>
             <point key="canvasLocation" x="240.80000000000001" y="193.85307346326837"/>
         </scene>
-        <!--View Controller-->
+        <!--Change password-->
         <scene sceneID="14P-x9-WSx">
             <objects>
-                <viewController id="aBn-YJ-N2a" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePassword" title="Change password" id="aBn-YJ-N2a" customClass="ChangePassword" customModule="Event_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="esq-bc-cy5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ant-Dm-pwy">
-                                <rect key="frame" x="20" y="40" width="255" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ant-Dm-pwy">
+                                <rect key="frame" x="20" y="40" width="335" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maq-Y9-EAL">
-                                <rect key="frame" x="20" y="71" width="335" height="30"/>
+                                <rect key="frame" x="20" y="64.5" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-vy-vr0">
-                                <rect key="frame" x="20" y="131" width="255" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password again" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-vy-vr0">
+                                <rect key="frame" x="20" y="124.5" width="335" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-eb-3te">
-                                <rect key="frame" x="20" y="162" width="335" height="30"/>
+                                <rect key="frame" x="20" y="149" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSe-dn-py7">
+                                <rect key="frame" x="20" y="199" width="335" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ONk-BR-Hfd">
+                                <rect key="frame" x="20" y="223.5" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FzX-vy-vr0" firstAttribute="top" secondItem="maq-Y9-EAL" secondAttribute="bottom" constant="30" id="5Nm-4Y-hpG"/>
+                            <constraint firstItem="cSe-dn-py7" firstAttribute="top" secondItem="dhx-eb-3te" secondAttribute="bottom" constant="20" id="DGK-Nz-9LC"/>
                             <constraint firstItem="dhx-eb-3te" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="Ioo-bN-88W"/>
                             <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="maq-Y9-EAL" secondAttribute="trailing" constant="20" id="JmJ-Vx-N9x"/>
                             <constraint firstItem="maq-Y9-EAL" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="K0j-Mf-U5L"/>
-                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="FzX-vy-vr0" secondAttribute="trailing" constant="100" id="NHf-kN-Mv0"/>
+                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="ONk-BR-Hfd" secondAttribute="trailing" constant="20" id="Lb2-VQ-PFh"/>
+                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="FzX-vy-vr0" secondAttribute="trailing" constant="20" id="NHf-kN-Mv0"/>
                             <constraint firstItem="ant-Dm-pwy" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="RGC-gu-o8h"/>
-                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="ant-Dm-pwy" secondAttribute="trailing" constant="100" id="XAt-BF-ZPp"/>
+                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="ant-Dm-pwy" secondAttribute="trailing" constant="20" id="XAt-BF-ZPp"/>
                             <constraint firstItem="dhx-eb-3te" firstAttribute="top" secondItem="FzX-vy-vr0" secondAttribute="bottom" constant="10" id="XY3-u9-nyd"/>
                             <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="dhx-eb-3te" secondAttribute="trailing" constant="20" id="dtv-WN-lvn"/>
                             <constraint firstItem="ant-Dm-pwy" firstAttribute="top" secondItem="ThL-NS-6DD" secondAttribute="top" constant="20" id="g6B-68-nXi"/>
+                            <constraint firstItem="ONk-BR-Hfd" firstAttribute="top" secondItem="cSe-dn-py7" secondAttribute="bottom" constant="10" id="iFO-y0-bY3"/>
                             <constraint firstItem="FzX-vy-vr0" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="o9B-eI-rBw"/>
+                            <constraint firstItem="ThL-NS-6DD" firstAttribute="trailing" secondItem="cSe-dn-py7" secondAttribute="trailing" constant="20" id="rr5-i1-XWf"/>
+                            <constraint firstItem="ONk-BR-Hfd" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="uQe-Ta-eAp"/>
+                            <constraint firstItem="cSe-dn-py7" firstAttribute="leading" secondItem="ThL-NS-6DD" secondAttribute="leading" constant="20" id="yCl-IY-TOr"/>
                             <constraint firstItem="maq-Y9-EAL" firstAttribute="top" secondItem="ant-Dm-pwy" secondAttribute="bottom" constant="10" id="yQp-4z-sDd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ThL-NS-6DD"/>
                     </view>
+                    <connections>
+                        <outlet property="newPassword" destination="maq-Y9-EAL" id="6YF-W0-ivR"/>
+                        <outlet property="oldPassword" destination="ONk-BR-Hfd" id="vjh-hu-ovd"/>
+                        <outlet property="secondNewPassword" destination="dhx-eb-3te" id="FtL-CH-wTI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09G-bb-9vx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -272,12 +295,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZd-f9-nSo">
-                                <rect key="frame" x="20" y="189" width="335" height="30"/>
+                                <rect key="frame" x="20" y="209" width="335" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgi-gb-TD7">
+                                <rect key="frame" x="20" y="189" width="335" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -286,11 +315,14 @@
                             <constraint firstItem="nWM-qH-pFM" firstAttribute="top" secondItem="4XT-cS-eeo" secondAttribute="bottom" constant="5" id="8aw-yJ-073"/>
                             <constraint firstItem="UiW-ZI-KtT" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="BOA-Bg-tr4"/>
                             <constraint firstItem="4XT-cS-eeo" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="CZM-om-3wI"/>
-                            <constraint firstItem="xZd-f9-nSo" firstAttribute="top" secondItem="nWM-qH-pFM" secondAttribute="bottom" constant="20" id="JJf-2x-7xp"/>
+                            <constraint firstItem="xZd-f9-nSo" firstAttribute="top" secondItem="Kgi-gb-TD7" secondAttribute="bottom" constant="5" id="DE8-1m-F3X"/>
                             <constraint firstItem="UiW-ZI-KtT" firstAttribute="top" secondItem="ETt-eS-ugl" secondAttribute="bottom" constant="5" id="LSH-qp-6od"/>
                             <constraint firstItem="ETt-eS-ugl" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="Naf-47-XgY"/>
                             <constraint firstItem="xZd-f9-nSo" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="OSx-Qx-luS"/>
+                            <constraint firstItem="Kgi-gb-TD7" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="Okr-md-gdN"/>
                             <constraint firstItem="nWM-qH-pFM" firstAttribute="leading" secondItem="PT6-ap-eO3" secondAttribute="leading" constant="20" id="YDF-7m-Oma"/>
+                            <constraint firstItem="Kgi-gb-TD7" firstAttribute="top" secondItem="nWM-qH-pFM" secondAttribute="bottom" constant="20" id="cbx-oH-Nrk"/>
+                            <constraint firstItem="PT6-ap-eO3" firstAttribute="trailing" secondItem="Kgi-gb-TD7" secondAttribute="trailing" constant="20" id="dai-wU-aza"/>
                             <constraint firstItem="PT6-ap-eO3" firstAttribute="trailing" secondItem="xZd-f9-nSo" secondAttribute="trailing" constant="20" id="f1l-4I-sxH"/>
                             <constraint firstItem="4XT-cS-eeo" firstAttribute="top" secondItem="UiW-ZI-KtT" secondAttribute="bottom" constant="20" id="fba-Ie-qu6"/>
                             <constraint firstItem="PT6-ap-eO3" firstAttribute="trailing" secondItem="4XT-cS-eeo" secondAttribute="trailing" constant="20" id="hlM-uJ-Oph"/>

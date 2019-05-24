@@ -78,14 +78,26 @@ class TaskDetailsModel {
 
     func saveData(taskName: String?, taskDescription: String?, deadline: String?) {
         guard
-            taskName?.isEmpty != true,
-            taskDescription?.isEmpty != true,
-            deadline?.isEmpty != true
-            else { return }
-        let task = TaskDO(name: taskName!, description: taskDescription!, key: self.task?.key, ownerID: (self.task?.ownerID)!, deadline: deadline!)
+            let taskName = taskName,
+            let taskDescription = taskDescription,
+            let deadline = deadline,
+            !taskName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+            !taskDescription.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+            !deadline.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            else {
+                errorMessage?("Please enter task name and/or task description and/or task deadline")
+                return
+        }
+        let task = TaskDO(
+            name: taskName.trimmingCharacters(in: .whitespacesAndNewlines),
+            description: taskDescription.trimmingCharacters(in: .whitespacesAndNewlines),
+            key: self.task?.key,
+            ownerID: (self.task?.ownerID)!,
+            deadline: deadline.trimmingCharacters(in: .whitespacesAndNewlines))
+        
         taskService?.saveTask(spaceKey: spaceKey, topicKey: taskTopic?.key, task: task, caller: section, taskKey: task.key, completionHandler: { [weak self] (error) in
             if error == nil {
-                print("dataSaved")
+                self?.deletePressed?()
             } else {
                 self?.errorMessage?(error)
             }

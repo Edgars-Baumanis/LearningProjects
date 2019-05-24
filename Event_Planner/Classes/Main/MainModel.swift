@@ -25,7 +25,7 @@ class MainModel {
         self.userService = userService
     }
 
-    func leavePressed() {
+    func leaveEvent() {
         space?.users.enumerated().forEach({ (offSet, userID) in
             if userID == userService?.user?.userID {
                 space?.users.remove(at: offSet)
@@ -38,5 +38,23 @@ class MainModel {
                 self?.leaveSpace?()
             }
         })
+    }
+
+    func deleteEvent() {
+        mainService?.deleteEvent(space: space, completionHandler: { [weak self] (error) in
+            if let error = error {
+                self?.errorMessage?(error)
+            } else {
+                self?.leaveSpace?()
+            }
+        })
+    }
+
+    func isOwner() -> Bool {
+        if userService?.isOwner(userID: space?.mainUser) == true {
+            return true
+        } else {
+            return false
+        }
     }
 }

@@ -58,9 +58,13 @@ class SpacesFlow: FlowController {
         return userSB.instantiateViewController(withIdentifier: String(describing: UserProfileVC.self)) as? UserProfileVC
     }()
 
-    private lazy var editProfileVC: EditAccountVC? = {
+    private var editProfileVC: EditAccountVC? {
         return userSB.instantiateViewController(withIdentifier: String(describing: EditAccountVC.self)) as? EditAccountVC
-    }()
+    }
+
+    private var editPasswordVC: ChangePassword? {
+        return userSB.instantiateViewController(withIdentifier: String(describing: ChangePassword.self)) as? ChangePassword
+    }
 
     private lazy var singleSpaceVC: SingleSpaceVC? = {
         return mainSB.instantiateViewController(withIdentifier: String(describing: SingleSpaceVC.self)) as? SingleSpaceVC
@@ -130,6 +134,9 @@ class SpacesFlow: FlowController {
             self?.rootController?.popViewController(animated: true)
             self?.logoutPressed?()
         }
+        viewModel.toEditPassword = { [weak self] in
+            self?.navigateToEditPassword()
+        }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
@@ -137,6 +144,21 @@ class SpacesFlow: FlowController {
     private func navigateToEditProfile() {
         guard let vc = editProfileVC else { return }
         let viewModel = EditAccountModel(userService: userService)
+        viewModel.goToUserProfile = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+            self?.rootController?.popViewController(animated: true)
+        }
+        vc.viewModel = viewModel
+        rootController?.pushViewController(vc, animated: true)
+    }
+
+    private func navigateToEditPassword() {
+        guard let vc = editPasswordVC else { return }
+        let viewModel = ChangePasswordModel(userService: userService)
+        viewModel.goToUserProfile = { [weak self] in
+            self?.rootController?.popViewController(animated: true)
+            self?.rootController?.popViewController(animated: true)
+        }
         vc.viewModel = viewModel
         rootController?.pushViewController(vc, animated: true)
     }
@@ -148,7 +170,7 @@ class SpacesFlow: FlowController {
         viewModel.closePressed = { [weak self] in
             self?.rootController?.dismiss(animated: false, completion: nil)
         }
-        viewModel.rightEntry = { [weak self] space in
+        viewModel.rightEntry = { [weak self] in
             vc.viewModel = nil
             self?.deleteVM?()
             self?.rootController?.dismiss(animated: false)

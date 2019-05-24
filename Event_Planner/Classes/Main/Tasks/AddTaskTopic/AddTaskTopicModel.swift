@@ -22,7 +22,10 @@ class AddTaskTopicModel {
     }
     
     func addTask(taskName: String?) {
-        taskService?.addTopic(topicName: taskName, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+        taskService?.addTopic(
+            topicName: taskName?.trimmingCharacters(in: .whitespacesAndNewlines),
+            spaceKey: spaceKey,
+            completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.navigateToTaskTopic?()
             } else {

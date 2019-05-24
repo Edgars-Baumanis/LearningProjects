@@ -12,4 +12,5 @@ protocol PMainService {
     func getUsers(eventUsers: [String]?, completionHandler: @escaping ([UserDO]?, String?) -> Void)
     func deleteUser(spaceID: String?, remainingUsers: [UserDO]?, completionHandler: @escaping (String?) -> Void)
     func leaveEvent(space: SpaceDO?, completionHandler: @escaping (String?) -> Void)
+    func deleteEvent(space: SpaceDO?, completionHandler: @escaping (String?) -> Void)
 }

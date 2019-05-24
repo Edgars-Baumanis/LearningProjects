@@ -22,15 +22,19 @@ class AddIdeaModel {
         self.spaceKey = spaceKey
         self.topicName = topicName
         self.userService = userService
-        self.ideaService = ideaService
+        self.ideaService = ideaService 
     }
 
     func addIdea(ideaName: String?) {
         guard
-            ideaName?.isEmpty != true,
+            let ideaName = ideaName,
+            !ideaName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
             let userID = userService?.user?.userID
-            else { return }
-        let newIdea = IdeaDO(ideaName: ideaName!, likeCount: 1, likedPeople: ["",userID], key: nil)
+            else {
+                errorMessage?("Please enter idea name")
+                return
+        }
+        let newIdea = IdeaDO(ideaName: ideaName.trimmingCharacters(in: .whitespacesAndNewlines), likeCount: 1, likedPeople: ["",userID], key: nil)
         ideaService?.addIdea(spaceKey: spaceKey, topicKey: topicName?.key, idea: newIdea, completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.ideaAdded?()

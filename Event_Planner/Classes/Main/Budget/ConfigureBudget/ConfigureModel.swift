@@ -24,7 +24,12 @@ class ConfigureModel {
     }
 
     func savePressed(fieldName: String?, fieldSum: String?) {
-        budgetService?.changeField(spaceKey: spaceKey, fieldName: fieldName, fieldSum: fieldSum, fieldKey: budgetField?.key, completionHandler: { [weak self] (error) in
+        budgetService?.changeField(
+            spaceKey: spaceKey,
+            fieldName: fieldName?.trimmingCharacters(in: .whitespacesAndNewlines),
+            fieldSum: fieldSum?.trimmingCharacters(in: .whitespacesAndNewlines),
+            fieldKey: budgetField?.key,
+            completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.savePressed?()
             } else {

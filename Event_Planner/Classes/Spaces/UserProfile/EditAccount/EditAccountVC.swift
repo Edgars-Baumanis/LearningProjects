@@ -25,9 +25,9 @@ class EditAccountVC: UIViewController {
         view.setGradientBackground()
         newUsername.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
         newEmail.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
+        addHandlers()
 
-        newUsername.text = viewModel?.user?.userName
-        newEmail.text = viewModel?.user?.email
+
         saveButton = UIButton(frame: CGRect(x: view.frame.maxX - 90, y: view.frame.maxY - 120, width: 0, height: 0))
         saveButtonCenter = saveButton?.center
         saveButton?.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
@@ -43,6 +43,14 @@ class EditAccountVC: UIViewController {
         }
         removeTap = { [weak self] in
             self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    private func addHandlers() {
+        viewModel?.errorMessage = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self?.present(alert, animated: true)
         }
     }
 
@@ -74,6 +82,8 @@ class EditAccountVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        newUsername.text = viewModel?.user?.userName
+        newEmail.text = viewModel?.user?.email
         fieldCheck()
     }
 
@@ -82,7 +92,7 @@ class EditAccountVC: UIViewController {
     }
 
     @objc func savePressed(_ sender: UIButton) {
-        viewModel?.changeAccDetails(newEmail: newEmail.text, newUsername: newUsername.text)
+        viewModel?.changeAccDetails(newEmail: newEmail.text, newUsername: newUsername.text, password: password.text)
     }
 
     private func fieldCheck() {

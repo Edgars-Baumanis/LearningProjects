@@ -35,6 +35,7 @@ class UserProfileVC: UIViewController {
     }
 
     @IBAction func changePasswordPressed(_ sender: UIButton) {
+        viewModel?.toEditPassword?()
     }
 
     @IBAction func logoutPressed(_ sender: UIButton) {
@@ -44,7 +45,7 @@ class UserProfileVC: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true)
-    }
+    } 
     
     @IBAction func deletePressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "You are about to delete your Account", message: "Are you sure?", preferredStyle: .alert)

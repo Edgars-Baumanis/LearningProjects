@@ -13,6 +13,7 @@ class UserProfileModel {
 
     var errorMessage: ((String?) -> Void)?
     var toEditAccount: (() -> Void)?
+    var toEditPassword: (() -> Void)?
     var toLogin: (() -> Void)?
     let user: UserDO?
 

@@ -23,7 +23,8 @@ class AddTopicModel {
     }
 
     func addTopic(topicName: String?) {
-        ideaService?.addTopic(topicName: topicName, spaceKey: spaceKey, completionHandler: { [weak self] (error) in
+
+        ideaService?.addTopic(topicName: topicName?.trimmingCharacters(in: .whitespacesAndNewlines), spaceKey: spaceKey, completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.addTopicPressed?()
             } else {

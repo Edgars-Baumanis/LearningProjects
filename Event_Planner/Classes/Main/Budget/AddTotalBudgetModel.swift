@@ -22,7 +22,10 @@ class AddTotalBudgetModel {
     }
 
     func saveTotalBudget(totalBudget: String?) {
-        budgetService?.addTotalSum(spaceKey: spaceKey, totalSum: totalBudget, completionHandler: { [weak self] (error) in
+        budgetService?.addTotalSum(
+            spaceKey: spaceKey,
+            totalSum: totalBudget?.trimmingCharacters(in: .whitespacesAndNewlines),
+            completionHandler: { [weak self] (error) in
             if error == nil {
                 self?.navigateToBudget?()
             } else {

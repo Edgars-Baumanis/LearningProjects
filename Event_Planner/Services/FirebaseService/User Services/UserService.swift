@@ -13,6 +13,7 @@ class UserService: PUserService {
 
     private let firebaseAuth = Auth.auth()
     private let ref = Database.database().reference()
+    private let currentUser = Auth.auth().currentUser
     private let usersString = "Users"
     var user: UserDO?
     
@@ -26,9 +27,8 @@ class UserService: PUserService {
                 error == nil,
                 let loginEmail = self?.firebaseAuth.currentUser?.email,
                 let loginUserID = self?.firebaseAuth.currentUser?.uid
-            
                 else {
-                    completionHandler("Wrong credentials")
+                    completionHandler(error?.localizedDescription)
                     return
             }
             guard let usersString = self?.usersString else { return }
@@ -63,8 +63,7 @@ class UserService: PUserService {
                     let email = self?.firebaseAuth.currentUser?.email,
                     let uid = self?.firebaseAuth.currentUser?.uid
                     else {
-                        print(error)
-                        completionHandler("Email already exists")
+                        completionHandler(error?.localizedDescription)
                         return
                 }
                 guard let usersString = self?.usersString else { return }
@@ -150,7 +149,73 @@ class UserService: PUserService {
         }
     }
 
-    func changeUserData(newUser: UserDO?, completionHandler: @escaping (String?) -> Void) {
-        
+    func changeUserprofile(user: UserDO?, email: String, password: String, userName: String, completionhandler: @escaping (String?) -> Void) {
+
+        guard let oldEmail = user?.email else { return }
+        let credential = EmailAuthProvider.credential(withEmail: oldEmail, password: password)
+
+        currentUser?.reauthenticateAndRetrieveData(with: credential, completion: { [weak self] (_, error) in
+            if let error = error {
+                completionhandler(error.localizedDescription)
+            } else {
+                if user?.userName != userName {
+                    self?.changeUserName(newUser: user, userName: userName, email: email)
+                    completionhandler(nil)
+                }
+                if oldEmail != email {
+                    self?.changeUserEmail(email: email, completionHanlder: { (error) in
+                        if let error = error {
+                            completionhandler(error)
+                        } else {
+                            self?.changeUserName(newUser: user, userName: userName, email: email)
+                            completionhandler(nil)
+                        }
+                    })
+                }
+            }
+        })
+    }
+
+    private func changeUserName(newUser: UserDO?, userName: String, email: String) {
+        guard
+            let userID = newUser?.userID
+            else { return }
+        let newUser = UserDO(email: email, userID: userID, userName: userName)
+        user?.userName = userName
+        let childUpdates = [
+            "/\(usersString)/\(userID)/" : newUser.sendData()
+        ]
+        ref.updateChildValues(childUpdates)
+    }
+
+    private func changeUserEmail(email: String, completionHanlder: @escaping (String?) -> Void) {
+        currentUser?.updateEmail(to: email, completion: { [weak self] (error) in
+            if let error = error {
+                completionHanlder(error.localizedDescription)
+            } else {
+                self?.user?.email = email
+                completionHanlder(nil)
+            }
+        })
+    }
+
+    func changePassword(user: UserDO?, password: String, oldPassword: String, completionHandler: @escaping (String?) -> Void) {
+        guard let email = user?.email else { return }
+
+        let credential = EmailAuthProvider.credential(withEmail: email, password: oldPassword)
+
+        currentUser?.reauthenticateAndRetrieveData(with: credential, completion: { [weak self] (_, error) in
+            if let error = error {
+                completionHandler(error.localizedDescription)
+            } else {
+                self?.currentUser?.updatePassword(to: password, completion: { (error) in
+                    if let error = error {
+                        completionHandler(error.localizedDescription)
+                    } else {
+                        completionHandler(nil)
+                    }
+                })
+            }
+        })
     }
 }

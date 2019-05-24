@@ -9,12 +9,17 @@
 import Foundation
 
 class DumbUserService: PUserService {
-    
-    func resetPassword(email: String?, completionHandler: @escaping (String?) -> Void) {
-
+    func changePassword(user: UserDO?, password: String, oldPassword: String, completionHandler: @escaping (String?) -> Void) {
+        
     }
 
-    func changeUserData(newUser: UserDO?, completionHandler: @escaping (String?) -> Void) {
+
+    func changeUserprofile(user: UserDO?, email: String, password: String, userName: String, completionhandler: @escaping (String?) -> Void) {
+        
+    }
+
+    
+    func resetPassword(email: String?, completionHandler: @escaping (String?) -> Void) {
 
     }
 

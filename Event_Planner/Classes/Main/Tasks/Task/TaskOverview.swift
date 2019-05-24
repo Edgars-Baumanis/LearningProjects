@@ -41,6 +41,11 @@ class TaskOverview: UIViewController {
         tasks.reloadData()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        headers.removeAll()
+    }
+
     @objc func addPressed() {
         viewModel?.navigateToAddTask?()
     }
@@ -111,7 +116,7 @@ extension TaskOverview: UITableViewDelegate, UITableViewDataSource {
                 headers.append(header)
             }
         default:
-            sectionHeaderButton.setTitle("Programmers fault", for: .normal)
+            return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         }
         sectionHeaderButton.setTitleColor(.black, for: .normal)
         sectionHeaderButton.tag = section

@@ -14,6 +14,7 @@ class SpaceService: PSpacesService {
     private let spacesString = "Spaces"
     private let ref = Database.database().reference()
     private var spaceRoute: DatabaseReference?
+    private let userString = "users"
 
     init() {
         spaceRoute = ref.child(spacesString)
@@ -154,31 +155,28 @@ class SpaceService: PSpacesService {
         completionHandler(nil)
     }
 
-    func joinSpace(space: SpaceDO?, completionHandler: @escaping (SpaceDO?, String?) -> Void) {
+    func joinSpace(space: SpaceDO?, completionHandler: @escaping (String?) -> Void) {
         guard let space = space else {
-            completionHandler(nil, "Problem with space info")
             return
         }
-        var newSpace = space
-        newSpace.key = nil
+        var users = space.users
         var isValid = false
-        newSpace.users.forEach { (value) in
+        users.forEach { (value) in
             value == Dependencies.instance.userService.user?.userID ||
-                newSpace.mainUser == Dependencies.instance.userService.user?.userID ?
+                space.mainUser == Dependencies.instance.userService.user?.userID ?
                     isValid = true : nil
         }
         if isValid {
-            completionHandler(nil, "Can't join a space you are already a part of")
             return
         } else {
             guard let userID = Dependencies.instance.userService.user?.userID else { return }
-            newSpace.users.append(userID)
+            users.append(userID)
             guard let key = space.key else { return }
             let childUpdate = [
-                "/Spaces/\(key)/" : newSpace.sendData()
+                "/\(spacesString)/\(key)/\(userString)" : users
             ]
             ref.updateChildValues(childUpdate)
-            completionHandler(newSpace, nil)
+            completionHandler(nil)
             return
         }
     }

@@ -42,13 +42,13 @@ class ChatsController: UIViewController {
 extension ChatsController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.filteredDataSource.count ?? 0
+        return viewModel?.dataSource.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TopicCell.self), for: indexPath)
         if let myCell = cell as? TopicCell {
-            myCell.displayContent(labelText: viewModel?.filteredDataSource[indexPath.row].chatName)
+            myCell.displayContent(labelText: viewModel?.dataSource[indexPath.row].chatName)
         }
 
         let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)

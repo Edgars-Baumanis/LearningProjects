@@ -87,7 +87,7 @@ class MainFlow: FlowController {
     }
 
     private func navigateToChatFlow() {
-        let chatFlow = ChatsFlow(rootController: rootController, spaceKey: space?.key, userServices: userServices, chatService: chatService)
+        let chatFlow = ChatsFlow(rootController: rootController, space: space, userServices: userServices, chatService: chatService)
         chatFlow.start()
         childFlow = chatFlow
     }

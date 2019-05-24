@@ -14,8 +14,11 @@ class SingleSpaceVC: UIViewController {
     @IBOutlet weak var spacePassword: UITextField!
     @IBOutlet weak var spaceDescription: UITextView!
     @IBOutlet weak var spaceDescriptionHeight: NSLayoutConstraint!
+    @IBOutlet weak var middleConstraint: NSLayoutConstraint!
     
     var viewModel: SingleSpaceViewModel?
+    private var addTap: (() -> Void)?
+    private var removeTap: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,36 @@ class SingleSpaceVC: UIViewController {
             self?.present(alert, animated: true)
         }
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        addTap = { [weak self] in
+            self?.view.addGestureRecognizer(tap)
+        }
+        removeTap = { [weak self] in
+            self?.view.removeGestureRecognizer(tap)
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        removeTap?()
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        if middleConstraint.constant == 0 {
+            middleConstraint.constant -= keyboardFrame.height - 90
+        }
+        addTap?()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if middleConstraint.constant != 0 {
+            middleConstraint.constant = 0
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

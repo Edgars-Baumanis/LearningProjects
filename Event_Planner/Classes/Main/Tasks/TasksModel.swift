@@ -26,7 +26,9 @@ class TasksModel {
     }
 
     func getTaskTopics() {
-        taskService?.getTopics(spaceKey: spaceKey, completionHandler: { [weak self] (topic, error) in
+        taskService?.getTopics(
+            spaceKey: spaceKey,
+            completionHandler: { [weak self] (topic, error) in
             if error == nil {
                 guard let newTopic = topic else { return }
                 self?.dataSource.append(newTopic)
@@ -36,12 +38,5 @@ class TasksModel {
                 self?.errorMessage?(error)
             }
         })
-    }
-
-    func searchTextChanged(searchText: String) {
-        filteredDataSource = searchText.isEmpty ? dataSource :
-            dataSource.filter { (item: TopicDO) -> Bool in
-                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
     }
 }

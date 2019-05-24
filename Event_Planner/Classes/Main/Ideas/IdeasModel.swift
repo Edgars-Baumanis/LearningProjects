@@ -37,11 +37,4 @@ class IdeasModel {
             }
         })
     }
-
-    func searchTextChanged(searchText: String) {
-        filteredDataSource = searchText.isEmpty ? dataSource :
-            dataSource.filter { (item: TopicDO) -> Bool in
-                return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-    }
 }
