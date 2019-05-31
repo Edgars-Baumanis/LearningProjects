@@ -34,7 +34,7 @@ class JoinASpaceModel {
     }
 
     func cellPressed(index: Int) {
-        spacePressed?(dataSource[index])
+        spacePressed?(filteredDataSource[index])
     }
 
     func filterSpaces(searchText: String) {

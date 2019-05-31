@@ -66,9 +66,9 @@ class SpacesFlow: FlowController {
         return userSB.instantiateViewController(withIdentifier: String(describing: ChangePassword.self)) as? ChangePassword
     }
 
-    private lazy var singleSpaceVC: SingleSpaceVC? = {
+    private var singleSpaceVC: SingleSpaceVC? {
         return mainSB.instantiateViewController(withIdentifier: String(describing: SingleSpaceVC.self)) as? SingleSpaceVC
-    }()
+    }
 
     func start() {
         guard let vc = spacesVC else { return }
